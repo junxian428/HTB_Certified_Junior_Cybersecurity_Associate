@@ -2,6 +2,8 @@
 
 Application security is a critical component of information security and is often a significant factor in breaches if not properly implemented. It focuses on protecting software applications from external threats throughout their entire lifecycle. This encompasses a wide range of practices, tools, and methodologies designed to identify, prevent, and mitigate security vulnerabilities in application code and its associated infrastructure.
 
+<img width="1009" height="507" alt="image" src="https://github.com/user-attachments/assets/62f0837f-a884-453b-aad8-35bf992afa8d" />
+
 The primary goal is to ensure that applications are developed, deployed, and maintained in a manner that preserves the confidentiality, integrity, and availability (CIA Triad) of the data they process and the systems they interact with. This is particularly crucial in today's interconnected digital landscape, where applications often handle sensitive information and are exposed to a myriad of potential threats from malicious actors.
 
 Application Security begins at the earliest stages of the software development lifecycle and continues through to deployment and ongoing maintenance. It involves a combination of secure coding practices, rigorous testing procedures, and the implementation of various security controls. Developers play a crucial role in this process by writing code that adheres to security best practices and is resistant to common vulnerabilities such as SQL injection, and cross-site scripting (XSS), and buffer overflows.
