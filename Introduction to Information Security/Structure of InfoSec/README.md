@@ -1,4 +1,4 @@
-Structure of InfoSec
+<h3> Structure of InfoSec </h3>
 
 In this module, our goal is to provide you with a foundational understanding of information security: how it is structured, which roles are assumed by whom, the various domains/areas of expertise within cybersecurity, and what career opportunities are currently available. This module is fundamentally designed for complete newcomers, those who have found the motivation and made the decision to take the plunge into the vast ocean of cybersecurity.
 
@@ -13,21 +13,21 @@ Look closely at the following graphic and try to memorize it. It illustrates, in
 
 <img width="1021" height="519" alt="image" src="https://github.com/user-attachments/assets/51237bbe-38c9-43e1-9137-4bf1a0cdb2b9" />
 
-Client: This is a PC/Laptop through which you access resources and services "on the Internet".
+1. Client: This is a PC/Laptop through which you access resources and services "on the Internet".
 
-Internet: This is a vast, interconnected network of servers that offer different services and applications, such as Hack The Box.
+2. Internet: This is a vast, interconnected network of servers that offer different services and applications, such as Hack The Box.
 
-Servers: Servers provide various services and applications designed to perform specific tasks. For example, one type of server might be a "web server", allowing you and others to view the content of a website (such as this section you're reading currently) on your computer or smartphone.
+3. Servers: Servers provide various services and applications designed to perform specific tasks. For example, one type of server might be a "web server", allowing you and others to view the content of a website (such as this section you're reading currently) on your computer or smartphone.
 
-Network: When multiple servers or computers are connected and can communicate with each other, it's called a network.
+4. Network: When multiple servers or computers are connected and can communicate with each other, it's called a network.
 
-Cloud: Cloud refers to data centers that offer interconnected servers for companies and individuals to use.
+5. Cloud: Cloud refers to data centers that offer interconnected servers for companies and individuals to use.
 
-Blue Team: This team is responsible for the internal security of the company and defends against cyber attacks.
+6. Blue Team: This team is responsible for the internal security of the company and defends against cyber attacks.
 
-Red Team: This team simulates an actual adversary/attack on the company.
+7. Red Team: This team simulates an actual adversary/attack on the company.
 
-Purple Team: This team consists of both Blue Team and Red Team members working together to enhance the company's security.
+8. Purple Team: This team consists of both Blue Team and Red Team members working together to enhance the company's security.
 
 We'll delve more into these teams and other aspects in individual sections.
 
@@ -37,12 +37,18 @@ More services and systems are moving online in a trend known as digital transfor
 
 Imagine your information is like treasure stored in a castle. The castle's walls, drawbridges, and guards are the security measures protecting your treasure from thieves.
 
-The Treasure: Your valuable data and information.
-The Castle Walls: Firewalls, defensive mechanisms, and encryption that keep outsiders from getting in.
-The Guards: Security protocols and access controls that monitor who enters and leaves.
-Penetration Testers: Knights who test the castle's defenses by simulating attacks to find weak spots.
-Digital Transformation: Expanding the castle to store more treasure, which attracts more thieves.
-Cyber Threats: Thieves who are constantly looking for ways to breach the castle's defenses.
+1. The Treasure: Your valuable data and information.
+
+2. The Castle Walls: Firewalls, defensive mechanisms, and encryption that keep outsiders from getting in.
+
+3. The Guards: Security protocols and access controls that monitor who enters and leaves.
+
+4. Penetration Testers: Knights who test the castle's defenses by simulating attacks to find weak spots.
+
+5. Digital Transformation: Expanding the castle to store more treasure, which attracts more thieves.
+
+6. Cyber Threats: Thieves who are constantly looking for ways to breach the castle's defenses.
+
 Just as a castle must strengthen its defenses as it grows and becomes a more valuable target, businesses must enhance their InfoSec measures as they move more services online. By thinking of InfoSec as a building or fortress to protect, it becomes easier to understand the importance of strong security in the digital age.
 
 The necessity of InfoSec stems from the value of information in the digital age. Personal data, intellectual property, financial information, and government secrets are just a few examples of the critical data that needs protection. A breach can lead to severe consequences, including financial loss, reputational damage, legal ramifications, and national security threats.
@@ -52,21 +58,21 @@ InfoSec plays an integral role in safeguarding an organization's data from vario
 
 The actual range of assets that fall under the umbrella of InfoSec is far more extensive and continues to evolve in tandem with advancements in technology and the ever-changing landscape of cyber threats, consisting of but not limited to:
 
-Network Security
+1. Network Security
 
-Application Security
+2. Application Security
 
-Operational Security
+3. Operational Security
 
-Disaster Recovery and Business Continuity
+4. Disaster Recovery and Business Continuity
 
-Cloud Security
+5. Cloud Security
 
-Physical Security
+6. Physical Security
 
-Mobile Security
+7. Mobile Security
 
-Internet of Things (IoT) Security
+8. Internet of Things (IoT) Security
 
 Later on, we will also explore some of the most prevalent cyber threats, such as Distributed Denial of Service (DDoS) attacks, ransomware, advanced persistent threats (APTs), and insider threats. Additionally, we will examine the structure and function of cybersecurity teams, gaining an understanding of their areas of specialization and the key roles within these teams. This comprehensive overview will provide valuable insights into how cybersecurity professionals collaborate to mitigate and respond to these evolving threats.
 
