@@ -84,3 +84,66 @@ Pseudocode is a simplified, informal way of describing a program's logic and str
     </tr>
 
   </table>
+
+Let's break it down:
+
+1. Start Building the House (Develop the App)
+
+- Locks on doors and windows: When you create an app, you need to make sure only the right people can get in (authentication), like how a house needs good locks to keep strangers out.
+
+- Strong walls and materials: The app's code should be solid and free from weaknesses that hackers could exploit, just like you would build a house with strong materials to prevent it from collapsing.
+
+- Waterproof roof: Encrypting data means protecting sensitive information, like making sure your house’s roof doesn’t leak during rain. This ensures no one can read or steal your data while it's being transferred.
+
+2. Inspect the House for Weak Spots (Test for Vulnerabilities)
+
+- Test if locks are working: This is like testing an app to see if hackers can break in by trying different methods (penetration testing).
+
+- Look for cracks in walls: Just as you’d inspect a house for any cracks, developers need to check their app’s code for bugs or weak spots that could be used by attackers.
+
+- Test roof with water: After you’ve built the app, you need to make sure sensitive data stays protected, just like testing a roof to ensure it doesn't leak during a storm.
+
+3. Keep the House Safe Over Time (Ongoing Security Monitoring)
+
+- Install security cameras: Even after building and testing your app, you must monitor it regularly to catch any new threats or problems, just like using security cameras to watch for intruders.
+
+- Fix cracks and replace broken locks: Apps need regular updates to fix vulnerabilities or bugs, just like how you would repair cracks or replace broken locks to keep a house safe.
+
+Now, when the test_if_locks_are_working() process goes wrong, such as when the checker skips testing a door due to an error or lack of time to replace the lock, it leaves a vulnerable entry point. If an intruder (hacker) notices that this specific lock isn’t working, they can exploit that weakness to break into the house (the application).
+
+One key approach is called Security by Design, which means that security isn't something you think about later, but rather you build into the app from the start. To continue with our analogy, imagine you’re building a house. If you design it with security in mind from the very beginning, you’ll choose strong materials, secure locks, and maybe even set up a surveillance system while the house is still under construction. This way, the house is secure from the ground up, not as an afterthought once it’s already built. However, security doesn’t stop at the app’s code. Just like a house needs a secure neighborhood, reliable utilities, and good lighting, apps also need a safe environment.
+
+In software development, Security by Design works the same way. When creating an app, developers think about security right from the planning stage. This can include:
+
+1. Threat modeling: Like imagining all the ways someone might break into your house, threat modeling helps developers figure out potential risks to the app early on.
+
+2. Secure code reviews: After writing the code, developers carefully check it to make sure there are no weak spots, similar to inspecting the house’s foundation for cracks before finishing construction.
+
+3. Servers and databases: These are like the land your house sits on and the water supply it uses. If they aren’t secure, the whole system is at risk.
+
+4. Authentication and authorization: Think of these as high-quality locks on your doors. Authentication ensures only the right people can get in, while authorization makes sure they can only access the rooms (data) they’re allowed to.
+
+<h3> Application Security Responsibility </h3>
+
+The responsibility for Application Security typically falls to several different roles within an organization. Application developers are on the front lines, responsible for writing secure code and implementing security features. Security architects design the overall security structure of applications and their supporting infrastructure. IT operations teams are responsible for maintaining the security of the production environment where applications run. The overall management of Application Security often falls to a dedicated Application Security Manager or, in larger organizations, to the Chief Information Security Officer (CISO). These individuals are responsible for setting application security policies, ensuring compliance with relevant security standards and regulations, and overseeing the implementation of security measures across all of an organization's applications.
+
+Testing the security of an application is a crucial part of the process and is typically carried out by specialized security testers or penetration testers. These professionals use a variety of tools and techniques to identify vulnerabilities in applications, including static and dynamic analysis tools, fuzzing techniques, and manual code reviews. They may also perform simulated attacks on applications to test their resilience to real-world threats. However, the overall application security assessment is not a one-time effort but an ongoing process. New vulnerabilities and attack techniques are constantly emerging, requiring continuous monitoring, testing, and updating of security measures. This often involves the use of automated security tools that can scan applications for vulnerabilities on an ongoing basis, as well as regular security assessments and penetration tests.
+
+Nowadays, where data breaches and cyber attacks can result in significant financial losses, reputational damage, and legal consequences, robust Application Security is essential for any organization that develops or uses software applications.
+
+Many companies face the challenge of balancing security with the time pressure to launch applications quickly. This is a common struggle, as businesses are often in a hurry to release new apps or updates to stay competitive in the market. However, rushing the process can lead to shortcuts in security, which may leave the application vulnerable to attacks. Imagine you’re building a house, but you’re on a tight deadline to move in. You might be tempted to skip a few steps to finish faster, maybe you don’t check every installed window or rush the installation of locks on the doors in the backyard. While the house may look ready, the lack of proper security checks could leave it exposed to burglars.
+
+By implementing comprehensive Application Security measures, organizations can protect their critical data and systems, maintain the trust of their users, and ensure the continuity of their operations in the face of evolving cyber threats.
+
+---
+
+Questions
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 1 What does the "C" in the CIA triad stand for?
+
+Confidentiality
+
+Reference:
+
+https://www.fortinet.com/resources/cyberglossary/cia-triad
