@@ -2,6 +2,8 @@
 
 Network security is like the security system of a house, but instead of protecting your home, it protects a computer network from threats. Just as a security system guards your doors, windows, and valuables, network security safeguards the data and devices on your network, ensuring they stay safe from intruders, whether they’re external hackers or internal threats.
 
+<img width="1009" height="507" alt="image" src="https://github.com/user-attachments/assets/b4dbfa8f-7de1-4d0a-9027-01c0e28b1378" />
+
 In simpler terms, network security is a crucial component of information security that safeguards the network and the data transmitted through it. It employs a variety of tools and techniques to detect, prevent, and defend against various security threats.
 
 Several key elements work together to form a comprehensive protection strategy in network security. These are but not limited to:
