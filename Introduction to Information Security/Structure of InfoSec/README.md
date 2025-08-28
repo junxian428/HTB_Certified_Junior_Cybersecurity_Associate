@@ -11,6 +11,8 @@ Nowadays, we heavily rely on digital platforms for almost everything; communicat
 
 Look closely at the following graphic and try to memorize it. It illustrates, in a very simplified manner, the approximate structure/landscape of the digital world. We will go through this piece by piece in the upcoming sections, and you will understand how all these elements are interconnected.
 
+<img width="1021" height="519" alt="image" src="https://github.com/user-attachments/assets/51237bbe-38c9-43e1-9137-4bf1a0cdb2b9" />
+
 Client: This is a PC/Laptop through which you access resources and services "on the Internet".
 
 Internet: This is a vast, interconnected network of servers that offer different services and applications, such as Hack The Box.
