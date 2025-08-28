@@ -123,7 +123,8 @@ f. Enabling secure digital transformation
 - Allows organizations to adopt new technologies safely
 - Supports innovation while managing associated security risks
 
-Tools in Information Security
+<h3> Tools in Information Security </h3>
+
 InfoSec professionals use a wide array of tools to perform their duties. As a beginner in penetration testing, you should be aware of these common categories:
 
 Firewalls: Control incoming and outgoing network traffic
