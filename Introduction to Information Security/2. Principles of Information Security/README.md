@@ -127,14 +127,15 @@ f. Enabling secure digital transformation
 
 InfoSec professionals use a wide array of tools to perform their duties. As a beginner in penetration testing, you should be aware of these common categories:
 
-Firewalls: Control incoming and outgoing network traffic
-Intrusion Detection/Prevention Systems (IDS/IPS): Monitor for and block suspicious activities
-Security Information and Event Management (SIEM) systems: Collect and analyze security event data
-Vulnerability scanners: Identify potential weaknesses in systems and applications
-Penetration testing tools: Simulate attacks to find vulnerabilities (e.g., Metasploit, Burp Suite)
-Encryption tools: Protect data confidentiality and integrity
-Access control systems: Manage user permissions and authentication
-Security awareness training platforms: Educate users about security best practices
+1. Firewalls: Control incoming and outgoing network traffic
+2. Intrusion Detection/Prevention Systems (IDS/IPS): Monitor for and block suspicious activities
+3. Security Information and Event Management (SIEM) systems: Collect and analyze security event data
+4. Vulnerability scanners: Identify potential weaknesses in systems and applications
+5. Penetration testing tools: Simulate attacks to find vulnerabilities (e.g., Metasploit, Burp Suite)
+6. Encryption tools: Protect data confidentiality and integrity
+7. Access control systems: Manage user permissions and authentication
+8. Security awareness training platforms: Educate users about security best practices
+
 For penetration testing specifically, you'll need to become familiar with many tools and operating systems including but not limited to:
 
 - Linux, Windows, MacOS
