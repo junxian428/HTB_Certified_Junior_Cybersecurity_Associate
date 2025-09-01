@@ -132,6 +132,9 @@ File System Hierarchy
 
 The Linux operating system is structured in a tree-like hierarchy and is documented in the Filesystem Hierarchy Standard (FHS). Linux is structured with the following standard top-level directories:
 
+<img width="990" height="640" alt="image" src="https://github.com/user-attachments/assets/429d8dd7-e7b8-419b-9c05-6c142cab8db2" />
+
+
 <table>
   <thead>
     <tr>
