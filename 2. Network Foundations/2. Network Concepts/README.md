@@ -36,6 +36,8 @@ Application Layer (Layer 7)
 
 The Application Layer is the topmost layer of the OSI model and provides network services directly to end-user applications. It enables resource sharing, remote file access, and other network services. Common protocols operating at this layer include HTTP (Hypertext Transfer Protocol) for web browsing, FTP (File Transfer Protocol) for file transfers, SMTP (Simple Mail Transfer Protocol) for email transmission, and DNS (Domain Name System) for resolving domain names to IP addresses. This layer serves as the interface between the network and the application software.
 
+<img width="671" height="811" alt="image" src="https://github.com/user-attachments/assets/4e36c2e5-f4dd-4dcb-b141-fee077500459" />
+
 Example of Sending a File Across Network Layers
 
 When sending a file over a network, several steps occur across different layers of the network model. The process begins at the Application Layer, which initiates the file transfer request. Following this, the Presentation Layer encrypts the file to ensure its security during transmission. The Session Layer then establishes a communication session with the receiving device. At the Transport Layer, the file is broken down into segments to ensure error-free transmission. The Network Layer takes over to determine the best route for transferring the data across the network. Next, the Data Link Layer encapsulates the data into frames, preparing it for node-to-node delivery. Finally, the Physical Layer handles the actual transmission of bits over the physical medium, completing the process.
@@ -59,18 +61,29 @@ Application Layer
 
 The Application Layer of the TCP/IP model contains protocols that offer specific data communication services to applications. Protocols such as HTTP (Hypertext Transfer Protocol), FTP (File Transfer Protocol), and SMTP (Simple Mail Transfer Protocol) enable functionalities like web browsing, file transfers, and email services. This layer corresponds to the top three layers of the OSI model (Session, Presentation, and Application), providing interfaces and protocols necessary for data exchange between systems.
 
+<img width="654" height="549" alt="image" src="https://github.com/user-attachments/assets/5bb61f58-a996-4961-809c-5b1fdf778ead" />
+
+
 Comparison with OSI Model:
+
 The TCP/IP model simplifies the complex structure of the OSI model by combining certain layers for practical implementation. Specifically designed around the protocols used on the internet, the TCP/IP model is more application-oriented, focusing on the needs of real-world network communication. This design makes it more effective for internet-based data exchange, meeting modern technological needs.
+
+<img width="929" height="469" alt="image" src="https://github.com/user-attachments/assets/2eb5a397-15a1-4794-82b0-6f0650cb4b1a" />
+
+Example of Accessing a Website
 
 When accessing a website, several layers of the TCP/IP model work together to facilitate the process. At the Application Layer, your browser utilizes HTTP to request the webpage. This request then moves to the Transport Layer, where TCP ensures the data is transferred reliably. The Internet Layer comes into play next, with IP taking charge of routing the data packets from our device to the web server. Finally, at the Network Interface Layer, the data is physically transmitted over the network, completing the connection that allows us to view the website.
 
 Model Roles
+
 In practical terms, the TCP/IP model is the backbone of network data transmission, actively employed across various networking environments. On the other hand, the OSI model, while not directly implemented, plays a crucial role as a comprehensive theoretical framework. It helps demystify the complexities of network operations, providing clear insights and a structured approach to understanding how networks function. Together, these models form a complete picture, bridging the gap between theoretical knowledge and practical application in networking.
 
 Protocols
+
 Protocols are standardized rules that determine the formatting and processing of data to facilitate communication between devices in a network. These protocols operate at different layers within network models, each tailored to handle specific types of data and communication needs. Here’s a look at some common network protocols and their roles in data exchange.
 
 Common Network Protocols
+
 Network protocols are essential for defining how data is exchanged across networks. Each protocol operates at a specific layer of the OSI model, ensuring structured and efficient data handling.
 
  <table>
