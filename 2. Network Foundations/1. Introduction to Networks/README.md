@@ -36,32 +36,6 @@ Why Are Networks Important?
 
 Networks, particularly since the advent of the Internet, have radically transformed society, enabling the multitude of possibilities that are now essential to our lives. Below are just a few of the benefits afforded to us by this incredible technology.
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Network Functions</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: Arial, sans-serif;
-    }
-    th, td {
-      border: 1px solid #333;
-      padding: 10px;
-      vertical-align: top;
-    }
-    th {
-      background-color: #f2f2f2;
-      text-align: left;
-    }
-    tr:nth-child(even) {
-      background-color: #fafafa;
-    }
-  </style>
-</head>
-<body>
   <table>
     <tr>
       <th>Function</th>
