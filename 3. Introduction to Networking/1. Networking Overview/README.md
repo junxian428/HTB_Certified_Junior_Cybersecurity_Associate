@@ -38,6 +38,8 @@ Basic Information
 
 Let us look at the following high-level diagram of how a Work From Home setup may work.
 
+<img width="959" height="790" alt="image" src="https://github.com/user-attachments/assets/acdbefd1-8800-49c3-94d4-6fc4abc87874" />
+
 The entire internet is based on many subdivided networks, as shown in the example and marked as "Home Network" and "Company Network." We can imagine networking as the delivery of mail or packages sent by one computer and received by the other.
 
 Suppose we imagine as a scenario that we want to visit a company's website from our "Home Network." In that case, we exchange data with the company's website located in their "Company Network." As with sending mail or packets, we know the address where the packets should go. The website address or Uniform Resource Locator (URL) which we enter into our browser is also known as Fully Qualified Domain Name (FQDN).
