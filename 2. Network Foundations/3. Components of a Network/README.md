@@ -111,6 +111,11 @@ A software firewall is a security application installed on individual computers 
 
 The Linux-based software firewall IPTables being used to drop incoming ICMP traffic.
 
+<img width="1001" height="562" alt="image" src="https://github.com/user-attachments/assets/d53a230c-8ca1-49fa-9bb6-064fe799c726" />
+
+<img width="1031" height="510" alt="image" src="https://github.com/user-attachments/assets/30ded486-9dd3-4914-ad62-9e4ab27a8b56" />
+
+
 Servers
 
 A server is a powerful computer designed to provide services to other computers, known as clients, over a network. Servers are the backbone behind websites, email, files, and applications. In the realm of computer networking, servers play a crucial role by hosting services that clients access (i.e., web pages and email services), facilitating service provision. They enable resource sharing by allowing multiple users to access resources like files and printers. Servers also handle data management by storing and managing data centrally, which simplifies backup processes and enhances security management. Additionally, they manage authentication by controlling user access and permissions, across multiple components in the network. Servers often run specialized operating systems optimized for handling multiple, simultaneous requests in what is known as the Client-Server Model, where the server waits for requests from clients and responds accordingly. Whether you knew it or not, this is what was happening under-the-hood the last time you accessed a website from your notebook. Your browser sends a request to the web server hosting the site, and the server subsequently processes the request and sends back the web page data in its response.
