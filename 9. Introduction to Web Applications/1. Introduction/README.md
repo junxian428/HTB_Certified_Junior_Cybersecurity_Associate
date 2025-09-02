@@ -4,10 +4,15 @@ Web applications are interactive applications that run on web browsers. Web appl
 
 This allows organizations to host powerful applications with near-complete real-time control over their design and functionality while being accessible worldwide. Some examples of typical web applications include online email services like Gmail, online retailers like Amazon, and online word processors like Google Docs.
 
+<img width="1018" height="277" alt="image" src="https://github.com/user-attachments/assets/f66b55e1-71ac-4fe4-97f2-f18cafb62327" />
+
 Web applications are not exclusive to giant providers like Google or Microsoft but can be developed by any web developer and hosted online in any of the common hosting services, to be used by anyone on the internet. This is why today we have millions of web applications all over the internet, with billions of users interacting with them every day.
 
 Web Applications vs. Websites
-In the past, we interacted with websites that are static and cannot be changed in real-time. This means that traditional websites were statically created to represent specific information, and this information would not change with our interaction. To change the website's content, the corresponding page has to be edited by the developers manually. These types of static pages do not contain functions and, therefore, do not produce real-time changes. That type of website is also known as Web 1.0.
+
+In the past, we interacted with websites that are static and cannot be changed in real-time. This means that traditional websites were statically created to represent specific information, and this information would not change with our interaction. To change the website's content, the corresponding page has to be edited by the developers manually. These types of static pages do not contain functions and, therefore, do not produce real-time changes. That type of website is also known as Web 1.0. https://en.wikipedia.org/wiki/Web_2.0#Web_1.0
+
+<img width="1024" height="471" alt="image" src="https://github.com/user-attachments/assets/81a0a93d-1cf0-4ea8-846e-19d1a6a58f4e" />
 
 On the other hand, most websites run web applications, or Web 2.0 presenting dynamic content based on user interaction. Another significant difference is that web applications are fully functional and can perform various functionalities for the end-user, while web sites lack this type of functionality. Other key differences between traditional websites and web applications include:
 
@@ -97,3 +102,15 @@ This example shows the damage that can arise from a single web application vulne
 Start becoming familiar with common web application attacks and their implications. Don't worry if any of these terms sound foreign at this point; they will become clearer as you progress and apply an iterative approach to learning.
 
 It is imperative to study web applications in-depth and become familiar with how they work and many different application stacks. We will see web application attacks repeatedly during our Academy journey, on the main HTB platform, and in real-life assessments. Let's dive in and learn the structure/function of web applications to become better-informed attackers, set us apart from our peers, and find flaws that others may overlook.
+
+
+Source:
+
+https://github.com/OWASP/wstg/tree/master/document/4-Web_Application_Security_Testing
+
+https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure
+
+https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS)
+
+https://us-cert.cisa.gov/ncas/current-activity/2019/08/08/acsc-releases-advisory-password-spraying-attacks
+
