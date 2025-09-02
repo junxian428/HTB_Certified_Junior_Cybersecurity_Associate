@@ -124,8 +124,6 @@ The Internet is the largest example of a WAN, connecting millions of LANs global
 
 <img width="1007" height="561" alt="image" src="https://github.com/user-attachments/assets/ab6b8f21-936f-4ae4-887f-31b058891cd4" />
 
-
-
 Comparing LAN and WAN
 
  <table>
@@ -170,3 +168,26 @@ For instance, when accessing the Internet, a home LAN connects to an Internet Se
 In a business setting, companies link multiple office LANs via WANs to achieve unified communication and collaboration across different geographic locations. By connecting these LANs through a WAN, employees in various offices can share information, access centralized databases, and work together in real-time, enhancing productivity within the organization.
 
 Let's consider the following scenario to illustrate how LANs and WANs work together. At home, our devices—such as laptops, smartphones, and tablets—connect to our home router, forming a LAN. This router doesn't just manage local traffic; it also communicates with our ISP's WAN. Through this connection to the WAN, our home network gains the ability to access websites and online services hosted all over the world. This seamless integration between the LAN and WAN enables us to reach global content and interact with services beyond our local network.
+
+Questions
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 What is the term for a collection of interconnected devices that can communicate and share resources with each other?
+
+  Network
+
+- 0 In network terminology, what is the term for individual devices connected to a network?
+
+  Nodes
+
+- 0 What is the largest Wide Area Network (WAN) that connects millions of Local Area Networks (LANs) globally?
+
+  Internet
+
+- 0 What is the acronym for a network that connects devices over a short distance, such as within a home, school, or small office building?
+
+  LAN
+
+- 0 In networking, what term describes the communication pathways (wired or wireless) that connect nodes?
+
+  Links
