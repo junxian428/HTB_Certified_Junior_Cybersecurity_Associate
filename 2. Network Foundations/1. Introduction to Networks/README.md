@@ -92,6 +92,8 @@ A Local Area Network (LAN) connects devices over a short distance, such as withi
 
 The following diagram shows how a home's Wi-Fi connects devices such as laptops, smartphones, and smart TVs, allowing them to share files and access the internet.
 
+<img width="879" height="958" alt="image" src="https://github.com/user-attachments/assets/de0f0213-ff86-4f3b-8f35-739bd4003bfa" />
+
 Wide Area Network (WAN)
 A Wide Area Network (WAN) spans a large geographical area, connecting multiple LANs. Below are some of its key characteristics:
 
@@ -119,6 +121,10 @@ A Wide Area Network (WAN) spans a large geographical area, connecting multiple L
   </table>
 
 The Internet is the largest example of a WAN, connecting millions of LANs globally.
+
+<img width="1007" height="561" alt="image" src="https://github.com/user-attachments/assets/ab6b8f21-936f-4ae4-887f-31b058891cd4" />
+
+
 
 Comparing LAN and WAN
 
