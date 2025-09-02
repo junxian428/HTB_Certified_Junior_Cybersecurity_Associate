@@ -63,7 +63,6 @@ The Application Layer of the TCP/IP model contains protocols that offer specific
 
 <img width="654" height="549" alt="image" src="https://github.com/user-attachments/assets/5bb61f58-a996-4961-809c-5b1fdf778ead" />
 
-
 Comparison with OSI Model:
 
 The TCP/IP model simplifies the complex structure of the OSI model by combining certain layers for practical implementation. Specifically designed around the protocols used on the internet, the TCP/IP model is more application-oriented, focusing on the needs of real-world network communication. This design makes it more effective for internet-based data exchange, meeting modern technological needs.
@@ -132,3 +131,43 @@ Transmission modes define how data is sent between two devices. Simplex mode all
 Transmission Media
 
 The physical means by which data is transmitted in a network is known as transmission media, which can be wired or wireless. Wired media includes twisted pair cables, commonly used in Ethernet networks and local area network (LAN) connections; coaxial cables, used for cable TV and early Ethernet; and fiber optic cables, which transmit data as light pulses and are essential for high-speed internet backbones. Wireless media, on the other hand, encompasses radio waves for Wi-Fi and cellular networks, microwaves for satellite communications, and infrared technology used for short-range communications like remote controls. Each type of media has its specific use cases depending on the requirements of the network environment.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 What layer of the OSI model is responsible for physical connections like Ethernet cables? (Format: two words)
+
+  Physical Layer
+
+- 0 Name the OSI layer that deals with logical addressing and routing. (Format: two words)
+
+  Network Layer
+
+- 0 Which protocol ensures reliable delivery of data and operates at the Transport Layer?
+
+  TCP
+
+- 0 At what layer do switches operate within the OSI model? (Format: three words)
+
+  Data Link Layer
+
+- 0 What layer of the TCP/IP model corresponds to the OSI model’s Application, Presentation, and Session layers? (Format: two words)
+
+  Application Layer
+
+- 0 Which layer of the OSI model manages data encryption and data format conversion? (Format: two words)
+
+  Presentation Layer
+
+- 0 Name a protocol used for web browsing that operates at the Application Layer.
+
+  HTTP
+
+- 0 Which OSI layer ensures the segments are transferred reliably and in sequence? (Format: two words)
+
+  Transport Layer
+
+- 0 Which protocol provides fast, connectionless communication and operates at the Transport Layer?
+
+  UDP
