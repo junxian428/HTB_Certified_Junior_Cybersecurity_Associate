@@ -22,6 +22,8 @@ It is often common to automate some processes not to repeat them all the time or
 
 Let us look at such a script and see how they can be created to get specific results. If we execute this script and specify a domain, we see what information this script provides.
 
+<img width="1039" height="448" alt="image" src="https://github.com/user-attachments/assets/7f4ace4e-5c15-4c74-ae5c-0a3a9a833eae" />
+
 As we can see, we have commented here several parts of the script into which we can split it.
 
 Check for given arguments
