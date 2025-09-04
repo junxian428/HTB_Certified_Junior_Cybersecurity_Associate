@@ -8,6 +8,9 @@ URL
 
 Resources over HTTP are accessed via a URL, which offers many more specifications than simply specifying a website we want to visit. Let's look at the structure of a URL:
 
+<img width="936" height="205" alt="image" src="https://github.com/user-attachments/assets/ee3ce9d3-d2f1-46f1-88c1-65c32252045c" />
+
+
 Here is what each component stands for:
 
  <table>
@@ -61,6 +64,9 @@ Here is what each component stands for:
 
 <h3>HTTP Flow</h3>
 
+<img width="941" height="416" alt="image" src="https://github.com/user-attachments/assets/3c5f26cb-e891-4cd4-b1b6-1a9450084f73" />
+
+
 The diagram above presents the anatomy of an HTTP request at a very high level. The first time a user enters the URL (inlanefreight.com) into the browser, it sends a request to a DNS (Domain Name System) server to resolve the domain and get its IP. The DNS server looks up the IP address for inlanefreight.com and returns it. All domain names need to be resolved this way, as a server can't communicate without an IP address.
 
 Note: Our browsers usually first look up records in the local '/etc/hosts' file, and if the requested domain does not exist within it, then they would contact other DNS servers. We can use the '/etc/hosts' to manually add records to for DNS resolution, by adding the IP followed by the domain name.
@@ -72,19 +78,32 @@ In this case, the contents of index.html are read and returned by the web server
 Note: This module is mainly focused on HTTP web requests. For more on HTML and web applications, you may refer to the Introduction to Web Applications module.
 
 cURL
+
 In this module, we will be sending web requests through two of the most important tools for any web penetration tester, a Web Browser, like Chrome or Firefox, and the cURL command line tool.
 
 cURL (client URL) is a command-line tool and library that primarily supports HTTP along with many other protocols. This makes it a good candidate for scripts as well as automation, making it essential for sending various types of web requests from the command line, which is necessary for many types of web penetration tests.
 
 We can send a basic HTTP request to any URL by using it as an argument for cURL, as follows:
 
+<img width="1035" height="182" alt="image" src="https://github.com/user-attachments/assets/8e3e4096-3e6a-4f24-9e73-ea91dbcda166" />
+
+
 We see that cURL does not render the HTML/JavaScript/CSS code, unlike a web browser, but prints it in its raw format. However, as penetration testers, we are mainly interested in the request and response context, which usually becomes much faster and more convenient than a web browser.
 
 We may also use cURL to download a page or a file and output the content into a file using the -O flag. If we want to specify the output file name, we can use the -o flag and specify the name. Otherwise, we can use -O and cURL will use the remote file name, as follows:
 
+<img width="1007" height="161" alt="image" src="https://github.com/user-attachments/assets/8859fe58-7d2c-4f53-ab65-fb5a3cace380" />
+
+
 As we can see, the output was not printed this time but rather saved into index.html. We noticed that cURL still printed some status while processing the request. We can silent the status with the -s flag, as follows:
 
+<img width="1018" height="114" alt="image" src="https://github.com/user-attachments/assets/f1be1adf-6b67-482c-861a-a96b6018ce77" />
+
+
 This time, cURL did not print anything, as the output was saved into the index.html file. Finally, we may use the -h flag to see what other options we may use with cURL:
+
+<img width="998" height="378" alt="image" src="https://github.com/user-attachments/assets/d1b90543-0bd1-487e-92f3-bb886c03f2b9" />
+
 
 As the above message mentions, we may use --help all to print a more detailed help menu, or --help category (e.g. -h http) to print the detailed help of a specific flag. If we ever need to read more detailed documentation, we can use man curl to view the full cURL manual page.
 
