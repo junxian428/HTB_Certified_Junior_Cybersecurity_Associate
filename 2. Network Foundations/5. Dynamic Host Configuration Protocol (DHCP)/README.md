@@ -58,9 +58,18 @@ Below, we break down each step of the DORA process:
   </tbody>
 </table>
 
+A Linux host, connected to a wireless network, initializes the DORA process. GIF showcasing the process of connecting to a wireless network.
+
+<img width="1021" height="649" alt="image" src="https://github.com/user-attachments/assets/4d9097d9-9617-40ba-a5dc-d491f7121ef8" />
+
+
+
+
 The IP address assignment via DHCP is not permanent but is instead issued with a specific lease time. For instance, a DHCP server might assign an IP address to a smartphone with a lease time of 24 hours. After this period, the smartphone must request a renewal of the lease to continue using the IP address. Regarding the renewal process, before the lease expires, the client must proactively attempt to renew its IP address lease. This involves sending a renewal request to the DHCP server. As the lease nears its expiration, the client communicates with the DHCP server, asking if it can continue using the assigned IP address, to which the server can respond affirmatively, extending the lease.
 
 Example Scenario
+
 Let's walk through a simple example, based on the steps previously discussed, of how DHCP assigns an IP address to a device: Alice brings her new laptop to the office and connects it to the network. Since the laptop doesn't have an IP address yet, it sends out a DHCP Discover message to find a DHCP server. The office's DHCP server receives this message and responds with an offer, proposing the IP address 192.168.1.10. Alice's laptop receives this offer and sends back a DHCP Request message to accept the IP address. Finally, the DHCP server acknowledges this request and confirms the assignment. The laptop is now configured with the IP address 192.168.1.10, allowing it to communicate on the network.
 
 The IP address 192.168.1.10 assigned to Alice's laptop is not permanent but is instead provided for a specific duration, known as the lease time. As this lease nears expiration, Alice's laptop must renew it to continue using the IP address. To do this, it sends another DHCP Request to the DHCP server asking to extend the lease. If the server can renew the lease, it will respond with a DHCP Acknowledge message, confirming the continued use of the IP address.
+
