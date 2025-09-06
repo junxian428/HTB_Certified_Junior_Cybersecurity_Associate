@@ -1,4 +1,4 @@
-name: Build and Release All README PDFs
+name: Build and Release Combined README PDF
 
 on:
   workflow_dispatch:
@@ -18,23 +18,38 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert all README.md files to PDFs with folder-based names
+      - name: Assemble all README.md files into single PDF
         run: |
           mkdir -p pdfs
-          find . -type f -iname "README.md" | sort | while read file; do
-            parent=$(basename $(dirname "$file"))           # parent folder
-            grandparent=$(basename $(dirname $(dirname "$file")))  # sub-parent folder
-            if [ "$grandparent" != "." ]; then
-              fname="$grandparent.pdf"
-            elif [ "$parent" != "." ]; then
-              fname="$parent.pdf"
-            else
-              fname="root.pdf"
+          combined="pdfs/HTB_Certified_Junior_Cybersecurity_Associate_Handbook.pdf"
+
+          # Create a temporary markdown to merge all README.md files
+          tmpfile=$(mktemp /tmp/combined.XXXXXX.md)
+          echo "# HTB Certified Junior Cybersecurity Associate Handbook" >> "$tmpfile"
+          echo "" >> "$tmpfile"
+
+          # Loop over parent folders sorted numerically
+          for parent in $(find . -maxdepth 1 -type d -name "[0-9]*.*" | sort); do
+            pname=$(basename "$parent")
+            # Add parent README
+            if [ -f "$parent/README.md" ]; then
+              echo "## $pname" >> "$tmpfile"
+              cat "$parent/README.md" >> "$tmpfile"
+              echo "" >> "$tmpfile"
             fi
-            out="pdfs/$fname"
-            echo "Converting $file -> $out"
-            pandoc "$file" -o "$out" --pdf-engine=wkhtmltopdf
+            # Loop over subfolders sorted numerically
+            for sub in $(find "$parent" -mindepth 1 -maxdepth 1 -type d -name "[0-9]*.*" | sort); do
+              sname=$(basename "$sub")
+              if [ -f "$sub/README.md" ]; then
+                echo "### $sname" >> "$tmpfile"
+                cat "$sub/README.md" >> "$tmpfile"
+                echo "" >> "$tmpfile"
+              fi
+            done
           done
+
+          # Convert combined markdown to single PDF
+          pandoc "$tmpfile" -o "$combined" --pdf-engine=wkhtmltopdf
 
       - name: Create Release if missing
         uses: softprops/action-gh-release@v1
@@ -44,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload PDFs to Release
+      - name: Upload Combined PDF to Release
         uses: softprops/action-gh-release@v1
         with:
           files: pdfs/*.pdf
