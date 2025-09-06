@@ -1,0 +1,32 @@
+name: Generate README PDFs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write # 👈 important for release uploads
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install pandoc & LaTeX
+        run: sudo apt-get update && sudo apt-get install -y pandoc texlive-xetex
+
+      - name: Convert README.md to PDF
+        run: |
+          mkdir -p pdfs
+          pandoc README.md -o pdfs/README.pdf
+
+      - name: Upload PDF as release asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pdfs/README.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
