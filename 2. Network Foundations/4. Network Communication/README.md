@@ -18,7 +18,6 @@ Imagine two computers, Computer A (with an IP address of 192.168.1.2, which we w
 
 <img width="977" height="745" alt="image" src="https://github.com/user-attachments/assets/c8f6f753-1cdc-4b8e-adbe-9b9650c35c4f" />
 
-
 <h3>IP Addresses</h3>
 
 What is an IP Address?
@@ -57,3 +56,25 @@ The following example represents the steps taken for a web request to reach the 
 
 <img width="1066" height="823" alt="image" src="https://github.com/user-attachments/assets/7086f9fe-e60c-46b9-a7d9-e0b1c81b6fb6" />
 
+Questions
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 What protocol maps IP addresses to MAC addresses?
+
+ARP
+
+- 0 Which IP version uses 128-bit addressing?
+
+IPv6
+
+- 0 At which layer of the OSI model do ports operate? (Format: two words)
+
+Transport Layer
+
+- 0 What is the designated port number for HTTP?
+
+80
+
+- 0 What is the first step in the process of a web browsing session? (Format: two words)
+
+DNS lookup
