@@ -6,6 +6,8 @@ Front End
 
 The front end of a web application contains the user's components directly through their web browser (client-side). These components make up the source code of the web page we view when visiting a web application and usually include HTML, CSS, and JavaScript, which is then interpreted in real-time by our browsers.
 
+<img width="1029" height="388" alt="image" src="https://github.com/user-attachments/assets/b6b11542-1059-4563-afda-e4f0ad0fd4bc" />
+
 This includes everything that the user sees and interacts with, like the page's main elements such as the title and text HTML, the design and animation of all elements CSS, and what function each part of a page performs JavaScript.
 
 In modern web applications, front end components should adapt to any screen size and work within any browser on any device. This contrasts with back end components, which are usually written for a specific platform or operating system. If the front end of a web application is not well optimized, it may make the entire web application slow and unresponsive. In this case, some users may think that the hosting server, or their internet, is slow, while the issue lies entirely on the client-side at the user's browser. This is why the front end of a web application must be optimized for most platforms, devices (including mobile!), and screen sizes.
@@ -34,6 +36,9 @@ There are many sites available to us to practice front end coding. One example i
     </tr>
   </tbody>
 </table>
+
+<img width="982" height="510" alt="image" src="https://github.com/user-attachments/assets/11e0a8fd-8a59-47d8-b668-1be613e9152b" />
+
 
 Watch the simple HTML code render on the left. Play around with the formatting, headers, colors, etc., and watch the code change.
 
@@ -98,6 +103,15 @@ We will later discuss how to secure each component used on the front and back en
 On the other hand, back end components' source code is stored on the back end server, so we do not have access to it by default, which forces us only to perform what is known as Blackbox Pentesting. However, as we will see, some web applications are open source, meaning we likely have access to their source code. Furthermore, some vulnerabilities such as Local File Inclusion could allow us to obtain the source code from the back end server. With this source code in hand, we can then perform a code review on back end components to further understand how the application works, potentially find sensitive data in the source code (such as passwords), and even find vulnerabilities that would be difficult or impossible to find without access to the source code.
 
 The top 20 most common mistakes web developers make that are essential for us as penetration testers are:
+
+<img width="1020" height="774" alt="image" src="https://github.com/user-attachments/assets/83e64810-7a3d-4287-b098-37f273871a64" />
+
+These mistakes lead to the OWASP Top 10 vulnerabilities for web applications, which we will discuss in other modules:
+
+<img width="1011" height="422" alt="image" src="https://github.com/user-attachments/assets/f35f368e-56a8-402a-be8c-76ebbff3f42d" />
+
+
+It is important to begin to familiarize ourselves with these flaws and vulnerabilities as they form the basis for many of the issues we cover in future web and even non-web related modules. As pentesters, we must have the ability to competently identify, exploit, and explain these vulnerabilities for our clients.
 
 SOURCE:
 
