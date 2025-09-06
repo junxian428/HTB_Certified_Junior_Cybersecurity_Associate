@@ -1,11 +1,7 @@
 name: Build and Release All README PDFs
 
 on:
-  workflow_dispatch: # can be triggered manually
-  # optional: add push on tag if you want automatic trigger
-  # push:
-  #   tags:
-  #     - HTB_Certified_Junior_Cybersecurity_Associate_Handbook
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,15 +18,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert all README.md files to sequential PDFs
+      - name: Convert all README.md files to PDFs with folder-based names
         run: |
           mkdir -p pdfs
-          i=1
           find . -type f -iname "README.md" | sort | while read file; do
-            out="pdfs/${i}.pdf"
+            parent=$(basename $(dirname "$file"))           # parent folder
+            grandparent=$(basename $(dirname $(dirname "$file")))  # sub-parent folder
+            if [ "$grandparent" != "." ]; then
+              fname="$grandparent.pdf"
+            elif [ "$parent" != "." ]; then
+              fname="$parent.pdf"
+            else
+              fname="root.pdf"
+            fi
+            out="pdfs/$fname"
             echo "Converting $file -> $out"
             pandoc "$file" -o "$out" --pdf-engine=wkhtmltopdf
-            i=$((i+1))
           done
 
       - name: Create Release if missing
