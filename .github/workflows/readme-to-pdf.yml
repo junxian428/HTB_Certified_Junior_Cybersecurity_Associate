@@ -1,17 +1,18 @@
-name: Convert README.md Files to PDFs
+name: Build and Release All README PDFs
 
 on:
-  release:
-    types: [published]
-  workflow_dispatch:
+  workflow_dispatch: # can be triggered manually
+  # optional: add push on tag if you want automatic trigger
+  # push:
+  #   tags:
+  #     - HTB_Certified_Junior_Cybersecurity_Associate_Handbook
 
 permissions:
-  contents: write # Required to upload release assets
+  contents: write
 
 jobs:
-  convert:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -21,22 +22,29 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert README.md Files to PDFs
+      - name: Convert all README.md files to sequential PDFs
         run: |
           mkdir -p pdfs
           i=1
-          # Find all README.md files, sort them, and convert each to a PDF
           find . -type f -iname "README.md" | sort | while read file; do
-            # Generate output PDF file name based on sequence
             out="pdfs/${i}.pdf"
-            echo "Converting $file to $out"
+            echo "Converting $file -> $out"
             pandoc "$file" -o "$out" --pdf-engine=wkhtmltopdf
             i=$((i+1))
           done
+
+      - name: Create Release if missing
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: HTB_Certified_Junior_Cybersecurity_Associate_Handbook
+          name: HTB Certified Junior Cybersecurity Associate Handbook
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload PDFs to Release
         uses: softprops/action-gh-release@v1
         with:
           files: pdfs/*.pdf
+          tag_name: HTB_Certified_Junior_Cybersecurity_Associate_Handbook
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
