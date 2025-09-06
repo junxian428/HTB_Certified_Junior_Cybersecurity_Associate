@@ -59,7 +59,6 @@ In this architecture, the entire web application or even several web application
 
 <img width="805" height="541" alt="image" src="https://github.com/user-attachments/assets/f1589f5a-0036-4a0f-b000-9a8b1aa952c4" />
 
-
 If any web application hosted on this server is compromised in this architecture, then all web applications' data will be compromised. This design represents an "all eggs in one basket" approach since if any of the hosted web applications are vulnerable, the entire webserver becomes vulnerable.
 
 Furthermore, if the webserver goes down for any reason, all hosted web applications become entirely inaccessible until the issue is resolved.
@@ -69,7 +68,6 @@ Furthermore, if the webserver goes down for any reason, all hosted web applicati
 This model separates the database onto its own database server and allows the web applications' hosting server to access the database server to store and retrieve data. It can be seen as many-servers to one-database and one-server to one-database, as long as the database is separated on its own database server.
 
 <img width="791" height="648" alt="image" src="https://github.com/user-attachments/assets/01192c0c-d8c2-4a0f-b75d-d962641fea2e" />
-
 
 This model can allow several web applications to access a single database to have access to the same data without syncing the data between them. The web applications can be replications of one main application (i.e., primary/backup), or they can be separate web applications that share common data.
 
@@ -84,7 +82,7 @@ This design is also widely used for redundancy purposes, so if any web server or
 
 Aside from these models, there are other web application models available such as serverless web applications or web applications that utilize microservices.
 
-_________________________________________________________________________________________________________________________________________________________________________________
+---
 
 Web Application Components
 Each web application can have a different number of components. Nevertheless, all of the components of the models mentioned previously can be broken down to:
@@ -138,7 +136,6 @@ An example of a web application architecture could look something like this:
 
 <img width="1021" height="552" alt="image" src="https://github.com/user-attachments/assets/5a492fed-24b4-44ec-9de5-672acaffd2c2" />
 
-
 Source: Microsoft Docs
 
 Furthermore, some web servers can run operating system calls and programs, like IIS ISAPI or PHP-CGI.
@@ -179,6 +176,7 @@ Cloud providers such as AWS, GCP, Azure, among others, offer serverless architec
 You can read more about serverless computing and its various use cases here.
 
 Architecture Security
+
 Understanding the general architecture of web applications and each web application's specific design is important when performing a penetration test on any web application. In many cases, an individual web application's vulnerability may not necessarily be caused by a programming error but by a design error in its architecture.
 
 For example, an individual web application may have all of its core functionality secure implemented. However, due to a lack of proper access control measures in its design, i.e., use of Role-Based Access Control(RBAC), users may be able to access some admin features that are not intended to be directly accessible to them or even access other user's private information without having the privileges to do so. To fix this type of issue, a significant design change would need to be implemented, which would likely be both costly and time-consuming.
