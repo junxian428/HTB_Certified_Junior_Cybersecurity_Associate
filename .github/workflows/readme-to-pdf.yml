@@ -1,35 +1,40 @@
-name: Generate README PDFs
+name: Convert README.md Files to PDFs
 
 on:
   release:
-    types: [published] # Run when a release is published
-  workflow_dispatch: # Allow manual trigger from Actions tab
+    types: [published]
+  workflow_dispatch:
 
 permissions:
-  contents: write # Needed to upload release assets
+  contents: write # Required to upload release assets
 
 jobs:
-  build:
+  convert:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install pandoc & wkhtmltopdf
-        run: sudo apt-get update && sudo apt-get install -y pandoc wkhtmltopdf
+      - name: Install Pandoc and wkhtmltopdf
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert all README.md files to PDFs
+      - name: Convert README.md Files to PDFs
         run: |
           mkdir -p pdfs
-          for file in $(find . -name "README.md"); do
-            # Create a safe filename based on folder name
-            folder=$(basename $(dirname "$file"))
-            [ "$folder" = "." ] && folder="root"
-            pandoc "$file" -o "pdfs/${folder}_README.pdf" --pdf-engine=wkhtmltopdf
+          i=1
+          # Find all README.md files, sort them, and convert each to a PDF
+          find . -type f -iname "README.md" | sort | while read file; do
+            # Generate output PDF file name based on sequence
+            out="pdfs/${i}.pdf"
+            echo "Converting $file to $out"
+            pandoc "$file" -o "$out" --pdf-engine=wkhtmltopdf
+            i=$((i+1))
           done
 
-      - name: Upload PDFs to GitHub Release
+      - name: Upload PDFs to Release
         uses: softprops/action-gh-release@v1
         with:
           files: pdfs/*.pdf
