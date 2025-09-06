@@ -32,13 +32,20 @@ Example
 
 This would display the following: Browser window with page title 'Page Title', URL 'www.example.coml', heading 'A Heading', and paragraph 'A Paragraph'.
 
+<img width="1023" height="222" alt="image" src="https://github.com/user-attachments/assets/e4b04e02-b427-49f6-992b-6106d8a9b677" />
+
+
 As we can see, HTML elements are displayed in a tree form, similar to XML and other languages:
 
 <h3>HTML Structure</h3>
 
+<img width="1013" height="178" alt="image" src="https://github.com/user-attachments/assets/367b1990-2be5-41a8-9a22-9fd549057861" />
+
 Each element can contain other HTML elements, while the main HTML tag should contain all other elements within the page, which falls under document, distinguishing between HTML and documents written for other languages, such as XML documents.
 
 The HTML elements of the above code can be viewed as follows:
+
+<img width="534" height="343" alt="image" src="https://github.com/user-attachments/assets/ab46e48b-a3ff-4c94-a2c7-9e489a85197b" />
 
 Each HTML element is opened and closed with a tag that specifies the element's type 'e.g. <p> for paragraphs', where the content would be placed between these tags. Tags may also hold the element's id or class 'e.g. <p id='para1'> or <p id='red-paragraphs'>', which is needed for CSS to properly format the element. Both tags and the content comprise the entire element.
 
