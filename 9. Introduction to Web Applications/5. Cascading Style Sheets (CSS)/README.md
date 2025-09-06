@@ -5,6 +5,9 @@ CSS (Cascading Style Sheets) is the stylesheet language used alongside HTML to f
 Example
 At a fundamental level, CSS is used to define the style of each class or type of HTML elements (i.e., body or h1), such that any element within that page would be represented as defined in the CSS file. This could include the font family, font size, background color, text color and alignment, and more.
 
+<img width="1004" height="305" alt="image" src="https://github.com/user-attachments/assets/2d7cadd3-e831-4c1c-ba73-fbcbb5164591" />
+
+
 As previously mentioned, this is why we may set unique IDs or class names for certain HTML elements so that we can later refer to them within CSS or JavaScript when needed.
 
 Syntax
@@ -18,6 +21,9 @@ Usage
 CSS is often used alongside JavaScript to make quick calculations, dynamically adjust the style properties of certain HTML elements, or achieve advanced animations based on keystrokes or the mouse cursor location.
 
 The following example beautifully illustrates such capabilities of CSS when used with HTML and JavaScript "Parallax Depth Cards - by Andy Merskin on CodePen":
+
+<img width="1021" height="503" alt="image" src="https://github.com/user-attachments/assets/2c914a2b-f2e9-49ff-b02a-a9b6e7135884" />
+
 
 This shows that even though HTML and CSS are among the most basic cornerstones of web development when used properly, they can be used to build visually stunning web pages, which can make interacting with web applications a much easier and more user-friendly experience.
 
@@ -37,3 +43,11 @@ Furthermore, these frameworks are optimized for web application usage. They are 
 - Bulma
 
 - Pure
+
+Questions
+Answer the question(s) below to complete this Section and earn cubes!
+
++ 1  What is the CSS "property: value" used to make an HTML element's text aligned to the left?
+  
+text-align: left;
+
