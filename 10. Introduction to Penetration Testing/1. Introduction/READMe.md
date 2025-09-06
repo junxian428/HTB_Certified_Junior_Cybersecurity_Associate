@@ -36,6 +36,8 @@ In a highly simplified illustration, we could imagine a penetration test proceed
 
 In the Penetration Testing Process module, the individual phases and the process are described in detail, but for now, we can focus on this simple illustration. The actual penetration testing process looks like following:
 
+<img width="1019" height="374" alt="image" src="https://github.com/user-attachments/assets/0570afae-a592-4410-b14f-42ebfa196ad1" />
+
 Companies use pentests to find and fix security holes before the bad unethical hackers do. With these tests we check if current defenses are up to the level they need to be in order to keep their systems and secrets safe. With our help, companies can fulfill compliance requirements, demonstrate their commitment to security, and maintain trust with their customers. This often involves adapting their strategies to address emerging threats and new attack methods. The cybersecurity landscape is moving and evolving very fast and this forward-thinking mindset enables organizations to recover more effectively from attacks and reduces the risk of costly data breaches.
 
 <h3> Goals of Penetration Testing</h3>
