@@ -2,31 +2,36 @@ name: Generate README PDFs
 
 on:
   release:
-    types: [published]
-  workflow_dispatch:
+    types: [published] # Run when a release is published
+  workflow_dispatch: # Allow manual trigger from Actions tab
 
 permissions:
-  contents: write # 👈 important for release uploads
+  contents: write # Needed to upload release assets
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install pandoc & LaTeX
-        run: sudo apt-get update && sudo apt-get install -y pandoc texlive-xetex
+      - name: Install pandoc & wkhtmltopdf
+        run: sudo apt-get update && sudo apt-get install -y pandoc wkhtmltopdf
 
-      - name: Convert README.md to PDF
+      - name: Convert all README.md files to PDFs
         run: |
           mkdir -p pdfs
-          pandoc README.md -o pdfs/README.pdf
+          for file in $(find . -name "README.md"); do
+            # Create a safe filename based on folder name
+            folder=$(basename $(dirname "$file"))
+            [ "$folder" = "." ] && folder="root"
+            pandoc "$file" -o "pdfs/${folder}_README.pdf" --pdf-engine=wkhtmltopdf
+          done
 
-      - name: Upload PDF as release asset
+      - name: Upload PDFs to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: pdfs/README.pdf
+          files: pdfs/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
