@@ -4,6 +4,8 @@ git push origin main # GitHub (https://github.com/junxian428/HTB_Certified_Junio
 
 git push gitlab main # GitLab (https://gitlab.com/junxian428/htb_certified_junior_cybersecurity_associate)
 
+PowerShell: .\github_gitlab.ps1
+
 HTB Certified Junior Cybersecurity Associate Certificate
 HTB Certified Junior Cybersecurity Associate (HTB CJCA) is a highly hands-on certification that assesses the candidates’ cybersecurity assessment skills. HTB Certified Junior Cybersecurity Associate holders demonstrate foundational technical competency across both offensive and defensive cybersecurity domains. They are equipped to identify common vulnerabilities, perform basic (post-)exploitation, and recognize potential security gaps. They are also capable of conducting SIEM-assisted security monitoring, analyzing network traffic and logs, and detecting intrusions. With hands-on experience in these areas and a hybrid skill set, they can assess and report on security issues in enterprise environments.
 
