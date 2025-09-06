@@ -136,6 +136,9 @@ The components of a web application are divided into three different layers (AKA
 
 An example of a web application architecture could look something like this:
 
+<img width="1021" height="552" alt="image" src="https://github.com/user-attachments/assets/5a492fed-24b4-44ec-9de5-672acaffd2c2" />
+
+
 Source: Microsoft Docs
 
 Furthermore, some web servers can run operating system calls and programs, like IIS ISAPI or PHP-CGI.
