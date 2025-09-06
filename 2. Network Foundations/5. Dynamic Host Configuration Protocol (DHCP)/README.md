@@ -63,8 +63,6 @@ A Linux host, connected to a wireless network, initializes the DORA process. GIF
 <img width="1021" height="649" alt="image" src="https://github.com/user-attachments/assets/4d9097d9-9617-40ba-a5dc-d491f7121ef8" />
 
 
-
-
 The IP address assignment via DHCP is not permanent but is instead issued with a specific lease time. For instance, a DHCP server might assign an IP address to a smartphone with a lease time of 24 hours. After this period, the smartphone must request a renewal of the lease to continue using the IP address. Regarding the renewal process, before the lease expires, the client must proactively attempt to renew its IP address lease. This involves sending a renewal request to the DHCP server. As the lease nears its expiration, the client communicates with the DHCP server, asking if it can continue using the assigned IP address, to which the server can respond affirmatively, extending the lease.
 
 Example Scenario
