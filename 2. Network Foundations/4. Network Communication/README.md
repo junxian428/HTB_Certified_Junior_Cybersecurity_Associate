@@ -8,11 +8,16 @@ A Media Access Control (MAC) address is a unique identifier assigned to the netw
 
 The Windows GETMAC command will return the MAC address of every network interface card on the host.
 
+<img width="1017" height="315" alt="image" src="https://github.com/user-attachments/assets/76a319a5-58f3-461b-9dc4-88f0dcd69c3b" />
+
 How MAC Addresses are Used in Network Communication
 
 MAC addresses are fundamental for local communication within a local area network (LAN), as they are used to deliver data frames to the correct physical device. When a device sends data, it encapsulates the information in a frame containing the destination MAC address; network switches then use this address to forward the frame to the appropriate port. Additionally, the Address Resolution Protocol (ARP) plays a crucial role by mapping IP addresses to MAC addresses, allowing devices to find the MAC address associated with a known IP address within the same network. This mapping is bridging the gap between logical IP addressing and physical hardware addressing within the LAN.
 
 Imagine two computers, Computer A (with an IP address of 192.168.1.2, which we will discuss shortly) and Computer B (192.168.1.5), connected to the same network switch. Computer A has the MAC address 00:1A:2B:3C:4D:5E, while Computer B's MAC address is 00:1A:2B:3C:4D:5F. When Computer A wants to send data to Computer B, it first uses the Address Resolution Protocol (ARP) to discover Computer B's MAC address associated with its IP address. After obtaining this information, Computer A sends a data frame with the destination MAC address set to 00:1A:2B:3C:4D:5F. The switch receives this frame and forwards it to the specific port where Computer B is connected, ensuring that the data reaches the correct device. This is illustrated in the following diagram.
+
+<img width="977" height="745" alt="image" src="https://github.com/user-attachments/assets/c8f6f753-1cdc-4b8e-adbe-9b9650c35c4f" />
+
 
 <h3>IP Addresses</h3>
 
@@ -32,6 +37,8 @@ When a client application initiates a connection, it specifies the destination p
 
 Using the netstat tool to view active connections and listening ports.
 
+<img width="1020" height="616" alt="image" src="https://github.com/user-attachments/assets/28b27750-757a-4770-bf67-7d3da67b3ab4" />
+
 Well-Known Ports (0-1023):
 
 Well-known ports, numbered from 0 to 1023, are reserved for common and universally recognized services and protocols, as standardized and managed by the Internet Assigned Numbers Authority (IANA). For instance, HTTP, which is the foundation of data communication for the World Wide Web, uses port 80, although browsers typically do not display this port number to simplify user experience. Similarly, HTTPS uses port 443 for secure communications over networks, and this port is also generally not displayed by browsers. Another example is FTP, which facilitates file transfers between clients and servers, using ports 20 and 21.
@@ -48,8 +55,5 @@ Browsing the Internet Example
 
 The following example represents the steps taken for a web request to reach the correct destination and return the information we seek.
 
-1. DNS Lookup
+<img width="1066" height="823" alt="image" src="https://github.com/user-attachments/assets/7086f9fe-e60c-46b9-a7d9-e0b1c81b6fb6" />
 
-   Our computer resolves the domain name to an IP address (e.g., 93.184.216.34 for example.com).
-
-2. Data Encapsulation
