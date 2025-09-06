@@ -81,3 +81,11 @@ RFC 1918
 - 0 Which NAT type involves a one-to-one mapping of private IP addresses to public IP addresses?
 
 Static NAT
+
+- 0 What type of NAT assigns a public IP from a pool as needed?
+
+  Dynamic NAT
+
+- 0 What device typically performs NAT in a home network?
+
+  Router
