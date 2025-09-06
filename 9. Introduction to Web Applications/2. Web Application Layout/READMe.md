@@ -186,3 +186,15 @@ Another example would be if we cannot find the database after exploiting a vulne
 Source:
 
 https://en.wikipedia.org/wiki/Role-based_access_control
+
+https://aws.amazon.com/serverless/
+
+https://d1.awsstatic.com/whitepapers/microservices-on-aws.pdf
+
+https://en.wikipedia.org/wiki/Service-oriented_architecture
+
+https://aws.amazon.com/lambda/serverless-architectures-learn-more/
+
+https://aws.amazon.com/microservices/
+
+https://en.wikipedia.org/wiki/Load_balancing_(computing)
