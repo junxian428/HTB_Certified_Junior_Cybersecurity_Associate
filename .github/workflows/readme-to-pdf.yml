@@ -28,8 +28,8 @@ jobs:
           echo "# HTB Certified Junior Cybersecurity Associate Handbook" >> "$tmpfile"
           echo "" >> "$tmpfile"
 
-          # Loop over parent folders sorted numerically
-          for parent in $(find . -maxdepth 1 -type d -name "[0-9]*.*" | sort); do
+          # Loop over parent folders sorted alphabetically/numerically
+          for parent in $(find . -maxdepth 1 -mindepth 1 -type d | sort); do
             pname=$(basename "$parent")
             # Add parent README
             if [ -f "$parent/README.md" ]; then
@@ -37,8 +37,8 @@ jobs:
               cat "$parent/README.md" >> "$tmpfile"
               echo "" >> "$tmpfile"
             fi
-            # Loop over subfolders sorted numerically
-            for sub in $(find "$parent" -mindepth 1 -maxdepth 1 -type d -name "[0-9]*.*" | sort); do
+            # Loop over subfolders
+            for sub in $(find "$parent" -mindepth 1 -maxdepth 1 -type d | sort); do
               sname=$(basename "$sub")
               if [ -f "$sub/README.md" ]; then
                 echo "### $sname" >> "$tmpfile"
@@ -47,6 +47,11 @@ jobs:
               fi
             done
           done
+
+          # Debug: show temporary file contents
+          echo "------ TMP FILE CONTENTS ------"
+          cat "$tmpfile"
+          echo "-------------------------------"
 
           # Convert combined markdown to single PDF
           pandoc "$tmpfile" -o "$combined" --pdf-engine=wkhtmltopdf
