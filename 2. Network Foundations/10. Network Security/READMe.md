@@ -128,11 +128,20 @@ Firewalls operate by analyzing packets of data according to predefined rules and
 
 Firewalls stand between the internet and the internal network, examining traffic before letting it through. In a home environment, our router/modem often has a built-in firewall (software-based). In that case, it’s all in one device, and the firewall function is inside the router. In larger networks (e.g., business environments), the firewall is often a separate device placed after the modem/router and before the internal network, ensuring all traffic must pass through it.
 
+<img width="634" height="634" alt="image" src="https://github.com/user-attachments/assets/c7db8e73-c531-4d16-82e5-db0eede65772" />
+
 <h3>Intrusion Detection and Prevention Systems (IDS/IPS)</h3>
 
 Intrusion Detection and Prevention Systems (IDS/IPS) are security solutions designed to monitor and respond to suspicious network or system activity. An Intrusion Detection System (IDS) observes traffic or system events to identify malicious behavior or policy violations, generating alerts but not blocking the suspicious traffic. In contrast, an Intrusion Prevention System (IPS) operates similarly to an IDS but takes an additional step by preventing or rejecting malicious traffic in real time. The key difference lies in their actions: an IDS detects and alerts, while an IPS detects and prevents.
 
 The widely used Suricata software can function as both an IDS and an IPS. Here, we see the user enable a detection rule, then begin inline monitoring. GIF showcasing the rule enablement in Suricata.
+
+<img width="1026" height="609" alt="image" src="https://github.com/user-attachments/assets/6f662b51-c32f-4af6-a2b2-f3700914d91e" />
+
+<img width="1034" height="614" alt="image" src="https://github.com/user-attachments/assets/b11595f1-3678-4342-86c3-b4b98a651b2f" />
+
+<img width="1021" height="609" alt="image" src="https://github.com/user-attachments/assets/ba4f47b4-d876-44b2-b935-490a473dd8a9" />
+
 
 Both IDS and IPS solutions analyze network packets and compare them to known attack signatures or typical traffic patterns. This process involves:
 
@@ -160,6 +169,11 @@ When suspicious or malicious behavior is identified, an IDS will generate an ale
 
 Suricata in IDS mode.
 
+<img width="1030" height="611" alt="image" src="https://github.com/user-attachments/assets/722c64b1-436a-4122-af31-f52199c04e41" />
+
+<img width="1034" height="623" alt="image" src="https://github.com/user-attachments/assets/bd7e160a-c7b0-4941-875d-28131c82d3ed" />
+
+
 Below are some of the different types of firewalls IDS/IPS.
 
 1. Network-Based IDS/IPS (NIDS/NIPS)
@@ -179,6 +193,9 @@ Below are some of the different types of firewalls IDS/IPS.
    Example: An antivirus or endpoint security agent installed on a server.
 
 IDS/IPS can be placed at several strategic locations in a network. One option is to position them behind the firewall, where the firewall filters obvious threats, and the IDS/IPS inspects any remaining traffic. Another common placement is in the DMZ (Demilitarized Zone), a separate network segment within the larger network directly exposed to the internet, where they monitor traffic moving in and out of publicly accessible servers. Finally, IDS/IPS solutions can also run directly on endpoint devices, such as servers or workstations, to detect suspicious activity at the host level. The following diagram shows an IDS/IPS positioned after the firewall.
+
+<img width="581" height="636" alt="image" src="https://github.com/user-attachments/assets/65c5bc02-322a-49ef-86f7-4b62f33c083a" />
+
 
 <h3>Best Practices</h3>
 
