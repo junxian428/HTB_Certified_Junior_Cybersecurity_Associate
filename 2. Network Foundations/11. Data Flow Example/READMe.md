@@ -120,3 +120,5 @@ The server's response process follows a similar path in reverse. Its IP (93.184.
 Data Flow Diagram
 
 Below is a flow chart showing the complete journey of a user accessing a website on the internet.
+
+<img width="1011" height="530" alt="image" src="https://github.com/user-attachments/assets/007a46d7-3795-421e-86ad-d91ac76188f8" />
