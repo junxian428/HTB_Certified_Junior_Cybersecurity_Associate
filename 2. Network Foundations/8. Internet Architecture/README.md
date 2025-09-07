@@ -59,7 +59,6 @@ Let's assume we want to check the weather forecast on a website. We start by ope
 
 <img width="855" height="432" alt="image" src="https://github.com/user-attachments/assets/a1d5b8bf-7bf0-4e05-b65d-0d6162036c11" />
 
-
 A key component of this architecture is the tier model, which organizes server roles and responsibilities into layers. This enhances scalability and manageability, as well as security and performance.
 
 <h3>Single-Tier Architecture</h3>
@@ -128,7 +127,6 @@ When we open a video conferencing app and log in, the credentials (username and 
 
 <img width="976" height="530" alt="image" src="https://github.com/user-attachments/assets/376fa888-b66a-41d8-8ba8-1ff1ab955226" />
 
-
 <table border="1" cellpadding="6" cellspacing="0">
   <tr>
     <th>Advantage</th>
@@ -164,7 +162,6 @@ When we open a video conferencing app and log in, the credentials (username and 
 Cloud Architecture refers to computing infrastructure that is hosted and managed by third-party providers, such as AWS, Azure, and Google Cloud. This architecture operates on a virtualized scale following a client-server model. It provides on-demand access to resources such as servers, storage, and applications, all accessible over the Internet. In this model, users interact with these services without controlling the underlying hardware.
 
 <img width="911" height="672" alt="image" src="https://github.com/user-attachments/assets/c62a140e-8893-4d84-ba54-326d31f78e68" />
-
 
 Services like Google Drive or Dropbox are some examples of Cloud Architecture operating under the SaaS (Software as a Service) model, where we access applications over the internet without managing the underlying hardware. Below are five essential characteristics that define a Cloud Architecture.
 
@@ -240,7 +237,6 @@ The below table shows some of the advantages and disadvantages of the Cloud Arch
 Software-Defined Networking (SDN) is a modern networking approach that separates the control plane, which makes decisions about where traffic is sent, from the data plane, which actually forwards the traffic. Traditionally, network devices like routers and switches housed both of these planes. However, in SDN, the control plane is centralized within a software-based controller. This configuration allows network devices to simply execute instructions they receive from the controller. SDN provides a programmable network management environment, enabling administrators to dynamically adjust network policies and routing as required. This separation makes the network more flexible and improves how it's managed.
 
 <img width="829" height="873" alt="image" src="https://github.com/user-attachments/assets/8a207434-b158-40f2-94b6-2120c561d398" />
-
 
 Large enterprises or cloud providers use SDN to dynamically allocate bandwidth and manage traffic flows according to real-time demands. Below is a table with the advantages and disadvantages of the Software-Defined architecture.
 
@@ -330,3 +326,30 @@ Below is a comparison table that outlines key characteristics of different netwo
 Conclusion
 
 Each architecture has its unique benefits and challenges, and in practice, we often see these models blended to balance performance, scalability, and cost. Understanding these distinctions is important for anyone planning to set up or improve network systems.
+
+Questions
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 What type of architecture allows nodes to act as both client and server?
+
+Peer-to-peer
+
+- 0 What architecture combines elements of both Client-Server and Peer-to-Peer models?
+
+Hybrid
+
+- 0 Which cloud service model involves accessing applications over the internet without managing the underlying infrastructure?
+
+SaaS
+
+- 0 In which architecture is the control plane separated from the data plane? (Format: two words, one of which is hyphenated)
+
+Software-Defined Networking
+
+- 0 Which architecture is known for decentralized data sharing without a central server?
+
+Peer-to-peer
+
+- 0 What model is used by video conferencing apps to combine centralized coordination with peer-to-peer data transfer?
+
+Hybrid
