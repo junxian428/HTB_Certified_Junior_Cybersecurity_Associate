@@ -110,6 +110,8 @@ At a minimum, to listen passively, we need to be connected to the network segmen
 
 <h3>NTA Workflow</h3>
 
+<img width="615" height="579" alt="image" src="https://github.com/user-attachments/assets/c4237bd1-7b67-4b3a-9a83-583d8465515b" />
+
 Traffic analysis is not an exact science. NTA can be a very dynamic process and is not a direct loop. It is greatly influenced by what we are looking for (network errors vs. malicious actions) and where we have visibility into our network. Performing traffic analysis can distill down to a few basic tenants.
 
 <h3>NTA Workflow</h3>
