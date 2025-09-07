@@ -12,6 +12,8 @@ First, they install a Peer-to-Peer (P2P) file-sharing application on their compu
 
 A popular example of Peer-to-Peer (P2P) architecture is torrenting, as seen with applications like BitTorrent. In this system, anyone who has the file, referred to as a seeder, can upload it, allowing others to download it from multiple sources simultaneously.
 
+<img width="860" height="613" alt="image" src="https://github.com/user-attachments/assets/dc13c82b-e755-419a-98a6-a4d32a24c31e" />
+
 In the following table, we can see the advantages and disadvantages of a Peer-to-Peer architecture.
 
 <table border="1" cellpadding="6" cellspacing="0">
@@ -54,6 +56,9 @@ In the following table, we can see the advantages and disadvantages of a Peer-to
 The Client-Server model is one of the most widely used architectures on the Internet. In this setup, clients, which are user devices, send requests, such as a web browser asking for a webpage, and servers respond to these requests, like a web server hosting the webpage. This model typically involves centralized servers where data and applications reside, with multiple clients connecting to these servers to access services and resources.
 
 Let's assume we want to check the weather forecast on a website. We start by opening the web browser on our phone or computer, and proceed to type in the website's name, e.g., weatherexample.com. When we press enter, the browser sends a request over the Internet to the server that hosts weatherexample.com. This server, a powerful computer set up specifically to store the website’s data and handle requests, receives the query and processes it by locating the requested page. It then sends back the data (regarding the weather, we requested) to our browser, which receives this information and displays the webpage, allowing us to see the latest weather updates.
+
+<img width="855" height="432" alt="image" src="https://github.com/user-attachments/assets/a1d5b8bf-7bf0-4e05-b65d-0d6162036c11" />
+
 
 A key component of this architecture is the tier model, which organizes server roles and responsibilities into layers. This enhances scalability and manageability, as well as security and performance.
 
@@ -121,6 +126,9 @@ A Hybrid model blends elements of both Client-Server and Peer-to-Peer (P2P) arch
 
 When we open a video conferencing app and log in, the credentials (username and password) are verified by central servers, which also manage the session by coordinating who is in the meeting and controlling access. Once we're logged in and the meeting begins, the actual video and audio data is transferred directly between our device and those of other participants, bypassing the central server to reduce lag and enhance video quality. This setup combines both models: it uses the central server for initial connection and control tasks, while the bulk of data transfer occurs in a peer-to-peer style, reducing the server load and leveraging direct, fast connections between peers. The following table refers to some of the advantages and disadvantages of a Hybrid Architecture.
 
+<img width="976" height="530" alt="image" src="https://github.com/user-attachments/assets/376fa888-b66a-41d8-8ba8-1ff1ab955226" />
+
+
 <table border="1" cellpadding="6" cellspacing="0">
   <tr>
     <th>Advantage</th>
@@ -154,6 +162,9 @@ When we open a video conferencing app and log in, the credentials (username and 
 <h3>Cloud Architecture</h3>
 
 Cloud Architecture refers to computing infrastructure that is hosted and managed by third-party providers, such as AWS, Azure, and Google Cloud. This architecture operates on a virtualized scale following a client-server model. It provides on-demand access to resources such as servers, storage, and applications, all accessible over the Internet. In this model, users interact with these services without controlling the underlying hardware.
+
+<img width="911" height="672" alt="image" src="https://github.com/user-attachments/assets/c62a140e-8893-4d84-ba54-326d31f78e68" />
+
 
 Services like Google Drive or Dropbox are some examples of Cloud Architecture operating under the SaaS (Software as a Service) model, where we access applications over the internet without managing the underlying hardware. Below are five essential characteristics that define a Cloud Architecture.
 
@@ -227,6 +238,9 @@ The below table shows some of the advantages and disadvantages of the Cloud Arch
 <h3>Software-Defined Architecture (SDN)</h3>
 
 Software-Defined Networking (SDN) is a modern networking approach that separates the control plane, which makes decisions about where traffic is sent, from the data plane, which actually forwards the traffic. Traditionally, network devices like routers and switches housed both of these planes. However, in SDN, the control plane is centralized within a software-based controller. This configuration allows network devices to simply execute instructions they receive from the controller. SDN provides a programmable network management environment, enabling administrators to dynamically adjust network policies and routing as required. This separation makes the network more flexible and improves how it's managed.
+
+<img width="829" height="873" alt="image" src="https://github.com/user-attachments/assets/8a207434-b158-40f2-94b6-2120c561d398" />
+
 
 Large enterprises or cloud providers use SDN to dynamically allocate bandwidth and manage traffic flows according to real-time demands. Below is a table with the advantages and disadvantages of the Software-Defined architecture.
 
