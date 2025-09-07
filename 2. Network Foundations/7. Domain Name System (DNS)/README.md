@@ -48,6 +48,9 @@ DNS is organized like a tree, starting from the root and branching out into diff
   </tr>
 </table>
 
+<img width="938" height="432" alt="image" src="https://github.com/user-attachments/assets/5ed33c12-47a8-4616-8fb1-4e1a3748ee75" />
+
+
 <h3>DNS Resolution Process (Domain Translation)</h3>
 
 When we enter a domain name in our browser, the computer needs to find the corresponding IP address. This process is known as DNS resolution or domain translation. The steps below show how this process works.
@@ -88,3 +91,6 @@ When we enter a domain name in our browser, the computer needs to find the corre
 </table>
 
 This all happens in just fractions of a second. Below we can see a simple example of the Domain Translation process. Suppose you want to visit the website at www.example.com. Without the Domain Name System (DNS), we would need to know and type the IP address, such as 93.184.216.34, every time you want to access that site. With DNS in place, we can simply type www.example.com into our browser. Behind the scenes, DNS automatically finds and translates this domain name into the correct IP address for us, ensuring a seamless connection to the website. The diagram below illustrates the diagram of the DNS Query Process.
+
+<img width="958" height="315" alt="image" src="https://github.com/user-attachments/assets/685a0879-1afb-439d-b493-7160e155acb5" />
+
