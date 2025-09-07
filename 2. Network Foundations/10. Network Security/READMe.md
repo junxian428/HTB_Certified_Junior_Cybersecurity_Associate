@@ -34,6 +34,9 @@ A Firewall is a network security device, either hardware, software, or a combina
 
 The open source router/firewall pfSense. Its large number of plugins (known as "Packages") give it a range of capabilities.
 
+<img width="1004" height="656" alt="image" src="https://github.com/user-attachments/assets/f7e554e3-680e-4c7c-866c-4b8b1ab293a4" />
+
+
 Firewalls operate by analyzing packets of data according to predefined rules and policies, commonly focusing on factors such as IP addresses, port numbers, and protocols. This process, known as traffic filtering, is defined by system administrators as permitting or denying traffic based on specific conditions, ensuring that only authorized connections are allowed. Additionally, firewalls can log traffic events and generate alerts about any suspicious activity. Below are some of the different types of firewalls.
 
 1. Packet Filtering Firewall
