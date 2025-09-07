@@ -50,7 +50,6 @@ DNS is organized like a tree, starting from the root and branching out into diff
 
 <img width="938" height="432" alt="image" src="https://github.com/user-attachments/assets/5ed33c12-47a8-4616-8fb1-4e1a3748ee75" />
 
-
 <h3>DNS Resolution Process (Domain Translation)</h3>
 
 When we enter a domain name in our browser, the computer needs to find the corresponding IP address. This process is known as DNS resolution or domain translation. The steps below show how this process works.
@@ -94,3 +93,34 @@ This all happens in just fractions of a second. Below we can see a simple exampl
 
 <img width="958" height="315" alt="image" src="https://github.com/user-attachments/assets/685a0879-1afb-439d-b493-7160e155acb5" />
 
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 What type of domain is `.com` considered as? (Format: Three words, example: One-Two Three)
+
+Top-level domain
+
+- 0 In the domain `www.example.com`, what is `example` called?
+
+Second-Level Domain
+
+- 0 What is checked first in the DNS resolution process when you enter a domain name into a browser? (Format: Two words)
+
+DNS cache
+
+- 0 What type of DNS server is typically provided by an Internet Service Provider?
+
+recursive DNS server
+
+- 0 Which server directs the recursive DNS server to the appropriate TLD name server?
+
+Root server
+
+- 0 What numerical label uniquely identifies a device on a network?
+
+IP address
+
+- 0 In the URL "accounts.google.com", what is `accounts` considered as?
+
+subdomain
