@@ -33,6 +33,7 @@ Let's take a look at at the page source:
 
         <button type="submit">Login</button>
     </div>
+
 </form>
 
 </html>
@@ -53,6 +54,17 @@ Ideally, the front end source code should only contain the code necessary to run
 
 It is also important to classify data types within the source code and apply controls on what can or cannot be exposed on the client-side. Developers should also review client-side code to ensure that no unnecessary comments or hidden links are left behind. Furthermore, front end developers may want to use JavaScript code packing or obfuscation to reduce the chances of exposing sensitive data through JavaScript code. These techniques may prevent automated tools from locating these types of data.
 
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+Target(s): 94.237.122.241:58874
+
+Life Left: 82 minute(s)
+
+- 1 Check the above login form for exposed passwords. Submit the password as the answer.
+
+HiddenInPlainSight
 
 SOURCE:
 
