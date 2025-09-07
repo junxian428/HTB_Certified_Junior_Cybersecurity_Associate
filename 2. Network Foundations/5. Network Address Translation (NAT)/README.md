@@ -20,6 +20,8 @@ Consider a home network with several devices, such as a laptop, a smartphone, an
 
 The process of NAT translation begins when a device, say the laptop, sends a request to visit a website like www.google.com. This request packet, originating with the private IP of 192.168.1.10, is sent to the router. Here, the NAT function of the router modifies the source IP in the packet header from the private IP to the public IP of the router, 203.0.113.50. This packet then travels across the internet to reach the intended web server. Upon receiving the packet, the web server sends a response back to the router's public IP. As the response arrives, the router's NAT table, which keeps track of IP mappings, identifies that 203.0.113.50:4444 corresponds to the laptop at 192.168.1.10:5555 (ports 4444 and 5555 are dynamic). The router then translates the public IP back to the laptop’s private IP and forwards the internal response to the laptop, completing the communication cycle.
 
+<img width="994" height="577" alt="image" src="https://github.com/user-attachments/assets/b29decff-6368-41ba-a601-ef2715dd00d8" />
+
 <h3>Types of NAT</h3>
 
 It's important to know that there are several types of Network Address Translation (NAT), each designed for specific networking needs. Below are the different types of NAT.
