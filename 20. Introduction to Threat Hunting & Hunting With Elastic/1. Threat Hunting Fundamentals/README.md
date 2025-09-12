@@ -103,3 +103,19 @@ In the threat hunting process, the information gleaned from a thorough risk asse
 The technicalities of employing risk assessment for threat hunting include the use of advanced tools and techniques. These range from automated vulnerability scanners and penetration testing tools to sophisticated threat intelligence platforms. For instance, SIEM (Security Information and Event Management) systems can be used to aggregate and correlate events from various sources, providing a holistic view of the organization's security status and aiding in threat hunting.
 
 In essence, risk assessment and threat hunting are deeply intertwined, each augmenting the other to create a more robust and resilient cybersecurity posture. By regularly conducting comprehensive risk assessments, we can better focus our threat hunting activities, thereby reducing dwell time, mitigating potential damage, and enhancing our overall cybersecurity defense.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 1 Threat hunting is used ... Choose one of the following as your answer: "proactively", "reactively", "proactively and reactively".
+
+proactively and reactively
+
+- 1 Threat hunting and incident handling are two processes that always function independently. Answer format: True, False.
+
+False
+
+- 1 Threat hunting and incident response can be conducted simultaneously. Answer format: True, False.
+
+True
