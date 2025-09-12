@@ -24,6 +24,11 @@ OSI, on the other hand, is a communication gateway between the network and end-u
 
 In a layered system, devices in a layer exchange data in a different format called a protocol data unit (PDU). For example, when we want to browse a website on the computer, the remote server software first passes the requested data to the application layer. It is processed layer by layer, each layer performing its assigned functions. The data is then transferred through the network's physical layer until the destination server or another device receives it. The data is routed through the layers again, with each layer performing its assigned operations until the receiving software uses the data.
 
+<img width="916" height="531" alt="image" src="https://github.com/user-attachments/assets/e0c51810-e22b-4e01-8efe-cd3d48ed4761" />
+
 During the transmission, each layer adds a header to the PDU from the upper layer, which controls and identifies the packet. This process is called encapsulation. The header and the data together form the PDU for the next layer. The process continues to the Physical Layer or Network Layer, where the data is transmitted to the receiver. The receiver reverses the process and unpacks the data on each layer with the header information. After that, the application finally uses the data. This process continues until all data has been sent and received.
+
+<img width="719" height="392" alt="image" src="https://github.com/user-attachments/assets/23a0533a-396c-4244-b04e-b939190408c4" />
+
 
 For us, as penetration testers, both reference models are useful. With TCP/IP, we can quickly understand how the entire connection is established, and with ISO, we can take it apart piece by piece and analyze it in detail. This often happens when we can listen to and intercept specific network traffic. We then have to analyze this traffic accordingly, going into more detail in the Network Traffic Analysis module. Therefore, we should familiarize ourselves with both reference models and understand and internalize them in the best possible way.
