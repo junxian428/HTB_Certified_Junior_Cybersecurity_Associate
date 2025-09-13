@@ -10,6 +10,9 @@ We know that penetration testing, and therefore enumeration, is a dynamic proces
 
 3. OS-based enumeration
 
+<img width="995" height="560" alt="image" src="https://github.com/user-attachments/assets/03e7a3f5-5d02-4fae-a451-8ef99a1ee68e" />
+
+
 Note: The components of each layer shown represent the main categories and not a full list of all the components to search for. Additionally, it must be mentioned here that the first and second layer (Internet Presence, Gateway) does not quite apply to the intranet, such as an Active Directory infrastructure. The layers for internal infrastructure will be covered in other modules.
 
 Consider these lines as some kind of obstacle, like a wall, for example. What we do here is look around to find out where the entrance is, or the gap we can fit through, or climb over to get closer to our goal. Theoretically, it is also possible to go through the wall headfirst, but very often, it happens that the spot we have smashed the gap with a lot of effort and time with force does not bring us much because there is no entry at this point of the wall to pass on to the next wall.
@@ -57,6 +60,8 @@ These layers are designed as follows:
 Important note: The human aspect and the information that can be obtained by employees using OSINT have been removed from the "Internet Presence" layer for simplicity.
 
 We can finally imagine the entire penetration test in the form of a labyrinth where we have to identify the gaps and find the way to get us inside as quickly and effectively as possible. This type of labyrinth may look something like this:
+
+<img width="832" height="565" alt="image" src="https://github.com/user-attachments/assets/b0fc3279-b01c-485e-ab4e-454651e2fbdf" />
 
 The squares represent the gaps/vulnerabilities.
 
