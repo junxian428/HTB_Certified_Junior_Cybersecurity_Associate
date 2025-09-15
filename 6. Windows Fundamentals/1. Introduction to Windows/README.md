@@ -90,7 +90,6 @@ We can use RDP to connect to a Windows target from an attack host running Linux 
 
 <img width="1016" height="550" alt="image" src="https://github.com/user-attachments/assets/58d3a1bc-f97a-4d5d-8e44-a5cd8e4392cc" />
 
-
 For this to work, remote access must already be allowed on the target Windows system. By default, remote access is not allowed on Windows operating systems. The HTB Academy team has configured many of our Windows targets to permit RDP access once connected to the Academy labs via VPN.
 
 Remote Desktop Connection also allows us to save connection profiles. This is a common habit among IT admins because it makes connecting to remote systems more convenient.
@@ -105,7 +104,6 @@ From a Linux-based attack host we can use a tool called xfreerdp to remotely acc
 
 <img width="1012" height="595" alt="image" src="https://github.com/user-attachments/assets/8c583ba9-c43d-4547-bef0-1dcb3830a187" />
 
-
 Remember that we can also copy and paste in xfreerdp commands in the command line, so we do not need to enter options manually. There are several options available to us with xfreerdp, such as drive redirection to be able to transfer files to/from the target host, which are worth practicing and we will cover in other modules within HTB Academy.
 
 Other RDP clients exist, such as Remmina and rdesktop, and we encourage you to experiment with others and see what works best for you. Now that we have covered these concepts let's apply them by spawning the target below and connecting to it using RDP with the credentials provided.
@@ -115,3 +113,20 @@ Connecting to the Windows Target
 Connect via Remote Desktop (RDP) using the following command:
 
 xfreerdp /v:<targetIp> /u:htb-student /p:Password
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+Target(s): XXX (ACADEMY-MISC-WS01)
+
+Life Left: 109 minute(s)  
+ RDP to XX (ACADEMY-MISC-WS01) with user "htb-student" and password "Academy_WinFun!"
+
+- 0 What is the Build Number of the target workstation?
+
+  19041
+
+- 0 Which Windows NT version is installed on the workstation? (i.e. Windows X - case sensitive)
+
+  Windows 10
