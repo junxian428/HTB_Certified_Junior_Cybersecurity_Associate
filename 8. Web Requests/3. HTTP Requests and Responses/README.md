@@ -10,7 +10,6 @@ Let's start by examining the following example HTTP request:
 
 <img width="964" height="438" alt="image" src="https://github.com/user-attachments/assets/1fb74f40-d47e-48f2-bd22-355b3e2bbea8" />
 
-
 The image above shows an HTTP GET request to the URL:
 
 http://inlanefreight.com/users/login.html
@@ -57,7 +56,6 @@ Once the server processes our request, it sends its response. The following is a
 
 <img width="950" height="513" alt="image" src="https://github.com/user-attachments/assets/fc8e68f1-da9a-43f5-8e8d-7c70a9995130" />
 
-
 The first line of an HTTP response contains two fields separated by spaces. The first being the HTTP version (e.g. HTTP/1.1), and the second denotes the HTTP response code (e.g. 200 OK).
 
 Response codes are used to determine the request's status, as will be discussed in a later section. After the first line, the response lists its headers, similar to an HTTP request. Both request and response headers are discussed in the next section.
@@ -69,7 +67,6 @@ Finally, the response may end with a response body, which is separated by a new 
 In our earlier examples with cURL, we only specified the URL and got the response body in return. However, cURL also allows us to preview the full HTTP request and the full HTTP response, which can become very handy when performing web penetration tests or writing exploits. To view the full HTTP request and response, we can simply add the -v verbose flag to our earlier commands, and it should print both the request and response:
 
 <img width="1017" height="483" alt="image" src="https://github.com/user-attachments/assets/8b8a87d9-3c66-4f6e-893c-d729eb4802eb" />
-
 
 As we can see, this time, we get the full HTTP request and response. The request simply sent GET / HTTP/1.1 along with the Host, User-Agent and Accept headers. In return, the HTTP response contained the HTTP/1.1 401 Unauthorized, which indicates that we do not have access over the requested resource, as we will see in an upcoming section. Similar to the request, the response also contained several headers sent by the server, including Date, Content-Length, and Content-Type. Finally, the response contained the response body in HTML, which is the same one we received earlier when using cURL without the -v flag.
 
@@ -85,5 +82,20 @@ If we click on the Network tab and refresh the page, we should be able to see th
 
 <img width="1010" height="208" alt="image" src="https://github.com/user-attachments/assets/72816e9d-226a-4ef0-80e8-d1b1a963b799" />
 
-
 As we can see, the devtools show us at a glance the response status (i.e. response code), the request method used (GET), the requested resource (i.e. URL/domain), along with the requested path. Furthermore, we can use Filter URLs to search for a specific request, in case the website loads too many to go through.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+Target(s):
+
+Life Left: 89 minute(s)
+
+- 0 What is the HTTP method used while intercepting the request? (case-sensitive)
+
+  GET
+
+- 1 Send a GET request to the above server, and read the response headers to find the version of Apache running on the server, then submit it as the answer. (answer format: X.Y.ZZ)
+
+  2.4.41
