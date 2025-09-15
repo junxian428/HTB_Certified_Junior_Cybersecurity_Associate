@@ -8,13 +8,21 @@ To counter this issue, the HTTPS (HTTP Secure) protocol was created, in which al
 
 If we examine an HTTP request, we can see the effect of not enforcing secure communications between a web browser and a web application. For example, the following is the content of an HTTP login request: Wireshark capture showing an HTTP POST request to /login.php with username 'admin' and password 'password' in plain text.
 
+<img width="1006" height="270" alt="image" src="https://github.com/user-attachments/assets/8573917f-ceb2-462c-a6a1-00b1dbe57c3e" />
+
+
 We can see that the login credentials can be viewed in clear-text. This would make it easy for someone on the same network (such as a public wireless network) to capture the request and reuse the credentials for malicious purposes.
 
 In contrast, when someone intercepts and analyzes traffic from an HTTPS request, they would see something like the following:
 
+<img width="1007" height="280" alt="image" src="https://github.com/user-attachments/assets/539d0da5-aa59-41f6-93d3-f4cc065e8d0c" />
+
+
 As we can see, the data is transferred as a single encrypted stream, which makes it very difficult for anyone to capture information such as credentials or any other sensitive data.
 
 Websites that enforce HTTPS can be identified through https:// in their URL (e.g. https://www.google.com), as well as the lock icon in the address bar of the web browser, to the left of the URL:
+
+<img width="1007" height="400" alt="image" src="https://github.com/user-attachments/assets/3e983995-91a6-40c7-94e6-c9501b44658c" />
 
 So, if we visit a website that utilizes HTTPS, like Google, all traffic would be encrypted.
 
@@ -23,6 +31,9 @@ Note: Although the data transferred through the HTTPS protocol may be encrypted,
 <h3> HTTPS Flow</h3>
 
 Let's look at how HTTPS operates at a high level:
+
+<img width="951" height="788" alt="image" src="https://github.com/user-attachments/assets/51245224-6bac-456c-98e2-25913846f6fc" />
+
 
 If we type http:// instead of https:// to visit a website that enforces HTTPS, the browser attempts to resolve the domain and redirects the user to the webserver hosting the target website. A request is sent to port 80 first, which is the unencrypted HTTP protocol. The server detects this and redirects the client to secure HTTPS port 443 instead. This is done via the 301 Moved Permanently response code, which we will discuss in an upcoming section.
 
