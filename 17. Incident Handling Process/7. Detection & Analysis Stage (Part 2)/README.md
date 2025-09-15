@@ -14,6 +14,8 @@ The investigation starts based on the initially gathered (and limited) informati
 
 - Data collection and analysis from the new leads and impacted systems
 
+<img width="1036" height="875" alt="image" src="https://github.com/user-attachments/assets/6c779f56-a8b7-40d3-81d1-f6cd07e7453a" />
+
 Let us now elaborate more on the process depicted above.
 
 <h3> Initial Investigation Data</h3>
