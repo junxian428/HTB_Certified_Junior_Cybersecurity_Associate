@@ -86,6 +86,11 @@ Once a request (encapsulated inside a packet) has reached a destination computer
 
 We can use RDP to connect to a Windows target from an attack host running Linux or Windows. If we are connecting to a Windows target from a Windows host, we can use the built-in RDP client application called Remote Desktop Connection (mstsc.exe). Check out the clip below to see basic usage:
 
+<img width="1005" height="598" alt="image" src="https://github.com/user-attachments/assets/2e2faa5d-ab6d-4fc1-8e37-e03dba2baf14" />
+
+<img width="1016" height="550" alt="image" src="https://github.com/user-attachments/assets/58d3a1bc-f97a-4d5d-8e44-a5cd8e4392cc" />
+
+
 For this to work, remote access must already be allowed on the target Windows system. By default, remote access is not allowed on Windows operating systems. The HTB Academy team has configured many of our Windows targets to permit RDP access once connected to the Academy labs via VPN.
 
 Remote Desktop Connection also allows us to save connection profiles. This is a common habit among IT admins because it makes connecting to remote systems more convenient.
@@ -97,6 +102,9 @@ Many other Remote Desktop client applications exist, some of which are listed in
 <h3> Using xfreerdp </h3>
 
 From a Linux-based attack host we can use a tool called xfreerdp to remotely access Windows targets. You will notice that we use xfreerdp across multiple modules because of its ease of use, feature set, command line utility, and efficiency. Check out the clip below to see basic usage from Pwnbox:
+
+![Uploading image.png…]()
+
 
 Remember that we can also copy and paste in xfreerdp commands in the command line, so we do not need to enter options manually. There are several options available to us with xfreerdp, such as drive redirection to be able to transfer files to/from the target host, which are worth practicing and we will cover in other modules within HTB Academy.
 
