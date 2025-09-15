@@ -18,6 +18,9 @@ Active reconnaissance, on the other hand, involves direct interaction with the t
 
 Active reconnaissance with Nmap
 
+<img width="1027" height="589" alt="image" src="https://github.com/user-attachments/assets/672d398f-94b9-4217-99a1-03b38d4ce5c0" />
+
+
 3. Vulnerability Assessment Phase
 
    During the vulnerability assessment phase, penetration testers analyze the information gathered to identify potential security weaknesses. This involves using various automated scanning tools and manual testing techniques to discover vulnerabilities in systems, applications, and network infrastructure.
