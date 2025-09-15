@@ -103,7 +103,7 @@ Many other Remote Desktop client applications exist, some of which are listed in
 
 From a Linux-based attack host we can use a tool called xfreerdp to remotely access Windows targets. You will notice that we use xfreerdp across multiple modules because of its ease of use, feature set, command line utility, and efficiency. Check out the clip below to see basic usage from Pwnbox:
 
-![Uploading image.png…]()
+<img width="1012" height="595" alt="image" src="https://github.com/user-attachments/assets/8c583ba9-c43d-4547-bef0-1dcb3830a187" />
 
 
 Remember that we can also copy and paste in xfreerdp commands in the command line, so we do not need to enter options manually. There are several options available to us with xfreerdp, such as drive redirection to be able to transfer files to/from the target host, which are worth practicing and we will cover in other modules within HTB Academy.
