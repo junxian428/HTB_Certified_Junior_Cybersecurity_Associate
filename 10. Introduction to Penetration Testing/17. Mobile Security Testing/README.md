@@ -38,6 +38,13 @@ Android security testing begins with understanding the application's structure. 
 
 Static analysis of Android applications involves decompiling APK and examining the source code for security issues. This type of analysis can reveal hardcoded credentials, insecure data storage practices, and possible bugs in the application's logic. Tools like JADX can help decompile Android applications into readable Java code.
 
+<h3>Static Analysis using JADX</h3>
+
+<img width="1016" height="609" alt="image" src="https://github.com/user-attachments/assets/830a89b2-5107-404e-ac27-154bc96f7ffd" />
+
+<img width="1023" height="589" alt="image" src="https://github.com/user-attachments/assets/bf1e833d-6cbc-446f-8021-2dc21e34b053" />
+
+
 Dynamic analysis, on the other hand, consists of running the application and observing its behavior in real-time. This includes monitoring network traffic, analyzing file system operations, and testing the application's runtime behavior. Frida is particularly useful for dynamic analysis, allowing you to hook into application functions and modify their behavior.
 
 <h3> iOS Security Testing Specifics</h3>
