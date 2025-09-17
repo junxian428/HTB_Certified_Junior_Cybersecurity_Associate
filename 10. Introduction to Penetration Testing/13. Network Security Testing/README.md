@@ -48,6 +48,9 @@ Understanding network protocols is crucial for effective penetration testing. Ke
 
 GIF showcasing the usage of the airmong-ng command to start a network interface in monitor mode.
 
+<img width="1009" height="521" alt="image" src="https://github.com/user-attachments/assets/002f9610-badf-4eeb-9422-650688996f40" />
+
+
 <h3> Common Pitfalls</h3>
 
 Common pitfalls that penetration testers should actively avoid include rushing through the critical reconnaissance phase without proper attention to detail, placing excessive reliance on automated scanning tools without understanding their limitations, and neglecting to manually validate and verify findings through hands-on investigation.
