@@ -26,6 +26,8 @@ Decompilers are another essential category of tools. They attempt to reconstruct
 
 <h3> Disassembling a malware sample with IDA </h3>
 
+<img width="1009" height="781" alt="image" src="https://github.com/user-attachments/assets/5ca4ca5e-730a-4f4d-a4b7-3829fbb25f9c" />
+
 <h3> Static vs. Dynamic Analysis </h3>
 
 Reverse engineering typically involves two main approaches:
