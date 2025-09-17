@@ -29,3 +29,11 @@ Modern physical security often incorporates electronic systems, which are also e
 Physical security testing must always be conducted within legal and ethical boundaries. Obtaining proper, written authorization is mandatory, and testers must stay within a clearly defined scope. During the assessment, privacy laws must be respected, and the activities performed must not pose risk to people or property.
 
 Consequently, testers must always carry their "Get Out of Jail Free" letter during engagements. This document should detail the scope of work, authorization from the client, emergency contacts, and testing timeframes. If confronted by security personnel or law enforcement, this documentation can quickly validate the legitimate nature of the testing activities and prevent unnecessary escalation or legal complications.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 1 What technique is used for the initial phase of information gathering? (Format: one word)
+
+  OSINT
