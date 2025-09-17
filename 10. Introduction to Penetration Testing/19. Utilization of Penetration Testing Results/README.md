@@ -22,6 +22,8 @@ Thus, when writing your report, be sure to include the following for each findin
 
 Example: Technical Findings Details
 
+<img width="1014" height="961" alt="image" src="https://github.com/user-attachments/assets/8f277176-844d-4faa-8f60-6c5a7789e9c7" />
+
 <h3> Developing Practical Remediation Plans</h3>
 
 Once vulnerabilities are clearly communicated, focus on providing practical remediation guidance and consultancy. Remember that organizations often need to balance security improvements with operational needs and resource constraints. For each vulnerability, provide both short-term and long-term remediation options. Short-term solutions might include quick fixes or temporary workarounds to reduce immediate risk, while long-term solutions address the root cause but might require more time and resources to implement.
