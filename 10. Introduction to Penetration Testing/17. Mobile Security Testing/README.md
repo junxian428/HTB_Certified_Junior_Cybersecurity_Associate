@@ -44,7 +44,6 @@ Static analysis of Android applications involves decompiling APK and examining t
 
 <img width="1023" height="589" alt="image" src="https://github.com/user-attachments/assets/bf1e833d-6cbc-446f-8021-2dc21e34b053" />
 
-
 Dynamic analysis, on the other hand, consists of running the application and observing its behavior in real-time. This includes monitoring network traffic, analyzing file system operations, and testing the application's runtime behavior. Frida is particularly useful for dynamic analysis, allowing you to hook into application functions and modify their behavior.
 
 <h3> iOS Security Testing Specifics</h3>
@@ -74,3 +73,9 @@ Weak network security is another common issue. Applications might not properly v
 Client-side injection vulnerabilities, while less common than in web applications, can still exist in mobile apps. This includes SQL injection in local databases, JavaScript injection in WebViews, and other injection points specific to mobile platforms.
 
 As you become more comfortable with basic mobile security testing, you can move on to more advanced techniques. This includes analyzing native code components, reviewing custom encryption implementations, and testing complex authentication mechanisms. Runtime manipulation using tools like Frida can reveal how an application handles various security controls. This might include bypassing root detection, modifying in-app purchase validation, or understanding anti-debugging measures.
+
+SOURCE:
+
+https://www.ssl.com/blogs/what-is-certificate-pinning/
+
+https://appmaster.io/blog/what-is-a-webview-app
