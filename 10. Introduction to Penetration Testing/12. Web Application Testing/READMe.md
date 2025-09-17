@@ -38,6 +38,8 @@ Additionally, familiarity with scripting languages is valuable for automating te
 
 <img width="1022" height="603" alt="image" src="https://github.com/user-attachments/assets/5a5a0976-378c-4018-a70f-34d96ab0268d" />
 
+<img width="1017" height="606" alt="image" src="https://github.com/user-attachments/assets/00bb91bc-5204-46d8-bab4-1426d5b07ef0" />
+
 <h3>Legal and Ethical Considerations</h3>
 
 Penetration testing must always be conducted within legal and ethical boundaries. This means having explicit permission to test the target application, respecting scope limitations, and avoiding actions that could harm the application or its users. Understanding and following responsible disclosure procedures is also crucial.
