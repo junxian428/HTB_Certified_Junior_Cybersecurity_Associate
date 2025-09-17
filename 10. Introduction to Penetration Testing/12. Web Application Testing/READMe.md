@@ -34,6 +34,10 @@ Successful web application penetration testing requires proficiency with various
 
 Additionally, familiarity with scripting languages is valuable for automating tests and creating custom exploitation tools. Python is particularly popular in the security community due to its extensive library support and ease of use.
 
+<h3>Intercepting web traffic with Burp Suite</h3>
+
+<img width="1022" height="603" alt="image" src="https://github.com/user-attachments/assets/5a5a0976-378c-4018-a70f-34d96ab0268d" />
+
 <h3>Legal and Ethical Considerations</h3>
 
 Penetration testing must always be conducted within legal and ethical boundaries. This means having explicit permission to test the target application, respecting scope limitations, and avoiding actions that could harm the application or its users. Understanding and following responsible disclosure procedures is also crucial.
