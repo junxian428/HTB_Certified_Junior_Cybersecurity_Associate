@@ -10,6 +10,9 @@ Relational (SQL) databases store their data in tables, rows, and columns. Each t
 
 For example, we can have a users table in a relational database containing columns like id, username, first_name, last_name, and so on. The id can be used as the table key. Another table, posts, may contain posts made by all users, with columns like id, user_id, date, content, and so on.
 
+<img width="1027" height="669" alt="image" src="https://github.com/user-attachments/assets/7c9a3cb5-3b4b-4a77-ae06-74049552918f" />
+
+
 We can link the id from the users table to the user_id in the posts table to easily retrieve the user details for each post, without having to store all user details with each post.
 
 A table can have more than one key, as another column can be used as a key to link with another table. For example, the id column can be used as a key to link the posts table to another table containing comments, each of which belongs to a certain post, and so on.
@@ -67,6 +70,9 @@ There are 4 common storage models for NoSQL databases:
 - Graph
 
 Each of the above models has a different way of storing data. For example, the Key-Value model usually stores data in JSON or XML, and has a key for each pair, storing all of its data as its value:
+
+<img width="1016" height="358" alt="image" src="https://github.com/user-attachments/assets/bf23fd94-60ae-466d-a296-4d0e633d14eb" />
+
 
 The above example can be represented using JSON as follows:
 
