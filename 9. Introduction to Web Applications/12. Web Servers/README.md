@@ -6,6 +6,8 @@ A web server is an application that runs on the back end server, which handles a
 
 A typical web server accepts HTTP requests from the client-side, and responds with different HTTP responses and codes, like a code 200 OK response for a successful request, a code 404 NOT FOUND when requesting pages that do not exist, code 403 FORBIDDEN for requesting access to restricted pages, and so on.
 
+<img width="688" height="522" alt="image" src="https://github.com/user-attachments/assets/f989cba5-641b-4720-a3fe-88f06a581d57" />
+
 The following are some of the most common HTTP response codes:
 
 <table border="1" cellpadding="6" cellspacing="0">
