@@ -22,7 +22,11 @@ Analyzing TTPs offers deep insights into how an adversary penetrates a network, 
 
 4. Indicator: An indicator, when analyzed in CTI, encompasses both technical data and contextual information. Isolated technical data lacking relevant context holds limited or negligible value for network defenders. Contextual details allow for a comprehensive understanding of the indicator's significance, enabling effective threat analysis and response.
 
+<img width="983" height="110" alt="image" src="https://github.com/user-attachments/assets/4572b145-65ef-456d-9a8d-7937e9d019d0" />
+
 5. Threat: A threat is a multifaceted concept, consisting of three fundamental factors, intent, capability, and opportunity.
+
+<img width="922" height="912" alt="image" src="https://github.com/user-attachments/assets/dc8aac73-0876-4185-aef9-85d2c3614d0c" />
 
 Firstly, intent signifies the underlying rationale driving adversaries to target and exploit your network infrastructure. This intent can range from corporate espionage to financial gains through cybercrime, or even targeting your business relationships with other entities.
 
@@ -35,6 +39,9 @@ Lastly, opportunity refers to conditions or events that provide favorable circum
 7. Indicators of Compromise (IOCs): IOCs are digital traces or artifacts derived from active or past intrusions. They serve as 'signposts' of a specific adversary or malicious activity. IOCs can include a wide array of elements such as the hashes of malicious files, suspicious IP addresses, URLs, domain names, and names of malicious executables or scripts. Continually tracking, cataloging, and analyzing IOCs can greatly enhance our threat detection capabilities, leading to faster and more effective responses to cyber threats.
 
 8. Pyramid of Pain: Pyramid of Pain is a critical visualization which presents a hierarchy of indicators that can support us in detecting adversaries. It also showcases the degree of difficulty in acquiring these specific indicators and the subsequent impact of gathering intelligence on them. The Pyramid of Pain concept was brought to life by David Bianco from FireEye in his insightful presentation, Intel-Driven Detection and Response to Increase Your Adversary’s Cost of Operations. As we ascend the Pyramid of Pain, obtaining adversary-specific Indicators of Compromise (IOCs) becomes increasingly challenging. However, the flip side is that acquiring these specific IOCs forces the adversary to alter their attack methodologies, a task that is far from simple for them.
+
+<img width="853" height="560" alt="image" src="https://github.com/user-attachments/assets/d5cb502a-7029-44c5-bb0d-ef52715a69f7" />
+
 
 9. Hash Values: Hash values are the digital fingerprints of files. They are created using algorithms like MD5, SHA-1, or SHA-256 that take an input (or 'message') and return a fixed-size string of bytes. For instance, malware binaries can be identified through their unique hash values. However, a slight change to the file, such as adding a byte or changing a single character, will dramatically alter the hash value, making it an easy-to-change and, therefore, less reliable indicator.
 
@@ -57,6 +64,9 @@ Lastly, opportunity refers to conditions or events that provide favorable circum
 13. Diamond Model: The Diamond Model of Intrusion Analysis is a conceptual framework designed to illustrate the fundamental aspects of a cyber intrusion. This model, developed by Sergio Caltagirone, Andrew Pendergast, and Christopher Betz, aims to provide a more structured approach to understand, analyze, and respond to cyber threats.
 
 The model is structured around four key components, represented as vertices of a diamond:
+
+<img width="973" height="703" alt="image" src="https://github.com/user-attachments/assets/d770e49c-1cd7-40e2-a8cc-0e3ffe30cb0b" />
+
 
 - Adversary: This represents the individual, group, or organization responsible for the cyber intrusion. It's important to understand their capabilities, motivations, and intent to effectively defend against their attacks.
 
