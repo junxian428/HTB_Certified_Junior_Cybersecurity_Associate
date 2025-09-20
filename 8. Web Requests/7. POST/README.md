@@ -16,9 +16,16 @@ So, let's see some examples of how POST requests work, and how we can utilize to
 
 The exercise at the end of this section is similar to the example we saw in the GET section. However, once we visit the web application, we see that it utilizes a PHP login form instead of HTTP basic auth:
 
+<img width="1014" height="384" alt="image" src="https://github.com/user-attachments/assets/84164667-2b92-4403-96a5-d6c1ba8d20ac" />
+
 If we try to login with admin:admin, we get in and see a similar search function to the one we saw earlier in the GET section:
 
-If we clear the Network tab in our browser devtools and try to log in again, we will see many requests being sent. We can filter the requests by our server IP, so it would only show requests going to the web application's web server (i.e. filter out external requests), and we will notice the following POST request being sent: Search interface with a search icon and text 'Type a city name and hit Enter'. Network tab shows three successful requests to 'server_ip', including a POST request with username and password 'admin'.
+<img width="1015" height="341" alt="image" src="https://github.com/user-attachments/assets/ba7f32b7-777b-472a-8f29-94d70cab6dbd" />
+
+If we clear the Network tab in our browser devtools and try to log in again, we will see many requests being sent. We can filter the requests by our server IP, so it would only show requests going to the web application's web server (i.e. filter out external requests), and we will notice the following POST request being sent:
+
+<img width="1014" height="389" alt="image" src="https://github.com/user-attachments/assets/d8f06cd9-06ee-41ab-bb6c-034d5e91c111" />
+
 
 We can click on the request, click on the Request tab (which shows the request body), and then click on the Raw button to show the raw request data. We see the following data is being sent as the POST request data:
 
@@ -76,13 +83,22 @@ curl -H 'Cookie: PHPSESSID=c1nsa6op7vtk7kdis7bcnbadf1' http://<SERVER_IP>:<PORT>
 
 We may also try the same thing with our browsers. Let's first logout, and then we should get back to the login page. Then, we can go to the Storage tab in the devtools with [SHIFT+F9]. In the Storage tab, we can click on Cookies in the left pane and select our website to view our current cookies. We may or may not have existing cookies, but if we were logged out, then our PHP cookie should not be authenticated, which is why we get the login form and not the search function:
 
+<img width="1009" height="354" alt="image" src="https://github.com/user-attachments/assets/a408cb18-bb47-4699-bc97-ab8eef8788a3" />
+
+
 Now, let's try to use our earlier authenticated cookie, and see if we do get in without needing to provide our credentials. To do so, we can simply replace the cookie value with our own. Otherwise, we can right-click on the cookie and select Delete All, and the click on the + icon to add a new cookie. After that, we need to enter the cookie name, which is the part before the = (PHPSESSID), and then the cookie value, which is the part after the = (c1nsa6op7vtk7kdis7bcnbadf1). Then, once our cookie is set, we can refresh the page, and we will see that we do indeed get authenticated without needing to login, simply by using an authenticated cookie:
+
+<img width="1017" height="366" alt="image" src="https://github.com/user-attachments/assets/ee241890-e6e9-4fb1-aff3-c9d0ebd94013" />
+
 
 As we can see, having a valid cookie may be enough to get authenticated into many web applications. This can be an essential part of some web attacks, like Cross-Site Scripting.
 
 <h3>JSON Data</h3>
 
 Finally, let's see what requests get sent when we interact with the City Search function. To do so, we will go to the Network tab in the browser devtools, and then click on the trash icon to clear all requests. Then, we can make any search query to see what requests get sent:
+
+<img width="1013" height="382" alt="image" src="https://github.com/user-attachments/assets/cd805d91-cde4-4ca8-8761-fe5cee303002" />
+
 
 As we can see, the search form sends a POST request to search.php, with the following data:
 
@@ -126,5 +142,8 @@ As we can see, we were able to interact with the search function directly withou
 Exercise: Try to repeat the above request without adding the cookie or content-type headers, and see how the web app would act differently.
 
 Finally, let's try to repeat the same above request by using Fetch, as we did in the previous section. We can right-click on the request and select Copy>Copy as Fetch, and then go to the Console tab and execute our code there:
+
+<img width="1011" height="300" alt="image" src="https://github.com/user-attachments/assets/98c004da-9f44-4b9e-9b56-4e76ee6853cd" />
+
 
 Our request successfully returns the same data we got with cURL. Try to search for different cities by directly interacting with the search.php through Fetch or cURL.
