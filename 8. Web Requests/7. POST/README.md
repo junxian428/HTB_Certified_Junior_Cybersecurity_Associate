@@ -26,7 +26,6 @@ If we clear the Network tab in our browser devtools and try to log in again, we 
 
 <img width="1014" height="389" alt="image" src="https://github.com/user-attachments/assets/d8f06cd9-06ee-41ab-bb6c-034d5e91c111" />
 
-
 We can click on the request, click on the Request tab (which shows the request body), and then click on the Raw button to show the raw request data. We see the following data is being sent as the POST request data:
 
 username=admin&password=admin
@@ -85,11 +84,9 @@ We may also try the same thing with our browsers. Let's first logout, and then w
 
 <img width="1009" height="354" alt="image" src="https://github.com/user-attachments/assets/a408cb18-bb47-4699-bc97-ab8eef8788a3" />
 
-
 Now, let's try to use our earlier authenticated cookie, and see if we do get in without needing to provide our credentials. To do so, we can simply replace the cookie value with our own. Otherwise, we can right-click on the cookie and select Delete All, and the click on the + icon to add a new cookie. After that, we need to enter the cookie name, which is the part before the = (PHPSESSID), and then the cookie value, which is the part after the = (c1nsa6op7vtk7kdis7bcnbadf1). Then, once our cookie is set, we can refresh the page, and we will see that we do indeed get authenticated without needing to login, simply by using an authenticated cookie:
 
 <img width="1017" height="366" alt="image" src="https://github.com/user-attachments/assets/ee241890-e6e9-4fb1-aff3-c9d0ebd94013" />
-
 
 As we can see, having a valid cookie may be enough to get authenticated into many web applications. This can be an essential part of some web attacks, like Cross-Site Scripting.
 
@@ -98,7 +95,6 @@ As we can see, having a valid cookie may be enough to get authenticated into man
 Finally, let's see what requests get sent when we interact with the City Search function. To do so, we will go to the Network tab in the browser devtools, and then click on the trash icon to clear all requests. Then, we can make any search query to see what requests get sent:
 
 <img width="1013" height="382" alt="image" src="https://github.com/user-attachments/assets/cd805d91-cde4-4ca8-8761-fe5cee303002" />
-
 
 As we can see, the search form sends a POST request to search.php, with the following data:
 
@@ -145,5 +141,18 @@ Finally, let's try to repeat the same above request by using Fetch, as we did in
 
 <img width="1011" height="300" alt="image" src="https://github.com/user-attachments/assets/98c004da-9f44-4b9e-9b56-4e76ee6853cd" />
 
-
 Our request successfully returns the same data we got with cURL. Try to search for different cities by directly interacting with the search.php through Fetch or cURL.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+Target(s):
+
+Life Left: 79 minute(s)
+
+Authenticate to with user "admin" and password "admin"
+
+- 2 Obtain a session cookie through a valid login, and then use the cookie with cURL to search for the flag through a JSON POST request to '/search.php'
+
+HTB{p0$t_r3p34t3r}
