@@ -98,3 +98,74 @@ In the past, further classification took place here. The IP network blocks were 
 <h3>Subnet Mask</h3>
 
 A further separation of these classes into small networks is done with the help of subnetting. This separation is done using the netmasks, which is as long as an IPv4 address. As with classes, it describes which bit positions within the IP address act as network part or host part.
+
+<table border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Network Address</th>
+      <th>First Address</th>
+      <th>Last Address</th>
+      <th>Subnet Mask</th>
+      <th>CIDR</th>
+      <th>Subnets</th>
+      <th>IPs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>1.0.0.0</td>
+      <td>1.0.0.1</td>
+      <td>127.255.255.255</td>
+      <td>255.0.0.0</td>
+      <td>/8</td>
+      <td>127</td>
+      <td>16,777,214 + 2</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>128.0.0.0</td>
+      <td>128.0.0.1</td>
+      <td>191.255.255.255</td>
+      <td>255.255.0.0</td>
+      <td>/16</td>
+      <td>16,384</td>
+      <td>65,534 + 2</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>192.0.0.0</td>
+      <td>192.0.0.1</td>
+      <td>223.255.255.255</td>
+      <td>255.255.255.0</td>
+      <td>/24</td>
+      <td>2,097,152</td>
+      <td>254 + 2</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>224.0.0.0</td>
+      <td>224.0.0.1</td>
+      <td>239.255.255.255</td>
+      <td>Multicast</td>
+      <td>Multicast</td>
+      <td>Multicast</td>
+      <td>Multicast</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>240.0.0.0</td>
+      <td>240.0.0.1</td>
+      <td>255.255.255.255</td>
+      <td>Reserved</td>
+      <td>Reserved</td>
+      <td>Reserved</td>
+      <td>Reserved</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Network and Gateway Addresses</h3>
+
+The two additional IPs added in the IPs column are reserved for the so-called network address and the broadcast address. Another important role plays the default gateway, which is the name for the IPv4 address of the router that couples networks and systems with different protocols and manages addresses and transmission methods. It is common for the default gateway to be assigned the first or last assignable IPv4 address in a subnet. This is not a technical requirement, but has become a de-facto standard in network environments of all sizes.
