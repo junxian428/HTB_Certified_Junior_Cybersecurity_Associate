@@ -12,6 +12,8 @@ Tip: The first step is to identify the version of the web application. This can 
 
 Once we identify the web application version, we can search Google for public exploits for this version of the web application. We can also utilize online exploit databases, like Exploit DB, Rapid7 DB, or Vulnerability Lab. The following example shows a search for WordPress public exploits in Rapid7 DB:
 
+<img width="1015" height="576" alt="image" src="https://github.com/user-attachments/assets/cafa199d-7070-45be-82a5-f07d40fd0e43" />
+
 We would usually be interested in exploits with a CVE score of 8-10 or exploits that lead to Remote Code Execution. Other types of public exploits should also be considered if none of the above is available.
 
 Furthermore, these vulnerabilities are not exclusive to web applications and apply to components utilized by the web application. If a web application uses external components (e.g., a plugin), we should also search for vulnerabilities for these external components.
@@ -81,6 +83,8 @@ CVSS V3.0 Ratings
 </table>
 
 The NVD does not factor in Temporal and Environmental metrics because the former can change over time due to external events. The latter is a customized metric based on the potential impact of the vulnerability on a given organization. The NVD provides a CVSS v2 calculator and a CVSS v3 calculator that organizations can use to factor additional risk from Temporal and Environmental data unique to them. The calculators are very interactive and can be used to fine-tune the CVSS score to our environment. We can move over each metric to read more about it and determine exactly how it applies to our organization. Below is an example view of the CVSS v3 calculator:
+
+<img width="767" height="570" alt="image" src="https://github.com/user-attachments/assets/48f52134-0305-4bc3-bbf3-b7276246ee4f" />
 
 Play around with the CVSS calculator and see how the various metrics can be adjusted to arrive at a given score. Review some CVEs and attempt to arrive at the same CVSS score. How does the CVSS score change when you apply Temporal and Environmental metrics? This handy guide is extremely useful for understanding V2 and V3 and how to use the calculators to arrive at a given score.
 
