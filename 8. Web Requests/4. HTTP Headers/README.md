@@ -255,6 +255,8 @@ Exercise: Try to use the -I or the -v flags with the above example, to ensure th
 
 <h3>Browser DevTools</h3>
 
+<img width="1006" height="419" alt="image" src="https://github.com/user-attachments/assets/7200de33-c752-4b29-b4aa-8542de48e12f" />
+
 Finally, let's see how we can preview the HTTP headers using the browser devtools. Just as we did in the previous section, we can go to the Network tab to view the different requests made by the page. We can click on any of the requests to view its details: Network tab showing two GET requests to 188.166.146.97:31122. Status 304 for '/' with headers displayed, and 404 for 'favicon.ico'.
 
 In the first Headers tab, we see both the HTTP request and HTTP response headers. The devtools automatically arrange the headers into sections, but we can click on the Raw button to view their details in their raw format. Furthermore, we can check the Cookies tab to see any cookies used by the request, as discussed in an upcoming section.
