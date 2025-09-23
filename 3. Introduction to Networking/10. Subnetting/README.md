@@ -416,3 +416,23 @@ The next part identifies how big each subnet can be but by dividing eight by the
 By remembering the powers of two up to eight, it can become an instant calculation. However, if forgotten, it may be quicker to remember to divide 256 in half the number of times of the remainder.
 
 The tricky part of this is getting the actual IP Address range because 0 is a number and not null in networking. So in our /25 with 128 IP Addresses, the first range is 192.168.1.0-127. The first address is the network, and the last is the broadcast address, which means the usable IP Space would become 192.168.1.1-126. If our IP Address fell above 128, then the usable ip space would be 192.168.1.129-254 (128 is the network and 255 is the broadcast).
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 2 Submit the decimal representation of the subnet mask from the following CIDR: 10.200.20.0/27
+
+  255.255.255.224
+
+- 2 Submit the broadcast address of the following CIDR: 10.200.20.0/27
+
+  10.200.20.31
+
+- 3 Split the network 10.200.20.0/27 into 4 subnets and submit the network address of the 3rd subnet as the answer.
+
+  10.200.20.16
+
+- 3 Split the network 10.200.20.0/27 into 4 subnets and submit the broadcast address of the 2nd subnet as the answer.
+
+  10.200.20.15
