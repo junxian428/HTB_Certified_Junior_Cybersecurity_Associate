@@ -200,3 +200,15 @@ C:\PROGRAM FILES (X86)\VMWARE
 The tree command can provide us with a large amount of information. The following command can be used to walk through all the files in the C drive, one screen at a time. This command can be modified to be run against any directory.
 
 tree c:\ /f | more
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+Target(s): Click here to spawn the target system!
+
+RDP to XXX (XXX) with user "htb-student" and password "Academy_WinFun!"
+
+- 0 Find the non-standard directory in the C drive. Submit the contents of the flag file saved in this directory.
+
+  c8fe8d977d3a0c655ed7cf81e4d13c75
