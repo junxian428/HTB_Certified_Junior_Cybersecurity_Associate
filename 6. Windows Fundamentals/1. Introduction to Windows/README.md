@@ -120,8 +120,9 @@ Answer the question(s) below to complete this Section and earn cubes!
 
 Target(s): XXX (ACADEMY-MISC-WS01)
 
-Life Left: 109 minute(s)  
- RDP to XX (ACADEMY-MISC-WS01) with user "htb-student" and password "Academy_WinFun!"
+Life Left: 109 minute(s)
+
+RDP to XX (ACADEMY-MISC-WS01) with user "htb-student" and password "Academy_WinFun!"
 
 - 0 What is the Build Number of the target workstation?
 
