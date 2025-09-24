@@ -168,6 +168,8 @@ Inter-Switch Link (ISL) is a Cisco-proprietary protocol used for trunking betwee
 
 To ensure interoperability of VLAN technologies from the various network-equipments vendors, the Institute of Electrical and Electronics Engineers (IEEE) developed the 802.1Q specification in 1998. The IEEE 802 committee had to change the 802.3 Ethernet frame format by adding a pair of 2-byte fields, TPID and TCI (which consists of three subfields, PCP, DEI, and VID), resulting in a VLAN-compliant 802.1Q Ethernet frame.
 
+<img width="990" height="626" alt="image" src="https://github.com/user-attachments/assets/464c22da-11d0-4b90-9464-ef061c11707f" />
+
 Tag protocol identifier (TPID) is a 16-bit field always set to 0x8100 to identify the Ethernet frame as an 802.1Q-tagged frame. Tag Control Information (TCI) is a 16-bit field containing Priority code point (PCP), Drop eligible indicator (DEI) (previously known as Canonical format indicator (CFI)), and VLAN identifier (VID). The main field concerning VLANs is VID, occupying the low-order 12-bits of TCI. Since it is 12 bits, it allows 2^12 - 2 = 4096 (remember, 0 and 4095 are reserved) VLAN IDs. Therefore, an 802.1Q-tagged frame can contain information for 4094 VLANs; the practice of inserting multiple 802.1Q tags within a single packet is known as Double Tagging, introduced by 802.1ad. VLAN tagging is the process of inserting VLAN information into an 802.1Q Ethernet header, while VLAN untagging is the process of removing the VLAN information from an 802.1Q-tagged Ethernet frame and forwarding the packet to the destined ports.
 
 <h3> VLAN-Capable NICs</h3>
@@ -249,9 +251,17 @@ At last, we can check whether the interface has changed states to up:
 
 On Windows, to assign a VLAN for a physical network adapter that supports VLAN tagging, first we need to open Device Manager:
 
+<img width="983" height="527" alt="image" src="https://github.com/user-attachments/assets/a9d95349-9a8b-437c-aaf1-43b930476fd5" />
+
 Then we need to click on Properties for the Ethernet interface we want to assign to a VLAN:
 
+<img width="998" height="559" alt="image" src="https://github.com/user-attachments/assets/7e351f68-fb63-4560-89f6-a6bd4d6d4f82" />
+
+
 Within Advanced, there will be a VLAN ID property to which we can assign a value. After clicking OK, if the adapter supports assigning a VLAN, it will be set; otherwise, the window will close, and no VLAN tag will be added to any packets originating from this host:
+
+<img width="993" height="558" alt="image" src="https://github.com/user-attachments/assets/fa8c82f7-570d-425c-b814-f93e19ca1f25" />
+
 
 Instead of relying on the GUI, we can use PowerShell. First, let us get the names of all the available physical network adapters using the Get-NetAdapter Cmdlet:
 
@@ -267,7 +277,13 @@ However, remember that this operation only succeeds if the network interface sup
 
 We can identify and analyze VLAN tagged traffic on a network with Wireshark using the vlan filter. For example, when analyzing a network packet dump, we can inspect packets with 802.1Q tagging using the filter vlan:
 
+<img width="990" height="624" alt="image" src="https://github.com/user-attachments/assets/8140bb6d-cae3-47a9-ba53-b1f32cab02c0" />
+
+
 Moreover, we can search for packets with a specific VLAN ID; for example, to search for packets having VLAN 10, we can use the filter vlan.id == 10:
+
+<img width="996" height="621" alt="image" src="https://github.com/user-attachments/assets/a47e9a17-f5a9-42a9-92d5-e0f460a0cc1b" />
+
 
 Additionally, to enumerate the used VLAN IDs from a packet dump, we can utilize tshark:
 
@@ -315,6 +331,9 @@ VLAN hopping attacks enable traffic from one VLAN to be seen by another VLAN wit
 
 We can use tools such as Yersinia to perform VLAN hopping attacks:
 
+<img width="992" height="536" alt="image" src="https://github.com/user-attachments/assets/bbb0f4a1-db92-4262-9e45-5d66127046b3" />
+
+
 <h3>Double-tagging VLAN Hopping</h3>
 
 The double-tagging VLAN hopping attack is an increasingly more sophisticated attack against VLANs. Although VLAN double-tagging is a legitimate practice that entities such as Internet Service Providers (ISPs) utilize (they can use their VLANs internally while carrying traffic from clients that are already VLAN tagged), adversaries can also attempt to abuse it. In a double-tagging VLAN hopping attack, an adversary embeds a hidden 802.1Q tag inside an Ethernet frame that already has an 802.1Q tag, allowing the frame to go to a different VLAN, which the original 802.1Q tag did not specify.
@@ -328,6 +347,8 @@ An adversary can carry out this attack following three steps. Bare in mind that 
 3. Subsequently, the switch will look only at the inner 802.1Q tag that the adversary sent, and it decides that the frame must be forwarded for VLAN 30, which is the adversary's chosen VLAN. Now, the second switch will either send the frame to the victim port directly or flood it, depending on whether there is an existing MAC address table entry for the victim host.
 
 Scapy allows carrying out the double-tagging VLAN hopping attack, in addition to Yersinia:
+
+<img width="988" height="531" alt="image" src="https://github.com/user-attachments/assets/ea7abecd-bc93-4771-9673-9c1080c6767a" />
 
 <h3>VXLAN</h3>
 
