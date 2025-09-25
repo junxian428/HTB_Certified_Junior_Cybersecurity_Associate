@@ -180,3 +180,37 @@ It is highly recommended to study the commands and understand what they are for 
 The exercises provided for studying the Linux OS and its commands might not always be immediately clear in terms of what you need to do, and that's perfectly fine—it's even unavoidable. As you’ve learned from the Learning Process module, learning something new can feel uncomfortable and may cause stress. You can think of it like the first time you sat behind the wheel of a car and had to drive on your own. It was stressful because there were many things you had to focus on at once. But now, with experience, driving is easier, though you're not learning as much anymore. Similarly, in this module, you may find yourself in situations where you’re unsure of what to do, but that’s okay. In your cybersecurity journey, you’ll often face such moments, and they’re a positive indicator that you’re learning something new. Overcoming these challenges helps you improve, even if you haven’t fully solved the exercise yet. That’s the ultimate goal—progress through learning.
 
 The exercises are intentionally designed to gradually push you out of your current knowledge and into unfamiliar territory. This progression is deliberate and ensures that as you continue practicing, your experience and knowledge will naturally expand. While it may feel uncomfortable at times, this process is essential for growth. With each new challenge, you’ll stretch beyond what you already know, and with consistent effort, you’ll find that your understanding and skills develop almost automatically. Keep practicing, and you’ll steadily grow more confident and capable in navigating the unknown.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+Target(s): (ACADEMY-NIXFUND)
+
+Life Left: 102 minute(s)
+
+SSH to (ACADEMY-NIXFUND) with user "htb-student" and password "HTB\_@cademy_stdnt!"
+
+- 0 Find out the machine hardware name and submit it as the answer.
+
+  x86_64
+
+- 1 What is the path to htb-student's home directory?
+
+  /home/htb-student
+
+- 0 What is the path to the htb-student's mail?
+
+  /var/mail/htb-student
+
+- 0 Which shell is specified for the htb-student user?
+
+  /bin/bash
+
+- 0 Which kernel release is installed on the system? (Format: 1.22.3)
+
+  4.15.0
+
+- 1 What is the name of the network interface that MTU is set to 1500?
+
+  ens192
