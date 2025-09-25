@@ -1,4 +1,4 @@
-<img width="997" height="653" alt="image" src="https://github.com/user-attachments/assets/c0031a08-49e1-4fa3-b9e3-e6b2679f3cc3" /><h3>Networking Primer - Layers 1-4</h3>
+<h3>Networking Primer - Layers 1-4</h3>
 
 This section serves as a quick refresher on networking and how some standard protocols we can see while performing traffic captures work. These concepts are at the core of capturing and dissecting traffic. Without a fundamental understanding of typical network flow and what ports and protocols are used, we cannot accurately analyze any traffic we capture. If this is the first time you encounter some of these terms or concepts, we suggest completing the Introduction to Networking Module first.
 
@@ -125,4 +125,106 @@ Even with its current state providing many advantages over IPv4, the adoption of
 
 <h3>Adoption of IPv6</h3>
 
+<img width="997" height="653" alt="image" src="https://github.com/user-attachments/assets/c0031a08-49e1-4fa3-b9e3-e6b2679f3cc3" />
+
+At the time of writing, according to statistics published by Google, the adoption rate is only around 40 percent globally.
+
+<h3>TCP / UDP, Transport Mechanisms</h3>
+
+The Transport Layer has several mechanisms to help ensure the seamless delivery of data from source to destination. Think about the Transport layer as a control hub. Application data from the higher layers have to traverse down the stack to the Transport layer. This layer directs how the traffic will be encapsulated and thrown to the lower layer protocols ( IP and MAC ). Once the data reaches its intended recipient, the Transport layer, working with the Network / Internet layer protocols, is responsible for reassembling the encapsulated data back in the correct order. The two mechanisms used to accomplish this task are the Transmission Control (TCP) and the User Datagram Protocol (UDP).
+
+<h3>TCP vs. UDP</h3>
+
+Let us take a second to examine these two protocols side by side.
+
+<h3>TCP VS. UDP</h3>
+
+<table border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Characteristic</th>
+      <th>TCP</th>
+      <th>UDP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Transmission</td>
+      <td>Connection-oriented</td>
+      <td>Connectionless. Fire and forget.</td>
+    </tr>
+    <tr>
+      <td>Connection Establishment</td>
+      <td>TCP uses a three-way handshake to ensure that a connection is established.</td>
+      <td>UDP does not ensure the destination is listening.</td>
+    </tr>
+    <tr>
+      <td>Data Delivery</td>
+      <td>Stream-based conversations</td>
+      <td>Packet by packet, the source does not care if the destination is active.</td>
+    </tr>
+    <tr>
+      <td>Receipt of data</td>
+      <td>Sequence and Acknowledgement numbers are utilized to account for data.</td>
+      <td>UDP does not care.</td>
+    </tr>
+    <tr>
+      <td>Speed</td>
+      <td>TCP has more overhead and is slower because of its built-in functions.</td>
+      <td>UDP is fast but unreliable.</td>
+    </tr>
+  </tbody>
+</table>
+
+By looking at the table above, we can see that TCP and UDP provide two very different data transmission methods. TCP is considered a more reliable protocol since it allows for error checking and data acknowledgment as a normal function. In contrast, UDP is a quick, fire, and forget protocol best utilized when we care about speed over quality and validation.
+
+To put this into perspective, TCP is utilized when moving data that requires completeness over speed. For example, when we use Secure Shell (SSH) to connect from one host to another, a connection is opened that stays active while you issue commands and perform actions. This is a function of TCP, ensuring our conversation with the distant host is not interrupted. If it does get interrupted for some reason, TCP will not reassemble a partial fragment of a packet and send it to the application. We can avoid errors this way. What would happen if we issued a command like sudo passwd user to change the user's password on a remote host, and during the change, part of the message drops. If this were over UDP, we would have no way of knowing what happened to the rest of that message and potentially mess up the user's password or worse. TCP helps prevent this by acknowledging each packet received to ensure the destination host has acquired each packet before assembling the command and sending it to the application for action.
+
+On the other hand, when we require quick responses or utilize applications that require speed over completeness, UDP is our answer. Take streaming a video, for example. The user will not notice a pixel or two dropped from a streaming video. We care more about watching the video without it constantly stopping to buffer the next piece. Another example of this would be DNS. When a host requests a record entry for inlanefreight.com, the host is looking for a quick response to continue the process it was performing. The worst thing that happens if a DNS request is dropped is that it is reissued. No harm, no foul. The user will not receive corrupted data because of this drop.
+
+UDP traffic appears like regular traffic; it is a single packet, with no response or acknowledgment that it was sent or received, so there is not much to show here. However, we can take a look at TCP and how it establishes connections.
+
+<h3>TCP Three-way Handshake</h3>
+
+One of the ways TCP ensures the delivery of data from server to client is the utilization of sessions. These sessions are established through what is called a three-way handshake. To make this happen, TCP utilizes an option in the TCP header called flags. We will not deep dive into TCP flags now; know that the common flags we will see in a three-way handshake are Synchronization (SYN) and acknowledgment (ACK). When a host requests to have a conversation with a server over TCP;
+
+1. The client sends a packet with the SYN flag set to on along with other negotiable options in the TCP header.
+
+  1. This is a synchronization packet. It will only be set in the first packet from host and server and enables establishing a session by allowing both ends to agree on a sequence number to start communicating with.
+
+  2. This is crucial for the tracking of packets. Along with the sequence number sync, many other options are negotiated in this phase to include window size, maximum segment size, and selective acknowledgments.
+
+2. The server will respond with a TCP packet that includes a SYN flag set for the sequence number negotiation and an ACK flag set to acknowledge the previous SYN packet sent by the host.
+
+  1. The server will also include any changes to the TCP options it requires set in the options fields of the TCP header.
+
+3. The client will respond with a TCP packet with an ACK flag set agreeing to the negotiation.
+
+1. This packet is the end of the three-way handshake and established the connection between client and server.
+
+Let us take a quick look at this in action to be familiar with it when it appears in our packet output later on in the module.
+
+<h3>TCP Three-way Handshake</h3>
+
+<img width="1001" height="377" alt="image" src="https://github.com/user-attachments/assets/ef1184c1-6cdd-450b-8379-ddc77bde8bad" />
+
+When examining this output, we can see the start of our handshake on line one. Looking at the information highlighted in the red box, we can see our initial Syn flag is set. If we look at the port numbers underlined in green, we can see two numbers, 57678 and 80. The first number is the random high port number in use by the client, and the second is the well-known port for HTTP used by the server to listen for incoming web request connections. In line 2, we can see the server's response to the client with an SYN / ACK packet sent to the same ports. On line 3, we can see the client acknowledge the server's synchronization packet to establish the connection.
+
+Packet 4 shows us that the HTTP request was sent, and a session is established to stream the data for the image requested. We can see as the stream continues that TCP sends acknowledgments for each chunk of data sent. This is an example of typical TCP communication.
+
+We have seen how a session is established with TCP; now, let us examine how a session is concluded.
+
+<h3>TCP Session Teardown</h3>
+
+<img width="1003" height="459" alt="image" src="https://github.com/user-attachments/assets/e203fdfc-a823-427a-8d6f-b0762e7c7ace" />
+
+In the image above, a set of packets similar to our three-way handshake visible at the end of the output. This is how TCP gracefully shuts connections. Another flag we will see with TCP is the FIN flag. It is used for signaling that the data transfer is finished and the sender is requesting termination of the connection. The client acknowledges the receipt of the data and then sends a FIN and ACK to begin session termination. The server responds with an acknowledgment of the FIN and sends back its own FIN. Finally, the client acknowledges the session is complete and closes the connection. Before session termination, we should see a packet pattern of:
+
+1. FIN, ACK
+
+2. FIN, ACK,
+
+3. ACK
+
+If we look at the image above detailing a session, we will see that this is the case. An output similar to this is considered an adequately terminated connection.
 
