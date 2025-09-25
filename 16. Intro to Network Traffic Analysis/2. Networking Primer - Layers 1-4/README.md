@@ -65,7 +65,6 @@ Each logical or physical interface attached to a host has a Media Access Control
 
 <img width="1003" height="221" alt="image" src="https://github.com/user-attachments/assets/071b77b1-3cd4-4446-95e5-776e5e4e5697" />
 
-
 MAC-addressing is utilized in Layer two ( the data-link or link-layer depending on which model you look at ) communications between hosts. This works through host-to-host communication within a broadcast domain. If layer two traffic needs to cross a layer three interface, that PDU is sent to the layer three egress interface, and it is routed to the correct network. At layer two, this looks as though the PDU is addressed to the router interface, and the router will take the layer three address into account when determining where to send it next. Once it makes a choice, it strips the encapsulation at layer two and replaces it with new information that indicates the next physical address in the route.
 
 <h3>IP Addressing</h3>
@@ -190,15 +189,15 @@ One of the ways TCP ensures the delivery of data from server to client is the ut
 
 1. The client sends a packet with the SYN flag set to on along with other negotiable options in the TCP header.
 
-  1. This is a synchronization packet. It will only be set in the first packet from host and server and enables establishing a session by allowing both ends to agree on a sequence number to start communicating with.
+1. This is a synchronization packet. It will only be set in the first packet from host and server and enables establishing a session by allowing both ends to agree on a sequence number to start communicating with.
 
-  2. This is crucial for the tracking of packets. Along with the sequence number sync, many other options are negotiated in this phase to include window size, maximum segment size, and selective acknowledgments.
+1. This is crucial for the tracking of packets. Along with the sequence number sync, many other options are negotiated in this phase to include window size, maximum segment size, and selective acknowledgments.
 
-2. The server will respond with a TCP packet that includes a SYN flag set for the sequence number negotiation and an ACK flag set to acknowledge the previous SYN packet sent by the host.
+1. The server will respond with a TCP packet that includes a SYN flag set for the sequence number negotiation and an ACK flag set to acknowledge the previous SYN packet sent by the host.
 
-  1. The server will also include any changes to the TCP options it requires set in the options fields of the TCP header.
+1. The server will also include any changes to the TCP options it requires set in the options fields of the TCP header.
 
-3. The client will respond with a TCP packet with an ACK flag set agreeing to the negotiation.
+1. The client will respond with a TCP packet with an ACK flag set agreeing to the negotiation.
 
 1. This packet is the end of the three-way handshake and established the connection between client and server.
 
@@ -228,3 +227,42 @@ In the image above, a set of packets similar to our three-way handshake visible 
 
 If we look at the image above detailing a session, we will see that this is the case. An output similar to this is considered an adequately terminated connection.
 
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 How many layers does the OSI model have?
+
+7
+
+- 0 How many layers are there in the TCP/IP model?
+
+4
+
+- 0 True or False: Routers operate at layer 2 of the OSI model?
+
+False
+
+- 0 What addressing mechanism is used at the Link Layer of the TCP/IP model?
+
+Mac-Address
+
+- 0 At what layer of the OSI model is a PDU encapsulated into a packet? ( the number )
+
+3
+
+- 0 What addressing mechanism utilizes a 32-bit address?
+
+IPv4
+
+- 0 What Transport layer protocol is connection oriented?
+
+TCP
+
+- 0 What Transport Layer protocol is considered unreliable?
+
+UDP
+
+- 0 TCP's three-way handshake consists of 3 packets: 1.Syn, 2.Syn & ACK, 3. \_? What is the final packet of the handshake?
+
+ACK
