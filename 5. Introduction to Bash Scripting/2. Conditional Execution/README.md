@@ -189,3 +189,9 @@ do
         var=$(echo $var | base64)
 
 done
+
+Questions
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 2 Create an "If-Else" condition in the "For"-Loop of the "Exercise Script" that prints you the number of characters of the 35th generated value of the variable "var". Submit the number as the answer.
+  1197735
