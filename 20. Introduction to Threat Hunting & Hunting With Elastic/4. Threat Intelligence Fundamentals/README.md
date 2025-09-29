@@ -6,6 +6,9 @@ Cyber Threat Intelligence (CTI) represents a vital asset in our arsenal, providi
 
 Four fundamental principles make CTI an integral part of our cybersecurity strategy:
 
+<img width="780" height="427" alt="image" src="https://github.com/user-attachments/assets/b64811d6-c2e3-4615-906c-8eec71c76326" />
+
+
 1. Relevance: The cyber world is awash with diverse sources of information, from social media posts and security vendor reports to shared insights from similar organizations. However, the true value of this information lies in its relevance to our organization. For instance, if there is a reported vulnerability in a software that we, or our trusted partner organizations, do not use, the urgency to implement defensive measures is naturally diminished.
 
 2. Timeliness: Swift communication of intelligence to our defense team is crucial for the implementation of effective mitigation measures. The value of information depreciates over time - freshly discovered data is more valuable, and 'aged' indicators lose their relevance as they might no longer be used by the adversary or may have been resolved by the affected organization.
@@ -54,6 +57,9 @@ What truly makes Cyber Threat Intelligence (CTI) valuable? What issues does it r
 
 Furthermore, from a leadership standpoint, high-quality CTI aids in fulfilling the business objective of minimizing risk as much as possible. As intelligence about an adversary targeting our business is gathered and analyzed, it empowers leadership to adequately assess the risk, formulate a contingency action plan if an incident occurs, and ultimately frame the problem and disseminate the information in a coherent and meaningful way.
 
+<img width="935" height="260" alt="image" src="https://github.com/user-attachments/assets/26f8db75-278d-4921-a34b-19b96b010763" />
+
+
 As this information is compiled, it transforms into intelligence. This intelligence can then be classified into three different categories, each having varying degrees of relevance for different teams within our organization. These categories are:
 
 - Strategic Intelligence
@@ -63,6 +69,9 @@ As this information is compiled, it transforms into intelligence. This intellige
 - Tactical Intelligence
 
 In the diagram below, the ideal intersection is right at the core. At this convergence juncture, the Cyber Threat Intelligence (CTI) analyst is equipped to offer the most comprehensive and detailed portrait of the adversary and their modus operandi.
+
+<img width="817" height="811" alt="image" src="https://github.com/user-attachments/assets/2cd1be86-45bd-4c72-a414-720f180a573e" />
+
 
 Strategic Intelligence is characterized by:
 
