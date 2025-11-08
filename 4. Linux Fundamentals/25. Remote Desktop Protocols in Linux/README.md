@@ -69,3 +69,15 @@ For these VNC connections, many different tools are used. Among them are for exa
 The most used tools for such kinds of connections are UltraVNC and RealVNC because of their encryption and higher security.
 
 In this example, we set up a TigerVNC server, and for this, we need, among other things, also the XFCE4 desktop manager since VNC connections with GNOME are somewhat unstable. Therefore we need to install the necessary packages and create a password for the VNC connection.
+
+<h3>TigerVNC Installation</h3>
+
+htb-student@ubuntu:~$ sudo apt install xfce4 xfce4-goodies tigervnc-standalone-server -y
+
+htb-student@ubuntu:~$ vncpasswd
+
+Password: **\*\***
+
+Verify: **\*\***
+
+Would you like to enter a view-only password (y/n)? n
