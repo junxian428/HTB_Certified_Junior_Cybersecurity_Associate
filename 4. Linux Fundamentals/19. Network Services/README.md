@@ -198,3 +198,15 @@ AllowOverride All
 Require all granted
 
 </directory>
+
+This section specifies that the default /var/www/html folder is accessible, that users can use the Indexes and FollowSymLinks options, that changes to files in this directory can be overridden with AllowOverride All, and that Require all granted grants all users access to this directory. For example, if we want to transfer files to one of our target systems using a web server, we can put the appropriate files in the /var/www/html folder and use wget or curl or other applications to download these files on the target system.
+
+It is also possible to customize individual settings at the directory level by using the .htaccess file, which we can create in the directory in question. This file allows us to configure certain directory-level settings, such as access controls, without having to customize the Apache configuration file. We can also add modules to get features like mod_rewrite, mod_security, and mod_ssl that help us improve the security of our web application.
+
+Python Web Server is a simple, fast alternative to Apache and can be used to host a single folder with a single command to transfer files to another system. To install Python Web Server, we need to install Python3 on our system and then run the following command:
+
+<h3>Install Python & Web Server</h3>
+
+@htb[/htb]$ sudo apt install python3 -y
+
+@htb[/htb]$ python3 -m http.server
