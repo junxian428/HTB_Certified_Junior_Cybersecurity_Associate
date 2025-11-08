@@ -92,3 +92,119 @@ python-pcapy - Python interface to the libpcap packet capture library (Python 2)
 python3-impacket - Python3 module to easily build and dissect network protocols
 
 python3-pcapy - Python interface to the libpcap packet capture library (Python 3)
+
+---
+
+We can then view additional information about a package.
+
+@htb[/htb]$ apt-cache show impacket-scripts
+
+Package: impacket-scripts
+
+Version: 1.4
+
+Architecture: all
+
+Maintainer: Kali Developers <devel@kali.org>
+
+Installed-Size: 13
+
+Depends: python3-impacket (>= 0.9.20), python3-ldap3 (>= 2.5.0), python3-ldapdomaindump
+
+Breaks: python-impacket (<< 0.9.18)
+
+Replaces: python-impacket (<< 0.9.18)
+
+Priority: optional
+
+Section: misc
+
+Filename: pool/main/i/impacket-scripts/impacket-scripts_1.4_all.deb
+
+Size: 2080
+
+<SNIP>
+
+We can also list all installed packages.
+
+@htb[/htb]$ apt list --installed
+
+Listing... Done
+
+accountsservice/rolling,now 0.6.55-2 amd64 [installed,automatic]
+
+adapta-gtk-theme/rolling,now 3.95.0.11-1 all [installed]
+
+adduser/rolling,now 3.118 all [installed]
+
+adwaita-icon-theme/rolling,now 3.36.1-2 all [installed,automatic]
+
+aircrack-ng/rolling,now 1:1.6-4 amd64 [installed,automatic]
+
+<SNIP>
+
+---
+
+If we are missing some packages, we can search for it and install it using the following command.
+
+@htb[/htb]$ sudo apt install impacket-scripts -y
+
+Reading package lists... Done
+
+Building dependency tree
+
+Reading state information... Done
+
+The following NEW packages will be installed:
+
+impacket-scripts
+
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+
+Need to get 2,080 B of archives.
+
+After this operation, 13.3 kB of additional disk space will be used.
+
+Get:1 https://euro2-emea-mirror.parrot.sh/mirrors/parrot rolling/main amd64 impacket-scripts all 1.4 [2,080 B]
+
+Fetched 2,080 B in 0s (15.2 kB/s)
+
+Selecting previously unselected package impacket-scripts.
+
+(Reading database ... 378459 files and directories currently installed.)
+
+Preparing to unpack .../impacket-scripts_1.4_all.deb ...
+
+Unpacking impacket-scripts (1.4) ...
+
+Setting up impacket-scripts (1.4) ...
+
+Scanning application launchers
+
+Removing duplicate launchers from Debian
+
+Launchers are updated
+
+<h3>Git</h3>
+
+Now that we have git installed, we can use it to download useful tools from Github. One such project is called 'Nishang'. We will deal with and work with the project itself later. First, we need to navigate to the project's repository and copy the Github link before using git to download it.
+
+Nevertheless, before we download the project and its scripts and lists, we should create a particular folder.
+
+@htb[/htb]$ mkdir ~/nishang/ && git clone https://github.com/samratashok/nishang.git ~/nishang
+
+Cloning into '/opt/nishang/'...
+
+remote: Enumerating objects: 15, done.
+
+remote: Counting objects: 100% (15/15), done.
+
+remote: Compressing objects: 100% (13/13), done.
+
+remote: Total 1691 (delta 4), reused 6 (delta 2), pack-reused 1676
+
+Receiving objects: 100% (1691/1691), 7.84 MiB | 4.86 MiB/s, done.
+
+Resolving deltas: 100% (1055/1055), done.
+
+<h3>DPKG</h3>
