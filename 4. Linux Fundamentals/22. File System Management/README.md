@@ -161,3 +161,63 @@ drwxr-xr-x 1 root root 18 Oct 14 2021 'CSV Injection'
 drwxr-xr-x 1 root root 1166 Oct 14 2021 'CVE Exploits'
 
 ...SNIP...
+
+To unmount a file system in Linux, we can use the umount command followed by the mount point of the file system we want to unmount. The mount point is the location in the file system where the file system is mounted and is accessible to us. For example, to unmount the USB drive that was previously mounted to the directory /mnt/usb, we would use the following command:
+
+<h3>Unmount</h3>
+
+@htb[/htb]$ sudo umount /mnt/usb
+
+It is important to note that we must have sufficient permissions to unmount a file system. We also cannot unmount a file system that is in use by a running process. To ensure that there are no running processes that are using the file system, we can use the lsof command to list the open files on the file system.
+
+cry0l1t3@htb:~$ lsof | grep cry0l1t3
+
+vncserver 6006 cry0l1t3 mem REG 0,24 402274 /usr/bin/perl (path dev=0,26)
+
+vncserver 6006 cry0l1t3 mem REG 0,24 1554101 /usr/lib/locale/aa_DJ.utf8/LC_COLLATE (path dev=0,26)
+
+vncserver 6006 cry0l1t3 mem REG 0,24 402326 /usr/lib/x86_64-linux-gnu/perl-base/auto/POSIX/POSIX.so (path dev=0,26)
+
+vncserver 6006 cry0l1t3 mem REG 0,24 402059 /usr/lib/x86_64-linux-gnu/perl/5.32.1/auto/Time/HiRes/HiRes.so (path dev=0,26)
+
+vncserver 6006 cry0l1t3 mem REG 0,24 1444250 /usr/lib/x86_64-linux-gnu/libnss_files-2.31.so (path dev=0,26)
+
+vncserver 6006 cry0l1t3 mem REG 0,24 402327 /usr/lib/x86_64-linux-gnu/perl-base/auto/Socket/Socket.so (path dev=0,26)
+
+vncserver 6006 cry0l1t3 mem REG 0,24 402324 /usr/lib/x86_64-linux-gnu/perl-base/auto/IO/IO.so (path dev=0,26)
+
+...SNIP...
+
+If we find any processes that are using the file system, we need to stop them before we can unmount the file system. Additionally, we can also unmount a file system automatically when the system is shut down by adding an entry to the /etc/fstab file. The /etc/fstab file contains information about all the file systems that are mounted on the system, including the options for automatic mounting at boot time and other mount options. To unmount a file system automatically at shutdown, we need to add the noauto option to the entry in the /etc/fstab file for that file system. This would look like, for example, the following:
+
+<h3>Fstab File</h3>
+
+/dev/sda1 / ext4 defaults 0 0
+
+/dev/sda2 /home ext4 defaults 0 0
+
+/dev/sdb1 /mnt/usb ext4 rw,noauto,user 0 0
+
+192.168.1.100:/nfs /mnt/nfs nfs defaults 0 0
+
+<h3>SWAP</h3>
+
+Swap space is an essential part of memory management in Linux and plays a critical role in ensuring smooth system performance, especially when the available physical memory (RAM) is fully utilized. When the system runs out of physical memory, the kernel moves inactive pages of memory (data not immediately in use) to the swap space, freeing up RAM for active processes. This process is known as swapping.
+
+<h3>Creating Swap Space</h3>
+
+Swap space can be set up either during the installation of the operating system or added later using the mkswap and swapon commands.
+
+- mkswap is used to prepare a device or file to be used as swap space by creating a Linux swap area
+
+- swapon activates the swap space, allowing the system to use it
+
+<h3>Sizing and Managing Swap Space</h3>
+
+The size of the swap space is not fixed and depends on your system's physical memory and intended usage. For example, a system with less RAM or running memory-intensive applications might need more swap space. However, modern systems with large amounts of RAM may require less or even no swap space, depending on specific use cases.
+
+When setting up swap space, it’s important to allocate it on a dedicated partition or file, separate from the rest of the file system. This prevents fragmentation and ensures efficient use of the swap area when needed. Additionally, because sensitive data can be temporarily stored in swap space, it's recommended to encrypt the swap space to safeguard against potential data exposure.
+
+<h3>Swap Space for Hibernation</h3>
+
+Besides extending physical memory, swap space is also used for hibernation. Hibernation is a power-saving feature that saves the system’s state (including open applications and processes) to the swap space and powers off the system. When the system is powered back on, it restores its previous state from the swap space, resuming exactly where it left off.
