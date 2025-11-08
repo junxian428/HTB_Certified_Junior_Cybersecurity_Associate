@@ -214,3 +214,67 @@ The second line shows the first hop in the traceroute, which is the local networ
 Next, we see the second hop in the traceroute. However, there was no response from the device at that hop, indicated by the three asterisks instead of the IP address. This could mean the device is down, blocking ICMP traffic, or a network issue caused the packets to drop.
 
 In the fourth line, we can see the third hop in the traceroute, consisting of two devices with IP addresses 10.80.68.175 and 10.80.68.161, and again the next three columns show the time it took for each of the three packets to reach the first device (7.147 ms, 7.132 ms, and 7.393 ms).
+
+<h3>Netstat</h3>
+
+Netstat is used to display active network connections and their associated ports. It can be used to identify network traffic and troubleshoot connectivity issues. To use netstat, we can enter the following command:
+
+@htb[/htb]$ netstat -a
+
+Active Internet connections (servers and established)
+
+Proto Recv-Q Send-Q Local Address Foreign Address State
+
+tcp 0 0 localhost:5901 0.0.0.0:\_ LISTEN
+
+tcp 0 0 0.0.0.0:sunrpc 0.0.0.0:\_ LISTEN
+
+tcp 0 0 0.0.0.0:http 0.0.0.0:\_ LISTEN
+
+tcp 0 0 0.0.0.0:ssh 0.0.0.0:\_ LISTEN
+
+...SNIP...
+
+We can expect to receive detailed information about each connection when using this tool. This includes the protocol used, the number of bytes received and sent, IP addresses, port numbers of both local and remote devices, and the current connection state. The output provides valuable insights into the network activity on the system, highlighting four specific connections currently active and listening on specific ports. These connections include the VNC remote desktop software, the Sun Remote Procedure Call service, the HTTP protocol for web traffic, and the SSH protocol for secure remote shell access. By knowing which ports are used by which services, users can quickly identify any network issues and troubleshoot accordingly. The most common network issues we will encounter during our penetration tests are as follows:
+
+- Network connectivity issues
+
+- DNS resolution issues (it's always about DNS)
+
+- Loss of data packets
+
+- Network performance issues
+
+The most common causes for them are:
+
+- Incorrectly configured firewalls or routers,
+
+- damaged network cables or connections,
+
+- incorrect network settings,
+
+- hardware failures,
+
+- incorrect DNS server settings or DNS server failures
+
+- incorrectly configured DNS entries,
+
+- network congestion,
+
+- outdated network hardware or incorrectly configured network settings,
+
+- unpatched software or firmware and missing security controls.
+
+Understanding these common network issues and their causes is important for effectively identifying and exploiting vulnerabilities in network systems during our testing.
+
+<h3>Hardening</h3>
+
+Several mechanisms are highly effective in securing Linux systems in keeping our and other companies' data safe. Three such mechanisms are SELinux, AppArmor, and TCP wrappers. These tools are designed to safeguard Linux systems against various security threats, from unauthorized access to malicious attacks. This is critical not only during penetration tests, where systems are intentionally stressed to uncover vulnerabilities, but also in real-world scenarios where an actual compromise could have serious consequences (few situations are as severe as a real-life breach.) By implementing these security measures and ensuring that we set up corresponding protection against potential attackers, we can significantly reduce the risk of data leaks and ensure our systems remain secure. While these tools share some similarities, they also have important differences.
+
+<h3>Security-Enhanced Linux</h3>
+
+Security-Enhanced Linux (SELinux) is a mandatory access control (MAC) system integrated into the Linux kernel. It provides fine-grained control over access to system resources and applications by enforcing security policies. These policies define the permissions for each process and file on the system, significantly limiting the damage that a compromised process or service can do. SELinux operates at a low level, and though it offers strong security, it can be complex to configure and manage due to its granular controls.
+
+<h3>AppArmor</h3>
+
+Like SELinux, AppArmor is a MAC system that controls access to system resources and applications, but it operates in a simpler, more user-friendly manner. AppArmor is implemented as a Linux Security Module (LSM) and uses application profiles to define what resources an application can access. While it may not provide the same level of fine-grained control as SELinux, AppArmor is often easier to configure and is generally considered more straightforward for day-to-day use.
