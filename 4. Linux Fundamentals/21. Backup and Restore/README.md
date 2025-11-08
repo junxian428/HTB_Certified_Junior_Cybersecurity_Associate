@@ -83,3 +83,9 @@ rsync -avz -e ssh /path/to/mydirectory user@backup_server:/path/to/backup/direct
 Then, in order to ensure that the script is able to execute properly, we must provide the necessary permissions. Additionally, it's also important to make sure that the script is owned by the correct user, as this will ensure that only the correct user has access to the script and that the script is not tampered with by any other user.
 
 @htb[/htb]$ chmod +x RSYNC_Backup.sh
+
+After that, we can create a crontab that tells cron to run the script every hour at the 0th minute.
+
+@htb[/htb]$ crontab -e
+
+We can adjust the timing to suit our needs. To do so, the crontab needs the following content:
