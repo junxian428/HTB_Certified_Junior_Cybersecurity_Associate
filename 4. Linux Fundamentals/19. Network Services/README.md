@@ -210,3 +210,25 @@ Python Web Server is a simple, fast alternative to Apache and can be used to hos
 @htb[/htb]$ sudo apt install python3 -y
 
 @htb[/htb]$ python3 -m http.server
+
+When we run this command, our Python Web Server will be started on the TCP/8000 port, and we can access the folder we are currently in. We can also host another folder with the following command:
+
+@htb[/htb]$ python3 -m http.server --directory /home/cry0l1t3/target_files
+
+This will start a Python web server on the TCP/8000 port, and we can access the /home/cry0l1t3/target_files folder from the browser, for example. When we access our Python web server, we can transfer files to the other system by typing the link in our browser and downloading the files. We can also host our Python web server on a port other than the default port:
+
+@htb[/htb]$ python3 -m http.server 443
+
+This will host our Python web server on port 443 instead of the default TCP/8000 port. We can access this web server by typing the link in our browser.
+
+<h3>VPN</h3>
+
+A Virtual Private Network (VPN) functions like a secure, invisible tunnel that connects us to another network, allowing seamless and protected access as if we were physically present within it. This is achieved by establishing an encrypted tunnel between the client and the server, ensuring that all data transmitted through this connection remains confidential and safeguarded from unauthorized access.
+
+Organizations primarily utilize VPNs to grant their employees secure access to the internal network without requiring them to be on-site. This flexibility enables employees to reach internal resources and applications from any location, enhancing productivity and mobility. Additionally, VPNs serve to anonymize internet traffic and block external intrusions, further bolstering security.
+
+Among the most widely used VPN solutions for Linux servers are OpenVPN, L2TP/IPsec, PPTP, SSTP, and SoftEther. OpenVPN stands out as a popular open-source option compatible with various operating systems, including Ubuntu, Solaris, and Red Hat Linux. Administrators leverage OpenVPN to facilitate secure remote access to corporate networks, encrypt network traffic, and maintain user anonymity online.
+
+For penetration testers, OpenVPN offers invaluable capabilities. It allows testers to securely connect to internal networks, especially when direct access is not feasible due to geographical constraints. By utilizing OpenVPN, penetration testers can perform comprehensive security assessments of internal systems, identifying and addressing potential vulnerabilities. The versatility of OpenVPN, with features such as encryption, tunneling, traffic shaping, network routing, and adaptability to dynamic network environments, makes it an essential tool in the arsenal of both network administrators and security professionals. We can install the server and client with the following command:
+
+<h3>Install OpenVPN</h3>
