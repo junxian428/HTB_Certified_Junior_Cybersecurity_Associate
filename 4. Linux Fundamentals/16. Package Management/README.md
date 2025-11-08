@@ -208,3 +208,23 @@ Receiving objects: 100% (1691/1691), 7.84 MiB | 4.86 MiB/s, done.
 Resolving deltas: 100% (1055/1055), done.
 
 <h3>DPKG</h3>
+
+We can also download the programs and tools from the repositories separately. In this example, we download 'strace' for Ubuntu 18.04 LTS.
+
+@htb[/htb]$ wget http://archive.ubuntu.com/ubuntu/pool/main/s/strace/strace_4.21-1ubuntu1_amd64.deb
+
+--2020-05-15 03:27:17-- http://archive.ubuntu.com/ubuntu/pool/main/s/strace/strace_4.21-1ubuntu1_amd64.deb
+
+Resolving archive.ubuntu.com (archive.ubuntu.com)... 91.189.88.142, 91.189.88.152, 2001:67c:1562::18, ...
+
+Connecting to archive.ubuntu.com (archive.ubuntu.com)|91.189.88.142|:80... connected.
+
+HTTP request sent, awaiting response... 200 OK
+
+Length: 333388 (326K) [application/x-debian-package]
+
+Saving to: ‘strace_4.21-1ubuntu1_amd64.deb’
+
+strace_4.21-1ubuntu1_amd64.deb 100%[===================================================================>] 325,57K --.-KB/s in 0,1s
+
+2020-05-15 03:27:18 (2,69 MB/s) - ‘strace_4.21-1ubuntu1_amd64.deb’ saved [333388/333388]
