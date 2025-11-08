@@ -97,3 +97,90 @@ Process: 9235 ExecStart=/usr/sbin/rpc.nfsd $RPCNFSDARGS (code=exited, status=0/S
 Main PID: 9235 (code=exited, status=0/SUCCESS)
 
 CPU: 10ms
+
+We can configure NFS via the configuration file /etc/exports. This file specifies which directories should be shared and the access rights for users and systems. It is also possible to configure settings such as the transfer speed and the use of encryption. NFS access rights determine which users and systems can access the shared directories and what actions they can perform. Here are some important access rights that can be configured in NFS:
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Permissions</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rw</td>
+      <td>Gives users and systems read and write permissions to the shared directory.</td>
+    </tr>
+    <tr>
+      <td>ro</td>
+      <td>Gives users and systems read-only access to the shared directory.</td>
+    </tr>
+    <tr>
+      <td>no_root_squash</td>
+      <td>Prevents the root user on the client from being restricted to the rights of a normal user.</td>
+    </tr>
+    <tr>
+      <td>root_squash</td>
+      <td>Restricts the rights of the root user on the client to the rights of a normal user.</td>
+    </tr>
+    <tr>
+      <td>sync</td>
+      <td>Synchronizes the transfer of data to ensure that changes are only transferred after they have been saved on the file system.</td>
+    </tr>
+    <tr>
+      <td>async</td>
+      <td>Transfers data asynchronously, which makes the transfer faster, but may cause inconsistencies in the file system if changes have not been fully committed.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example, we can create a new folder and share it temporarily in NFS. We would do this as follows:
+
+<h3>Create NFS Share</h3>
+
+cry0l1t3@htb:~$ mkdir nfs_sharing
+
+cry0l1t3@htb:~$ echo '/home/cry0l1t3/nfs_sharing hostname(rw,sync,no_root_squash)' >> /etc/exports
+
+cry0l1t3@htb:~$ cat /etc/exports | grep -v "#"
+
+/home/cry0l1t3/nfs_sharing hostname(rw,sync,no_root_squash)
+
+If we have created an NFS share and want to work with it on the target system, we have to mount it first. We can do this with the following command:
+
+<h3>Mount NFS Share</h3>
+
+cry0l1t3@htb:~$ mkdir ~/target_nfs
+
+cry0l1t3@htb:~$ mount 10.129.12.17:/home/john/dev_scripts ~/target_nfs
+
+cry0l1t3@htb:~$ tree ~/target_nfs
+
+target_nfs/
+
+├── css.css
+
+├── html.html
+
+├── javascript.js
+
+├── php.php
+
+└── xml.xml
+
+0 directories, 5 files
+
+So we have mounted the NFS share (dev_scripts) from our target (10.129.12.17) locally to our system in the mount point target_nfs over the network and can view the contents just as if we were on the target system. There are even some methods that can be used in specific cases to escalate our privileges on the remote system using NFS.
+
+<h3>Web Server</h3>
+
+Understanding the operation of web servers is essential for penetration testers, as these servers are integral to web applications and frequently serve as primary targets during security assessments. A web server is software that delivers data, documents, applications, and various functions over the Internet. It utilizes the Hypertext Transfer Protocol (HTTP) to transmit data to clients such as web browsers and to receive requests from these clients. The received data is then rendered as Hypertext Markup Language (HTML) within the client's browser, facilitating the creation of dynamic web pages that respond interactively to user requests. Consequently, a thorough comprehension of web server functionalities is vital for developing secure and efficient web applications and for maintaining overall system security. Among the most widely used web servers on Linux platforms are Apache, Nginx, Lighttpd, and Caddy, with Apache being particularly popular due to its broad compatibility with operating systems including Ubuntu, Solaris, and Red Hat Linux.
+
+For penetration testers, web servers offer various utilities. They can be employed to facilitate file transfers, enabling testers to log in and interact with target systems through HTTP or HTTPS ports. Additionally, web servers can be leveraged to conduct phishing attacks by hosting replicas of target pages, thereby attempting to capture user credentials. Beyond these applications, web servers provide numerous other opportunities for testing and exploiting vulnerabilities within a network.
+
+Apache web server has a variety of features that allow us to host a secure and efficient web application. Moreover, we can also configure logging to get information about the traffic on our server, which helps us analyze attacks. We can install Apache using the following command:
+
+<h3>Install Apache Web Server</h3>
+
+@htb[/htb]$ sudo apt install apache2 -y
