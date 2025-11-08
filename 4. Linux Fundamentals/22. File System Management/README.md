@@ -221,3 +221,13 @@ When setting up swap space, it’s important to allocate it on a dedicated parti
 <h3>Swap Space for Hibernation</h3>
 
 Besides extending physical memory, swap space is also used for hibernation. Hibernation is a power-saving feature that saves the system’s state (including open applications and processes) to the swap space and powers off the system. When the system is powered back on, it restores its previous state from the swap space, resuming exactly where it left off.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 How many partitions exist in our Pwnbox? (Format: 0)
+
+sudo fdisk -l
+
+3
