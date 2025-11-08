@@ -298,4 +298,63 @@ Here are a few optional exercises we can use to improve our filtering skills and
 
 8. All usernames with their UID and set shells separated by a comma (,) and exclude the ones that contain nologin and count all lines of the filtered output.
 
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
 - 0 How many services are listening on the target system on all interfaces? (Not on localhost and IPv4 only)
+
+7
+
+# TCP listening sockets on all IPv4 interfaces (0.0.0.0)
+
+ss -4 -ltn | grep -E '0\.0\.0\.0:' | wc -l
+
+# UDP listening sockets on all IPv4 interfaces (0.0.0.0)
+
+ss -4 -lun | grep -E '0\.0\.0\.0:' | wc -l
+
+# Total (TCP + UDP)
+
+( ss -4 -ltn | grep -E '0\.0\.0\.0:' ; ss -4 -lun | grep -E '0\.0\.0\.0:' ) | wc -l
+
+htb-student@nixfund:~$ ss -ltn4
+
+State Recv-Q Send-Q Local Address:Port Peer Address:Port
+
+LISTEN 0 100 127.0.0.1:25 0.0.0.0:\_
+
+LISTEN 0 50 0.0.0.0:445 0.0.0.0:\_
+
+LISTEN 0 100 0.0.0.0:993 0.0.0.0:\_
+
+LISTEN 0 100 0.0.0.0:995 0.0.0.0:\_
+
+LISTEN 0 80 127.0.0.1:3306 0.0.0.0:\_
+
+LISTEN 0 50 0.0.0.0:139 0.0.0.0:\_
+
+LISTEN 0 100 0.0.0.0:110 0.0.0.0:\_
+
+LISTEN 0 100 0.0.0.0:143 0.0.0.0:\_
+
+LISTEN 0 128 127.0.0.53%lo:53 0.0.0.0:\_
+
+LISTEN 0 128 0.0.0.0:22 0.0.0.0:\_
+
+- 0 Determine what user the ProFTPd server is running under. Submit the username as the answer.
+
+proftpd
+
+- 1 Use cURL from your Pwnbox (not the target machine) to obtain the source code of the "https://www.inlanefreight.com" website and filter all unique paths (https://www.inlanefreight.com/directory" or "/another/directory") of that domain. Submit the number of these paths as the answer.
+
+34
+
+curl https://www.inlanefreight.com -k -s | tr "'" "\n" | tr '"' '\n' | grep "https://www.inlanefreight.com"
+
+curl -k -s https://www.inlanefreight.com \
+| tr "'" "\n" \
+| tr '"' "\n" \
+| grep "https://www.inlanefreight.com" \
+| sort -u \
+| wc -l
