@@ -89,3 +89,17 @@ After that, we can create a crontab that tells cron to run the script every hour
 @htb[/htb]$ crontab -e
 
 We can adjust the timing to suit our needs. To do so, the crontab needs the following content:
+
+<h3>Auto-Sync - Crontab</h3>
+
+0 \* \* \* \* /path/to/RSYNC_Backup.sh
+
+With this setup, cron will be responsible for executing the script at the desired interval, ensuring that the rsync command is run and the contents of the local directory are synchronized with the remote host.
+
+We encourage you to try out rsync using Pwnbox. Instead of syncing files with a remote server, you can use Pwnbox as both your source and destination, which makes testing simpler. To do this, create two directories on Pwnbox:
+
+1. to_backup (where your original data is stored) and another called
+
+2. synced_backup (where the synchronized data will be copied)
+
+You will then transfer the data from the to_backup directory to the synced_backup directory using rsync. To automate this process, set up a cron job that runs every minute to ensure continuous synchronization. Remember, because we are testing this locally, we can use the loopback IP address 127.0.0.1 as the address for the "remote" host.
