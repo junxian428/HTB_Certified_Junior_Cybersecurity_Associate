@@ -35,3 +35,69 @@ You need to specify the target domain.
 Usage:
 
 cidr.sh <domain>
+
+<h3>Special Variables</h3>
+
+Special variables use the Internal Field Separator (IFS) to identify when an argument ends and the next begins. Bash provides various special variables that assist while scripting. Some of these variables are:
+
+<table border="1">
+  <tr>
+    <th>Special Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$#</td>
+    <td>This variable holds the number of arguments passed to the script.</td>
+  </tr>
+  <tr>
+    <td>$@</td>
+    <td>This variable can be used to retrieve the list of command-line arguments.</td>
+  </tr>
+  <tr>
+    <td>$n</td>
+    <td>Each command-line argument can be selectively retrieved using its position. For example, the first argument is found at $1.</td>
+  </tr>
+  <tr>
+    <td>$$</td>
+    <td>The process ID of the currently executing process.</td>
+  </tr>
+  <tr>
+    <td>$?</td>
+    <td>The exit status of the script. This variable is useful to determine a command's success. The value 0 represents successful execution, while 1 is a result of a failure.</td>
+  </tr>
+</table>
+
+Of the ones shown above, we have 3 such special variables in our if-else condition.
+
+<table border="1">
+  <tr>
+    <th>Special Variable</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>$#</td>
+    <td>In this case, we need just one variable that needs to be assigned to the domain variable. This variable is used to specify the target we want to work with. If we provide just an FQDN as the argument, the $# variable will have a value of 1.</td>
+  </tr>
+  <tr>
+    <td>$0</td>
+    <td>This special variable is assigned the name of the executed script, which is then shown in the "Usage:" example.</td>
+  </tr>
+  <tr>
+    <td>$1</td>
+    <td>Separated by a space, the first argument is assigned to that special variable.</td>
+  </tr>
+</table>
+
+<h3>Variables</h3>
+
+We also see at the end of the if-else loop that we assign the value of the first argument to the variable called "domain". The assignment of variables takes place without the dollar sign ($). The dollar sign is only intended to allow this variable's corresponding value to be used in other code sections. When assigning variables, there must be no spaces between the names and values.
+
+<SNIP>
+
+else
+
+    domain=$1
+
+fi
+
+<SNIP>
