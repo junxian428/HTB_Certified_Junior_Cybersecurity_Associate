@@ -15,3 +15,13 @@ There are several ways how we can execute our script. However, we must first set
 <h3>CIDR.sh - Set Execution Privileges</h3>
 
 @htb[/htb]$ chmod +x cidr.sh
+
+<h3>CIDR.sh - Execution without Arguments</h3>
+
+@htb[/htb]$ ./cidr.sh
+
+You need to specify the target domain.
+
+Usage:
+
+cidr.sh <domain>
