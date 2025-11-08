@@ -134,3 +134,5 @@ Comparing integer numbers can be very useful for us if we know what values we wa
     <td>is greater than or equal to</td>
   </tr>
 </table>
+
+<h3>File Operators</h3>
