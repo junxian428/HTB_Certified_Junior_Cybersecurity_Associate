@@ -304,3 +304,11 @@ When it comes to implementing cybersecurity measures, there is no one-size-fits-
 3. Configure SELinux to allow a single user to access a specific network service but deny access to all others.
 
 4. Configure SELinux to deny access to a specific user or group for a specific network service.
+
+<h3>AppArmor</h3>
+
+5. Configure AppArmor to prevent a user from accessing a specific file.
+
+6. Configure AppArmor to allow a single user to access a specific network service but deny access to all others.
+
+7. Configure AppArmor to deny access to a specific user or group for a specific network service.
