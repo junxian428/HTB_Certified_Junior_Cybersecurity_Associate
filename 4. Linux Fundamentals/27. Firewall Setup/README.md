@@ -113,3 +113,60 @@ The PREROUTING chain is used to modify the destination IP address of incoming pa
 These chains are used to modify the header fields of incoming and outgoing packets and packets being processed by the corresponding chains.
 
 User-defined chains can simplify rule management by grouping firewall rules based on specific criteria, such as source IP address, destination port, or protocol. They can be added to any of the three main tables. For example, if an organization has multiple web servers that all require similar firewall rules, the rules for each server could be grouped in a user-defined chain. Another example is when a user-defined chain could filter traffic destined for a specific port, such as port 80 (HTTP). The user could then add rules to this chain that specifically filter traffic destined for port 80.
+
+<h3>Rules and Targets</h3>
+
+Iptables rules are used to define the criteria for filtering network traffic and the actions to take for packets that match the criteria. Rules are added to chains using the -A option followed by the chain name, and they can be modified or deleted using various other options.
+
+Each rule consists of a set of criteria or matches and a target specifying the action for packets that match the criteria. The criteria or matches match specific fields in the IP header, such as the source or destination IP address, protocol, source, destination port number, and more. The target specifies the action for packets that match the criteria. They specify the action to take for packets that match a specific rule. For example, targets can accept, drop, reject, or modify the packets. Some of the common targets used in iptables rules include the following:
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Target Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ACCEPT</td>
+      <td>Allows the packet to pass through the firewall and continue to its destination.</td>
+    </tr>
+    <tr>
+      <td>DROP</td>
+      <td>Drops the packet, effectively blocking it from passing through the firewall.</td>
+    </tr>
+    <tr>
+      <td>REJECT</td>
+      <td>Drops the packet and sends an error message back to the source address, notifying them that the packet was blocked.</td>
+    </tr>
+    <tr>
+      <td>LOG</td>
+      <td>Logs the packet information to the system log.</td>
+    </tr>
+    <tr>
+      <td>SNAT</td>
+      <td>Modifies the source IP address of the packet, typically used for Network Address Translation (NAT) to translate private IP addresses to public IP addresses.</td>
+    </tr>
+    <tr>
+      <td>DNAT</td>
+      <td>Modifies the destination IP address of the packet, typically used for NAT to forward traffic from one IP address to another.</td>
+    </tr>
+    <tr>
+      <td>MASQUERADE</td>
+      <td>Similar to SNAT but used when the source IP address is not fixed, such as in a dynamic IP address scenario.</td>
+    </tr>
+    <tr>
+      <td>REDIRECT</td>
+      <td>Redirects packets to another port or IP address.</td>
+    </tr>
+    <tr>
+      <td>MARK</td>
+      <td>Adds or modifies the Netfilter mark value of the packet, which can be used for advanced routing or other purposes.</td>
+    </tr>
+  </tbody>
+</table>
+
+Let us illustrate a rule and consider that we want to add a new entry to the INPUT chain that allows incoming TCP traffic on port 22 (SSH) to be accepted. The command for that would look like the following:
+
+@htb[/htb]$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
