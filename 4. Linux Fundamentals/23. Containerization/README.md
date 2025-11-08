@@ -227,3 +227,50 @@ To create a new LXC container, we can use the lxc-create command followed by the
 <h3>Managing LXC Containers</h3>
 
 When working with LXC containers, several tasks are involved in managing them. These tasks include creating new containers, configuring their settings, starting and stopping them as necessary, and monitoring their performance. Fortunately, there are many command-line tools and configuration files available that can assist with these tasks. These tools enable us to quickly and easily manage our containers, ensuring they are optimized for our specific needs and requirements. By leveraging these tools effectively, we can ensure that our LXC containers run efficiently and effectively, allowing us to maximize our system's performance and capabilities.
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>lxc-ls</td>
+      <td>List all existing containers</td>
+    </tr>
+    <tr>
+      <td>lxc-stop -n &lt;container&gt;</td>
+      <td>Stop a running container</td>
+    </tr>
+    <tr>
+      <td>lxc-start -n &lt;container&gt;</td>
+      <td>Start a stopped container</td>
+    </tr>
+    <tr>
+      <td>lxc-restart -n &lt;container&gt;</td>
+      <td>Restart a running container</td>
+    </tr>
+    <tr>
+      <td>lxc-config -n &lt;container name&gt; -s storage</td>
+      <td>Manage container storage</td>
+    </tr>
+    <tr>
+      <td>lxc-config -n &lt;container name&gt; -s network</td>
+      <td>Manage container network settings</td>
+    </tr>
+    <tr>
+      <td>lxc-config -n &lt;container name&gt; -s security</td>
+      <td>Manage container security settings</td>
+    </tr>
+    <tr>
+      <td>lxc-attach -n &lt;container&gt;</td>
+      <td>Connect to a container</td>
+    </tr>
+    <tr>
+      <td>lxc-attach -n &lt;container&gt; -f /path/to/share</td>
+      <td>Connect to a container and share a specific directory or file</td>
+    </tr>
+  </tbody>
+</table>
