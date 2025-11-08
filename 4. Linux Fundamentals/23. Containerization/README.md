@@ -293,4 +293,14 @@ We can also use them to test exploits or malware in a controlled environment whe
 
 LXC containers can be accessed using various methods, such as SSH or console. It is recommended to restrict access to the container by disabling unnecessary services, using secure protocols, and enforcing strong authentication mechanisms. For example, we can disable SSH access to the container by removing the openssh-server package or by configuring SSH only to allow access from trusted IP addresses. Those containers also share the same kernel as the host system, meaning they can access all the resources available on the system. We can use resource limits or quotas to prevent containers from consuming excessive resources. For example, we can use cgroups to limit the amount of CPU, memory, or disk space that a container can use.
 
-Securing LXC
+<h3> Securing LXC </h3>
+
+Let us limit the resources to the container. In order to configure cgroups for LXC and limit the CPU and memory, a container can create a new configuration file in the /usr/share/lxc/config/<container name>.conf directory with the name of our container. For example, to create a configuration file for a container named linuxcontainer, we can use the following command:
+
+@htb[/htb]$ sudo vim /usr/share/lxc/config/linuxcontainer.conf
+
+In this configuration file, we can add the following lines to limit the CPU and memory the container can use.
+
+lxc.cgroup.cpu.shares = 512
+
+lxc.cgroup.memory.limit_in_bytes = 512M
