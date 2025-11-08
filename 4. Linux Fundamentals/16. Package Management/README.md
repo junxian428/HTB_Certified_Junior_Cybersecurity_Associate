@@ -78,3 +78,17 @@ deb http://htb.deb.parrot.sh/parrot/ rolling main contrib non-free
 deb http://htb.deb.parrot.sh/parrot/ rolling-security main contrib non-free
 
 #deb-src https://deb.parrot.sh/parrot/ rolling-security main contrib non-free
+
+APT uses a database called the APT cache. This is used to provide information about packages installed on our system offline. We can search the APT cache, for example, to find all Impacket related packages.
+
+@htb[/htb]$ apt-cache search impacket
+
+impacket-scripts - Links to useful impacket scripts examples
+
+polenum - Extracts the password policy from a Windows system
+
+python-pcapy - Python interface to the libpcap packet capture library (Python 2)
+
+python3-impacket - Python3 module to easily build and dissect network protocols
+
+python3-pcapy - Python interface to the libpcap packet capture library (Python 3)
