@@ -232,3 +232,13 @@ Among the most widely used VPN solutions for Linux servers are OpenVPN, L2TP/IPs
 For penetration testers, OpenVPN offers invaluable capabilities. It allows testers to securely connect to internal networks, especially when direct access is not feasible due to geographical constraints. By utilizing OpenVPN, penetration testers can perform comprehensive security assessments of internal systems, identifying and addressing potential vulnerabilities. The versatility of OpenVPN, with features such as encryption, tunneling, traffic shaping, network routing, and adaptability to dynamic network environments, makes it an essential tool in the arsenal of both network administrators and security professionals. We can install the server and client with the following command:
 
 <h3>Install OpenVPN</h3>
+
+@htb[/htb]$ sudo apt install openvpn -y
+
+OpenVPN can be customized and configured by editing the configuration file /etc/openvpn/server.conf. This file contains the settings for the OpenVPN server. We can change the settings to configure certain features such as encryption, tunneling, traffic shaping, etc.
+
+If we want to connect to an OpenVPN server, we can use the .ovpn file we received from the server and save it on our system. We can do this with the following command on the command line:
+
+<h3>Connect to VPN</h3>
+
+@htb[/htb]$ sudo openvpn --config internal.ovpn
