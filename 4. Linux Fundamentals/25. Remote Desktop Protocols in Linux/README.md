@@ -145,3 +145,44 @@ TigerVNC server sessions:
 X DISPLAY # RFB PORT # PROCESS ID
 
 :1 5901 79746
+
+To encrypt the connection and make it more secure, we can create an SSH tunnel over which the whole connection is tunneled. How tunneling works in detail we will learn in the Pivoting, Tunneling, and Port Forwarding module.
+
+<h3>Setting Up an SSH Tunnel</h3>
+
+@htb[/htb]$ ssh -L 5901:127.0.0.1:5901 -N -f -l htb-student 10.129.14.130
+
+htb-student@10.129.14.130's password: **\*\*\***
+
+Finally, we can connect to the server through the SSH tunnel using the xtightvncviewer.
+
+<h3>Connecting to the VNC Server</h3>
+
+@htb[/htb]$ xtightvncviewer localhost:5901
+
+Connected to RFB server, using protocol version 3.8
+Performing standard VNC authentication
+
+Password: **\*\***
+
+Authentication successful
+
+Desktop name "linux:1 (htb-student)"
+
+VNC server default format:
+
+32 bits per pixel.
+
+Least significant byte first in each pixel.
+
+True colour: max red 255 green 255 blue 255, shift red 16 green 8 blue 0
+
+Using default colormap which is TrueColor. Pixel format:
+
+32 bits per pixel.
+
+Least significant byte first in each pixel.
+
+True colour: max red 255 green 255 blue 255, shift red 16 green 8 blue 0
+
+Same machine: preferring raw encoding
