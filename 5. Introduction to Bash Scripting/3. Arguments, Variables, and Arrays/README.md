@@ -7,3 +7,5 @@ The advantage of bash scripts is that we can always pass up to 9 arguments ($0-$
 @htb[/htb]$ ./script.sh ARG1 ARG2 ARG3 ... ARG9
 
 ASSIGNMENTS: $0 $1 $2 $3 ... $9
+
+This means that we have automatically assigned the corresponding arguments to the predefined variables in this place. These variables are called special variables. These special variables serve as placeholders. If we now look at the code section again, we will see where and which arguments have been used.
