@@ -74,3 +74,19 @@ Here is a list that will help us to better understand and deal with user managem
 Understanding how user accounts, permissions, and authentication mechanisms operate enables us to identify vulnerabilities, exploit misconfigurations, and assess the security posture of a system effectively. The most effective way to gain proficiency in user management is to practice using the individual commands along with their various options in a controlled environment.
 
 Feel free to experiment with the various commands and explore their functionalities. It's important to let your creativity guide you in deciding what you want to achieve. By combining these user management tools with the knowledge you've gained from the previous sections, you'll realize how much you've already learned. Apply your understanding of the Linux system: create new user accounts, set up files and directories for these users, select files, read and filter specific elements, and redirect them to the files and directories of the new users you've created. Feel free to explore extensively. On your target system, there's nothing that can't be fixed, and even if something goes wrong, you have the ability to reset the target and start anew until you feel confident.
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 Which option needs to be set to create a home directory for a new user using "useradd" command?
+
+  -m
+
+- 0 Which option needs to be set to lock a user account using the "usermod" command? (long version of the option)
+
+  --lock
+
+- 0 Which option needs to be set to execute a command as a different user using the "su" command? (long version of the option)
+
+  --command
