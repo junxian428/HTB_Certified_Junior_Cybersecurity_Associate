@@ -25,3 +25,13 @@ You need to specify the target domain.
 Usage:
 
 cidr.sh <domain>
+
+<h3>CIDR.sh - Execution without Execution Permissions</h3>
+
+@htb[/htb]$ bash cidr.sh
+
+You need to specify the target domain.
+
+Usage:
+
+cidr.sh <domain>
