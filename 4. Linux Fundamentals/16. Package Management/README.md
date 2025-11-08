@@ -228,3 +228,39 @@ Saving to: ‘strace_4.21-1ubuntu1_amd64.deb’
 strace_4.21-1ubuntu1_amd64.deb 100%[===================================================================>] 325,57K --.-KB/s in 0,1s
 
 2020-05-15 03:27:18 (2,69 MB/s) - ‘strace_4.21-1ubuntu1_amd64.deb’ saved [333388/333388]
+
+Furthermore, now we can use both apt and dpkg to install the package. Since we have already worked with apt, we will turn to dpkg in the next example.
+
+@htb[/htb]$ sudo dpkg -i strace_4.21-1ubuntu1_amd64.deb
+
+(Reading database ... 154680 files and directories currently installed.)
+
+Preparing to unpack strace_4.21-1ubuntu1_amd64.deb ...
+
+Unpacking strace (4.21-1ubuntu1) over (4.21-1ubuntu1) ...
+
+Setting up strace (4.21-1ubuntu1) ...
+
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+
+With this, we have already installed the tool and can test if it works properly.
+
+@htb[/htb]$ strace -h
+
+usage: strace [-CdffhiqrtttTvVwxxy] [-I n] [-e expr]...
+
+[-a column] [-o file] [-s strsize] [-P path]...
+
+-p pid... / [-D] [-E var=val]... [-u username] PROG [ARGS]
+
+or: strace -c[dfw] [-I n] [-e expr]... [-O overhead] [-S sortby]
+
+-p pid... / [-D] [-E var=val]... [-u username] PROG [ARGS]
+
+Output format:
+
+-a column alignment COLUMN for printing syscall results (default 40)
+
+-i print instruction pointer at time of syscall
+
+Search for "evil-winrm" tool on Github and install it on our interactive instances. Try all the different installation methods.
