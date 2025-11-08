@@ -316,3 +316,31 @@ One of the key parameters in controlling the resource allocation of a container 
 wq
 
 To apply these changes, we must restart the LXC service.
+
+@htb[/htb]$ sudo systemctl restart lxc.service
+
+LXC use namespaces to provide an isolated environment for processes, networks, and file systems from the host system. Namespaces are a feature of the Linux kernel that allows for creating isolated environments by providing an abstraction of system resources.
+
+Namespaces are a crucial aspect of containerization as they provide a high degree of isolation for the container's processes, network interfaces, routing tables, and firewall rules. Each container is allocated a unique process ID (pid) number space, isolated from the host system's process IDs. This ensures that the container's processes cannot interfere with the host system's processes, enhancing system stability and reliability. Additionally, each container has its own network interfaces (net), routing tables, and firewall rules, which are completely separate from the host system's network interfaces. Any network-related activity within the container is cordoned off from the host system's network, providing an extra layer of network security.
+
+Moreover, containers come with their own root file system (mnt), which is entirely different from the host system's root file system. This separation between the two ensures that any changes or modifications made within the container's file system do not affect the host system's file system. However, it is important to remember that while namespaces provide a high level of isolation, they do not provide complete security. Therefore, it is always advisable to implement additional security measures to further protect the container and the host system from potential security breaches.
+
+Here are 9 optional exercises to practice LXC:
+
+1 Install LXC on your machine and create your first container.
+
+2 Configure the network settings for your LXC container.
+
+3 Create a custom LXC image and use it to launch a new container.
+
+4 Configure resource limits for your LXC containers (CPU, memory, disk space).
+
+5 Explore the lxc-\* commands for managing containers.
+
+6 Use LXC to create a container running a specific version of a web server (e.g., Apache, Nginx).
+
+7 Configure SSH access to your LXC containers and connect to them remotely.
+
+8 Create a container with persistence, so changes made to the container are saved and can be reused.
+
+9 Use LXC to test software in a controlled environment, such as a vulnerable web application or malware.
