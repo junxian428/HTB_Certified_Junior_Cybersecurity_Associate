@@ -73,3 +73,55 @@ cry0l1t3@htb[/htb]$ ls -l /etc/passwd
 <h3>Change Permissions</h3>
 
 We can modify permissions using the chmod command, permission group references (u - owner, g - Group, o - others, a - All users), and either a [+] or a [-] to add or remove the designated permissions. In the following example, let us assume we have a file called shell and we want to change permissions for it so this script is owned by that user, becomes not executable, and set with read/write permissions for all users.
+
+cry0l1t3@htb[/htb]$ ls -l shell
+
+-rwxr-x--x 1 cry0l1t3 htbteam 0 May 4 22:12 shell
+
+We can then apply read permissions for all users and see the result.
+
+cry0l1t3@htb[/htb]$ chmod a+r shell && ls -l shell
+
+-rwxr-xr-x 1 cry0l1t3 htbteam 0 May 4 22:12 shell
+
+We can also set the permissions for all other users to read only using the octal value assignment.
+
+cry0l1t3@htb[/htb]$ chmod 754 shell && ls -l shell
+
+-rwxr-xr-- 1 cry0l1t3 htbteam 0 May 4 22:12 shell
+
+Let us look at all the representations associated with it to understand better how the permission assignment is calculated.
+
+## Binary Notation: 4 2 1 | 4 2 1 | 4 2 1
+
+## Binary Representation: 1 1 1 | 1 0 1 | 1 0 0
+
+## Octal Value: 7 | 5 | 4
+
+Permission Representation: r w x | r - x | r - -
+
+If we sum the set bits from the Binary Representation assigned to the values from Binary Notation together, we get the Octal Value. The Permission Representation represents the bits set in the Binary Representation by using the three characters, which only recognizes the set permissions easier.
+
+<h3>Change Owner</h3>
+
+To change the owner and/or the group assignments of a file or directory, we can use the chown command. The syntax is like following:
+
+<h3>Syntax - chown</h3>
+
+cry0l1t3@htb[/htb]$ chown <user>:<group> <file/directory>
+
+In this example, "shell" can be replaced with any arbitrary file or folder.
+
+cry0l1t3@htb[/htb]$ chown root:root shell && ls -l shell
+
+-rwxr-xr-- 1 root root 0 May 4 22:12 shell
+
+<h3>SUID & SGID</h3>
+
+In addition to standard user and group permissions, Linux allows us to configure special permissions on files through the Set User ID (SUID) and Set Group ID (SGID) bits. These bits function like temporary access passes, enabling users to run certain programs with the privileges of another user or group. For example, administrators can use SUID or SGID to grant users elevated rights for specific applications, allowing tasks to be performed with the necessary permissions, even if the user themselves doesn’t normally have them.
+
+The presence of these permissions is indicated by an s in place of the usual x in the file's permission set. When a program with the SUID or SGID bit set is executed, it runs with the permissions of the file's owner or group, rather than the user who launched it. This can be useful for certain system tasks but also introduces potential security risks if not used carefully.
+
+One common risk is when administrators, unfamiliar with an application's full functionality, assign SUID or SGID bits indiscriminately. For example, if the SUID bit is applied to a program like journalctl, which includes a function to launch a shell from within its interface, any user running this program could execute a shell as root. This grants them complete control over the system, presenting a significant security vulnerability. More information about this and other such applications can be found at GTFObins.
+
+<h3>Sticky Bit</h3>
