@@ -101,3 +101,49 @@ else
 fi
 
 <SNIP>
+
+In contrast to other programming languages, there is no direct differentiation and recognition between the types of variables in Bash like "strings," "integers," and "boolean." All contents of the variables are treated as string characters. Bash enables arithmetic functions depending on whether only numbers are assigned or not. It is important to note when declaring variables that they do not contain a space. Otherwise, the actual variable name will be interpreted as an internal function or a command.
+
+<h3>Declaring a Variable - Error</h3>
+
+@htb[/htb]$ variable = "this will result with an error."
+
+command not found: variable
+
+<h3>Declaring a Variable - Without an Error</h3>
+
+@htb[/htb]$ variable="Declared without an error."
+
+@htb[/htb]$ echo $variable
+
+<h3>Declared without an error.</h3>
+
+@htb[/htb]$ variable="Declared without an error."
+
+@htb[/htb]$ echo $variable
+
+Declared without an error.
+
+<h3>Arrays</h3>
+
+There is also the possibility of assigning several values to a single variable in Bash. This can be beneficial if we want to scan multiple domains or IP addresses. These variables are called arrays that we can use to store and process an ordered sequence of specific type values. Arrays identify each stored entry with an index starting with 0. When we want to assign a value to an array component, we do so in the same way as with standard shell variables. All we do is specify the field index enclosed in square brackets. The declaration for arrays looks like this in Bash:
+
+<h3>Arrays.sh</h3>
+
+#!/bin/bash
+
+domains=(www.inlanefreight.com ftp.inlanefreight.com vpn.inlanefreight.com www2.inlanefreight.com)
+
+echo ${domains[0]}
+
+We can also retrieve them individually using the index using the variable with the corresponding index in curly brackets. Curly brackets are used for variable expansion.
+
+@htb[/htb]$ ./Arrays.sh
+
+www.inlanefreight.com
+
+It is important to note that single quotes (' ... ') and double quotes (" ... ") prevent the separation by a space of the individual values in the array. This means that all spaces between the single and double quotes are ignored and handled as a single value assigned to the array.
+
+@htb[/htb]$ ./Arrays.sh
+
+www.inlanefreight.com ftp.inlanefreight.com vpn.inlanefreight.com
