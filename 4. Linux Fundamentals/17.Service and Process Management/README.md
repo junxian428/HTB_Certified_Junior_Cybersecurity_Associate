@@ -316,3 +316,7 @@ However, it looks different if we use the double AND characters (&&) to run the 
 ls: cannot access 'MISSING_FILE': No such file or directory
 
 Pipes (|) depend not only on the correct and error-free operation of the previous processes but also on the previous processes' results.
+
+Use the "systemctl" command to list all units of services and submit the unit name with the description "Load AppArmor profiles managed internally by snapd" as the answer.
+
+snapd.apparmor.service
