@@ -81,3 +81,27 @@ Password: **\*\***
 Verify: **\*\***
 
 Would you like to enter a view-only password (y/n)? n
+
+During installation, a hidden folder is created in the home directory called .vnc. Then, we have to create two additional files, xstartup and config. The xstartup determines how the VNC session is created in connection with the display manager, and the config determines its settings.
+
+<h3>Configuration</h3>
+
+htb-student@ubuntu:~$ touch ~/.vnc/xstartup ~/.vnc/config
+
+htb-student@ubuntu:~$ cat <<EOT >> ~/.vnc/xstartup
+
+#!/bin/bash
+
+unset SESSION_MANAGER
+
+unset DBUS_SESSION_BUS_ADDRESS
+
+/usr/bin/startxfce4
+
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+
+x-window-manager &
+
+EOT
