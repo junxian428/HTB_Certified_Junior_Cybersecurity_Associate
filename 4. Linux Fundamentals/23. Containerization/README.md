@@ -304,3 +304,15 @@ In this configuration file, we can add the following lines to limit the CPU and 
 lxc.cgroup.cpu.shares = 512
 
 lxc.cgroup.memory.limit_in_bytes = 512M
+
+When working with containers, it is important to understand the lxc.cgroup.cpu.shares parameter. This parameter determines the CPU time a container can use in relation to the other containers on the system. By default, this value is set to 1024, meaning the container can use up to its fair share of CPU time. However, if we set this value to 512, for example, the container can only use half of the CPU time available on the system. This can be a useful way to manage resources and ensure all containers have the necessary access to CPU time.
+
+One of the key parameters in controlling the resource allocation of a container is the lxc.cgroup.memory.limit_in_bytes parameter. This parameter allows you to set the maximum amount of memory a container can use. It's important to note that this value can be specified in a variety of units, including bytes, kilobytes (K), megabytes (M), gigabytes (G), or terabytes (T), allowing for a high degree of granularity in defining container resource limits. After adding these two lines, we can save and close the file by typing:
+
+[Esc]
+
+:
+
+wq
+
+To apply these changes, we must restart the LXC service.
