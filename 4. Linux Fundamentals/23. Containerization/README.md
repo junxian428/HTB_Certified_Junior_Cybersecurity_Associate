@@ -274,3 +274,23 @@ When working with LXC containers, several tasks are involved in managing them. T
     </tr>
   </tbody>
 </table>
+
+As penetration testers, we often face situations where we need to test software or systems that have complex dependencies or configurations that are difficult to replicate on our local machines. This is where Linux containers become extremely useful. A Linux container is a lightweight, standalone package that includes everything needed to run a specific piece of software such as the code, libraries, and configuration files. Containers offer an isolated environment, allowing the software to run consistently across any Linux machine, regardless of the host system’s configuration.
+
+Containers are particularly useful because they allow us to quickly create and run isolated environments tailored to our specific testing needs. For instance, if we need to test a web application that depends on a particular version of a database or web server, we can create a container with the exact versions and configurations we need. This eliminates the hassle of manually setting up these components on our machine, which can be time-consuming and prone to errors.
+
+We can also use them to test exploits or malware in a controlled environment where we create a container that simulates a vulnerable system or network and then use that container to safely test exploits without risking damaging our machines or networks. However, it is important to configure LXC container security to prevent unauthorized access or malicious activities inside the container. This can be achieved by implementing several security measures, such as:
+
+- Restricting access to the container
+
+- Limiting resources
+
+- Isolating the container from the host
+
+- Enforcing mandatory access control
+
+- Keeping the container up to date
+
+LXC containers can be accessed using various methods, such as SSH or console. It is recommended to restrict access to the container by disabling unnecessary services, using secure protocols, and enforcing strong authentication mechanisms. For example, we can disable SSH access to the container by removing the openssh-server package or by configuring SSH only to allow access from trusted IP addresses. Those containers also share the same kernel as the host system, meaning they can access all the resources available on the system. We can use resource limits or quotas to prevent containers from consuming excessive resources. For example, we can use cgroups to limit the amount of CPU, memory, or disk space that a container can use.
+
+Securing LXC
