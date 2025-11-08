@@ -80,8 +80,10 @@ In addition to the built-in tables, iptables provides a fourth table called the 
 
 In iptables, chains organize rules that define how network traffic should be filtered or modified. There are two types of chains in iptables:
 
-Built-in chains
-User-defined chains
+1. Built-in chains
+
+2. User-defined chains
+
 The built-in chains are pre-defined and automatically created when a table is created. Each table has a different set of built-in chains. For example, the filter table has three built-in chains:
 
 - INPUT
