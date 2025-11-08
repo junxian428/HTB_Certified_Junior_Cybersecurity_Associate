@@ -136,3 +136,56 @@ Comparing integer numbers can be very useful for us if we know what values we wa
 </table>
 
 <h3>File Operators</h3>
+
+The file operators are useful if we want to find out specific permissions or if they exist.
+
+<table border="1">
+  <tr>
+    <th>Operator</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>-e</td>
+    <td>if the file exists</td>
+  </tr>
+  <tr>
+    <td>-f</td>
+    <td>tests if it is a file</td>
+  </tr>
+  <tr>
+    <td>-d</td>
+    <td>tests if it is a directory</td>
+  </tr>
+  <tr>
+    <td>-L</td>
+    <td>tests if it is a symbolic link</td>
+  </tr>
+  <tr>
+    <td>-N</td>
+    <td>checks if the file was modified after it was last read</td>
+  </tr>
+  <tr>
+    <td>-O</td>
+    <td>if the current user owns the file</td>
+  </tr>
+  <tr>
+    <td>-G</td>
+    <td>if the file’s group id matches the current user’s</td>
+  </tr>
+  <tr>
+    <td>-s</td>
+    <td>tests if the file has a size greater than 0</td>
+  </tr>
+  <tr>
+    <td>-r</td>
+    <td>tests if the file has read permission</td>
+  </tr>
+  <tr>
+    <td>-w</td>
+    <td>tests if the file has write permission</td>
+  </tr>
+  <tr>
+    <td>-x</td>
+    <td>tests if the file has execute permission</td>
+  </tr>
+</table>
