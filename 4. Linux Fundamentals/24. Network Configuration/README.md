@@ -38,3 +38,129 @@ Tools such as syslog, rsyslog, ss (for socket statistics), lsof (to list open fi
 Think of network configuration in Linux like building and securing a large office building. Configuring network interfaces is like setting up the wiring and infrastructure, ensuring that each room (network device) has a working connection. NAC is like managing the building's security where some rooms are open to everyone (DAC), while others are only accessible to certain people based on strict rules (MAC or RBAC). Monitoring network traffic is similar to installing surveillance cameras and alarms, keeping an eye on who is moving through the building, and troubleshooting is like having a toolkit on hand to fix any issues—whether a broken connection (ping), a faulty lock (nslookup), or a vulnerable entrance (nmap). We will explore NAC and the tools in greater detail a bit later in this section.
 
 <h3>Configuring Network Interfaces</h3>
+
+When working with Ubuntu, you can configure local network interfaces using the ifconfig or the ip command. These powerful commands allow us to view and configure our system's network interfaces. Whether we're looking to make changes to our existing network setup or need to check on the status of our interfaces, these commands can greatly simplify the process. Moreover, developing a firm grasp on the intricacies of network interfaces is an essential ability in the modern, interconnected world. With the rapid advancement of technology and the increasing reliance on digital communication, having a comprehensive knowledge of how to work with network interfaces can enable you to navigate the diverse array of networks that exist nowadays effectively.
+
+One way to obtain information regarding network interfaces, such as IP addresses, netmasks, and status, is by using the ifconfig command. By executing this command, we can view the available network interfaces and their respective attributes in a clear and organized manner. This information can be particularly useful when troubleshooting network connectivity issues or setting up a new network configuration. It should be noted that the ifconfig command has been deprecated in newer versions of Linux and replaced by the ip command, which offers more advanced features. Nevertheless, the ifconfig command is still widely used in many Linux distributions and continues to be a reliable tool for network management.
+
+<h3>Network Settings</h3>
+
+ipconfig
+
+ip addr
+
+When it comes to activating network interfaces, ifconfig and ip commands are two commonly used tools. These commands allow users to modify and activate settings for a specific interface, such as eth0. We can adjust the network settings to suit our needs by using the appropriate syntax and specifying the interface name.
+
+<h3>Activate Network Interface</h3>
+
+@htb[/htb]$ sudo ifconfig eth0 up # OR
+
+@htb[/htb]$ sudo ip link set eth0 up
+
+One way to allocate an IP address to a network interface is by utilizing the ifconfig command. We must specify the interface's name and IP address as arguments to do this. This is a crucial step in setting up a network connection. The IP address serves as a unique identifier for the interface and enables the communication between devices on the network.
+
+<h3>Assign IP Address to an Interface</h3>
+
+@htb[/htb]$ sudo ifconfig eth0 192.168.1.2
+
+To set the netmask for a network interface, we can run the following command with the name of the interface and the netmask:
+
+<h3>Assign a Netmask to an Interface</h3>
+
+@htb[/htb]$ sudo ifconfig eth0 netmask 255.255.255.0
+
+When we want to set the default gateway for a network interface, we can use the route command with the add option. This allows us to specify the gateway's IP address and the network interface to which it should be applied. By setting the default gateway, we are designating the IP address of the router that will be used to send traffic to destinations outside the local network. Ensuring that the default gateway is set correctly is important, as incorrect configuration can lead to connectivity issues.
+
+<h3>Assign the Route to an Interface</h3>
+
+@htb[/htb]$ sudo route add default gw 192.168.1.1 eth0
+
+When configuring a network interface in Linux, it is often necessary to set Domain Name System (DNS) servers to ensure proper network functionality. DNS servers are responsible for translating domain names (like example.com) into IP addresses, which allows devices to locate and connect to one another on the internet. Proper DNS configuration is crucial for enabling devices to access websites, online services, and other networked resources. Without correctly configured DNS servers, devices may experience issues such as the inability to resolve domain names, leading to network connectivity problems.
+
+On Linux systems, this can be achieved by updating the /etc/resolv.conf file, which is a simple text file containing the system’s DNS information. By adding the appropriate DNS server addresses (Google's public DNS - 8.8.8.8 or 8.8.4.4), the system can correctly resolve domain names to IP addresses, ensuring smooth communication over the network.
+
+<h3>Editing DNS Settings</h3>
+
+@htb[/htb]$ sudo vim /etc/resolv.conf
+
+<h3>/etc/resolv.conf</h3>
+
+nameserver 8.8.8.8
+
+nameserver 8.8.4.4
+
+After completing the necessary modifications to the network configuration, it is essential to ensure that these changes are saved to persist across reboots. This can be achieved by editing the /etc/network/interfaces file, which defines network interfaces for Linux-based operating systems. Thus, it is vital to save any changes made to this file to avoid any potential issues with network connectivity.
+
+It’s important to note that changes made directly to the /etc/resolv.conf file are not persistent across reboots or network configuration changes. This is because the file may be automatically overwritten by network management services like NetworkManager or systemd-resolved. To make DNS changes permanent, you should configure DNS settings through the appropriate network management tool, such as editing network configuration files or using network management utilities that store persistent settings.
+
+<h3>Editing Interfaces</h3>
+
+@htb[/htb]$ sudo vim /etc/network/interfaces
+
+This will open the interfaces file in the vim editor. We can add the network configuration settings to the file like this:
+
+<h3>/etc/network/interfaces</h3>
+
+auto eth0
+
+iface eth0 inet static
+
+address 192.168.1.2
+
+netmask 255.255.255.0
+
+gateway 192.168.1.1
+
+dns-nameservers 8.8.8.8 8.8.4.4
+
+By setting the eth0 network interface to use a static IP address of 192.168.1.2, with a netmask of 255.255.255.0 and a default gateway of 192.168.1.1, we can ensure that your network connection remains stable and reliable. Additionally, by specifying DNS servers of 8.8.8.8 and 8.8.4.4, we can ensure that our computer can easily access the internet and resolve domain names. Once we have made these changes to the configuration file, saving the file and exiting the editor is important. After that, we must restart the networking service to apply the changes.
+
+<h3>Restart Networking Service</h3>
+
+@htb[/htb]$ sudo systemctl restart networking
+
+<h3>Network Access Control</h3>
+
+Network access control (NAC) is a crucial component of network security, especially in today's era of increasing cyber threats. As a penetration tester, it is vital to understand the significance of NAC in protecting the network and the various NAC technologies that can be utilized to enhance security measures. NAC is a security system that ensures that only authorized and compliant devices are granted access to the network, preventing unauthorized access, data breaches, and other security threats. By implementing NAC, organizations can be confident in their ability to protect their assets and data from cybercriminals who always seek to exploit system vulnerabilities. The following are the different NAC technologies that can be used to enhance security measures:
+
+- Discretionary access control (DAC)
+
+- Mandatory access control (MAC)
+
+- Role-based access control (RBAC)
+
+These technologies are designed to provide different levels of access control and security. Each technology has its unique characteristics and is suitable for different use cases. As a penetration tester, it is essential to understand these technologies and their specific use cases to test and evaluate the network's security effectively.
+
+<h3>Discretionary Access Control</h3>
+
+DAC is a crucial component of modern security systems as it helps organizations provide access to their resources while managing the associated risks of unauthorized access. It is a widely used access control system that enables users to manage access to their resources by granting resource owners the responsibility of controlling access permissions to their resources. This means that users and groups who own a specific resource can decide who has access to their resources and what actions they are authorized to perform. These permissions can be set for reading, writing, executing, or deleting the resource.
+
+<h3>Mandatory Access Control</h3>
+
+MAC is used in infrastructure that provides more fine-grained control over resource access than DAC systems. Those systems define rules that determine resource access based on the resource's security level and the user's security level or process requesting access. Each resource is assigned a security label that identifies its security level, and each user or process is assigned a security clearance that identifies its security level. Access to a resource is only granted if the user's or process's security level is equal to or greater than the security level of the resource. MAC is often used in operating systems and applications that require a high level of security, such as military or government systems, financial systems, and healthcare systems. MAC systems are designed to prevent unauthorized access to resources and minimize the impact of security breaches.
+
+<h3>Role-based Access Control</h3>
+
+RBAC assigns permissions to users based on their roles within an organization. Users are assigned roles based on their job responsibilities or other criteria, and each role is granted a set of permissions that determine the actions they can perform. RBAC simplifies the management of access permissions, reduces the risk of errors, and ensures that users can access only the resources necessary to perform their job functions. It can restrict access to sensitive resources and data, limit the impact of security breaches, and ensure compliance with regulatory requirements. Compared to Discretionary Access Control (DAC) systems, RBAC provides a more flexible and scalable approach to managing resource access. In an RBAC system, each user is assigned one or more roles, and each role is assigned a set of permissions that define the user's actions. Resource access is granted based on the user's assigned role rather than their identity or ownership of the resource. RBAC systems are typically used in environments with many users and resources, such as large organizations, government agencies, and financial institutions.
+
+<h3>Monitoring</h3>
+
+Network monitoring involves capturing, analyzing, and interpreting network traffic to identify security threats, performance issues, and suspicious behavior. The primary goal of analyzing and monitoring network traffic is identifying security threats and vulnerabilities. For example, as penetration testers, we can capture credentials when someone uses an unencrypted connection and tries to log in to an FTP server. As a result, we will obtain this user’s credentials that might help us to infiltrate the network even further or escalate our privileges to a higher level. In short, by analyzing network traffic, we can gain insights into network behavior and identify patterns that may indicate security threats. Such analysis includes detecting suspicious network activity, identifying malicious traffic, and identifying potential security risks. However, we cover this vast topic in the Intro to Network Traffic Analysis module, where we use several tools for network monitoring on Linux systems like Ubuntu and Windows systems, like Wireshark, tshark, and Tcpdump.
+
+<h3>Troubleshooting</h3>
+
+Network troubleshooting is an essential process that involves diagnosing and resolving network issues that can adversely affect the performance and reliability of the network. This process is critical for ensuring the network operates optimally and avoiding disruptions that could impact business operations during our penetration tests. It also involves identifying, analyzing, and implementing solutions to resolve problems. Such problems include connectivity problems, slow network speeds, and network errors. Various tools can help us identify and resolve issues regarding network troubleshooting on Linux systems. Some of the most commonly used tools include:
+
+1. Ping
+
+2. Traceroute
+
+3. Netstat
+
+4. Tcpdump
+
+5. Wireshark
+
+6. Nmap
+
+By using these tools and others like them, we can better understand how the network functions and quickly diagnose any issues that may arise. For example, ping is a command-line tool used to test connectivity between two devices. It sends packets to a remote host and measures the time to return them. To use ping, we can enter the following command:
