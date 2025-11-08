@@ -189,3 +189,30 @@ The file operators are useful if we want to find out specific permissions or if 
     <td>tests if the file has execute permission</td>
   </tr>
 </table>
+
+<h3>Boolean and Logical Operators</h3>
+
+We get a boolean value "false" or "true" as a result with logical operators. Bash gives us the possibility to compare strings by using double square brackets [[<condition>]]. To get these boolean values, we can use the string operators. Whether the comparison matches or not, we get the boolean value "false" or "true".
+
+<h3>Logical Operators</h3>
+
+With logical operators, we can define several conditions within one. This means that all the conditions we define must match before the corresponding code can be executed.
+
+<table border="1">
+  <tr>
+    <th>Operator</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>!</td>
+    <td>logical negation NOT</td>
+  </tr>
+  <tr>
+    <td>&&</td>
+    <td>logical AND</td>
+  </tr>
+  <tr>
+    <td>||</td>
+    <td>logical OR</td>
+  </tr>
+</table>
