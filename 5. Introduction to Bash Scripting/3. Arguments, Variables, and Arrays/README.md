@@ -147,3 +147,11 @@ It is important to note that single quotes (' ... ') and double quotes (" ... ")
 @htb[/htb]$ ./Arrays.sh
 
 www.inlanefreight.com ftp.inlanefreight.com vpn.inlanefreight.com
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 2 Submit the echo statement that would print "www2.inlanefreight.com" when running the last "Arrays.sh" script.
+
+  echo ${domains[1]}
