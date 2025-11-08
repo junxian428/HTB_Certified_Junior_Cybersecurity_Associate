@@ -312,3 +312,11 @@ When it comes to implementing cybersecurity measures, there is no one-size-fits-
 6. Configure AppArmor to allow a single user to access a specific network service but deny access to all others.
 
 7. Configure AppArmor to deny access to a specific user or group for a specific network service.
+
+<h3>TCP Wrappers</h3>
+
+8. Configure TCP wrappers to allow access to a specific network service from a specific IP address.
+
+9. Configure TCP wrappers to deny access to a specific network service from a specific IP address.
+
+10. Configure TCP wrappers to allow access to a specific network service from a range of IP addresses.
