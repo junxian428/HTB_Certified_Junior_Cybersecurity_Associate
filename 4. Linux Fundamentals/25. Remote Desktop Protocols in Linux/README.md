@@ -105,3 +105,19 @@ unset DBUS_SESSION_BUS_ADDRESS
 x-window-manager &
 
 EOT
+
+---
+
+htb-student@ubuntu:~$ cat <<EOT >> ~/.vnc/config
+
+geometry=1920x1080
+
+dpi=96
+
+EOT
+
+Additionally, the xstartup executable needs rights to be started by the service.
+
+htb-student@ubuntu:~$ chmod +x ~/.vnc/xstartup
+
+Now we can start the VNC server.
