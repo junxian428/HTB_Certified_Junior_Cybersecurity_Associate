@@ -39,3 +39,82 @@ Feb 28 2023 15:07:19 server sshd[3010]: Accepted password for htb-student from 1
 Feb 28 2023 15:09:54 server kernel: [ 367.543975] EXT4-fs (sda1): re-mounted. Opts: errors=remount-ro
 
 Feb 28 2023 15:12:07 server systemd[1]: Started Clean PHP session files.
+
+<h3>Authentication logs</h3>
+
+These logs contain information about user authentication attempts, including successful and failed attempts. They are stored in the /var/log/auth.log file. It is important to note that while the /var/log/syslog file may contain similar login information, the /var/log/auth.log file specifically focuses on user authentication attempts, making it a more valuable resource for identifying potential security threats. Therefore, it is essential for penetration testers to review the logs stored in the /var/log/auth.log file to ensure that the system is secure and has not been compromised.
+
+<h3>Auth.log</h3>
+
+Feb 28 2023 18:15:01 sshd[5678]: Accepted publickey for admin from 10.14.15.2 port 43210 ssh2: RSA SHA256:+KjEzN2cVhIW/5uJpVX9n5OB5zVJ92FtCZxVzzcKjw
+
+Feb 28 2023 18:15:03 sudo: admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/bin/bash
+
+Feb 28 2023 18:15:05 sudo: admin : TTY=pts/1 ; PWD=/home/admin ; USER=root ; COMMAND=/usr/bin/apt-get install netcat-traditional
+
+Feb 28 2023 18:15:08 sshd[5678]: Disconnected from 10.14.15.2 port 43210 [preauth]
+
+Feb 28 2023 18:15:12 kernel: [ 778.941871] firewall: unexpected traffic allowed on port 22
+
+Feb 28 2023 18:15:15 auditd[9876]: Audit daemon started successfully
+
+Feb 28 2023 18:15:18 systemd-logind[1234]: New session 4321 of user admin.
+
+Feb 28 2023 18:15:21 CRON[2345]: pam_unix(cron:session): session opened for user root by (uid=0)
+
+Feb 28 2023 18:15:24 CRON[2345]: pam_unix(cron:session): session closed for user root
+
+In this example, we can see in the first line that a successful public key has been used for authentication for the user admin. Additionally, we can see that this user is in the sudoers group because he can execute commands using sudo. The kernel message indicates that unexpected traffic was allowed on port 22, which could indicate a potential security breach. After that, we see that a new session was created for user "admin" by systemd-logind and that a cron session opened and closed for the user root.
+
+<h3>Application logs</h3>
+
+These logs contain information about the activities of specific applications running on the system. They are often stored in their own files, such as /var/log/apache2/error.log for the Apache web server or /var/log/mysql/error.log for the MySQL database server. These logs are particularly important when we are targeting specific applications, such as web servers or databases, as they can provide insights into how these applications are processing and handling data. By examining these logs, we can identify potential vulnerabilities or misconfigurations. For example, access logs can be used to track requests made to a web server, while audit logs can be used to track changes made to the system or to specific files. These logs can be used to identify unauthorized access attempts, data exfiltration, or other suspicious activity.
+
+Besides, access and audit logs are critical logs that record information about the actions of users and processes on the system. They are crucial for security and compliance purposes, and we can use them to identify potential security issues and attack vectors.
+
+For example, access logs keep a record of user and process activity on the system, including login attempts, file accesses, and network connections. Audit logs record information about security-relevant events on the system, such as modifications to system configuration files or attempts to modify system files or settings. These logs help track potential attacks and activities or identify security breaches or other issues. An example entry in an access log file can look like the following:
+
+<h3>Access Log Entry</h3>
+
+2023-03-07T10:15:23+00:00 servername privileged.sh: htb-student accessed /root/hidden/api-keys.txt
+
+In this log entry, we can see that the user htb-student used the privileged.sh script to access the api-keys.txt file in the /root/hidden/ directory. On Linux systems, most common services have default locations for access logs:
+
+<table border="1">
+  <tr>
+    <th>Service</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Apache</td>
+    <td>Access logs are stored in the /var/log/apache2/access.log file (or similar, depending on the distribution).</td>
+  </tr>
+  <tr>
+    <td>Nginx</td>
+    <td>Access logs are stored in the /var/log/nginx/access.log file (or similar).</td>
+  </tr>
+  <tr>
+    <td>OpenSSH</td>
+    <td>Access logs are stored in the /var/log/auth.log file on Ubuntu and in /var/log/secure on CentOS/RHEL.</td>
+  </tr>
+  <tr>
+    <td>MySQL</td>
+    <td>Access logs are stored in the /var/log/mysql/mysql.log file.</td>
+  </tr>
+  <tr>
+    <td>PostgreSQL</td>
+    <td>Access logs are stored in the /var/log/postgresql/postgresql-version-main.log file.</td>
+  </tr>
+  <tr>
+    <td>Systemd</td>
+    <td>Access logs are stored in the /var/log/journal/ directory.</td>
+  </tr>
+</table>
+
+<h3>Security logs</h3>
+
+These security logs and their events are often recorded in a variety of log files, depending on the specific security application or tool in use. For example, the Fail2ban application records failed login attempts in the /var/log/fail2ban.log file, while the UFW firewall records activity in the /var/log/ufw.log file. Other security-related events, such as changes to system files or settings, may be recorded in more general system logs such as /var/log/syslog or /var/log/auth.log. As penetration testers, we can use log analysis tools and techniques to search for specific events or patterns of activity that may indicate a security issue and use that information to further test the system for vulnerabilities or potential attack vectors.
+
+It is important to be familiar with the default locations for access logs and other log files on Linux systems, as this information can be useful when performing a security assessment or penetration test. By understanding how security-related events are recorded and stored, we can more effectively analyze log data and identify potential security issues.
+
+All these logs can be accessed and analyzed using a variety of tools, including the log file viewers built into most Linux desktop environments, as well as command-line tools such as the tail, grep, and sed commands. Proper analysis of system logs can help identify and troubleshoot system issues, as well as detect security breaches and other events of interest.
