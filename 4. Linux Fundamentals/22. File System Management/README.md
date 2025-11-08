@@ -55,3 +55,31 @@ total 0
 Disk management on Linux involves managing physical storage devices, including hard drives, solid-state drives, and removable storage devices. The main tool for disk management on Linux is the fdisk, which allows us to create, delete, and manage partitions on a drive. It can also display information about the partition table, including the size and type of each partition. Partitioning a drive on Linux involves dividing the physical storage space into separate, logical sections. Each partition can then be formatted with a specific file system, such as ext4, NTFS, or FAT32, and can be mounted as a separate file system. The most common partitioning tool on Linux is also fdisk, gpart, and GParted.
 
 <h3>Fdisk</h3>
+
+@htb[/htb]$ sudo fdisk -l
+
+Disk /dev/vda: 160 GiB, 171798691840 bytes, 335544320 sectors
+
+Units: sectors of 1 \* 512 = 512 bytes
+
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+Disklabel type: dos
+
+Disk identifier: 0x5223435f
+
+Device Boot Start End Sectors Size Id Type
+
+/dev/vda1 \* 2048 158974027 158971980 75.8G 83 Linux
+
+/dev/vda2 158974028 167766794 8792767 4.2G 82 Linux swap / Solaris
+
+Disk /dev/vdb: 452 KiB, 462848 bytes, 904 sectors
+
+Units: sectors of 1 \* 512 = 512 bytes
+
+Sector size (logical/physical): 512 bytes / 512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512 bytes
