@@ -15,3 +15,40 @@ In addition to enhanced security and resource efficiency, containers make applic
 However, it is important to recognize that, despite their advantages, containers are not immune to security risks. There are methods that we can use to escalate privileges or escape the isolation that containers provide.
 
 <h3>Dockers</h3>
+
+Docker is an open-source platform for automating the deployment of applications as self-contained units called containers. It uses a layered filesystem and resource isolation features to provide flexibility and portability. Additionally, it provides a robust set of tools for creating, deploying, and managing applications, which helps streamline the containerization process.
+
+Imagine Docker containers as a sealed lunchbox. You can eat the food (run applications) inside, but once you close the box (stop the container), everything resets. To make a new lunchbox (new container) with updated contents (modified configurations), you create a new recipe (Dockerfile) based on the original. When serving multiple lunchboxes in a restaurant (production), you'd use a kitchen system (Kubernetes/Docker Compose) to manage all the orders smoothly.
+
+<h3>Install Docker-Engine</h3>
+
+Installing Docker is relatively straightforward. We can use the following script to install it on a Ubuntu host:
+
+#!/bin/bash
+
+# Preparation
+
+sudo apt update -y
+
+sudo apt install ca-certificates curl gnupg lsb-release -y
+
+sudo mkdir -m 0755 -p /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker Engine
+
+sudo apt update -y
+
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+# Add user htb-student to the Docker group
+
+sudo usermod -aG docker htb-student
+
+echo '[!] You need to log out and log back in for the group changes to take effect.'
+
+# Test Docker installation
+
+docker run hello-world
