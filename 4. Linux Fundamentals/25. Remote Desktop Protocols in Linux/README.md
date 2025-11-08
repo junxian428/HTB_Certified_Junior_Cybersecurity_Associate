@@ -121,3 +121,27 @@ Additionally, the xstartup executable needs rights to be started by the service.
 htb-student@ubuntu:~$ chmod +x ~/.vnc/xstartup
 
 Now we can start the VNC server.
+
+<h3>Start the VNC server</h3>
+
+htb-student@ubuntu:~$ vncserver
+
+New 'linux:1 (htb-student)' desktop at :1 on machine linux
+
+Starting applications specified in /home/htb-student/.vnc/xstartup
+
+Log file is /home/htb-student/.vnc/linux:1.log
+
+Use xtigervncviewer -SecurityTypes VncAuth -passwd /home/htb-student/.vnc/passwd :1 to connect to the VNC server.
+
+In addition, we can also display the entire sessions with the associated ports and the process ID.
+
+<h3>List Sessions</h3>
+
+htb-student@ubuntu:~$ vncserver -list
+
+TigerVNC server sessions:
+
+X DISPLAY # RFB PORT # PROCESS ID
+
+:1 5901 79746
