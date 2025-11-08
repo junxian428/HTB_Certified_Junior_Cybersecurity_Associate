@@ -170,3 +170,104 @@ Each rule consists of a set of criteria or matches and a target specifying the a
 Let us illustrate a rule and consider that we want to add a new entry to the INPUT chain that allows incoming TCP traffic on port 22 (SSH) to be accepted. The command for that would look like the following:
 
 @htb[/htb]$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+<h3>Matches</h3>
+
+Matches are used to specify the criteria that determine whether a firewall rule should be applied to a particular packet or connection. Matches are used to match specific characteristics of network traffic, such as the source or destination IP address, protocol, port number, and more.
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Match Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-p or --protocol</td>
+      <td>Specifies the protocol to match (e.g. tcp, udp, icmp).</td>
+    </tr>
+    <tr>
+      <td>--dport</td>
+      <td>Specifies the destination port to match.</td>
+    </tr>
+    <tr>
+      <td>--sport</td>
+      <td>Specifies the source port to match.</td>
+    </tr>
+    <tr>
+      <td>-s or --source</td>
+      <td>Specifies the source IP address to match.</td>
+    </tr>
+    <tr>
+      <td>-d or --destination</td>
+      <td>Specifies the destination IP address to match.</td>
+    </tr>
+    <tr>
+      <td>-m state</td>
+      <td>Matches the state of a connection (e.g. NEW, ESTABLISHED, RELATED).</td>
+    </tr>
+    <tr>
+      <td>-m multiport</td>
+      <td>Matches multiple ports or port ranges.</td>
+    </tr>
+    <tr>
+      <td>-m tcp</td>
+      <td>Matches TCP packets and includes additional TCP-specific options.</td>
+    </tr>
+    <tr>
+      <td>-m udp</td>
+      <td>Matches UDP packets and includes additional UDP-specific options.</td>
+    </tr>
+    <tr>
+      <td>-m string</td>
+      <td>Matches packets that contain a specific string.</td>
+    </tr>
+    <tr>
+      <td>-m limit</td>
+      <td>Matches packets at a specified rate limit.</td>
+    </tr>
+    <tr>
+      <td>-m conntrack</td>
+      <td>Matches packets based on their connection tracking information.</td>
+    </tr>
+    <tr>
+      <td>-m mark</td>
+      <td>Matches packets based on their Netfilter mark value.</td>
+    </tr>
+    <tr>
+      <td>-m mac</td>
+      <td>Matches packets based on their MAC address.</td>
+    </tr>
+    <tr>
+      <td>-m iprange</td>
+      <td>Matches packets based on a range of IP addresses.</td>
+    </tr>
+  </tbody>
+</table>
+
+In general, matches are specified using the '-m' option in iptables. For example, the following command adds a rule to the 'INPUT' chain in the 'filter' table that matches incoming TCP traffic on port 80:
+
+@htb[/htb]$ sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+
+This example rule matches incoming TCP traffic (-p tcp) on port 80 (--dport 80) and jumps to the accept target (-j ACCEPT) if the match is successful.
+
+1. Launch a web server on TCP/8080 port on your target and use iptables to block incoming traffic on that port.
+
+2. Change iptables rules to allow incoming traffic on the TCP/8080 port.
+
+3. Block traffic from a specific IP address.
+
+4. Allow traffic from a specific IP address.
+
+5. Block traffic based on protocol.
+
+6. Allow traffic based on protocol.
+
+7. Create a new chain.
+
+8. Forward traffic to a specific chain.
+
+9. Delete a specific rule.
+
+10. List all existing rules.
