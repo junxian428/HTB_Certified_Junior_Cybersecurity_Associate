@@ -19,3 +19,7 @@ ystemd is a service used in Linux systems such as Ubuntu, Redhat Linux, and Sola
 <h3>Create a Timer</h3>
 
 To create a timer for systemd, we need to create a directory where the timer script will be stored.
+
+@htb[/htb]$ sudo mkdir /etc/systemd/system/mytimer.timer.d
+
+@htb[/htb]$ sudo vim /etc/systemd/system/mytimer.timer
