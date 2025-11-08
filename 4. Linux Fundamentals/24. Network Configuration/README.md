@@ -188,3 +188,29 @@ PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3017ms
 
 rtt min/avg/max/mdev = 0.636/0.996/1.607/0.388 ms
+
+Another tool is the traceroute, which traces the route packets take to reach a remote host. It sends packets with increasing Time-to-Live (TTL) values to a remote host and displays the IP addresses of the devices that the packets pass through. For example, to trace the route to www.inlanefreight.com, we would enter the following command:
+
+<h3>Traceroute</h3>
+
+@htb[/htb]$ traceroute www.inlanefreight.com
+
+traceroute to www.inlanefreight.com (134.209.24.248), 30 hops max, 60 byte packets
+
+1 \* \* \_
+
+2 10.80.71.5 (10.80.71.5) 2.716 ms 2.700 ms 2.730 ms
+
+3 \_ \* \*
+
+4 10.80.68.175 (10.80.68.175) 7.147 ms 7.132 ms 10.80.68.161 (10.80.68.161) 7.393 ms
+
+The output provides a detailed view of the path packets take to reach the Inlanefreight web server, located at www.inlanefreight.com with the IP address 134.209.24.248. It displays the IP addresses of all intermediary devices the packets traverse. Each line of the traceroute output contains valuable information, offering insights into the network route and performance.
+
+When setting up a network connection, it's important to specify the destination host and IP address. In this example, the destination host is 134.209.24.248, and the maximum number of hops allowed is 30. This ensures that the connection is established efficiently and reliably. By providing this information, the system can route traffic to the correct destination and limit the number of intermediate stops the data needs to make.
+
+The second line shows the first hop in the traceroute, which is the local network gateway with the IP address 10.80.71.5, followed by the next three columns show the time it took for each of the three packets sent to reach the gateway in milliseconds (2.716 ms, 2.700 ms, and 2.730 ms).
+
+Next, we see the second hop in the traceroute. However, there was no response from the device at that hop, indicated by the three asterisks instead of the IP address. This could mean the device is down, blocking ICMP traffic, or a network issue caused the packets to drop.
+
+In the fourth line, we can see the third hop in the traceroute, consisting of two devices with IP addresses 10.80.68.175 and 10.80.68.161, and again the next three columns show the time it took for each of the three packets to reach the first device (7.147 ms, 7.132 ms, and 7.393 ms).
