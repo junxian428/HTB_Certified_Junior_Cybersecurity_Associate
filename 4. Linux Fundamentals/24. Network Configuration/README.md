@@ -164,3 +164,27 @@ Network troubleshooting is an essential process that involves diagnosing and res
 6. Nmap
 
 By using these tools and others like them, we can better understand how the network functions and quickly diagnose any issues that may arise. For example, ping is a command-line tool used to test connectivity between two devices. It sends packets to a remote host and measures the time to return them. To use ping, we can enter the following command:
+
+<h3>Ping</h3>
+
+@htb[/htb]$ ping <remote_host>
+
+For example, pinging the Google DNS server will send ICMP packets to the Google DNS server and display the response times.
+
+@htb[/htb]$ ping 8.8.8.8
+
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=119 time=1.61 ms
+
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=119 time=1.06 ms
+
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=119 time=0.636 ms
+
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=119 time=0.685 ms
+^C
+--- 8.8.8.8 ping statistics ---
+
+4 packets transmitted, 4 received, 0% packet loss, time 3017ms
+
+rtt min/avg/max/mdev = 0.636/0.996/1.607/0.388 ms
