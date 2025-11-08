@@ -84,13 +84,18 @@ Built-in chains
 User-defined chains
 The built-in chains are pre-defined and automatically created when a table is created. Each table has a different set of built-in chains. For example, the filter table has three built-in chains:
 
-INPUT
-OUTPUT
-FORWARD
+- INPUT
+
+- OUTPUT
+
+- FORWARD
+
 These chains are used to filter incoming and outgoing network traffic, as well as traffic that is being forwarded between different network interfaces. The nat table has two built-in chains:
 
-PREROUTING
-POSTROUTING
+- PREROUTING
+
+- POSTROUTING
+
 The PREROUTING chain is used to modify the destination IP address of incoming packets before the routing table processes them. The POSTROUTING chain is used to modify the source IP address of outgoing packets after the routing table has processed them. The mangle table has five built-in chains:
 
 - PREROUTING
