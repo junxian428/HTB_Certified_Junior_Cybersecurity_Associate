@@ -297,3 +297,5 @@ Here are a few optional exercises we can use to improve our filtering skills and
 7. All usernames with their UID and set shells separated by a comma (,) and exclude the ones that contain nologin or false.
 
 8. All usernames with their UID and set shells separated by a comma (,) and exclude the ones that contain nologin and count all lines of the filtered output.
+
+- 0 How many services are listening on the target system on all interfaces? (Not on localhost and IPv4 only)
