@@ -184,3 +184,17 @@ Apache web server has a variety of features that allow us to host a secure and e
 <h3>Install Apache Web Server</h3>
 
 @htb[/htb]$ sudo apt install apache2 -y
+
+For Apache2, to specify which folders can be accessed, we can edit the file /etc/apache2/apache2.conf with a text editor. This file contains the global settings. We can change the settings to specify which directories can be accessed and what actions can be performed on those directories.
+
+<h3>Apache Configuration</h3>
+
+<Directory /var/www/html>
+
+Options Indexes FollowSymLinks
+
+AllowOverride All
+
+Require all granted
+
+</directory>
