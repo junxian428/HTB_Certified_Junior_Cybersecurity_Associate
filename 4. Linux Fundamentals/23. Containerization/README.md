@@ -52,3 +52,125 @@ echo '[!] You need to log out and log back in for the group changes to take effe
 # Test Docker installation
 
 docker run hello-world
+
+The Docker engine and specific Docker images are needed to run a container. These can be obtained from the Docker Hub, a repository of pre-made images, or created by the user. The Docker Hub is a cloud-based registry for software repositories or a library for Docker images. It is divided into a public and a private area. The public area allows users to upload and share images with the community. It also contains official images from the Docker development team and established open-source projects. Images uploaded to a private area of the registry are not publicly accessible. They can be shared within a company or with teams and acquaintances.
+
+Creating a Docker image is done by creating a Dockerfile, which contains all the instructions the Docker engine needs to create the container. We can use Docker containers as our “file hosting” server when transferring specific files to our target systems. Therefore, we must create a Dockerfile based on Ubuntu 22.04 with Apache and SSH server running. With this, we can use scp to transfer files to the docker image, and Apache allows us to host files and use tools like curl, wget, and others on the target system to download the required files. Such a Dockerfile could look like the following:
+
+<h3>Dockerfile</h3>
+
+# Use the latest Ubuntu 22.04 LTS as the base image
+
+FROM ubuntu:22.04
+
+# Update the package repository and install the required packages
+
+RUN apt-get update && \
+ apt-get install -y \
+
+apache2 \
+
+openssh-server \
+
+&& \
+
+rm -rf /var/lib/apt/lists/\*
+
+# Create a new user called "docker-user"
+
+RUN useradd -m docker-user && \
+ echo "docker-user:password" | chpasswd
+
+# Give the docker-user user full access to the Apache and SSH services
+
+RUN chown -R docker-user:docker-user /var/www/html && \
+ chown -R docker-user:docker-user /var/run/apache2 && \
+ chown -R docker-user:docker-user /var/log/apache2 && \
+ chown -R docker-user:docker-user /var/lock/apache2 && \
+ usermod -aG sudo docker-user && \
+ echo "docker-user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# Expose the required ports
+
+EXPOSE 22 80
+
+# Start the SSH and Apache services
+
+CMD service ssh start && /usr/sbin/apache2ctl -D FOREGROUND
+
+After we have defined our Dockerfile, we need to convert it into an image. With the build command, we take the directory with the Dockerfile, execute the steps from the Dockerfile, and store the image in our local Docker Engine. If one of the steps fails due to an error, the container creation will be aborted. With the option -t, we give our container a tag, so it is easier to identify and work with later.
+
+<h3>Docker Build</h3>
+
+@htb[/htb]$ docker build -t FS_docker .
+
+Once the Docker image has been created, it can be executed through the Docker engine, making it a very efficient and easy way to run a container. It is similar to the virtual machine concept, based on images. Still, these images are read-only templates and provide the file system necessary for runtime and all parameters. A container can be considered a running process of an image. When a container is to be started on a system, a package with the respective image is first loaded if unavailable locally. We can start the container by the following command docker run:
+
+<h3>Docker Run - Syntax</h3>
+
+@htb[/htb]$ docker run -p <host port>:<docker port> -d <docker container name>
+
+<h3>Docker Run</h3>
+
+@htb[/htb]$ docker run -p 8022:22 -p 8080:80 -d FS_docker
+
+In this case, we start a new container from the image FS_docker and map the host ports 8022 and 8080 to container ports 22 and 80, respectively. The container runs in the background, allowing us to access the SSH and HTTP services inside the container using the specified host ports.
+
+<h3>Docker Management</h3>
+
+When managing Docker containers, Docker provides a comprehensive suite of tools that enable us to easily create, deploy, and manage containers. With these powerful tools, we can list, start and stop containers and effectively manage them, ensuring seamless execution of applications. Some of the most commonly used Docker management commands are:
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>docker ps</td>
+      <td>List all running containers</td>
+    </tr>
+    <tr>
+      <td>docker stop</td>
+      <td>Stop a running container</td>
+    </tr>
+    <tr>
+      <td>docker start</td>
+      <td>Start a stopped container</td>
+    </tr>
+    <tr>
+      <td>docker restart</td>
+      <td>Restart a running container</td>
+    </tr>
+    <tr>
+      <td>docker rm</td>
+      <td>Remove a container</td>
+    </tr>
+    <tr>
+      <td>docker rmi</td>
+      <td>Remove a Docker image</td>
+    </tr>
+    <tr>
+      <td>docker logs</td>
+      <td>View the logs of a container</td>
+    </tr>
+  </tbody>
+</table>
+
+It's important to note that Docker commands can be combined with various options to add extra functionality. For example, you can specify which ports to expose, mount volumes to retain data, or set environment variables to configure your containers. This flexibility allows you to customize your Docker containers to meet specific needs and requirements.
+
+When working with Docker images, it's crucial to understand that any changes made to a running container based on an image are not automatically saved to the image. To preserve these changes, you need to create a new image that includes them. This is done by writing a new Dockerfile, which starts with the FROM statement (specifying the base image) and then includes the necessary commands to apply the changes. Once the Dockerfile is ready, you can use the docker build command to build the new image and assign it a unique tag to identify it. This process ensures that the original image remains unchanged, while the new image reflects the updates.
+
+It's also important to remember that Docker containers are stateless by design, meaning that any changes made inside a running container (e.g., modifying files) are lost once the container is stopped or removed. For this reason, it's best practice to use volumes to persist data outside of the container or store application state.
+
+In production environments, managing containers at scale becomes more complex. Tools like Docker Compose or Kubernetes help orchestrate containers, enabling you to manage, scale, and link multiple containers efficiently.
+
+<h3>Linux Containers</h3>
+
+Linux Containers (LXC) is a lightweight virtualization technology that allows multiple isolated Linux systems (called containers) to run on a single host. LXC uses key resource isolation features, such as control groups (cgroups) and namespaces, to ensure that each container operates independently. Unlike traditional virtual machines, which require a full OS for each instance, containers share the host's kernel, making LXC more efficient in terms of resource usage.
+
+LXC provides a comprehensive set of tools and APIs for managing and configuring containers, making it a popular choice for containerization on Linux systems. However, while LXC and Docker are both containerization technologies, they serve different purposes and have unique features.
+
+Docker builds upon the idea of containerization by adding ease of use and portability, which has made it highly popular in the world of DevOps. Docker emphasizes packaging applications with all their dependencies in a portable "image", allowing them to be easily deployed across different environments. However, there are some differences between the two that can be distinguished based on the following categories:
