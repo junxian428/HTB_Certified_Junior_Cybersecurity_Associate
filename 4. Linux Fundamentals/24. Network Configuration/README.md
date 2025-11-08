@@ -294,3 +294,13 @@ On the other hand, TCP wrappers focus on controlling access to network services 
 As we navigate the world of Linux, we inevitably encounter a wide range of technologies, applications, and services that we need to become familiar with. This is a crucial skill, particularly if we work in cybersecurity and strive to improve our expertise continuously. For this reason, we highly recommend dedicating time to learning about configuring important security measures such as SELinux, AppArmor, and TCP wrappers on your own. By taking on this (optional but highly efficient) challenge, you'll deepen your understanding of these technologies, build up your problem-solving skills, and gain valuable experience that will serve you well in the future. We highly recommend to use a personal VM and make snapshots before making changes.
 
 When it comes to implementing cybersecurity measures, there is no one-size-fits-all approach. It is important to consider the specific information you want to protect and the tools you will use to do so. However, you can practice and implement several optional tasks with others in the Discord channel to increase your knowledge and skills in this area. By taking advantage of the helpfulness of others and sharing your own expertise, you can deepen your understanding of cybersecurity and help others do the same. Remember, explaining concepts to others is essential to teaching and learning.
+
+<h3>SELinux</h3>
+
+1. Install SELinux on your VM.
+
+2. Configure SELinux to prevent a user from accessing a specific file.
+
+3. Configure SELinux to allow a single user to access a specific network service but deny access to all others.
+
+4. Configure SELinux to deny access to a specific user or group for a specific network service.
