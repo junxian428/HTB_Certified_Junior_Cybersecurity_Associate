@@ -158,3 +158,49 @@ $ find / -perm -4000
 The main difference between these two commands is the use of the - before the permission value in the Solaris command. This is because Solaris uses a different permission system than Linux.
 
 <h3>NFS in Solaris</h3>
+
+Solaris has its own implementation of NFS, which is slightly different from Linux distributions like Ubuntu. In Solaris, the NFS server can be configured using the share command, which is used to share a directory over the network, and it also allows us to specify various options such as read/write permissions, access restrictions, and more. To share a directory over NFS in Solaris, we can use the following command:
+
+$ share -F nfs -o rw /export/home
+
+This command shares the /export/home directory with read and writes permissions over NFS. An NFS client can mount the NFS file system using the mount command, the same way as with Ubuntu. To mount an NFS file system in Solaris, we need to specify the server name and the path to the shared directory. For example, to mount an NFS share from a server with the IP address 10.129.15.122 and the shared directory /nfs_share, we use the following command:
+
+@htb[/htb]$ mount -F nfs 10.129.15.122:/nfs_share /mnt/local
+
+In Solaris, the configuration for NFS is stored in the /etc/dfs/dfstab file. This file contains entries for each shared directory, along with the various options for NFS sharing.
+
+# cat /etc/dfs/dfstab
+
+share -F nfs -o rw /export/home
+
+<h3>Process Mapping</h3>
+
+Process mapping is an essential aspect of system administration and troubleshooting. The lsof command is a powerful utility that lists all the files opened by a process, including network sockets and other file descriptors that we can use in Debian distributions like Ubuntu. We can use lsof to list all the files opened by a process. For example, to list all the files opened by the Apache web server process, we can use the following command:
+
+@htb[/htb]$ sudo lsof -c apache2
+
+In Solaris, the pfiles command can be used to list all the files opened by a process. For example, to list all the files opened by the Apache web server process, we can use the following command:
+
+$ pfiles `pgrep httpd`
+
+This command lists all the files opened by the Apache web server process. The output of the pfiles command is similar to the output of the lsof command and provides information about the type of file descriptor, the file descriptor number, and the file name.
+
+<h3>Executable Access</h3>
+
+In Solaris, truss is used, which is a highly useful utility for developers and system administrators who need to debug complex software issues on the Solaris operating system. By tracing the system calls made by a process, truss can help identify the source of errors, performance issues, and other problems but can also reveal some sensitive information that may arise during application development or system maintenance. The utility can also provide detailed information about system calls, including the arguments passed to them and their return values, allowing users to better understand the behavior of their applications and the underlying operating system.
+
+Strace is an alternative to truss but for Ubuntu, and it is an essential tool for system administrators and developers alike, helping them diagnose and troubleshoot issues in real-time. It enables users to analyze the interactions between the operating system and applications running on it, which is especially useful in highly complex and mission-critical environments. With truss, users can quickly identify and isolate issues related to application performance, network connectivity, and system resource utilization, among others.
+
+For example, to trace the system calls made by the Apache web server process, we can use the following command:
+
+@htb[/htb]$ sudo strace -p `pgrep apache2`
+
+Here's an example of how to use truss to trace the system calls made by the ls command in Solaris:
+
+$ truss ls
+
+execve("/usr/bin/ls", 0xFFBFFDC4, 0xFFBFFDC8) argc = 1
+
+...SNIP...
+
+The output is similar to strace, but the format is slightly different. One difference between strace and truss is that truss can also trace the signals sent to a process, while strace cannot. Another difference is that truss has the ability to trace the system calls made by child processes, while strace can only trace the system calls made by the process specified on the command line.
