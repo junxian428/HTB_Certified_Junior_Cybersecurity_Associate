@@ -8,7 +8,6 @@ The Elastic stack, created by Elastic, is an open-source collection of mainly th
 
 The high-level architecture of the Elastic stack can be enhanced in resource-intensive environments with the addition of Kafka, RabbitMQ, and Redis for buffering and resiliency, and nginx for security.
 
-
 <img width="1005" height="514" alt="image" src="https://github.com/user-attachments/assets/6e9b343d-4f8a-4d1c-a16f-f8ade802cd8b" />
 
 Let's delve into each component of the Elastic stack.
@@ -47,7 +46,6 @@ As Security Operations Center (SOC) analysts, we are likely to extensively use K
 
 <img width="1017" height="439" alt="image" src="https://github.com/user-attachments/assets/0dbc8aae-268f-4496-9107-6c495ac76278" />
 
-
 Kibana Query Language (KQL) is a powerful and user-friendly query language designed specifically for searching and analyzing data in Kibana. It simplifies the process of extracting insights from your indexed Elasticsearch data, offering a more intuitive approach than Elasticsearch's Query DSL. Let's explore the technical aspects and key components of the KQL language.
 
 Basic Structure: KQL queries are composed of field:value pairs, with the field representing the data's attribute and the value representing the data you're searching for. For example:
@@ -84,9 +82,9 @@ By using this query, SOC analysts can identify failed login attempts against dis
 
 Wildcards and Regular Expressions: KQL supports wildcards and regular expressions to search for patterns in field values. For example:
 
-event.code:4625 AND user.name: admin*
+event.code:4625 AND user.name: admin\*
 
-The Kibana KQL query event.code:4625 AND user.name: admin* filters data in Kibana to show events that have the Windows event code 4625 (failed login attempts) and where the username starts with "admin", such as "admin", "administrator", "admin123", etc.
+The Kibana KQL query event.code:4625 AND user.name: admin\* filters data in Kibana to show events that have the Windows event code 4625 (failed login attempts) and where the username starts with "admin", such as "admin", "administrator", "admin123", etc.
 
 This query (if extended) can be useful in identifying potentially malicious login attempts targeted at administrator accounts.
 
@@ -118,7 +116,6 @@ Using KQL's free text search we can search for "4625". In the returned records w
 - When it comes to disabled accounts, the aforementioned resource informs us that a SubStatus value of 0xC0000072 inside a 4625 Windows event log indicates that the account is currently disabled. Again using KQL's free text search we can search for "0xC0000072". By expanding the returned record we notice winlog.event_data.SubStatus that is related to Winlogbeat
 
   <img width="966" height="377" alt="image" src="https://github.com/user-attachments/assets/99164302-2459-4e3f-9901-525ac76f5336" />
-
 
 Data and field identification approach 2: Leverage Elastic's documentation
 
@@ -154,5 +151,10 @@ Elastic Common Schema (ECS) is a shared and extensible vocabulary for events and
 
 - Future-proofing: As ECS is the foundational schema across the Elastic Stack, adopting ECS ensures future compatibility with enhancements and new features that are introduced into the Elastic ecosystem.
 
+* 0 Navigate to http://[Target IP]:5601, click on the side navigation toggle, and click on "Discover". Then, click on the calendar icon, specify "last 15 years", and click on "Apply". Finally, choose the "windows\*" index pattern. Now, execute the KQL query that is mentioned in the "Comparison Operators" part of this section and enter the username of the disabled account as your answer. Just the username; no need to account for the domain.
 
+anni
 
+- 1 Now, execute the KQL query that is mentioned in the "Wildcards and Regular Expressions" part of this section and enter the number of returned results (hits) as your answer.
+
+8
