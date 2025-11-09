@@ -294,3 +294,14 @@ ADMIN$ C:\WINDOWS Remote Admin
 Company Data C:\Users\htb-student\Desktop\Company Data
 
 The command completed successfully.
+
+What protocol discussed in this section is used to share resources on the network using Windows? (Format: case sensitive)
+SMB
+
+- 1 What is the name of the utility that can be used to view logs made by a Windows system? (Format: 2 words, 1 space, not case sensitive)
+
+  Event Viewer
+
+- 1 What is the full directory path to the Company Data share we created?
+
+  C:\Users\htb-student\Desktop\Company Data
