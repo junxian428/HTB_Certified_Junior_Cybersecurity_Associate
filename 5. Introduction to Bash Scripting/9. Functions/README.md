@@ -111,3 +111,5 @@ Number of arguments: 1
 Function status code: 0
 
 Content of the variable:
+
+    Number of arguments: 1
