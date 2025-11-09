@@ -64,7 +64,7 @@ Organizational oversight: Despite vendor advisories, the default credentials wer
 
 There was a Java web vulnerability related to the ManageEngine ADManager Plus product where unauthenticated remote code execution was possible. The actor utilized this and established an outbound C2 over HTTPS to 103.112.60.117 (an attacker-controlled cloud host), impersonating update traffic. The following Sysmon Event ID 3 (Network Connection detected) was logged:
 
-Event 3, Sysmon 
+Event 3, Sysmon
 
 Network Connection detected:
 
@@ -84,30 +84,30 @@ For this activity, the following event log was created in the Windows Event Logs
 
 An account was successfully logged on.
 
- Subject:
- 
+Subject:
+
     Security ID: SYSTEM
-    
+
     Account Name: DEV-021$
-    
+
     Account Domain: INSIGHT
-    
+
     Time: 2025-10-04T02:03:12Z
 
- Logon Information:
- 
+Logon Information:
+
     Logon Type: 10
 
- Network Information:
- 
+Network Information:
+
     Workstation Name: DEV-021
-    
+
     Source Network Address: 103.112.60.117
 
- New Logon:
- 
+New Logon:
+
     SubjectUserName: insight\svc_deployer
-    
+
     SourceNetworkAddress: 103.112.60.117
 
 After a successful logon, the attackers conducted some domain reconnaissance. They found some interesting file shares on the file server, which they attempted to access multiple times. On the file server, they located client project folders that contained draft reports, survey data, and market forecasts.
@@ -117,7 +117,6 @@ After a successful logon, the attackers conducted some domain reconnaissance. Th
 On the file server, multiple event logs were created, such as 5140(S, F): A network share object was accessed. However, there were no rules created for generating alerts specifically for these public IP RDP events.
 
 These kinds of event logs can be detected using the following Sigma rule, for example:
-
 
 After exploring and observing for a week, they started compressing and exfiltrating selected data. The attackers packaged stolen client materials into a file named diagnostics_data.zip, a filename chosen to resemble routine telemetry. The archive was then uploaded to the attacker-controlled host over HTTPS. Because the filename resembled legitimate diagnostics data and the upload used standard HTTPS, it did not immediately raise alarms. This tactic increases the attackers chance of exfiltrating data before defenders escalate.
 
@@ -135,12 +134,9 @@ Sysmon Event 1: Image: C:\Windows\System32\msiexec.exe CommandLine: "msiexec /i 
 
 This malware, with spying and data exfiltration capabilities, is deployed on all domain machines using GPO.
 
-
 <img width="1217" height="569" alt="image" src="https://github.com/user-attachments/assets/bcf1a6ba-4f21-4c27-80ee-dd2840053f2d" />
 
-
 Around the same time, another threat actor, Silent Jackal, also performed some activities on a separate PHP-based reporting portal. This server had an unpatched file upload vulnerability, which was exploited by the threat actor to gain access to this server. Silent Jackal uploaded a file into the root directory of the web server. Their activities appeared limited to leaving the checkme.txt marker file. This created noise in the environment and provided defenders with the first clue of compromise.
-
 
 <img width="1226" height="576" alt="image" src="https://github.com/user-attachments/assets/6de01e63-d6e6-4876-a1c1-3362161687c0" />
 
@@ -167,7 +163,6 @@ The correlation of the following was done as follows:
 5. Outbound HTTPS to an unusual IP address.
 
 After the correlation, the SOC analyst immediately escalated the incident to the incident response team and opened a case in TheHive. The following actions and findings completed the investigation and response:
-
 
 1. Case creation and triage
 
@@ -227,7 +222,12 @@ The following lessons were learned:
 
 4. Post-incident monitoring must include scanning for persistence mechanisms, since deleting an attacker’s marker file does not neutralize the root cause.
 
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 Download the Wazuh exported logs file (i.e., wazuh_export.zip), and identify all events that indicate potential credential compromise. Check the event ID 4688 and verify the full path of the parent process name that executed a credential dumping tool. Answer format is C:\\Pr........
+
 Reference:
 
 https://github.com/SigmaHQ/sigma/blob/master/rules/windows/builtin/security/account_management/win_security_successful_external_remote_rdp_login.yml
-
