@@ -125,3 +125,21 @@ We can also combine loops and merge their execution with different values. It is
 The while loops also work with conditions like if-else. A while loop needs some sort of a counter to orientate itself when it has to stop executing the commands it contains. Otherwise, this leads to an endless loop. Such a counter can be a variable that we have declared with a specific value or a boolean value. While loops run while the boolean value is "True". Besides the counter, we can also use the command "break," which interrupts the loop when reaching this command like in the following example:
 
 <h3>WhileBreaker.sh</h3>
+
+./WhileBreaker.sh
+
+Counter: 1
+
+Counter: 2
+
+Counter: 3
+
+Counter: 4
+
+<h3>Until Loops</h3>
+
+There is also the until loop, which is relatively rare. Nevertheless, the until loop works precisely like the while loop, but with the difference:
+
+The code inside a until loop is executed as long as the particular condition is false.
+
+The other way is to let the loop run until the desired value is reached. The "until" loops are very well suited for this. This type of loop works similarly to the "while" loop but, as already mentioned, with the difference that it runs until the boolean value is "False."
