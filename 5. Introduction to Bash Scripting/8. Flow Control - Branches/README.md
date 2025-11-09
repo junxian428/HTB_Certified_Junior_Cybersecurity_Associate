@@ -17,3 +17,7 @@ pattern_2 ) statements ;;
 pattern_3 ) statements ;;
 
 esac
+
+The definition of switch-case starts with case, followed by the variable or value as an expression, which is then compared in the pattern. If the variable or value matches the expression, then the statements are executed after the parenthesis and ended with a double semicolon (;;).
+
+In our CIDR.sh script, we have used such a case statement. Here we defined four different options that we assigned to our script, how it should proceed after our decision.
