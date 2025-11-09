@@ -143,3 +143,25 @@ There is also the until loop, which is relatively rare. Nevertheless, the until 
 The code inside a until loop is executed as long as the particular condition is false.
 
 The other way is to let the loop run until the desired value is reached. The "until" loops are very well suited for this. This type of loop works similarly to the "while" loop but, as already mentioned, with the difference that it runs until the boolean value is "False."
+
+./Until.sh
+
+Counter: 1
+
+Counter: 2
+
+Counter: 3
+
+Counter: 4
+
+Counter: 5
+
+Counter: 6
+
+Counter: 7
+
+Counter: 8
+
+Counter: 9
+
+Counter: 10
