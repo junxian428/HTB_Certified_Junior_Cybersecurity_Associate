@@ -111,9 +111,14 @@ Using KQL's free text search we can search for "4625". In the returned records w
 
 - If the organization we work for is using the Elastic stack across all offices and security departments, it is preferred that we use the ECS fields in our queries for reasons that we will cover at the end of this section.
 
-- @timestamp typically contains the time extracted from the original event and it is different from event.created 
+- @timestamp typically contains the time extracted from the original event and it is different from event.created
+
+<img width="893" height="356" alt="image" src="https://github.com/user-attachments/assets/a983b7c0-1a2c-4a9d-bdb9-6bdf6b89d766" />
 
 - When it comes to disabled accounts, the aforementioned resource informs us that a SubStatus value of 0xC0000072 inside a 4625 Windows event log indicates that the account is currently disabled. Again using KQL's free text search we can search for "0xC0000072". By expanding the returned record we notice winlog.event_data.SubStatus that is related to Winlogbeat
+
+  <img width="966" height="377" alt="image" src="https://github.com/user-attachments/assets/99164302-2459-4e3f-9901-525ac76f5336" />
+
 
 Data and field identification approach 2: Leverage Elastic's documentation
 
