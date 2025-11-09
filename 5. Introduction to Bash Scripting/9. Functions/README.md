@@ -44,3 +44,9 @@ esac
 Such functions should be designed so that they can be used with a fixed structure of the values or at least only with a fixed format. Like we have already seen in our CIDR.sh script, we used the format of an IP address for the function "network_range". The parameters are optional, and therefore we can call the function without parameters. In principle, the same applies to the passed parameters as to parameters passed to a shell script. These are $1 - $9 (${n}), or $variable as we have already seen. Each function has its own set of parameters. So they do not collide with those of other functions or the parameters of the shell script.
 
 An important difference between bash scripts and other programming languages is that all defined variables are always processed globally unless otherwise declared by "local." This means that the first time we have defined a variable in a function, we will call it in our main script (outside the function). Passing the parameters to the functions is done the same way as we passed the arguments to our script and looks like this:
+
+@htb[/htb]$ ./PrintPars.sh
+
+First parameter Second parameter Third parameter
+
+<h3>Return Values</h3>
