@@ -23,3 +23,49 @@ This process is also used to find vulnerabilities in programs. For example, we c
   CIDR.sh <domain>
 
 - exit 1
+
+Here Bash shows us precisely which function or command was executed with which values. This is indicated by the plus sign (+) at the beginning of the line. If we want to see all the code for a particular function, we can set the "-v" option that displays the output in more detail.
+
+<h3>CIDR.sh - Verbose Debugging</h3>
+
+@htb[/htb]$ bash -x -v CIDR.sh
+
+#!/bin/bash
+
+# Check for given argument
+
+if [ $# -eq 0 ]
+
+then
+
+echo -e "You need to specify the target domain.\n"
+
+echo -e "Usage:"
+
+echo -e "\t$0 <domain>"
+
+exit 1
+
+else
+
+domain=$1
+
+fi
+
+- '[' 0 -eq 0 ']'
+
+- echo -e 'You need to specify the target domain.\n'
+
+  You need to specify the target domain.
+
+- echo -e Usage:
+
+  Usage:
+
+- echo -e '\tCIDR.sh <domain>'
+
+  CIDR.sh <domain>
+
+- exit 1
+
+In comparison to normal debugging, we see the entire code section that has been processed so far and then the individual steps that have been taken.
