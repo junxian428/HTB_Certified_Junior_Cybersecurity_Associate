@@ -39,3 +39,37 @@ do
 echo $variable
 
 done
+
+---
+
+for ip in "10.10.10.170 10.10.10.174 10.10.10.175"
+
+do
+
+ping -c 1 $ip
+
+done
+
+Of course, we can also write these commands in a single line. Such a command would look like this:
+
+@htb[/htb]$ for ip in 10.10.10.170 10.10.10.174;do ping -c 1 $ip;done
+
+PING 10.10.10.170 (10.10.10.170): 56 data bytes
+
+64 bytes from 10.10.10.170: icmp_seq=0 ttl=63 time=42.106 ms
+
+--- 10.10.10.170 ping statistics ---
+
+1 packets transmitted, 1 packets received, 0.0% packet loss
+
+round-trip min/avg/max/stddev = 42.106/42.106/42.106/0.000 ms
+
+PING 10.10.10.174 (10.10.10.174): 56 data bytes
+
+64 bytes from 10.10.10.174: icmp_seq=0 ttl=63 time=45.700 ms
+
+--- 10.10.10.174 ping statistics ---
+
+1 packets transmitted, 1 packets received, 0.0% packet loss
+
+round-trip min/avg/max/stddev = 45.700/45.700/45.700/0.000 ms
