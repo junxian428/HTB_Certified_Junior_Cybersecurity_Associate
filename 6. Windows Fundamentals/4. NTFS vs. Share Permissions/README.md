@@ -35,7 +35,6 @@ NTFS permissions and share permissions are often understood to be the same. Plea
   </tbody>
 </table>
 
-
 <h3>NTFS Basic permissions</h3>
 
 <table border="1" cellpadding="6" cellspacing="0">
@@ -186,23 +185,21 @@ Note: A server is technically a software function used to service the requests o
 
 @htb[/htb]$ smbclient -L SERVER_IP -U htb-student
 
-Enter WORKGROUP\htb-student's password: 
+Enter WORKGROUP\htb-student's password:
 
-	Sharename       Type      Comment
-  
-	---------       ----      -------
-  
-	ADMIN$          Disk      Remote Admin
-  
-	C$              Disk      Default share
-  
-	Company Data    Disk      
-  
-	IPC$            IPC       Remote IPC
-  
+    Sharename       Type      Comment
+
+    ---------       ----      -------
+
+    ADMIN$          Disk      Remote Admin
+
+    C$              Disk      Default share
+
+    Company Data    Disk
+
+    IPC$            IPC       Remote IPC
 
 <h3>Connecting to the Company Data share</h3>
-
 
 htb[/htb]$ smbclient '\\SERVER_IP\Company Data' -U htb-student
 
@@ -210,7 +207,7 @@ Password for [WORKGROUP\htb-student]:
 
 Try "help" to get a list of possible commands.
 
-smb: \> 
+smb: \>
 
 What could potentially block us from accessing this share if all our entries are correct and our permissions list has the Everyone group present with at least Read permissions?
 
@@ -282,8 +279,18 @@ Event Viewer is another good place to investigate actions completed on Windows. 
 
 <img width="1016" height="707" alt="image" src="https://github.com/user-attachments/assets/78c42ec1-802b-434a-9165-4b0c9a720e1a" />
 
+net share
 
+Share name Resource Remark
 
+---
 
+C$ C:\ Default share
 
+IPC$ Remote IPC
 
+ADMIN$ C:\WINDOWS Remote Admin
+
+Company Data C:\Users\htb-student\Desktop\Company Data
+
+The command completed successfully.
