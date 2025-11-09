@@ -66,3 +66,5 @@ We can also calculate the length of the variable. Using this function ${#variabl
 @htb[/htb]$ ./VarLength.sh
 
 10
+
+If we look at our CIDR.sh script, we will see that we have used the increase and decrease operators several times. This ensures that the while loop, which we will discuss later, runs and pings the hosts while the variable "stat" has a value of 1. If the ping command ends with code 0 (successful), we get a message that the host is up and the "stat" variable, as well as the variables "hosts_up" and "hosts_total" get changed.
