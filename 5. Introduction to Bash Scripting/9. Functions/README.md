@@ -21,3 +21,26 @@ name() {
 }
 
 We can choose the method to define a function that is most comfortable for us. In our CIDR.sh script, we used the first method because it is easier to read with the keyword "function."
+
+The function is called only by calling the specified name of the function, as we have seen in the case statement.
+
+<h3>Function Execution - CIDR.sh</h3>
+
+<SNIP>
+case $opt in
+
+    "1") network_range ;;
+
+    "2") ping_host ;;
+
+    "3") network_range && ping_host ;;
+
+    "*") exit 0 ;;
+
+esac
+
+<h3>Parameter Passing</h3>
+
+Such functions should be designed so that they can be used with a fixed structure of the values or at least only with a fixed format. Like we have already seen in our CIDR.sh script, we used the format of an IP address for the function "network_range". The parameters are optional, and therefore we can call the function without parameters. In principle, the same applies to the passed parameters as to parameters passed to a shell script. These are $1 - $9 (${n}), or $variable as we have already seen. Each function has its own set of parameters. So they do not collide with those of other functions or the parameters of the shell script.
+
+An important difference between bash scripts and other programming languages is that all defined variables are always processed globally unless otherwise declared by "local." This means that the first time we have defined a variable in a function, we will call it in our main script (outside the function). Passing the parameters to the functions is done the same way as we passed the arguments to our script and looks like this:
