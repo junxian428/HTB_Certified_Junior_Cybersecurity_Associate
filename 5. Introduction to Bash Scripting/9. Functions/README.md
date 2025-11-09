@@ -50,3 +50,48 @@ An important difference between bash scripts and other programming languages is 
 First parameter Second parameter Third parameter
 
 <h3>Return Values</h3>
+
+When we start a new process, each child process (for example, a function in the executed script) returns a return code to the parent process (bash shell through which we executed the script) at its termination, informing it of the status of the execution. This information is used to determine whether the process ran successfully or whether specific errors occurred. Based on this information, the parent process can decide on further program flow.
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Return Code</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>General errors</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Misuse of shell builtins</td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td>Command invoked cannot execute</td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td>Command not found</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>Invalid argument to exit</td>
+    </tr>
+    <tr>
+      <td>128+n</td>
+      <td>Fatal error signal "n"</td>
+    </tr>
+    <tr>
+      <td>130</td>
+      <td>Script terminated by Control-C</td>
+    </tr>
+    <tr>
+      <td>255*</td>
+      <td>Exit status out of range</td>
+    </tr>
+  </tbody>
+</table>
