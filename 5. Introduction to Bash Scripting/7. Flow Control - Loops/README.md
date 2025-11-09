@@ -165,3 +165,11 @@ Counter: 8
 Counter: 9
 
 Counter: 10
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 3 Create a "For" loop that encodes the variable "var" 28 times in "base64". The number of characters in the 28th hash is the value that must be assigned to the "salt" variable.
+
+  HTBL00p5r0x
