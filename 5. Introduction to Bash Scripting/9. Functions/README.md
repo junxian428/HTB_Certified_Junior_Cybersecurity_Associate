@@ -95,3 +95,19 @@ When we start a new process, each child process (for example, a function in the 
     </tr>
   </tbody>
 </table>
+
+To get the value of a function back, we can use several methods like return, echo, or a variable. In the next example, we will see how to use "$?" to read the "return code," how to pass the arguments to the function and how to assign the result to a variable.
+
+<h3>Return.sh - Execution</h3>
+
+@htb[/htb]$ ./Return.sh
+
+Number of arguments: 0
+
+Function status code: 1
+
+Number of arguments: 1
+
+Function status code: 0
+
+Content of the variable:
