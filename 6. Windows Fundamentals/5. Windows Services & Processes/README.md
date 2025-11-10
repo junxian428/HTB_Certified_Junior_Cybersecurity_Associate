@@ -101,48 +101,48 @@ specified criteria or has an exception.
 
 Capture Usage:
 
-   procdump.exe [-mm] [-ma] [-mp] [-mc Mask] [-md Callback_DLL] [-mk]
-   
+procdump.exe [-mm] [-ma] [-mp] [-mc Mask] [-md Callback_DLL] [-mk]
+
                 [-n Count]
-                
+
                 [-s Seconds]
-                
+
                 [-c|-cl CPU_Usage [-u]]
-                
+
                 [-m|-ml Commit_Usage]
-                
+
                 [-p|-pl Counter_Threshold]
-                
+
                 [-h]
-                
+
                 [-e [1 [-g] [-b]]]
-                
+
                 [-l]
-                
+
                 [-t]
-                
+
                 [-f  Include_Filter, ...]
-                
+
                 [-fx Exclude_Filter, ...]
-                
+
                 [-o]
-                
+
                 [-r [1..5] [-a]]
-                
+
                 [-wer]
-                
+
                 [-64]
-                
+
                 {
-                
+
                  {{[-w] Process_Name | Service_Name | PID} [Dump_File | Dump_Folder]}
-                 
+
                 |
-                
+
                  {-x Dump_Folder Image_File [Argument, ...]}
-                 
+
                 }
-				
+
 <SNIP>
 
 The suite includes tools such as Process Explorer, an enhanced version of Task Manager, and Process Monitor, which can be used to monitor file system, registry, and network activity related to any process running on the system. Some additional tools are TCPView, which is used to monitor internet activity, and PSExec, which can be used to manage/connect to systems via the SMB protocol remotely.
@@ -211,4 +211,6 @@ Windows Task Manager is a powerful tool for managing Windows systems. It provide
 
 Process Explorer is a part of the Sysinternals tool suite. This tool can show which handles and DLL processes are loaded when a program runs. Process Explorer shows a list of currently running processes, and from there, we can see what handles the process has selected in one view or the DLLs and memory-swapped files that have been loaded in another view. We can also search within the tool to show which processes tie back to a specific handle or DLL. The tool can also be used to analyze parent-child process relationships to see what child processes are spawned by an application and help troubleshoot any issues such as orphaned processed that can be left behind when a process is terminated.
 
+Identify one of the non-standard update services running on the host. Submit the full name of the service executable (not the DisplayName) as your answer.
 
+FoxitReaderUpdateService.exe
