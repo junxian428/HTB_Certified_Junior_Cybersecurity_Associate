@@ -66,3 +66,7 @@ Scheduling processes
 Setting up logging
 
 These tasks can all be performed using a combination of PowerShell and the WMI Command-Line Interface (WMIC). WMI can be run via the Windows command prompt by typing WMIC to open an interactive shell or by running a command directly such as wmic computersystem get name to get the hostname. We can view a listing of WMIC commands and aliases by typing WMIC /?.
+
+Use WMI to find the serial number of the system.
+
+00329-10280-00000-AA938
