@@ -234,3 +234,90 @@ CommandType Name Version Source
 Alias Show-Files
 
 PowerShell has a help system for cmdlets, functions, scripts, and concepts. This is not installed by default, but we can either run the Get-Help <cmdlet-name> -Online command to open the online help for a cmdlet or function in our web browser. We can type Update-Help to download and install help files locally.
+
+<img width="808" height="602" alt="image" src="https://github.com/user-attachments/assets/3a06ccc9-4ab9-496e-8376-a721744c1029" />
+
+Typing a command such as Get-Help Get-AppPackage will return just the partial help unless the Help files are installed.
+
+<img width="811" height="351" alt="image" src="https://github.com/user-attachments/assets/8d834bce-c19e-463a-abfd-ba7c3041f77a" />
+
+<h3>Running Scripts</h3>
+
+The PowerShell ISE (Integrated Scripting Environment) allows users to write PowerShell scripts on the fly. It also has an autocomplete/lookup function for PowerShell commands. The PowerShell ISE allows us to write and run scripts in the same console, which allows for quick debugging.
+
+We can run PowerShell scripts in a variety of ways. If we know the functions, we can run the script either locally or after loading into memory with a download cradle like the below example.
+
+<img width="814" height="497" alt="image" src="https://github.com/user-attachments/assets/97727cf7-e73b-47e2-99c2-28901107244f" />
+
+One common way to work with a script in PowerShell is to import it so that all functions are then available within our current PowerShell console session: Import-Module .\PowerView.ps1. We can then either start a command and cycle through the options or type Get-Module to list all loaded modules and their associated commands.
+
+<img width="816" height="447" alt="image" src="https://github.com/user-attachments/assets/aea5dbe9-e785-4eb9-98aa-5032fd6136b7" />
+
+<h3>Execution Policy</h3>
+
+Sometimes we will find that we are unable to run scripts on a system. This is due to a security feature called the execution policy, which attempts to prevent the execution of malicious scripts. The possible policies are:
+
+<table border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Policy</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AllSigned</td>
+      <td>All scripts can run, but a trusted publisher must sign scripts and configuration files. This includes both remote and local scripts. We receive a prompt before running scripts signed by publishers that we have not yet listed as either trusted or untrusted.</td>
+    </tr>
+    <tr>
+      <td>Bypass</td>
+      <td>No scripts or configuration files are blocked, and the user receives no warnings or prompts.</td>
+    </tr>
+    <tr>
+      <td>Default</td>
+      <td>This sets the default execution policy, Restricted for Windows desktop machines and RemoteSigned for Windows servers.</td>
+    </tr>
+    <tr>
+      <td>RemoteSigned</td>
+      <td>Scripts can run but requires a digital signature on scripts that are downloaded from the internet. Digital signatures are not required for scripts that are written locally.</td>
+    </tr>
+    <tr>
+      <td>Restricted</td>
+      <td>This allows individual commands but does not allow scripts to be run. All script file types, including configuration files (.ps1xml), module script files (.psm1), and PowerShell profiles (.ps1) are blocked.</td>
+    </tr>
+    <tr>
+      <td>Undefined</td>
+      <td>No execution policy is set for the current scope. If the execution policy for ALL scopes is set to undefined, then the default execution policy of Restricted will be used.</td>
+    </tr>
+    <tr>
+      <td>Unrestricted</td>
+      <td>This is the default execution policy for non-Windows computers, and it cannot be changed. This policy allows for unsigned scripts to be run but warns the user before running scripts that are not from the local intranet zone.</td>
+    </tr>
+  </tbody>
+</table>
+
+Below is an example of the current execution policy for all scopes.
+
+PS C:\htb> Get-ExecutionPolicy -List
+
+        Scope ExecutionPolicy
+        
+        ----- ---------------
+        
+MachinePolicy       Undefined
+
+   UserPolicy       Undefined
+   
+      Process       Undefined
+      
+  CurrentUser       Undefined
+  
+ LocalMachine    RemoteSigned
+ 
+The execution policy is not meant to be a security control that restricts user actions. A user can easily bypass the policy by either typing the script contents directly into the PowerShell window, downloading and invoking the script, or specifying the script as an encoded command. It can also be bypassed by adjusting the execution policy (if the user has the proper rights) or setting the execution policy for the current process scope (which can be done by almost any user as it does not require a configuration change and will only be set for the duration of the user's session).
+
+Below is an example of changing the execution policy for the current process (session).
+
+<img width="869" height="481" alt="image" src="https://github.com/user-attachments/assets/172e37b6-e344-40da-8703-91e4df8b6755" />
+
+
