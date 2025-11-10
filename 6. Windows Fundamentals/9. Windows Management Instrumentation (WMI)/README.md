@@ -48,3 +48,21 @@ WMI is a subsystem of PowerShell that provides system administrators with powerf
     </tr>
   </tbody>
 </table>
+
+Some of the uses for WMI are:
+
+Status information for local/remote systems
+
+Configuring security settings on remote machines/applications
+
+Setting and changing user and group permissions
+
+Setting/modifying system properties
+
+Code execution
+
+Scheduling processes
+
+Setting up logging
+
+These tasks can all be performed using a combination of PowerShell and the WMI Command-Line Interface (WMIC). WMI can be run via the Windows command prompt by typing WMIC to open an interactive shell or by running a command directly such as wmic computersystem get name to get the hostname. We can view a listing of WMIC commands and aliases by typing WMIC /?.
