@@ -301,23 +301,33 @@ Below is an example of the current execution policy for all scopes.
 PS C:\htb> Get-ExecutionPolicy -List
 
         Scope ExecutionPolicy
-        
-        ----- ---------------
-        
-MachinePolicy       Undefined
 
-   UserPolicy       Undefined
-   
+        ----- ---------------
+
+MachinePolicy Undefined
+
+UserPolicy Undefined
+
       Process       Undefined
-      
-  CurrentUser       Undefined
-  
- LocalMachine    RemoteSigned
- 
+
+CurrentUser Undefined
+
+LocalMachine RemoteSigned
+
 The execution policy is not meant to be a security control that restricts user actions. A user can easily bypass the policy by either typing the script contents directly into the PowerShell window, downloading and invoking the script, or specifying the script as an encoded command. It can also be bypassed by adjusting the execution policy (if the user has the proper rights) or setting the execution policy for the current process scope (which can be done by almost any user as it does not require a configuration change and will only be set for the duration of the user's session).
 
 Below is an example of changing the execution policy for the current process (session).
 
 <img width="869" height="481" alt="image" src="https://github.com/user-attachments/assets/172e37b6-e344-40da-8703-91e4df8b6755" />
 
+What is the alias set for the ipconfig.exe command?
 
+Get-Alias | Where-Object { $\_.Definition -match "ipconfig" }
+
+ifconfig
+
+Find the Execution Policy set for the LocalMachine scope.
+
+Get-ExecutionPolicy -Scope LocalMachine
+
+Unrestricted
