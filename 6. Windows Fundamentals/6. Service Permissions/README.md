@@ -75,3 +75,33 @@ C:\Users\htb-student> sc stop wuauserv
 [SC] OpenService FAILED 5:
 
 Access is denied.
+
+Notice how we are denied access from performing this action without running it within an administrative context. If we run a command prompt with elevated privileges, we will be permitted to complete this action.
+
+C:\WINDOWS\system32> sc config wuauserv binPath=C:\Winbows\Perfectlylegitprogram.exe
+
+[SC] ChangeServiceConfig SUCCESS
+
+C:\WINDOWS\system32> sc qc wuauserv
+
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: wuauserv
+
+TYPE : 20 WIN32_SHARE_PROCESS
+
+START_TYPE : 3 DEMAND_START
+
+ERROR_CONTROL : 1 NORMAL
+
+BINARY_PATH_NAME : C:\Winbows\Perfectlylegitprogram.exe
+
+LOAD_ORDER_GROUP :
+
+TAG : 0
+
+DISPLAY_NAME : Windows Update
+
+DEPENDENCIES : rpcss
+
+SERVICE_START_NAME : LocalSystem
