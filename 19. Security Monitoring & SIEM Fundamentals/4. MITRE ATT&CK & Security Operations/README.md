@@ -6,6 +6,9 @@ The MITRE ATT&CK (Adversarial Tactics, Techniques, and Common Knowledge) framewo
 
 The ATT&CK framework comprises matrices tailored to various computing contexts, such as enterprise, mobile, or cloud systems. Each matrix links the tactics (the goals attackers aim to achieve) and techniques (the methods used to accomplish their objectives) to distinct TTPs. This linkage allows security teams to methodically examine and predict attacker activities.
 
+<img width="1888" height="764" alt="image" src="https://github.com/user-attachments/assets/e8eb0b27-0968-4118-87ed-f3e86a3caba2" />
+
+
 <h3> MITRE ATT&CK Use Cases In Security Operations</h3>
 
 The MITRE ATT&CK framework not only serves as a comprehensive resource for understanding adversarial tactics, techniques, and procedures (TTPs), but it also plays a crucial role in several aspects of Security Operations. These include:
