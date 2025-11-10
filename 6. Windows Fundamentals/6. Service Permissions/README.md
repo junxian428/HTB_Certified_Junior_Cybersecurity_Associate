@@ -36,3 +36,42 @@ Note: We can also create new accounts and use them for the sole purpose of runni
 
 The recovery tab allows steps to be configured should a service fail. Notice how this service can be set to run a program after the first failure. This is yet another vector that an attacker could use to run malicious programs by utilizing a legitimate service.
 
+<h3>Examining services using sc</h3>
+
+Sc can also be used to configure and manage services. Let's experiment with a few commands.
+
+C:\Users\htb-student>sc qc wuauserv
+
+[SC] QueryServiceConfig SUCCESS
+
+SERVICE_NAME: wuauserv
+
+TYPE : 20 WIN32_SHARE_PROCESS
+
+START_TYPE : 3 DEMAND_START
+
+ERROR_CONTROL : 1 NORMAL
+
+BINARY_PATH_NAME : C:\WINDOWS\system32\svchost.exe -k netsvcs -p
+
+LOAD_ORDER_GROUP :
+
+TAG : 0
+
+DISPLAY_NAME : Windows Update
+
+DEPENDENCIES : rpcss
+
+SERVICE_START_NAME : LocalSystem
+
+The sc qc command is used to query the service. This is where knowing the names of services can come in handy. If we wanted to query a service on a device over the network, we could specify the hostname or IP address immediately after sc.
+
+C:\Users\htb-student>sc //hostname or ip of box query ServiceName
+
+We can also use sc to start and stop services.
+
+C:\Users\htb-student> sc stop wuauserv
+
+[SC] OpenService FAILED 5:
+
+Access is denied.
