@@ -23,3 +23,9 @@ User Name SID
 =================== =============================================
 
 ws01\bob S-1-5-21-674899381-4069889467-2080702030-1002
+
+The SID is broken down into this pattern.
+
+(SID)-(revision level)-(identifier-authority)-(subauthority1)-(subauthority2)-(etc)
+
+Let's break down the SID piece by piece.
