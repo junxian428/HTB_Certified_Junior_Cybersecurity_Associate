@@ -172,3 +172,65 @@ adapter Connection name
        /setclassid6     Modifies the IPv6 DHCP class id.
 
 <SNIP
+
+<h3>PowerShell</h3>
+
+Windows PowerShell is a command shell that was designed by Microsoft to be more geared towards system administrators. PowerShell, like the Windows command line, has an interactive command prompt as well as a powerful scripting environment. PowerShell is built on top of the .NET Framework, which is used for building and running applications on Windows. This makes it a very powerful tool for interfacing directly with the operating system.
+
+Like the command prompt, PowerShell gives us direct access to the file system, and we run the majority of the same commands that we can within a cmd shell.
+
+<h3>Cmdlets</h3>
+
+PowerShell utilizes cmdlets, which are small single-function tools built into the shell. There are more than 100 core cmdlets, and many additional ones have been written, or we can author our own to perform more complex tasks. PowerShell also supports both simple and complex scripts used for system administration tasks, automation, and more.
+
+Cmdlets are in the form of Verb-Noun. For example, the command Get-ChildItem can be used to list our current directory. Cmdlets also take arguments or flags. We can type Get-ChildItem - and hit the tab key to iterate through the arguments. A command such as Get-ChildItem -Recurse will show us the contents of our current working directory and all subdirectories. Another example would be Get-ChildItem -Path C:\Users\Administrator\Documents to get the contents of another directory. Finally, we can combine arguments such as this to list all subdirectories' contents within another directory recursively: Get-ChildItem -Path C:\Users\Administrator\Downloads -Recurse.
+
+<h3>Aliases</h3>
+
+Many cmdlets in PowerShell also have aliases. For example, the aliases for the cmdlet Set-Location, to change directories, is either cd or sl. Meanwhile, the aliases for Get-ChildItem are ls and gci. We can view all available aliases by typing Get-Alias.
+
+PS C:\htb> get-alias
+
+CommandType Name Version Source
+
+---
+
+Alias % -> ForEach-Object
+
+Alias ? -> Where-Object
+
+Alias ac -> Add-Content
+
+Alias asnp -> Add-PSSnapin
+
+Alias cat -> Get-Content
+
+Alias cd -> Set-Location
+
+Alias CFS -> ConvertFrom-String 3.1.0.0 Microsoft.PowerShell.Utility
+
+Alias chdir -> Set-Location
+
+Alias clc -> Clear-Content
+
+Alias clear -> Clear-Host
+
+Alias clhy -> Clear-History
+
+Alias cli -> Clear-Item
+
+Alias clp -> Clear-ItemProperty
+
+We can also set up our own aliases with New-Alias and get the alias for any cmdlet with Get-Alias -Name.
+
+PS C:\htb> New-Alias -Name "Show-Files" Get-ChildItem
+
+PS C:\> Get-Alias -Name "Show-Files"
+
+CommandType Name Version Source
+
+---
+
+Alias Show-Files
+
+PowerShell has a help system for cmdlets, functions, scripts, and concepts. This is not installed by default, but we can either run the Get-Help <cmdlet-name> -Online command to open the online help for a cmdlet or function in our web browser. We can type Update-Help to download and install help files locally.
