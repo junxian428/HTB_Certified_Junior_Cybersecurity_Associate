@@ -116,3 +116,59 @@ SCHTASKS /Change /?
 SCHTASKS /ShowSid /?
 
 Note that certain commands have their own help menus, which can be accessed by typing <command> /?. For example, information about the ipconfig command can be seen below.
+
+C:\htb> ipconfig /?
+
+USAGE:
+
+ipconfig [/allcompartments] [/? | /all |
+
+/renew [adapter] | /release [adapter] |
+
+/renew6 [adapter] | /release6 [adapter] |
+
+/flushdns | /displaydns | /registerdns |
+
+/showclassid adapter |
+
+/setclassid adapter [classid] |
+
+/showclassid6 adapter |
+
+/setclassid6 adapter [classid] ]
+
+where
+
+adapter Connection name
+
+(wildcard characters \* and ? allowed, see examples)
+
+    Options:
+
+       /?               Display this help message
+
+       /all             Display full configuration information.
+
+       /release         Release the IPv4 address for the specified adapter.
+
+       /release6        Release the IPv6 address for the specified adapter.
+
+       /renew           Renew the IPv4 address for the specified adapter.
+
+       /renew6          Renew the IPv6 address for the specified adapter.
+
+       /flushdns        Purges the DNS Resolver cache.
+
+       /registerdns     Refreshes all DHCP leases and re-registers DNS names
+
+       /displaydns      Display the contents of the DNS Resolver Cache.
+
+       /showclassid     Displays all the dhcp class IDs allowed for adapter.
+
+       /setclassid      Modifies the dhcp class id.
+
+       /showclassid6    Displays all the IPv6 DHCP class IDs allowed for adapter.
+
+       /setclassid6     Modifies the IPv6 DHCP class id.
+
+<SNIP
