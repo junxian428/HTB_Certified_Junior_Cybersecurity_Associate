@@ -69,3 +69,11 @@ The cognitive SOC, or next-generation SOC, seeks to address the remaining shortc
 Cognitive SOCs aim to resolve these issues by incorporating learning systems that compensate for experience gaps in security decision-making. While the success rate of this approach may not be perfect in every instance, it is expected to improve over time.
 
 Reference: https://www.linkedin.com/pulse/evolution-security-operations-center-20-beyond-krishnan-jagannathan/
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 True or false? SOC 2.0 follows a proactive defense approach.
+
+  True
