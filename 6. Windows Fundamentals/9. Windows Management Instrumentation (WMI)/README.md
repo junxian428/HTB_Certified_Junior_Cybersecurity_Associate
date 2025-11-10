@@ -66,3 +66,59 @@ Scheduling processes
 Setting up logging
 
 These tasks can all be performed using a combination of PowerShell and the WMI Command-Line Interface (WMIC). WMI can be run via the Windows command prompt by typing WMIC to open an interactive shell or by running a command directly such as wmic computersystem get name to get the hostname. We can view a listing of WMIC commands and aliases by typing WMIC /?.
+
+<img width="812" height="522" alt="image" src="https://github.com/user-attachments/assets/bd23fca4-27ef-4e88-9a09-be557120335d" />
+
+
+The following command example lists information about the operating system.
+
+C:\htb> wmic os list brief
+
+BuildNumber  Organization  RegisteredUser  SerialNumber             SystemDirectory      Version
+
+19041                      Owner           00123-00123-00123-AAOEM  C:\Windows\system32  10.0.19041
+
+WMIC uses aliases and associated verbs, adverbs, and switches. The above command example uses LIST to show data and the adverb BRIEF to provide just the core set of properties. An in-depth listing of verbs, switches, and adverbs is available here. WMI can be used with PowerShell by using the Get-WmiObject module. This module is used to get instances of WMI classes or information about available classes. This module can be used against local or remote machines.
+
+Here we can get information about the operating system.
+
+PS C:\htb> Get-WmiObject -Class Win32_OperatingSystem | select SystemDirectory,BuildNumber,SerialNumber,Version | ft
+
+SystemDirectory     BuildNumber SerialNumber            Version
+
+---------------     ----------- ------------            -------
+
+C:\Windows\system32 19041       00123-00123-00123-AAOEM 10.0.19041
+
+We can also use the Invoke-WmiMethod module, which is used to call the methods of WMI objects. A simple example is renaming a file. We can see that the command completed properly because the ReturnValue is set to 0.
+
+PS C:\htb> Invoke-WmiMethod -Path "CIM_DataFile.Name='C:\users\public\spns.csv'" -Name Rename -ArgumentList "C:\Users\Public\kerberoasted_users.csv"
+
+
+__GENUS          : 2
+
+__CLASS          : __PARAMETERS
+
+__SUPERCLASS     :
+
+__DYNASTY        : __PARAMETERS
+
+__RELPATH        :
+
+__PROPERTY_COUNT : 1
+
+__DERIVATION     : {}
+
+__SERVER         :
+
+__NAMESPACE      :
+
+__PATH           :
+
+ReturnValue      : 0
+
+PSComputerName   :
+
+This section provides a brief overview of WMI, WMIC, and combining WMIC and PowerShell. WMI has a wide variety of uses for both blue team and red team operators. Later sections of this course will show some ways that WMI can be leveraged offensively for both enumeration and lateral movement.
+
+
