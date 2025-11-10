@@ -184,27 +184,24 @@ PS C:\htb> reg query HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersio
 HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
 
     SecurityHealth    REG_EXPAND_SZ    %windir%\system32\SecurityHealthSystray.exe
-    
+
     RTHDVCPL    REG_SZ    "C:\Program Files\Realtek\Audio\HDA\RtkNGUI64.exe" -s
-    
+
     Greenshot    REG_SZ    C:\Program Files\Greenshot\Greenshot.exe
 
 Here is an example of the HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run showing applications running under the current user while logged in to a system.
-
 
 PS C:\htb> reg query HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
 
 HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
 
     OneDrive    REG_SZ    "C:\Users\bob\AppData\Local\Microsoft\OneDrive\OneDrive.exe" /background
-    
+
     OPENVPN-GUI    REG_SZ    C:\Program Files\OpenVPN\bin\openvpn-gui.exe
-    
+
     Docker Desktop    REG_SZ    C:\P
 
-
 <h3>Application Whitelisting</h3>
-
 
 An application whitelist is a list of approved software applications or executables allowed to be present and run on a system. The goal is to protect the environment from harmful malware and unapproved software that does not align with the specific business needs of an organization. Implementing an enforced whitelist can be a challenge, especially in a large network. An organization should implement a whitelist in audit mode initially to make sure that all necessary applications are whitelisted and not blocked by an error of omission, which can cause more problems than it fixes.
 
@@ -250,23 +247,23 @@ We can use the PowerShell cmdlet Get-MpComputerStatus to check which protection 
 
 PS C:\htb> Get-MpComputerStatus | findstr "True"
 
-AMServiceEnabled                : True
+AMServiceEnabled : True
 
-AntispywareEnabled              : True
+AntispywareEnabled : True
 
-AntivirusEnabled                : True
+AntivirusEnabled : True
 
-BehaviorMonitorEnabled          : True
+BehaviorMonitorEnabled : True
 
-IoavProtectionEnabled           : True
+IoavProtectionEnabled : True
 
-IsTamperProtected               : True
+IsTamperProtected : True
 
-NISEnabled                      : True
+NISEnabled : True
 
-OnAccessProtectionEnabled       : True
+OnAccessProtectionEnabled : True
 
-RealTimeProtectionEnabled       : True
+RealTimeProtectionEnabled : True
 
 While no antivirus solution is perfect, Windows Defender does very well in monthly detection rate tests compared to other solutions, even paid ones. Also, since it comes preinstalled as part of the operating system, it does not introduce "bloat" to the system, such as other programs that add browser extensions and trackers. Other products are known to slow down the system due to the way they hook into the operating system.
 
@@ -278,6 +275,12 @@ Windows Defender will pick up payloads from common open-source frameworks such a
 
 Though it is becoming increasingly difficult, it is still possible to fully bypass Windows Defender protections enforced by the latest version with the most up-to-date definitions installed.
 
+Find the SID of the bob.smith user.
 
+Get-LocalUser -Name "bob.smith" | Select-Object Name, SID
 
+S-1-5-21-2614195641-1726409526-3792725429-1003
 
+What 3rd party security application is disabled at startup for the current user? (The answer is case sensitive).
+
+NordVPN
