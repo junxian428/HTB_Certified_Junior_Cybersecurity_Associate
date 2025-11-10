@@ -29,3 +29,45 @@ The SID is broken down into this pattern.
 (SID)-(revision level)-(identifier-authority)-(subauthority1)-(subauthority2)-(etc)
 
 Let's break down the SID piece by piece.
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Meaning</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S</td>
+      <td>SID</td>
+      <td>Identifies the string as a SID.</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Revision Level</td>
+      <td>To date, this has never changed and has always been 1.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Identifier-authority</td>
+      <td>A 48-bit string that identifies the authority (the computer or network) that created the SID.</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Subauthority1</td>
+      <td>This is a variable number that identifies the user's relation or group described by the SID to the authority that created it. It tells us in what order this authority created the user's account.</td>
+    </tr>
+    <tr>
+      <td>674899381-4069889467-2080702030</td>
+      <td>Subauthority2</td>
+      <td>Tells us which computer (or domain) created the number.</td>
+    </tr>
+    <tr>
+      <td>1002</td>
+      <td>Subauthority3</td>
+      <td>The RID that distinguishes one account from another. Tells us whether this user is a normal user, a guest, an administrator, or part of some other group.</td>
+    </tr>
+  </tbody>
+</table>
