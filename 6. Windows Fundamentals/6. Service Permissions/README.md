@@ -161,6 +161,9 @@ This entire security descriptor associated with the Windows Update (wuauserv) se
 
 Using the Get-Acl PowerShell cmdlet, we can examine service permissions by targeting the path of a specific service in the registry.
 
+<img width="816" height="437" alt="image" src="https://github.com/user-attachments/assets/b8a77e9b-9df5-402c-80f0-1bb70859c0ce" />
+
+
 Notice how this command returns specific account permissions in an easy-to-read format and in SDDL. Also, the SID that represents each security principal (User and/or Group) is present in the SDDL. This is something we do not get when running sc from the command prompt.
 
 Knowing how to interact with services and their associated permissions from the command line makes it easier to script out these tasks. While it is good to know how to perform these tasks from the GUI, it does not scale well as we start getting into larger network environments and Domains.
