@@ -79,3 +79,68 @@ Using our newfound skills, we should branch out and explore the system earnestly
 <h3>Listing the Contents of the File System</h3>
 
 C:\htb\student\> tree
+
+From a hacker perspective, this can be super useful when searching for files and folders with juicy information we may want, like configurations, project files and folders, and maybe even that holy grail, a file or folder containing passwords. We can utilize the /F parameter with the tree command to see a listing of each file and the directories along with the directory tree of the path.
+
+<h3>Tree /F</h3>
+
+C:\htb\student\> tree /F
+
+Folder PATH listing
+
+Volume serial number is 26E7-9EE4
+C:.
+
+├───3D Objects
+
+├───Contacts
+
+├───Desktop
+
+│ passwords.txt.txt
+
+│ Project plans.txt
+
+│ secrets.txt
+
+│
+├───Documents
+
+├───Downloads
+
+├───Favorites
+
+│ │ Bing.URL
+
+│ │
+
+│ └───Links
+
+├───Links
+
+│ Desktop.lnk
+
+│ Downloads.lnk
+
+│
+├───Music
+
+├───OneDrive
+
+├───Pictures
+
+│ ├───Camera Roll
+
+│ └───Saved Pictures
+
+├───Saved Games
+
+├───Searches
+
+│ winrt--{S-1-5-21-1588464669-3682530959-1994202445-1000}-.searchconnector-ms
+│
+└───Videos
+
+    └───Captures
+
+    <SNIP>
