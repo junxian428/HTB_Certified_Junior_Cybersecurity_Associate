@@ -282,3 +282,71 @@ NT AUTHORITY\NTLM Authentication Well-known group S-1-5-64-10 Mandatory group, E
 Mandatory Label\Medium Mandatory Level Label S-1-16-8192
 
 Our user is not a member of any other groups besides the built-ins added to our account upon creation. However, it is essential to note that in some cases, users can be provided additional access, privileges, and permissions based on the groups to which they belong.
+
+Note: The commands shown above contain only certain sections of the output provided from whoami /all. Depending on the situation and the information that's needed, we can use the individual commands or gather all of the information at once through the use of the /all parameter.
+
+<h3>Investigating Other Users/Groups</h3>
+
+After investigating our current compromised user account, we need to branch out a bit and see if we can get access to other accounts. In most environments, machines on a network are domain-joined. Due to the nature of domain-joined networks, anyone can log in to any physical host on the network without requiring a local account on the machine. We can use this to our advantage by scoping out what users have accessed our current host to see if we could access other accounts. This is very beneficial as a method of maintaining persistence across the network. To do this, we can utilize specific functionality of the net command.
+
+<h3> Net User</h3>
+
+Net User allows us to display a list of all users on a host, information about a specific user, and to create or delete users.
+
+C:\htb> net user
+
+User accounts for \\ACADEMY-WIN11
+
+---
+
+Administrator DefaultAccount Guest
+
+htb-student WDAGUtilityAccount
+
+The command completed successfully.
+
+From the provided output, only a few user accounts have been created for this machine. However, if we were on a more populated network, we might come across more accounts to attempt to compromise.
+
+<h3>Net Group / Localgroup</h3>
+
+In addition to user accounts, we should also take a quick look into what groups exist across the network. In the previous section, we discussed very heavily into groups that our user is a member of; however, we also have the capability from our current host to view all groups that exist on our host and from the domain. We can achieve this by utilizing the net group and net localgroup commands.
+
+Net Group will display any groups that exist on the host from which we issued the command, create and delete groups, and add or remove users from groups. It will also display domain group information if the host is joined to the domain. Keep in mind, net group must be run against a domain server such as the DC, while net localgroup can be run against any host to show us the groups it contains.
+
+C:\htb> net group
+
+net group
+
+This command can be used only on a Windows Domain Controller.
+
+More help is available by typing NET HELPMSG 3515.
+
+C:\htb>net localgroup
+
+Aliases for \\ACADEMY-WIN11
+
+---
+
+<h3>Exploring Resources on the Network</h3>
+
+Previously, we honed in on what our current user has access to in terms of the host locally. However, in a domain environment, users are typically required to store any work-related material on a share located on the network versus storing files locally on their machine. These shares are usually found on a server away from the physical access of a run-of-the-mill employee. Typically, standard users will have the necessary permissions to read, write, and execute files from a share, provided they have valid credentials. We can, of course, abuse this as an additional persistence method, but how do we locate these shares in the first place?
+
+<h3>Net Share</h3>
+
+One way of doing so involves using the net share command. Net Share allows us to display info about shared resources on the host and to create new shared resources as well.
+
+C:\htb> net share
+
+Share name Resource Remark
+
+---
+
+C$ C:\ Default share
+
+IPC$ Remote IPC
+
+ADMIN$ C:\Windows Remote Admin
+
+Records D:\Important-Files Mounted share for records storage
+
+The command completed successfully.
