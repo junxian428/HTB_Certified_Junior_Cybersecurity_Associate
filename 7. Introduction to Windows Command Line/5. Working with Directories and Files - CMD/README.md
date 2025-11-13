@@ -339,3 +339,29 @@ C:\Users\htb\Desktop\example>dir
 Volume in drive C has no label.
 
 Volume Serial Number is 26E7-9EE4
+
+When utilizing del or erase, remember that we can specify a directory, a filename, a list of names, or even a specific attribute to target when trying to delete files. Above, we listed the example directory and then deleted file-1. Simple enough, right? Now let us erase a list of files.
+
+<h3>Using Del And Erase to remove a list of files</h3>
+
+C:\Users\htb\Desktop\example> erase file-3 file-5
+
+dir
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
+
+We can see in the session above that we utilized erase instead of del this time. This was to show the interoperability of both commands. Think of them as symbolic links. Both commands do the same thing. This time we fed erase a list of two files, file-3 and file-5. It erased the files without issue.
+
+Let us say we want to get rid of a read-only or hidden file. We can do that with the /A: switch. /A can delete files based on a specific attribute. Let us look at the help for del quickly and see what those attributes are.
+
+<h3>Del Help Documentation</h3>
+
+C:\Users\htb\Desktop\example> help del
+
+Deletes one or more files.
+
+DEL [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names
+
+ERASE [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names
