@@ -137,3 +137,9 @@ Running our command and then checking the directory shows us that the files copi
 <h3>Files</h3>
 
 Many of the same commands we utilized while administering directories can also be used with files. Windows has plenty more built-in tools we can use for all our file magic fun. We will cover a few of them here. We should first discuss how to view files and their contents.
+
+<h3>List Files & View Their Contents</h3>
+
+We already know we can utilize the dir command to view the files within a directory, along with specific information about them, depending on the switches we use. It is often the easiest way to see what files exist within a directory. We also have the tree /F command to show us an output containing all directories and files within the tree. Nevertheless, what if we wish to view the contents of a file? We can utilize the more, openfiles, and type commands.
+
+First up is more. With this built-in tool, we can view the contents of a file or the results of another command printed to it one screen at a time. Think of it as a way to buffer scrolling text that may otherwise overflow the terminal buffer.
