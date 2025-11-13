@@ -175,3 +175,11 @@ Notice how we have much more of the file in our first window view. More took a l
 C:\Users\htb\> ipconfig /all | more
 
 Windows IP Configuration
+
+In the output above, we issued the ipconfig /all command which generally outputs a bunch of data, and piped (|) through more to slow it down. This is especially handy when dealing with large files or commands that generate a lot of text, such as systeminfo.
+
+With openfiles, we can see what file on our local pc or a remote host has open and from which user. This command requires administrator privileges on the host you are trying to view. With this tool, we can view open files, disconnect open files, and even kick users from accessing specific files. The ability to use this command is not enabled by default on Windows systems.
+
+Type can display the contents of multiple text files at once. It is also possible to utilize file redirection with type as well. It is a simple tool but extremely handy. One interesting thing about type is that it will not lock files, so there is no worry of messing something up.
+
+<h3>Type</h3>
