@@ -127,3 +127,13 @@ Robocopy took everything in our Desktop directory and made a copy of it in the D
 C:\Users\htb\Desktop> robocopy /E /B /L C:\Users\htb\Desktop\example C:\Users\htb\Documents\Backup\
 
 From the output above, we can see that our permissions are insufficient. Utilizing the /MIR switch will complete the task for us. Be aware that it will mark the files as a system backup and hide them from view. We can clear the additional attributes if we add the /A-:SH switch to our command. Be careful of the /MIR switch, as it will mirror the destination directory to the source. Any file that exists within the destination will be removed. Ensure you place the new copy in a cleared folder. Above, we also used the /L switch. This is a what-if command. It will process the command you issue but not execute it; it just shows you the potential result. Let us give it a try below.
+
+<h3>Robocopy /MIR</h3>
+
+C:\Users\htb\Desktop> robocopy /E /MIR /A-:SH C:\Users\htb\Desktop\notes\ C:\Users\htb\Documents\Backup\Files-to-exfil\
+
+Running our command and then checking the directory shows us that the files copied over successfully. There are so many ways we can utilize Robocopy that it needs its own section. Experiment and play with the tool to develop some of your ways to move directories, copy files, and even play with attributes.
+
+<h3>Files</h3>
+
+Many of the same commands we utilized while administering directories can also be used with files. Windows has plenty more built-in tools we can use for all our file magic fun. We will cover a few of them here. We should first discuss how to view files and their contents.
