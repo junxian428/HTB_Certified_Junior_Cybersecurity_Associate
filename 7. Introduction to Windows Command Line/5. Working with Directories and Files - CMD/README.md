@@ -47,3 +47,29 @@ Let us look at rd and rmdir now.
 <h3>RD & RMDIR</h3>
 
 dir
+
+<h3>RD /S</h3>
+
+rd /S Git-Pulls
+
+In the session above, we listed the directory to see its contents, then issued the rd Git-Pulls command. From the first session window, we can see that it did not execute the command since the directory was not empty. Rd has a switch /S that we can utilize to erase the directory and its contents. Since we want to make Git-Pulls disappear, we will issue it in the second cmd session seen above. The commands we have issued with rd are the same as rmdir.
+
+Removing directories is pretty simple. If you get stuck trying to remove a directory and are getting a warning saying the directory is not empty, do not forget about the /S switch.
+
+<h3>Modifying</h3>
+
+Modifying a directory is more complicated than changing a file. The directory holds data within it for other files or directories. We have several options in any case. Move, Robocopy, and xcopy can copy and make changes to directories and their structures.
+
+To use move, we have to issue the syntax in this order. When moving directories, it will take the directory and any files within and move it from the source to the destination path specified.
+
+<h3>Move a Directory</h3>
+
+C:\Users\htb\Desktop> tree example /F
+
+We ran the tree command to see what resided in the example directory before copying it. After that, executing move example C:\Users\htb\Documents\example placed the example directory and all its files into the user's Documents folder. We can validate this by running a dir on Documents to see if the directory exists.
+
+<h3>Validate the Move</h3>
+
+C:\Users\htb\Desktop> dir C:\Users\htb\Documents
+
+Moreover, there we have it. The directory example exists now within the Documents directory. The following two options have more capability in the ways they can interact with files and directories. We will take a minute to look at xcopy since it still exists in current Windows operating systems, but it is essential to know that it has been deprecated for robocopy. Where xcopy shines is that it can remove the Read-only bit from files when moving them. The syntax for xcopy is xcopy source destination options. As it was with move, we can use wildcards for source files, not destination files.
