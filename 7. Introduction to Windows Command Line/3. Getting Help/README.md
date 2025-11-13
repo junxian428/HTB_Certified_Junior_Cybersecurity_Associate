@@ -108,3 +108,11 @@ This is a partial list of resources; however, these should provide a good baseli
 <h3>Basic Tips & Tricks</h3>
 
 Now that we have a general understanding of how we can obtain help from external resources, let's finish off strong by introducing some essential tips and tricks for interacting with the Command Prompt.
+
+<h3>Clear Your Screen</h3>
+
+There are times during our interaction with the command prompt when the amount of output provided to us through multiple commands overcrowding the screen and becomes an unusable mess of information. In this case, we need some way to clear the screen and provide us with an empty prompt. We can use the command cls to clear our terminal window of our previous results. This comes in handy when we need to refresh our screen and want to avoid fighting to read the terminal and figuring out where our current output starts and the old input ends.
+
+We can see from the GIF above that our terminal was packed, and we issued the cls command providing us with a blank slate.
+
+<h3>History</h3>
