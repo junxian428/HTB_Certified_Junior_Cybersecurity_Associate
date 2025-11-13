@@ -244,3 +244,39 @@ SeUndockPrivilege Remove computer from docking station Disabled
 SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
 
 SeTimeZonePrivilege Change the time zone Disabled
+
+From the output above, we only seem to have access to a basic permission set, and most of our options are disabled. This falls within the limitations of a standard user account provisioned on the domain. However, if there were any misconfigurations in these settings or the user was provided any additional privileges, we could potentially use this to our advantage in trying to escalate the privileges of our current user.
+
+<h3>Investigating Groups</h3>
+
+On top of having a thorough understanding of our current user's privileges, we should also take some time to see what groups our account is a member of. This can provide insight into other groups our current user is a part of, including any default groups (built-ins) and, more importantly, any custom groups to which our user was explicitly granted access. To view the groups our current user is a part of, we can issue the following command: whoami /groups.
+
+C:\htb> whoami /groups
+
+## GROUP INFORMATION
+
+Group Name Type SID Attributes
+
+====================================== ================ ============ ==================================================
+
+Everyone Well-known group S-1-1-0 Mandatory group, Enabled by default, Enabled group
+
+BUILTIN\Users Alias S-1-5-32-545 Mandatory group, Enabled by default, Enabled group
+
+BUILTIN\Performance Log Users Alias S-1-5-32-559 Mandatory group, Enabled by default, Enabled group
+
+NT AUTHORITY\INTERACTIVE Well-known group S-1-5-4 Mandatory group, Enabled by default, Enabled group
+
+CONSOLE LOGON Well-known group S-1-2-1 Mandatory group, Enabled by default, Enabled group
+
+NT AUTHORITY\Authenticated Users Well-known group S-1-5-11 Mandatory group, Enabled by default, Enabled group
+
+NT AUTHORITY\This Organization Well-known group S-1-5-15 Mandatory group, Enabled by default, Enabled group
+
+NT AUTHORITY\Local account Well-known group S-1-5-113 Mandatory group, Enabled by default, Enabled group
+
+LOCAL Well-known group S-1-2-0 Mandatory group, Enabled by default, Enabled group
+
+NT AUTHORITY\NTLM Authentication Well-known group S-1-5-64-10 Mandatory group, Enabled by default, Enabled group
+
+Mandatory Label\Medium Mandatory Level Label S-1-16-8192
