@@ -143,3 +143,35 @@ Many of the same commands we utilized while administering directories can also b
 We already know we can utilize the dir command to view the files within a directory, along with specific information about them, depending on the switches we use. It is often the easiest way to see what files exist within a directory. We also have the tree /F command to show us an output containing all directories and files within the tree. Nevertheless, what if we wish to view the contents of a file? We can utilize the more, openfiles, and type commands.
 
 First up is more. With this built-in tool, we can view the contents of a file or the results of another command printed to it one screen at a time. Think of it as a way to buffer scrolling text that may otherwise overflow the terminal buffer.
+
+<h3>More</h3>
+
+C:\Users\htb\Documents\Backup> more secrets.txt
+
+The TVA has several copies of the Infinity Stones..
+
+Bucky is a good guy. TWS is a Bo$$
+
+The sky isn't blue..
+
+-- More (6%) --
+
+Notice that the bottom of the cmd-session shows us the percentage of the file being viewed. as we hit enter or the space bar, it will scroll the document's text for us, showing an increasing amount of the file in view. With large files containing multiple blank lines or a large amount of empty space between data, we can use the /S option to crunch that blank space down to a single line at each point to make it easier to view. This will not modify the file, just like the more command outputs blank space.
+
+<h3>More /S</h3>
+
+C:\Users\htb\Documents\Backup> more /S secrets.txt
+
+The TVA has several copies of the Infinity Stones..
+
+Bucky is a good guy. TWS is a Bo$$
+
+The sky isn't blue..
+
+Notice how we have much more of the file in our first window view. More took a large amount of blank space using the /S parameter and compressed it.
+
+<h3>Sending a Command Output to More</h3>
+
+C:\Users\htb\> ipconfig /all | more
+
+Windows IP Configuration
