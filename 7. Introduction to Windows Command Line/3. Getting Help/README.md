@@ -116,3 +116,37 @@ There are times during our interaction with the command prompt when the amount o
 We can see from the GIF above that our terminal was packed, and we issued the cls command providing us with a blank slate.
 
 <h3>History</h3>
+
+Previously, we expanded upon clearing the output from the Command Prompt session using cls. Although that information has been cleared from the screen's output, we can still retrieve the commands that were run up to that point. This is due to a nifty feature built into the Command Prompt known as Command History.
+
+Command history is a dynamic thing. It allows us to view previously ran commands in our Command Prompt's current active session. To do this, CMD provides us with several different methods of interacting with our command history. For example, we can use the arrow keys to move up and down through our history, the page up and page down keys, and if working on a physical Windows host, you can use the function keys to interact with your session history. The last way we can view our history is by utilizing the command doskey /history. Doskey is an MS-DOS utility that keeps a history of commands issued and allows them to be referenced again.
+
+<h3>doskey /history</h3>
+
+C:\htb> doskey /history
+
+systeminfo
+
+ipconfig /all
+
+cls
+
+ipconfig /all
+
+systeminfo
+
+cls
+
+history
+
+help
+
+doskey /history
+
+ping 8.8.8.8
+
+doskey /history
+
+From the output provided above, we can view a list of commands that were run before our original command. This is important and incredibly useful, especially if you are constantly clearing your screen and need to rerun a previous command to collect its output. Interacting and viewing all previously run commands will save you extra time, energy, and heartache.
+
+<h3>Useful Keys & Commands for Terminal History</h3>
