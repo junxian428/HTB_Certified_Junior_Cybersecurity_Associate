@@ -116,3 +116,23 @@ OS Configuration: Standalone Workstation
 OS Build Type: Multiprocessor Free
 
 <snipped>
+
+However, knowing a single way to gather information is inefficient, especially if specific commands are monitored and tracked more closely than others. This is why we need more than one established way to gather our required information and stay under the detection radar when possible.
+
+<h3>Examining the System</h3>
+
+As shown previously, systeminfo contains a lot of information to sift through; however, if we need to retrieve some basic system information such as the hostname or OS version, we can use the hostname and ver utilities built into the command prompt.
+
+The hostname utility follows its namesake and provides us with the hostname of the machine, whereas the ver command prints out the current operating system version number. Both commands, in tandem, will provide us with an alternative way to retrieve some basic system information we can use while further enumerating the target host.
+
+<h3>Hostname Output</h3>
+
+C:\htb> hostname
+
+DESKTOP-htb
+
+<h3>Ver Output</h3>
+
+C:\htb> ver
+
+Microsoft Windows [Version 10.0.19042.2006]
