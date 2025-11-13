@@ -441,3 +441,7 @@ Volume in drive C has no label.
 Volume Serial Number is 26E7-9EE4
 
 Directory of C:\Users\student\Downloads
+
+In the example above, we copied secrets.txt and moved it to the Downloads folder, renamed it as not-secrets.txt. By default, copy will complete its task and close. If we wish to ensure the files copied are copied correctly, we can use the /V switch to turn on file validation.
+
+<h3>Copy Validation</h3>
