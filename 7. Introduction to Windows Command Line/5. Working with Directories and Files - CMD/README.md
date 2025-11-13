@@ -425,3 +425,19 @@ Directory of C:\Users\htb\Desktop\example
 Now we successfully deleted a file with the hidden attribute. To erase the directory with the rest of its contents, we can feed the del command with the directory name to remove the contents and follow it up with the rd command to eliminate the directory structure. If a file resides within the directory with the Read-only attribute or some other, utilizing the /F switch will force delete the file.
 
 <h3>Copying and Moving Files</h3>
+
+Just like directories, we have several options to copy or move files. Copy and move are the easiest ways to accomplish this. We can use them to make copies of a file in the same directory or move it into another. As a task, this is one of the simplest we will do.
+
+<h3>copy</h3>
+
+C:\Users\student\Documents\Backup>copy secrets.txt C:\Users\student\Downloads\not-secrets.txt
+
+        1 file(s) copied.
+
+C:\Users\student\Downloads>dir
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
+
+Directory of C:\Users\student\Downloads
