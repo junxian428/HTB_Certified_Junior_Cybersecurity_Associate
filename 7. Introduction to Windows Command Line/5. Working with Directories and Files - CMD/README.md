@@ -389,3 +389,39 @@ C:\Users\htb\Desktop\example>dir
 Volume in drive C has no label.
 
 Volume Serial Number is 26E7-9EE4
+
+Notice that we used \* to specify any file. Now when we look at the example directory again, file-66 is missing, but files 2, 4, and 6 are still there. Let us give del a swing again with the hidden attribute. To identify if there are any hidden files within the directory, we can use dir /A:H
+
+<h3>View Hidden Files</h3>
+
+C:\Users\htb\Desktop\example> dir /A:H
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
+
+Notice the new file we did not see before? Now file-99 is showing up in our directory listing hidden files. Remember that much like Linux, you can hide files from the view of users. With the hidden attribute, the file exists and can be called, but it will not be visible within a directory listing or from the GUI unless specifically looking for them. To delete the hidden file, we can perform the same del command as earlier, just changing the attribute from R to H.
+
+<h3>Removing Hidden Files</h3>
+
+C:\Users\htb\Desktop\example>dir /A:H
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
+
+C:\Users\htb\Desktop\example>del /A:H \*
+
+C:\Users\htb\Desktop\example\*, Are you sure (Y/N)? Y
+
+C:\Users\htb\Desktop\example>dir
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
+
+Directory of C:\Users\htb\Desktop\example
+
+Now we successfully deleted a file with the hidden attribute. To erase the directory with the rest of its contents, we can feed the del command with the directory name to remove the contents and follow it up with the rd command to eliminate the directory structure. If a file resides within the directory with the Read-only attribute or some other, utilizing the /F switch will force delete the file.
+
+<h3>Copying and Moving Files</h3>
