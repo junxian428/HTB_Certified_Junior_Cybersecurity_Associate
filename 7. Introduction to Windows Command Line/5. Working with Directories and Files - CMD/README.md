@@ -323,3 +323,11 @@ C:\Users\student\Documents>cd C:\Users\student\Documents\Backup && echo 'did thi
 C:\Users\student\Documents\Backup>type yes.txt
 
 'did this work'
+
+We can see that on my first line with &&, we asked to change our working directory, then echo a string into a file if it succeeded. We can tell it succeeded because our cmd path changed and when we type the file, it echo'd our string into the file. You can also accomplish the opposite of this with ||. By using (pipe pipe), we are saying run command A. If it fails, run command B.
+
+We have spent much time leveling up our file creation and modification skills. Now, what if we want to remove objects from the host? Let us look at the del and erase commands.
+
+<h3>Deleting Files</h3>
+
+<h3>Dynamic Del And Erase</h3>
