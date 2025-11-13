@@ -350,3 +350,37 @@ ADMIN$ C:\Windows Remote Admin
 Records D:\Important-Files Mounted share for records storage
 
 The command completed successfully.
+
+As we can see from the example above, we have a list of shares that our current compromised user has access to. By reading the remarks, we can take an educated guess that Records is a manually mounted share that could contain some potentially interesting information for us to enumerate. Ideally, if we were to find an open share like this while on an engagement, we would need to keep track of the following:
+
+Do we have the proper permissions to access this share?
+
+Can we read, write, and execute files on the share?
+
+Is there any valuable data on the share?
+
+In addition to providing information, shares are great for hosting anything we need and laterally moving across hosts as a pentester. If we are not too worried about being sneaky, we can drop a payload or other data onto a share to enable movement around other hosts on the network. Although outside of the scope of this module, abusing shares in this manner is an excellent persistence method and can potentially be used to escalate privileges.
+
+<h3> Net View</h3>
+
+If we are not explicitly looking for shares and wish to search the environment broadly, we have an alternate command that can be extremely useful, also known as net view.
+
+Net View will display to us any shared resources the host you are issuing the command against knows of. This includes domain resources, shares, printers, and more.
+
+Gathering System Information
+
+C:\htb> net view
+
+<h3>Piecing Things Together</h3>
+
+Using all the information and examples provided above, we have extracted a significant amount of information from our host and its' surroundings. From here, depending on our access, we can elevate our privileges or continue to move towards our goal. System-level access on every host is unnecessary for a pentester (unless the assessment calls for it), so let us avoid getting stuck trying to get it on every occasion.
+
+This is just a quick look at how CMD can be used to gain access and continue an assessment with limited resources. Keep in mind that this route is quite noisy, and we will be noticed eventually by even a semi-competent blue team. As it stands, we are writing tons of logs, leaving traces across multiple hosts, and have little to no insight into what their EDR and NIDS was able to see.
+
+Note: In a standard environment, cmd-prompt usage is not a common thing for a regular user. Administrators sometimes have a reason to use it but will be actively suspicious of any average user executing cmd.exe. With that in mind, using net \* commands within an environment is not a normal thing either, and can be one way to alert on potential infiltration of a networked host easily. With proper monitoring and logging enabled, we should spot these actions quickly and use them to triage an incident before it gets too far out of hand.
+
+<h3>Final Thoughts and Considerations</h3>
+
+Albeit this has been an incredibly long section, we should have a general sense of the overall scope of information that can be found on a system, why we need it, and how we can gather this information quickly and efficiently. As a pentester, having this mindset allows us to further our methodology and gain a thorough understanding of what exactly we are looking for while enumerating a system or its wider environment. Having a solid methodology for enumeration is a highly invaluable skill for us to pick up early on.
+
+As we move on to further sections in this module, our mindset and methodology will remain the same as we will simply be building upon the foundation being laid. In the next section, we will dive further into finding specific files and directories on our system.
