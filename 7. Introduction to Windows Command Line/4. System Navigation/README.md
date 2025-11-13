@@ -144,3 +144,51 @@ C:.
     └───Captures
 
     <SNIP>
+
+From this example, we can quickly get a feel for the system and see some juicy files such as passwords.txt.txt and secrets.txt. Of course, since this performs a complete listing of every single file and directory on a system, we must be aware of how much output this command will kick up. Later during the module, we will learn a more manageable way of handling the output and working with other command line applications to manipulate it into a much more desirable format. For now, be aware that after attempting to run this command, we should probably interrupt its execution using Ctrl-C after retrieving the desired information.
+
+<h3>Interesting Directories</h3>
+
+As promised, we have nearly reached the end of this section. With our current skill set, navigating the system should be much more approachable now than initially seemed. Let us take a minute to discuss some directories that can come in handy from an attacker's perspective on a system. Below is a table of common directories that an attacker can abuse to drop files to disk, perform reconnaissance, and help facilitate attack surface mapping on a target host.
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; width:100%; max-width:900px; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">
+  <caption style="text-align:left; font-weight:600; margin-bottom:8px;">Common Windows environment paths</caption>
+  <thead style="background:#f2f2f2;">
+    <tr>
+      <th style="text-align:left; padding:8px; width:20%;">Name</th>
+      <th style="text-align:left; padding:8px; width:30%;">Location</th>
+      <th style="text-align:left; padding:8px;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:8px;">%SYSTEMROOT%\Temp</td>
+      <td style="padding:8px;">C:\Windows\Temp</td>
+      <td style="padding:8px;">Global directory containing temporary system files accessible to all users. Typically provides full read/write/execute permissions to all users — useful for dropping files as a low-privilege user on the system.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">%TEMP%</td>
+      <td style="padding:8px;">C:\Users\<user>\AppData\Local\Temp</td>
+      <td style="padding:8px;">Local directory for a user's temporary files. Accessible only by that user account and owned by them — useful when an attacker gains control of a local/domain user account.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">%PUBLIC%</td>
+      <td style="padding:8px;">C:\Users\Public</td>
+      <td style="padding:8px;">Publicly accessible directory allowing any interactive logon account full access to read, write, modify, and execute files and subfolders. An alternative to the global Temp directory; often less monitored.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">%ProgramFiles%</td>
+      <td style="padding:8px;">C:\Program Files</td>
+      <td style="padding:8px;">Folder containing 64-bit applications installed on the system. Useful for enumerating installed software on the target system.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">%ProgramFiles(x86)%</td>
+      <td style="padding:8px;">C:\Program Files (x86)</td>
+      <td style="padding:8px;">Folder containing 32-bit applications installed on the system. Also useful for discovering installed software and potential targets.</td>
+    </tr>
+  </tbody>
+</table>
+
+The table provided above is by no means an all-encompassing list of all interesting directories on a Windows host. However, these will likely be targeted as they are useful to attackers.
+
+With the end of this section, we have become proficient at moving around the Windows filesystem and understanding where we are in relation to other directories and files on the system. In the next section, we will discuss gathering system information to provide us with a solid understanding of our surrounding environment.
