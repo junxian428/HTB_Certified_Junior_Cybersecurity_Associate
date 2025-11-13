@@ -21,3 +21,29 @@ Eventually, we find the room we were looking for and peek in. Think of the door 
 <h3>Viewing & Listing Directories</h3>
 
 As we said in the previous section, we can issue the 'cd' command when trying to see what directory we currently reside in. To get a listing of what files are within a directory, we can use the dir command, and tree provides a complete listing of all files and folders within the specified path. So it is nice to see we already have a head start.
+
+The image above shows how the three can be used in conjunction. chdir can also change our current working directory.
+
+<h3>Create A New Directory</h3>
+
+Creating a directory to add to our structure is a simple endeavor. We can utilize the md and mkdir commands.
+
+<h3>Using MD</h3>
+
+md new-directory
+
+Above, md is in use. In the next shell, we will see mkdir used similarly. Both accomplish the same goal, so use either as you wish.
+
+<h3>Using mkdir to Create Directories.</h3>
+
+mkdir yet-another-dir
+
+<h3>Delete Directories</h3>
+
+Deleting directories can be accomplished using the rd or rmdir commands. The commands rd and rmdir are explicitly meant for removing directory trees and do not deal with specific files or attributes.
+
+Let us look at rd and rmdir now.
+
+<h3>RD & RMDIR</h3>
+
+dir
