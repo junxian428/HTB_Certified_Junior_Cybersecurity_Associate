@@ -317,3 +317,9 @@ Reply from 8.8.8.8: bytes=32 time=22ms TTL=114
 If we care about the result or state of the commands being run, we can utilize && to say run command A, and if it succeeds, run command B. This can be useful if you are doing something that is results dependent such as our cmd-session below.
 
 <h3>State Dependent && </h3>
+
+C:\Users\student\Documents>cd C:\Users\student\Documents\Backup && echo 'did this work' > yes.txt
+
+C:\Users\student\Documents\Backup>type yes.txt
+
+'did this work'
