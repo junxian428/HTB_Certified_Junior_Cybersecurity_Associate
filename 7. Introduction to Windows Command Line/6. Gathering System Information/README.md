@@ -386,6 +386,7 @@ Albeit this has been an incredibly long section, we should have a general sense 
 As we move on to further sections in this module, our mindset and methodology will remain the same as we will simply be building upon the foundation being laid. In the next section, we will dive further into finding specific files and directories on our system.
 
 What command will output verbose system information such as OS configuration, security info, hardware info, and more?
+
 systeminfo
 
 SSH to XX (ACADEMY-ICL-WIN11) with user "htb-student" and password "HTB\_@cademy_stdnt!"
