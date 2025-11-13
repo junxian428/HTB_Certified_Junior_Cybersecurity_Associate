@@ -375,3 +375,17 @@ C:\Users\htb\Desktop\example> dir /A:R
 Volume in drive C has no label.
 
 Volume Serial Number is 26E7-9EE4
+
+Now we know one file matches our Read-only attribute in the example directory. Let us delete it.
+
+<h3>Delete a Read-only File</h3>
+
+C:\Users\htb\Desktop\example > del /A:R \*
+
+C:\Users\htb\Desktop\example\*, Are you sure (Y/N)? Y
+
+C:\Users\htb\Desktop\example>dir
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
