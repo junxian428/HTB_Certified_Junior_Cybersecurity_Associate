@@ -59,7 +59,6 @@ As we can see from the diagram above, the types of information that we would be 
   </tbody>
 </table>
 
-
 Although this is not an exhaustive list of every single piece of information on a system, this will provide us with the means to begin creating a solid methodology for enumeration. Peering back at the diagram with our newfound knowledge, we can see a pattern emerge as to what we should be looking for while performing enumeration on our target host. To keep ourselves on target during enumeration, we want to try and ask ourselves some of the following questions:
 
 What system information can we pull from our target host?
@@ -93,3 +92,27 @@ What tasks and services are running under our user account?
 Remember that this only partially encompasses all the questions we can ask ourselves to reach our intended goal but simply a tiny subset of possibilities. Without thinking things through and failing to follow any guided structure while performing enumeration, we will struggle to know if we have all the required information to reach our goal. It can be easy to write off a system as being completely patched and not vulnerable to any current CVEs or the latest vulnerabilities. However, if you only focus on that aspect, it is easy to miss out on the many human configuration errors that could exist in the environment. This very reason is why taking our time and gathering all of the information we can on a system or environment should be prioritized in terms of importance over simply exploiting a system haphazardly.
 
 <h3>How Do We Get This Information?</h3>
+
+<h3>Casting a Wide Net</h3>
+
+CMD provides a one-stop shop for information via the systeminfo command. It is excellent for finding relevant information about the host, such as hostname, IP address(es), if it belongs to a domain, what hotfixes have been installed, and much more. This information is super valuable for a sysadmin when trying to diagnose issues.
+
+For a hacker, this is a great way to quickly get the lay of the land when you first access a host while leaving a minimal footprint. Running one command is always better than running two or three just to get the same information. We are less likely to be detected this way. Having quick access to things such as the OS version, hotfixes installed, and OS build version can help us quickly determine from a quick Google or ExploitDB search, if an exploit exists that can be quickly leveraged to exploit this host further, elevate privileges, and more.
+
+<h3>Systeminfo Output</h3>
+
+C:\htb> systeminfo
+
+Host Name: DESKTOP-htb
+
+OS Name: Microsoft Windows 10 Pro
+
+OS Version: 10.0.19042 N/A Build 19042
+
+OS Manufacturer: Microsoft Corporation
+
+OS Configuration: Standalone Workstation
+
+OS Build Type: Multiprocessor Free
+
+<snipped>
