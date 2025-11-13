@@ -331,3 +331,11 @@ We have spent much time leveling up our file creation and modification skills. N
 <h3>Deleting Files</h3>
 
 <h3>Dynamic Del And Erase</h3>
+
+C:\Users\htb\Desktop\example>del file-1
+
+C:\Users\htb\Desktop\example>dir
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
