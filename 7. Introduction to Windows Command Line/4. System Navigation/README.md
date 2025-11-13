@@ -192,3 +192,10 @@ As promised, we have nearly reached the end of this section. With our current sk
 The table provided above is by no means an all-encompassing list of all interesting directories on a Windows host. However, these will likely be targeted as they are useful to attackers.
 
 With the end of this section, we have become proficient at moving around the Windows filesystem and understanding where we are in relation to other directories and files on the system. In the next section, we will discuss gathering system information to provide us with a solid understanding of our surrounding environment.
+
+What command will give us a listing of all files and folders in a specified path?
+
+tree /f
+
+- 0 What command will print my current working directory onto the console?
+  cd
