@@ -191,3 +191,17 @@ James Buchanan "Bucky" Barnes Jr. is a fictional character appearing in American
 That is all there is to it. Type provides Simple file output. We can also use it to send output to another file. This can be a quick way to write a new file or append data to another file.
 
 <h3>Redirect With Type</h3>
+
+C:\Users\htb\Desktop>type passwords.txt >> secrets.txt
+
+C:\Users\htb\Desktop>type secrets.txt
+
+The TVA has several copies of the Infinity Stones..
+
+Bucky is a good guy. TWS is a Bo$$
+
+The sky isn't blue..
+
+" so many passwords in the file.. "
+
+Password P@ssw0rd Super$ecr3t Admin @dmin123 Summer2021!
