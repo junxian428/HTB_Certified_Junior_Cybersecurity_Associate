@@ -226,3 +226,14 @@ Reply from 8.8.8.8: bytes=32 time=25ms TTL=114
 When running a command or process we want to interrupt, we can do so by pressing the ctrl+c key combination. As previously stated, this is useful for stopping a currently running process that may be non-responsive or just something we want to be completed immediately. Remember that whatever was running will be incomplete and may need more time to close itself out properly, so always be wary of what you are interrupting.
 
 Now that we understand how to utilize the command prompt and its basic help functionality let us keep pressing forward and look at how we can begin navigating our system through the Command Prompt.
+
+If I wanted to view the help documentation for 'ipconfig', what command and/or modifier would I use? (full command string)
+
+ipconfig /?
+
+- 0 What CLI equivalent "Help utility" exists on Linux hosts? (one word)
+
+  man
+
+- 0 Which CMD hotkey will open an interactive list of the previous commands we have ran?
+  F7
