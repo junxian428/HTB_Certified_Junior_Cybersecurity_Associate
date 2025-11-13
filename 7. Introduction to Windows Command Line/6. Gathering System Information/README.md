@@ -384,3 +384,10 @@ Note: In a standard environment, cmd-prompt usage is not a common thing for a re
 Albeit this has been an incredibly long section, we should have a general sense of the overall scope of information that can be found on a system, why we need it, and how we can gather this information quickly and efficiently. As a pentester, having this mindset allows us to further our methodology and gain a thorough understanding of what exactly we are looking for while enumerating a system or its wider environment. Having a solid methodology for enumeration is a highly invaluable skill for us to pick up early on.
 
 As we move on to further sections in this module, our mindset and methodology will remain the same as we will simply be building upon the foundation being laid. In the next section, we will dive further into finding specific files and directories on our system.
+
+What command will output verbose system information such as OS configuration, security info, hardware info, and more?
+systeminfo
+
+SSH to XX (ACADEMY-ICL-WIN11) with user "htb-student" and password "HTB\_@cademy_stdnt!"
+
+- 0 Access the target host and run the 'hostname' command. What is the hostname?
