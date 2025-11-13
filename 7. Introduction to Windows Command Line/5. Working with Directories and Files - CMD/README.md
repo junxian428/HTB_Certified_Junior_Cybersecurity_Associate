@@ -205,3 +205,115 @@ The sky isn't blue..
 " so many passwords in the file.. "
 
 Password P@ssw0rd Super$ecr3t Admin @dmin123 Summer2021!
+
+With the example above, we appended the passwords.txt file to the end of the secrets.txt file with >>. Then we viewed the contents of secrets.txt and can see our data was successfully added.
+
+We have been discussing a relatively simple topic, but it is a crucial part of any administrator or hacker's job. Utilizing built-in tools such as type and more to poke around in a host filesystem is a quick and reasonably unnoticeable way to look for passwords, company rosters, or other potentially sensitive information.
+
+<h3>Create And Modify A File</h3>
+
+Creating and modifying a file from the command line is relatively easy. We have several options that include echo, fsutil, ren, rename, and replace. First, echo with output redirection allows us to modify a file if it already exists or create a new file at the time of the call.
+
+<h3>Echo to Create and Append Files</h3>
+
+C:\Users\htb\Desktop>echo Check out this text > demo.txt
+
+C:\Users\htb\Desktop>type demo.txt
+
+Check out this text
+
+C:\Users\htb\Desktop>echo More text for our demo file >> demo.txt
+
+C:\Users\htb\Desktop>type demo.txt
+
+Check out this text
+
+More text for our demo file
+
+With fsutil, we can do many things, but in this instance, we will use it to create a file.
+
+<h3>Fsutil to Create a file</h3>
+
+C:\Users\htb\Desktop>fsutil file createNew for-sure.txt 222
+
+File C:\Users\htb\Desktop\for-sure.txt is created
+
+C:\Users\htb\Desktop>echo " my super cool text file from fsutil "> for-sure.txt
+
+C:\Users\htb\Desktop>type for-sure.txt
+
+" my super cool text file from fsutil "
+
+Ren allows us to change the name of a file to something new.
+
+<h3>Ren(ame) A file</h3>
+
+C:\Users\htb\Desktop> ren demo.txt superdemo.txt
+
+C:\Users\htb\Desktop>dir
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
+
+We utilized ren to change the name of demo.txt to superdemo.txt. It can be issued as ren or rename. They are links to the same basic command.
+
+<h3>Input / Output</h3>
+
+We have seen this a few times already, but let us take a minute to talk about I/O. We can utilize the <, >, |, and & to send input and output from the console and files to where we need them. With > we can push the output of a command to a file.
+
+<h3>Output To A File</h3>
+
+C:\Users\htb\Documents>ipconfig /all > details.txt
+
+C:\Users\htb\Documents>dir
+
+Looking above, we can see that the output from our ipconfig /all command was pushed to details.txt. When we check the file, we see when it was created, and the content's output successfully inside. Using > this way will create the file if it does not exist, or it will overwrite the specified file's contents. To append to an already populated file, we can utilize >>.
+
+<h3>Append to a File</h3>
+
+C:\Users\htb\Documents> echo a b c d e > test.txt
+
+C:\Users\htb\Documents>type test.txt
+
+a b c d e
+
+C:\Users\htb\Documents>echo f g h i j k see how this works now? >> test.txt
+
+C:\Users\htb\Documents>type test.txt
+
+a b c d e
+
+f g h i j k see how this works now?
+
+We created the test.txt file with a string, then appended our following line (f g h i j k see how this works now?) to the file with >>. We were feeding input from a command out before; let us feed input into a command now. We will accomplish that with <.
+
+<h3>Pass in a Text File to a Command</h3>
+
+C:\Users\htb\Documents>find /i "see" < test.txt
+
+f g h i j k see how this works now?
+
+In the session above, we took the contents of test.txt and fed it into our find command. In this way, we were searching for the string see. We can see it kicked back the results by showing us the line where it found see. These were fairly simple commands, but remember that we can use < like this to search for keywords or strings in large text files, sort for unique items, and much more. This can be extremely helpful for us as a hacker looking for key information. Another route we can take is to feed the output from a command directly into another command with the | called pipe.
+
+<h3>Pipe Output Between Commands</h3>
+
+C:\Users\htb\Documents>ipconfig /all | find /i "IPV4"
+
+IPv4 Address. . . . . . . . . . . : 172.16.146.5(Preferred)
+
+With pipe, we could issue the command ipconfig /all and send it to find to search for a specific string. We know it worked because it returns our result in the following line. This effectively took our console output and redirected it to a new pipe. If you get this concept down, you can do endless things.
+
+Let us say we wish to have two commands executed in succession. We can issue the command and follow it with & and then our next command. This will ensure that in this instance, our command A runs first then the session will run command B. It does not care if the command succeeded or failed. It just issues them.
+
+<h3>Run A Then B</h3>
+
+C:\Users\htb\Documents>ping 8.8.8.8 & type test.txt
+
+Pinging 8.8.8.8 with 32 bytes of data:
+
+Reply from 8.8.8.8: bytes=32 time=22ms TTL=114
+
+If we care about the result or state of the commands being run, we can utilize && to say run command A, and if it succeeds, run command B. This can be useful if you are doing something that is results dependent such as our cmd-session below.
+
+<h3>State Dependent && </h3>
