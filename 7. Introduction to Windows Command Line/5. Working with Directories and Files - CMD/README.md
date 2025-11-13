@@ -183,3 +183,11 @@ With openfiles, we can see what file on our local pc or a remote host has open a
 Type can display the contents of multiple text files at once. It is also possible to utilize file redirection with type as well. It is a simple tool but extremely handy. One interesting thing about type is that it will not lock files, so there is no worry of messing something up.
 
 <h3>Type</h3>
+
+C:\Users\htb\Desktop>type bio.txt
+
+James Buchanan "Bucky" Barnes Jr. is a fictional character appearing in American comic books published by Marvel Comics. Originally introduced as a sidekick to Captain America, the character was created by Joe Simon and Jack Kirby and first appeared in Captain America Comics #1 (cover-dated March 1941) (which was published by Marvel's predecessor, Timely Comics). Barnes' original costume (or one based on it) and the Bucky nickname have been used by other superheroes in the Marvel Universe over the years.[1] The character is brought back from supposed death as the brainwashed assassin cyborg called Winter Soldier (Russian: ╨ù╨╕╨╝╨╜╨╕╨╣ ╨í╨╛╨╗╨┤╨░╤é, translit. Zimniy Sold├ít). The character's memories and personality are later restored, leading him to become a dark hero in search of redemption. He temporarily assumes the role of "Captain America" when Steve Rogers was presumed to be dead. During the 2011 crossover Fear Itself, Barnes is injected with the Infinity Formula, which increases his natural vitality and physical traits in a way that is similar to (but less powerful than) the super-soldier serum used on Captain America.[2]
+
+That is all there is to it. Type provides Simple file output. We can also use it to send output to another file. This can be a quick way to write a new file or append data to another file.
+
+<h3>Redirect With Type</h3>
