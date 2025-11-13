@@ -51,3 +51,16 @@ CHKDSK Checks a disk and displays a status report.
 <snip>
 
 From this output, we can see that it prints out a list of system commands (built-ins) and provides a basic description of its functionality. This is important because we can quickly and efficiently parse the list of built-in functions provided by the command prompt to find the function that suits our needs. From here, we can transition into answering the second question on how these commands are used. To print out detailed information about a particular command, we can issue the following: help <command name>.
+
+C:\htb> help time
+
+Displays or sets the system time.
+
+TIME [/T | time]
+
+Type TIME with no parameters to display the current time setting and a prompt
+for a new one. Press ENTER to keep the same time.
+
+If Command Extensions are enabled, the TIME command supports
+the /T switch which tells the command to just output the
+current time, without prompting for a new time.
