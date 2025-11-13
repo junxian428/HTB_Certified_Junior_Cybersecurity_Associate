@@ -480,3 +480,15 @@ Directory of C:\Users\student\Downloads
 3 File(s) 31,206 bytes
 
 2 Dir(s) 39,122,550,784 bytes free
+
+Above, we took the bio.txt file and moved it to the Downloads folder. Manipulating files is as easy as that.
+
+Great job! We have now tackled the task of mastering file and folder manipulation. Next up, we will tackle gathering up some critical system information.
+
+What command can display the contents of a file and redirect the contents of the file into another file or to the console?
+
+type
+
+- 0 What command can be used to make the 'apples' directory? (full command as answer, not the alias)
+
+  mkdir apples
