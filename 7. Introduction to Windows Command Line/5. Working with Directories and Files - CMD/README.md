@@ -73,3 +73,57 @@ We ran the tree command to see what resided in the example directory before copy
 C:\Users\htb\Desktop> dir C:\Users\htb\Documents
 
 Moreover, there we have it. The directory example exists now within the Documents directory. The following two options have more capability in the ways they can interact with files and directories. We will take a minute to look at xcopy since it still exists in current Windows operating systems, but it is essential to know that it has been deprecated for robocopy. Where xcopy shines is that it can remove the Read-only bit from files when moving them. The syntax for xcopy is xcopy source destination options. As it was with move, we can use wildcards for source files, not destination files.
+
+<h3>Using Xcopy</h3>
+
+C:\Users\htb\Desktop> xcopy C:\Users\htb\Documents\example C:\Users\htb\Desktop\ /E
+
+C:\Users\htb\Documents\example\file-1 - Copy.txt
+
+C:\Users\htb\Documents\example\file-1.txt
+
+C:\Users\htb\Documents\example\file-2.txt
+
+C:\Users\htb\Documents\example\file-3.txt
+
+C:\Users\htb\Documents\example\file-5.txt
+
+C:\Users\htb\Documents\example\file-4.txt
+
+6 File(s) copied
+
+Xcopy prompts us during the process and displays the result. In our case, the directory and any files within were copied to the Desktop. Utilizing the /E switch, we told Xcopy to copy any files and subdirectories to include empty directories. Keep in mind this will not delete the copy in the previous directory. When performing the duplication, xcopy will reset any attributes the file had. If you wish to retain the file's attributes ( such as read-only or hidden ), you can use the /K switch.
+
+From a hacker's perspective, xcopy can be extremely helpful. If we wish to move a file, even a system file, or something locked, xcopy can do this without adding other tools to the host. As a defender, this is a great way to grab a copy of a file and retain the same state for analysis. For example, you wish to grab a read-only file that was transferred in from a CD or flash drive, and you now suspect it of performing suspicious actions.
+
+Robocopy is xcopy's successor built with much more capability. We can think of Robocopy as merging the best parts of copy, xcopy, and move spiced up with a few extra capabilities. Robocopy can copy and move files locally, to different drives, and even across a network while retaining the file data and attributes to include timestamps, ownership, ACLs, and any flags set like hidden or read-only. We need to be aware that Robocopy was made for large directories and drive syncing, so it does not like to copy or move singular files by default. That is not to say it is incapable, however. We will cover a bit of that down below.
+
+<h3>Robocopy Basic</h3>
+
+C:\Users\htb\Desktop> robocopy C:\Users\htb\Desktop C:\Users\htb\Documents\
+
+robocopy C:\Users\htb\Desktop C:\Users\htb\Documents
+
+---
+
+## ROBOCOPY :: Robust File Copy for Windows
+
+Started : Monday, June 21, 2021 11:05:46 AM
+
+Source : C:\Users\htb\Desktop\
+
+Dest : C:\Users\htb\Documents\
+
+    Files : *.*
+
+Options : _._ /DCOPY:DA /COPY:DAT /R:1000000 /W:30
+
+---
+
+Robocopy took everything in our Desktop directory and made a copy of it in the Documents directory. This works without any issues because we have permission over the folder we are trying to copy currently. As discussed earlier, Robocopy can also work with system, read-only, and hidden files. As a user, this can be problematic if we do not have the SeBackupPrivilege and auditing privilege attributes. This could stop us from duplicating or moving files and directories. There is a bit of a workaround, however. We can utilize the /MIR switch to permit ourselves to copy the files we need temporarily.
+
+<h3>Robocopy Backup Mode Fail</h3>
+
+C:\Users\htb\Desktop> robocopy /E /B /L C:\Users\htb\Desktop\example C:\Users\htb\Documents\Backup\
+
+From the output above, we can see that our permissions are insufficient. Utilizing the /MIR switch will complete the task for us. Be aware that it will mark the files as a system backup and hide them from view. We can clear the additional attributes if we add the /A-:SH switch to our command. Be careful of the /MIR switch, as it will mirror the destination directory to the source. Any file that exists within the destination will be removed. Ensure you place the new copy in a cleared folder. Above, we also used the /L switch. This is a what-if command. It will process the command you issue but not execute it; it just shows you the potential result. Let us give it a try below.
