@@ -280,3 +280,5 @@ LOCAL Well-known group S-1-2-0 Mandatory group, Enabled by default, Enabled grou
 NT AUTHORITY\NTLM Authentication Well-known group S-1-5-64-10 Mandatory group, Enabled by default, Enabled group
 
 Mandatory Label\Medium Mandatory Level Label S-1-16-8192
+
+Our user is not a member of any other groups besides the built-ins added to our account upon creation. However, it is essential to note that in some cases, users can be provided additional access, privileges, and permissions based on the groups to which they belong.
