@@ -69,3 +69,13 @@ We are currently in the C:\Users\htb\Pictures directory provided in our previous
 C:\Users\htb\Pictures> cd ..\..\..\
 
 C:\>
+
+This one command lets us move up the directory structure, starting from the \Pictures directory and moving up to the root directory in one swift stroke. Pretty neat, huh? Understanding this fundamental concept will be very important moving forward, so we should practice and familiarize ourselves now while we have the chance.
+
+<h3>Exploring the File System</h3>
+
+Using our newfound skills, we should branch out and explore the system earnestly. Thorough exploration is essential, as it can help us gain a considerable advantage in understanding the layout of the system we are interacting with and the files contained within. However, when looking around the filesystem of a Windows host, it can get tedious to change our directory back and forth or to issue the dir command for each sub-directory. To save us a bit of time and gain some efficiency, we can get a printout of the entire path we specify and its subdirectories by utilizing the tree command.
+
+<h3>Listing the Contents of the File System</h3>
+
+C:\htb\student\> tree
