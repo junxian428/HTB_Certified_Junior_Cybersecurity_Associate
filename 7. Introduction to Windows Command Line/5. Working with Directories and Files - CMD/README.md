@@ -445,3 +445,38 @@ Directory of C:\Users\student\Downloads
 In the example above, we copied secrets.txt and moved it to the Downloads folder, renamed it as not-secrets.txt. By default, copy will complete its task and close. If we wish to ensure the files copied are copied correctly, we can use the /V switch to turn on file validation.
 
 <h3>Copy Validation</h3>
+
+C:\Windows\System32> copy calc.exe C:\Users\student\Downloads\copied-calc.exe /V
+
+Overwrite C:\Users\student\Downloads\copied-calc.exe? (Yes/No/All): A
+
+1 file(s) copied.
+
+With move, we can move files and directories from one place to another and rename them. Move differs from copy because it can also rename and move directories.
+
+<h3>move</h3>
+
+C:\Users\student\Desktop>move C:\Users\student\Desktop\bio.txt C:\Users\student\Downloads
+
+        1 file(s) moved.
+
+C:\Users\student\Desktop>dir C:\Users\student\Downloads
+
+Volume in drive C has no label.
+Volume Serial Number is 26E7-9EE4
+
+Directory of C:\Users\student\Downloads
+
+06/24/2021 11:10 AM <DIR> .
+
+06/24/2021 11:10 AM <DIR> ..
+
+06/22/2021 03:21 PM 1,140 bio.txt
+
+12/07/2019 05:09 AM 27,648 copied-calc.exe
+
+06/21/2021 11:58 PM 2,418 not-secrets.txt
+
+3 File(s) 31,206 bytes
+
+2 Dir(s) 39,122,550,784 bytes free
