@@ -150,3 +150,79 @@ doskey /history
 From the output provided above, we can view a list of commands that were run before our original command. This is important and incredibly useful, especially if you are constantly clearing your screen and need to rerun a previous command to collect its output. Interacting and viewing all previously run commands will save you extra time, energy, and heartache.
 
 <h3>Useful Keys & Commands for Terminal History</h3>
+
+It would be helpful to have some way of remembering some of the key functionality provided by our terminal history. With this in mind, the table below shows a list of some of the most valuable functions and commands that can be run to interact with our session history. This list is not exhaustive. For example, the function keys F1 - F9 all serve a purpose when working with history.
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; width:100%; max-width:800px; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">
+  <caption style="text-align:left; font-weight:600; margin-bottom:8px;">Key / Command reference</caption>
+  <thead style="background:#f2f2f2;">
+    <tr>
+      <th style="text-align:left; padding:8px;">Key / Command</th>
+      <th style="text-align:left; padding:8px;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:8px;">doskey /history</td>
+      <td style="padding:8px;">Prints the session's command history to the terminal or outputs it to a file when specified.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">Page Up</td>
+      <td style="padding:8px;">Places the first command in the session history into the prompt.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">Page Down</td>
+      <td style="padding:8px;">Places the last command in history into the prompt.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">⇧ (Shift + Up)</td>
+      <td style="padding:8px;">Scroll up through the command history to view previously run commands.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">⇩ (Shift + Down)</td>
+      <td style="padding:8px;">Scroll down to the most recent commands run.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">⇨ (Right Arrow)</td>
+      <td style="padding:8px;">Types the previous command to the prompt one character at a time.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">⇦ (Left Arrow)</td>
+      <td style="padding:8px;">N/A</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">F3</td>
+      <td style="padding:8px;">Retypes the entire previous entry into the prompt.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">F5</td>
+      <td style="padding:8px;">Pressing F5 multiple times cycles through previous commands (step-wise).</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">F7</td>
+      <td style="padding:8px;">Opens an interactive list of previous commands.</td>
+    </tr>
+    <tr>
+      <td style="padding:8px;">F9</td>
+      <td style="padding:8px;">Enters a command into the prompt based on the history index number specified.</td>
+    </tr>
+  </tbody>
+</table>
+
+One thing to remember is that unlike Bash or other shells, CMD does not keep a persistent record of the commands you issue through sessions. So once you close that instance, that history is gone. To save a copy of our issued commands, we can use doskey again to output the history to a file, show it on screen, and then copy it.
+
+<h3>Exit a Running Process</h3>
+
+At some point in our journey working with the Command Prompt, there will be times when we will need to be able to interrupt an actively running process, effectively killing it. This can be due to many different factors. However, a lot of the time, we might have the information that we need from a currently running command or find ourselves dealing with an application that's locking up unexpectedly. Thus, we need some way of interrupting our current session and any process running in it. Take the following as an example:
+
+C:\htb> ping 8.8.8.8
+
+Pinging 8.8.8.8 with 32 bytes of data:
+
+Reply from 8.8.8.8: bytes=32 time=22ms TTL=114
+
+Reply from 8.8.8.8: bytes=32 time=25ms TTL=114
+
+When running a command or process we want to interrupt, we can do so by pressing the ctrl+c key combination. As previously stated, this is useful for stopping a currently running process that may be non-responsive or just something we want to be completed immediately. Remember that whatever was running will be incomplete and may need more time to close itself out properly, so always be wary of what you are interrupting.
+
+Now that we understand how to utilize the command prompt and its basic help functionality let us keep pressing forward and look at how we can begin navigating our system through the Command Prompt.
