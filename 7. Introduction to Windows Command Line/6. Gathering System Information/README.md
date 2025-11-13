@@ -136,3 +136,111 @@ DESKTOP-htb
 C:\htb> ver
 
 Microsoft Windows [Version 10.0.19042.2006]
+
+<h3>Scoping the Network</h3>
+
+In addition to the host information provided above, let us quickly look at some basic network information for our target. A thorough understanding of how our target is connected and what devices it can access across the network is an invaluable tool in our arsenal as an attacker.
+
+To gather this information quickly and in one simple-to-use command, Command Prompt offers the ipconfig utility. The ipconfig utility displays all current TCP/IP network configurations for the machine. Let us look at an example ipconfig configuration without providing additional parameters.
+
+<h3>Ipconfig Without Parameters</h3>
+
+C:\htb> ipconfig
+
+Windows IP Configuration
+
+As we can see from the example above, even without specifying parameters, we are greeted with some basic network information for the host machine, such as the Domain Name, IPv4 Address, Subnet Mask, and Default Gateway. All of these can provide insight into the network(s) that the target is a part of and connected to and the wider environment. If we need additional information or want to dig further into the specific settings applied to each adapter, we can use the following command: ipconfig /all. As implied by the flag provided, this command provides a fully comprehensive listing (full TCP/IP configuration) of every network adapter attached to the system and additional information, including the physical address of each adapter (MAC Address), DHCP settings, and DNS Servers.
+
+Ipconfig is a highly versatile command for gathering information about the network connectivity of the target host; however, if we need to quickly see what hosts our target has come into contact with, look no further than the arp command.
+
+The arp utility effectively displays the contents and entries contained within the Address Resolution Protocol (ARP) cache. We can also use this command to modify the table entries effectively. However, that in itself is beyond the scope of this module. To better understand what type of information the ARP cache contains, let us quickly look at the following example:
+
+<h3>Utilizing ARP to Find Additional Hosts</h3>
+
+C:\htb> arp /a
+
+<SNIP>
+
+Interface: 10.0.25.17 --- 0x17
+
+Internet Address Physical Address Type
+
+10.0.25.1 00-e0-67-15-cf-43 dynamic
+
+10.0.25.5 54-9f-35-1c-3a-e2 dynamic
+
+10.0.25.10 00-0c-29-62-09-81 dynamic
+
+10.0.25.255 ff-ff-ff-ff-ff-ff static
+
+224.0.0.22 01-00-5e-00-00-16 static
+
+224.0.0.251 01-00-5e-00-00-fb static
+
+224.0.0.252 01-00-5e-00-00-fc static
+
+239.255.255.250 01-00-5e-7f-ff-fa static
+
+255.255.255.255 ff-ff-ff-ff-ff-ff static
+
+Interface: 172.16.50.15 --- 0x1a
+
+Internet Address Physical Address Type
+
+172.16.50.1 15-c0-6b-58-70-ed dynamic
+
+172.16.50.20 80-e5-53-3c-72-30 dynamic
+
+172.16.50.32 fb-90-01-5c-1f-88 dynamic
+
+172.16.50.65 7a-49-56-10-3b-76 dynamic
+
+172.16.50.255 ff-ff-ff-ff-ff-ff static
+
+224.0.0.22 01-00-5e-00-00-16 static
+
+224.0.0.251 01-00-5e-00-00-fb static
+
+224.0.0.252 01-00-5e-00-00-fc static
+
+239.255.255.250 01-00-5e-7f-ff-fa static\
+
+<SNIP>
+
+From this example, we can see all the hosts that have come into contact or might have had some prior communication with our target. We can use this information to begin mapping the network along each of the networking interfaces belonging to our target.
+
+<h3>Understanding Our Current User</h3>
+
+Now that we have some basic host information to get us started, we should further understand our current compromised user account. One of the best command line utilities to do so is whoami.
+
+Whoami allows us to display the user, group, and privilege information for the user that is currently logged in. In this case, we should run it without any parameters first and see what kind of output we end up with.
+
+C:\htb> whoami
+
+ACADEMY-WIN11\htb-student
+
+As we can see from the initial output above, running whoami without parameters provides us with the current domain and the user name of the logged-in account.
+
+Note: If the current user is not a domain-joined account, the NetBIOS name will be provided instead. The current hostname will be used in most cases.
+
+<h3>Checking Out Our Privileges</h3>
+
+As previously mentioned, we can also use whoami to view our current user's security privileges on the system. By understanding what privileges are enabled for our current user, we can determine our capabilities on our target host. Let us try running whoami /priv from our compromised user account.
+
+C:\htb> whoami /priv
+
+## PRIVILEGES INFORMATION
+
+Privilege Name Description State
+
+============================= ==================================== ========
+
+SeShutdownPrivilege Shut down the system Disabled
+
+SeChangeNotifyPrivilege Bypass traverse checking Enabled
+
+SeUndockPrivilege Remove computer from docking station Disabled
+
+SeIncreaseWorkingSetPrivilege Increase a process working set Disabled
+
+SeTimeZonePrivilege Change the time zone Disabled
