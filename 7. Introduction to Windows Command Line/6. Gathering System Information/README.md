@@ -17,3 +17,5 @@ Once we have initial access to the system through some command shell, just knowi
 How do we know what to look for?
 
 To answer this question, we need to have a basic understanding of all the different types of information available to us on a system. Below is a chart that we can reference to give us a generalized outline of the main types of information we need to be aware of while performing host enumeration.
+
+Note: This example is aimed toward the enumeration of the Windows operating system and may not be fully compatible with other system types. Also, note that this example is a partial list of all information found on a system.
