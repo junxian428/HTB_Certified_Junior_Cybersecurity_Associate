@@ -9,3 +9,11 @@ What information can we gather from the system(host)?
 Why do we need this information, and what is the importance of thorough enumeration?
 
 How do we get this information via Command Prompt, and what general methodology should we follow?
+
+<h3>What Types of Information Can We Gather from the System?</h3>
+
+Once we have initial access to the system through some command shell, just knowing where to begin searching the system for information can be difficult. Manually enumerating the system with no path in mind on how we wish to proceed can lead to plenty of lost hours searching through troves of what seems to be important information with little to no results to show for all of that time spent. The goal of host enumeration is to provide an overall picture of the target host, its environment, and how it interacts with other systems across the network. Keeping this in mind, the first question that we might find ourselves coming to is:
+
+How do we know what to look for?
+
+To answer this question, we need to have a basic understanding of all the different types of information available to us on a system. Below is a chart that we can reference to give us a generalized outline of the main types of information we need to be aware of while performing host enumeration.
