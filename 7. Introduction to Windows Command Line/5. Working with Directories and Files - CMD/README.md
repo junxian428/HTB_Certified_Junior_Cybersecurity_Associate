@@ -365,3 +365,13 @@ Deletes one or more files.
 DEL [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names
 
 ERASE [/P] [/F] [/S] [/Q] [/A[[:]attributes]] names
+
+So, to delete a read-only file, we can use A:R. This will remove anything within our path that is Read-only. However, how do we identify if a file is read-only, hidden, or has some other attribute? Dir can come to the rescue again. Utilizing dir /A:R will show us anything with the Read-only attribute. Let us give it a try.
+
+<h3>View Files With the Read-only Attribute</h3>
+
+C:\Users\htb\Desktop\example> dir /A:R
+
+Volume in drive C has no label.
+
+Volume Serial Number is 26E7-9EE4
