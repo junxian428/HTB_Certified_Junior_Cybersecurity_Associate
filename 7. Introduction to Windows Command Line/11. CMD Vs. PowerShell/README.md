@@ -323,3 +323,162 @@ PS C:\htb> Get-History
 
   By default, Get-History will only show the commands that have been run during this active session. Notice how the commands are numbered; we can recall those commands by using the alias r followed by the number to run that command again. For example, if we wanted to rerun the arp -a command, we could issue r 14, and PowerShell will action it. Keep in mind that if we close the shell window, or in the instance of a remote shell through command and control, once we kill that session or process that we are running, our PowerShell history will disappear. With PSReadLine, however, that is not the case. PSReadLine stores everything in a file called $($host.Name)_history.txt located at $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine.
 
+<h3>Viewing PSReadLine History</h3>
+
+PS C:\htb> get-content C:\Users\DLarusso\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+
+get-module
+
+Get-ChildItem Env: | ft Key,Value
+
+Get-ExecutionPolicy
+
+clear
+
+ssh administrator@10.172.16.110.55
+
+powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('https://download.sysinternals.com/files/PSTools.zip')"
+
+Get-ExecutionPolicy
+
+<SNIP>
+
+If we ran the above command and were a frequent user of the CLI, we would have an extensive history file to sort through. The output above was snipped to save time and screen space. One great feature of PSReadline from an admin perspective is that it will automatically attempt to filter any entries that include the strings:
+
+password
+
+asplaintext
+
+token
+
+apikey
+
+secret
+
+This behavior is excellent for us as admins since it will help clear any entries from the PSReadLine history file that contain keys, credentials, or other sensitive information. The built-in session history does not do this.
+
+<h3>Clear Screen</h3>
+
+This tip is one of convenience. If it bothers us to have a ton of output on our screen all the time, we can remove the text from our console window by using the command Clear-Host. It will only affect our current display and will not get rid of any variables or other objects we may have set or made during the session. We can also use clear or cls if we prefer using short commands or aliases.
+
+<h3>Hotkeys</h3>
+
+Unless we are working in the CLI from a GUI environment, our mouse will not often work. For example, let's say we landed a shell on a host during a pentest. We will have access to CMD or PowerShell from this shell, but we will not be able to utilize the GUI. So we need to be comfortable using just a keyboard. Hotkeys can enable us to perform more complex actions that typically require a mouse with just our keys. Below is a quick list of some of the more useful hotkeys.
+
+<h3>Hotkeys</h3>
+
+<table border="1">
+  <tr>
+    <th>HotKey</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>CTRL+R</td>
+    <td>It makes for a searchable history. We can start typing after, and it will show us results that match previous commands.</td>
+  </tr>
+  <tr>
+    <td>CTRL+L</td>
+    <td>Quick screen clear.</td>
+  </tr>
+  <tr>
+    <td>CTRL+ALT+Shift+?</td>
+    <td>This will print the entire list of keyboard shortcuts PowerShell will recognize.</td>
+  </tr>
+  <tr>
+    <td>Escape</td>
+    <td>When typing into the CLI, if you wish to clear the entire line, instead of holding backspace, you can just hit Escape, which will erase the line.</td>
+  </tr>
+  <tr>
+    <td>↓</td>
+    <td>Scroll down through our previous history.</td>
+  </tr>
+  <tr>
+    <td>F7</td>
+    <td>Brings up a TUI with a scrollable interactive history from our session.</td>
+  </tr>
+</table>
+
+This list is not all of the functionality we can use in PowerShell but those we find ourselves using the most.
+
+<h3>Tab Completion</h3>
+
+One of PowerShell's best functionalities must be tab completion of commands. We can use tab and SHIFT+tab to move through options that can complete the command we are typing.
+
+<h3>Autocomplete Example</h3>
+
+<h3>Aliases</h3>
+
+Our last tip to mention is Aliases. A PowerShell alias is another name for a cmdlet, command, or executable file. We can see a list of default aliases using the Get-Alias cmdlet. Most built-in aliases are shortened versions of the cmdlet, making it easier to remember and quick to use.
+
+<h3>Using Get-Alias</h3>
+
+It is an excellent practice to make aliases shorter than the name of the actual cmdlet, command, or executable. Even the Get-Alias cmdlet has a default alias of gal, as seen in the clip below.
+
+We can also set an alias for a specific cmdlet using Set-Alias. Let us practice with this by making an alias for the Get-Help cmdlet.
+
+
+<h3>Using Set-Alias</h3>
+
+PS C:\Windows\system32> Set-Alias -Name gh -Value Get-Help
+
+When using Set-Alias, we need to specify the name of the alias (-Name gh) and the corresponding cmdlet (-Value Get-Help).
+
+Below we also include a list of several aliases we find to be most helpful. Some commands have more than one alias as well. Be sure to look at the complete list for other aliases you may find helpful.
+
+<h3>Helpful Aliases</h3>
+
+<table border="1">
+  <tr>
+    <th>Alias</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>pwd</td>
+    <td>gl can also be used. This alias can be used in place of Get-Location.</td>
+  </tr>
+  <tr>
+    <td>ls</td>
+    <td>dir and gci can also be used in place of ls. This is an alias for Get-ChildItem.</td>
+  </tr>
+  <tr>
+    <td>cd</td>
+    <td>sl and chdir can be used in place of cd. This is an alias for Set-Location.</td>
+  </tr>
+  <tr>
+    <td>cat</td>
+    <td>type and gc can also be used. This is an alias for Get-Content.</td>
+  </tr>
+  <tr>
+    <td>clear</td>
+    <td>Can be used in place of Clear-Host.</td>
+  </tr>
+  <tr>
+    <td>curl</td>
+    <td>Curl is an alias for Invoke-WebRequest, which can be used to download files. wget can also be used.</td>
+  </tr>
+  <tr>
+    <td>fl and ft</td>
+    <td>These aliases can be used to format output into list and table outputs.</td>
+  </tr>
+  <tr>
+    <td>man</td>
+    <td>Can be used in place of help.</td>
+  </tr>
+</table>
+
+For those familiar with BASH, you may have noticed that many of the aliases match up to commands widely used within Linux distributions. This knowledge can be helpful and help ease the learning curve.
+
+This section has been a bit long, and for a good reason. We covered all the essentials to move us along our path to PowerShell mastery. From here, we will dive deep into PowerShell modules and cmdlets.
+
+
+ What command string can we use to view the help documentation for the command Get-Location? (full string)
+
+Get-Help Get-Location
+
++ 0  What command can we use to show us our current location on the host system?
+
+Get-Location
+
++ 0  What hotkey can be used to clear our input line completely?
+
+Escape
