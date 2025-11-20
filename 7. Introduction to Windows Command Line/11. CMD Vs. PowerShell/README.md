@@ -263,7 +263,7 @@ Using the -verb modifier and looking for any cmdlet, alias, or function with the
 <h3>Get-Command (noun)</h3>
 
   CMD Vs. PowerShell
-  
+
 PS C:\htb> Get-Command -noun windows*  
 
 CommandType     Name                                               Version    Source
@@ -273,3 +273,53 @@ CommandType     Name                                               Version    So
 Alias           Apply-WindowsUnattend                              3.0        Dism
 
 Function        Get-WindowsUpdateLog                               1.0.0.0    WindowsUpdate
+
+In the above output, we utilized the -noun modifier, took the filter a step further, and looked for any portion of the noun that contained windows*, so our results came up pretty specific. Anything that begins with windows in the noun portion and is followed by anything else would match this filter. These were just a few demonstrations of how powerful the Get-Command cmdlet can be. Paired with the Get-Help cmdlet, these can be powerful help functions provided to us directly by PowerShell. Our next tip dives into our PowerShell session History.
+
+<h3>History</h3>
+
+PowerShell keeps a history of the commands run in two different ways. The first is the built-in session history which is implemented and deleted at the start and end of each console session. The other is through the PSReadLine module. The PSReadLine module tracks the history of any PowerShell commands used in all sessions across the host, among many other features. By default, PowerShell keeps the last 4096 commands entered, but this setting can be modified by changing the $MaximumHistoryCount variable.
+
+<h3>Get-History</h3>
+
+PS C:\htb> Get-History
+
+ Id CommandLine
+
+  -- -----------
+
+   1 Get-Command
+
+   2 clear
+
+   3 get-command -verb set
+
+   4 get-command set*
+
+   5 clear
+
+   6 get-command -verb get
+
+   7 get-command -noun windows
+
+   8 get-command -noun windows*
+
+   9 get-module
+
+  10 clear
+
+  11 get-history
+
+  12 clear
+
+
+  13 ipconfig /all
+
+  14 arp -a
+
+  15 get-help
+
+  16 get-help get-module
+
+  By default, Get-History will only show the commands that have been run during this active session. Notice how the commands are numbered; we can recall those commands by using the alias r followed by the number to run that command again. For example, if we wanted to rerun the arp -a command, we could issue r 14, and PowerShell will action it. Keep in mind that if we close the shell window, or in the instance of a remote shell through command and control, once we kill that session or process that we are running, our PowerShell history will disappear. With PSReadLine, however, that is not the case. PSReadLine stores everything in a file called $($host.Name)_history.txt located at $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine.
+
