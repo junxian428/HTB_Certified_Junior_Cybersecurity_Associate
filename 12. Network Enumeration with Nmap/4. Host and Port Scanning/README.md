@@ -151,3 +151,111 @@ Connect Scan on TCP Port 443
 Host and Port Scanning
 
 @htb[/htb]$ sudo nmap 10.129.2.28 -p 443 --packet-trace --disable-arp-ping -Pn -n --reason -sT
+
+Filtered Ports
+
+When a port is shown as filtered, it can have several reasons. In most cases, firewalls have certain rules set to handle specific connections. The packets can either be dropped, or rejected. When a packet gets dropped, Nmap receives no response from our target, and by default, the retry rate (--max-retries) is set to 10. This means Nmap will resend the request to the target port to determine if the previous packet was accidentally mishandled or not.
+
+Let us look at an example where the firewall drops the TCP packets we send for the port scan. Therefore we scan the TCP port 139, which was already shown as filtered. To be able to track how our sent packets are handled, we deactivate the ICMP echo requests (-Pn), DNS resolution (-n), and ARP ping scan (--disable-arp-ping) again.
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -p 139 --packet-trace -n --disable-arp-ping -Pn
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-p 139 Scans only the specified port.
+
+--packet-trace Shows all packets sent and received.
+
+-n Disables DNS resolution.
+
+--disable-arp-ping Disables ARP ping.
+
+-Pn Disables ICMP Echo requests.
+
+We see in the last scan that Nmap sent two TCP packets with the SYN flag. By the duration (2.06s) of the scan, we can recognize that it took much longer than the previous ones (~0.05s). The case is different if the firewall rejects the packets. For this, we look at TCP port 445, which is handled accordingly by such a rule of the firewall.
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -p 445 --packet-trace -n --disable-arp-ping -Pn
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-p 445 Scans only the specified port.
+
+--packet-trace Shows all packets sent and received.
+
+-n Disables DNS resolution.
+
+--disable-arp-ping Disables ARP ping.
+
+-Pn Disables ICMP Echo requests.
+
+As a response, we receive an ICMP reply with type 3 and error code 3, which indicates that the desired port is unreachable. Nevertheless, if we know that the host is alive, we can strongly assume that the firewall on this port is rejecting the packets, and we will have to take a closer look at this port later.
+
+Discovering Open UDP Ports
+
+Some system administrators sometimes forget to filter the UDP ports in addition to the TCP ones. Since UDP is a stateless protocol and does not require a three-way handshake like TCP. We do not receive any acknowledgment. Consequently, the timeout is much longer, making the whole UDP scan (-sU) much slower than the TCP scan (-sS).
+
+Let's look at an example of what a UDP scan (-sU) can look like and what results it gives us.
+
+UDP Port Scan
+
+Host and Port Scanning
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -F -sU
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-15 16:01 CEST
+
+Nmap scan report for 10.129.2.28
+
+Host is up (0.059s latency).
+
+Not shown: 95 closed ports
+
+PORT STATE SERVICE
+
+68/udp open|filtered dhcpc
+
+137/udp open netbios-ns
+
+138/udp open|filtered netbios-dgm
+
+631/udp open|filtered ipp
+
+5353/udp open zeroconf
+
+MAC Address: DE:AD:00:00:BE:EF (Intel Corporate)
+
+Nmap done: 1 IP address (1 host up) scanned in 98.07 seconds
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-F Scans top 100 ports.
+
+-sU Performs a UDP scan.
+
+Another disadvantage of this is that we often do not get a response back because Nmap sends empty datagrams to the scanned UDP ports, and we do not receive any response. So we cannot determine if the UDP packet has arrived at all or not. If the UDP port is open, we only get a response if the application is configured to do so.
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -sU -Pn -n --disable-arp-ping --packet-trace -p 137 --reason
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-06-15 16:15 CEST
+
+SENT (0.0367s) UDP 10.10.14.2:55478 > 10.129.2.28:137 ttl=57 id=9122 iplen=78
+
+RCVD (0.0398s) UDP 10.129.2.28:137 > 10.10.14.2:55478 ttl=64 id=13222 iplen=257
+
+Nmap scan report for 10.129.2.28
+
+Host is up, received user-set (0.0031s latency).
+
+PORT STATE SERVICE REASON
+
+137/udp open netbios-ns udp-response ttl 64
+
+MAC Address: DE:AD:00:00:BE:EF (Intel Corporate)
+
+Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
