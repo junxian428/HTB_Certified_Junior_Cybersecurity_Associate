@@ -93,3 +93,15 @@ Cyber Sec
 Training
 
 We will use the Get-Item, Get-ChildItem, and New-Item commands to create our folder structure. Let us get started. We first need to determine where we are in the host and then move to Mr. Tanaka's Documents folder.
+
+<h3>Finding Our Place</h3>
+
+PS C:\htb> Get-Location
+
+## Path
+
+C:\Users\MTanaka
+
+PS C:\Users\MTanaka> cd Documents
+
+PS C:\Users\MTanaka\Documents>
