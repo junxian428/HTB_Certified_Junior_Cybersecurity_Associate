@@ -270,3 +270,20 @@ Users and groups provide a wealth of opportunities regarding Pentesting a Window
 <h3>Moving On
 </h3>
 Now that we have the User and Group management down let's move on to working with files, folders, and other objects with PowerShell.
+
+Get-ADUser -Filter "Name -like '_Robert_'" | Select-Object Name,sAMAccountName
+
+What resource can provide Windows environments with directory services to manage users, computers, and more? (full name not abbreviation)
+Active Directory
+
+- 0 What PowerShell Cmdlet will display all LOCAL users on a host?
+
+  Get-LocalUser
+
+  SSH to "mtanaka" and password "HTB\_@cademy_stdnt!"
+
+- 0 Connect to the target host and search for a domain user with the given name of Robert. What is this users Surname?
+
+Get-ADUser -Filter "Name -like '_Robert_'" | Select-Object Name,sAMAccountName
+
+Loxley
