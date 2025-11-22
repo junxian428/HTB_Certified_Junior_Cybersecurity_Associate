@@ -221,3 +221,15 @@ Traverse Folder: Traverse allows us to give a user the ability to access files o
 Windows ( NTFS, in general ) allows us to set permissions on a parent directory and have those permissions populate each file and folder located within that directory. This saves us a ton of time compared to manually setting the permissions on each object contained within. This inheritance can be disabled as necessary for specific files, folders, and sub-folders. If done, we will have to set the permissions we want on the affected files manually. Working with permissions can be a complex task and a bit much to do just from the CLI, so we will leave playing with permissions to the Windows Fundamentals Module.
 
 Working with Files and Directories is straightforward, even if sometimes a bit tedious. Moving forward, we will add another layer to our CLI foundation and look at how we can find and filter content within files on the host.
+
+What Cmdlet has an alias of "cat" ?
+
+Get-Content
+
+- 0 What Cmdlet can we use to create new files and folders?
+
+  New-Item
+
+- 0 Using the skills discussed in this section, practice creating, editing, and removing files and directories on the target host provided. Type COMPLETE as the answer below when you are ready to move on.
+
+COMPLETE
