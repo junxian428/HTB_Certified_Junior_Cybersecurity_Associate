@@ -151,3 +151,73 @@ Author: MTanaka
 Version: 0.1 (Draft)
 
 We should be able to quickly knock this out using the New-Item cmdlet and the Add-Content cmdlet.
+
+<h3>Making Files</h3>
+
+PS C:\htb> PS C:\Users\MTanaka\Documents\SOPs> new-Item "Readme.md" -ItemType File
+
+Now that we have our files, we need to add content inside them. We can do so with the Add-Content cmdlet.
+
+<h3>Adding Content</h3>
+
+PS C:\htb> Add-Content .\Readme.md "Title: Insert Document Title Here
+
+We would then perform this same process we did for Readme.md in every other file we created for Mr. Tanaka. This scenario felt a bit tedious, right? Creating files over and over by hand can get tiresome. This is where automation and scripting come into place. It is a bit out of reach right now, but in a later section in this module, we will discuss how to make a quick PowerShell Module, using variables and writing scripts to make things easier.
+
+Scenario Cont.: Mr. Tanaka has asked us to change the name of the file `Cyber-Sec-draft.md` to `Infosec-SOP-draft.md`.
+
+We can quickly knock this task out using the Rename-Item cmdlet. Lets' give it a try:
+
+<h3>Renaming An Object</h3>
+
+PS C:\Users\MTanaka\Documents\SOPs\Cyber Sec> ls
+
+    Directory: C:\Users\MTanaka\Documents\SOPs\Cyber Sec
+
+All we needed to do above was issue the Rename-Item cmdlet, give it the original filename we want to change (Cyber-Sec-draft.md), and then tell it our new name with the -NewName (Infosec-SOP-draft.md) parameter. Seems simple right? We could take this further and rename all files within a directory or change the file type or several different actions. In our example below, we will change the names of all text files in Mr. Tanakas Desktop from file.txt to file.md.
+
+<h3>Files1-5.txt are on MTanaka's Desktop
+</h3>
+
+PS C:\Users\MTanaka\Desktop> ls
+
+    Directory: C:\Users\MTanaka\Desktop
+
+Mode LastWriteTime Length Name
+
+---
+
+-a---- 10/13/2022 1:05 PM 0 file-1.txt
+
+-a---- 10/13/2022 1:05 PM 0 file-2.txt
+
+-a---- 10/13/2022 1:06 PM 0 file-3.txt
+
+PS C:\Users\MTanaka\Desktop> get-childitem -Path \*.txt | rename-item -NewName {$\_.name -replace ".txt",".md"}
+
+PS C:\Users\MTanaka\Desktop> ls
+
+As we can see above, we had five text files on the Desktop. We changed them to .md files using get-childitem -Path \*.txt to select the objects and used | to send those objects to the rename-item -NewName {$_.name -replace ".txt",".md"} cmdlet which renames everything from its original name ($\_.name) and replaces the .txt from name to .md. This is a much faster way to interact with files and perform bulk actions. Now that we have completed all of Mr. Tanakas' requests, let us discuss File and Directory permissions for a second.
+
+What are File & Directory Permissions
+Permissions, simplified, are our host's way of determining who has access to a specific object and what they can do with it. These permissions allow us to apply granular security control over our objects to maintain a proper security posture. In environments like large organizations with multiple departments (like HR, IT, Sales, etc.), want to ensure they keep information access on a "need to know" basis. This ensures that an outsider cannot corrupt or misuse the data. The Windows file system has many basic and advanced permissions. Some of the key permission types are:
+
+Permission Types Explained
+
+Full Control: Full Control allows for the user or group specified the ability to interact with the file as they see fit. This includes everything below, changing the permissions, and taking ownership of the file.
+
+Modify: Allows reading, writing, and deleting files and folders.
+
+List Folder Contents: This makes viewing and listing folders and subfolders possible along with executing files. This only applies to folders.
+
+Read and Execute: Allows users to view the contents within files and run executables (.ps1, .exe, .bat, etc.)
+
+Write: Write allows a user the ability to create new files and subfolders along with being able to add content to files.
+
+Read: Allows for viewing and listing folders and subfolders and viewing a file's contents.
+
+Traverse Folder: Traverse allows us to give a user the ability to access files or subfolders within a tree but not have access to the higher-level folder's contents. This is a way to provide selective access from a security perspective.
+
+Windows ( NTFS, in general ) allows us to set permissions on a parent directory and have those permissions populate each file and folder located within that directory. This saves us a ton of time compared to manually setting the permissions on each object contained within. This inheritance can be disabled as necessary for specific files, folders, and sub-folders. If done, we will have to set the permissions we want on the affected files manually. Working with permissions can be a complex task and a bit much to do just from the CLI, so we will leave playing with permissions to the Windows Fundamentals Module.
+
+Working with Files and Directories is straightforward, even if sometimes a bit tedious. Moving forward, we will add another layer to our CLI foundation and look at how we can find and filter content within files on the host.
