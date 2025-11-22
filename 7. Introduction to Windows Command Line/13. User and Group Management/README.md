@@ -63,50 +63,49 @@ Groups are a way to sort user accounts logically and, in doing so, provide granu
 
 <h3>Get-LocalGroup</h3>
 
-
 PS C:\htb> get-localgroup
 
-Name                                Description
+Name Description
 
-----                                -----------
+---
 
-__vmware__                          VMware User Group
+**vmware** VMware User Group
 
 Above is an example of the local groups to a standalone host. We can see there are groups for simple things like Administrators and guest accounts, but also groups for specific roles like administrators for virtualization applications, remote users, etc. Let us interact with users and groups now that we understand them.
 
 <h3>Adding/Removing/Editing User Accounts & Groups</h3>
 
-Like most other things in PowerShell, we use the get, new, and set verbs to find, create and modify users and groups. If dealing with local users and groups, localuser & localgroup can accomplish this. For domain assets, aduser & adgroup does the trick. If we were not sure, we could always use the Get-Command *user* cmdlet to see what we have access to. Let us give a few of them a try.
+Like most other things in PowerShell, we use the get, new, and set verbs to find, create and modify users and groups. If dealing with local users and groups, localuser & localgroup can accomplish this. For domain assets, aduser & adgroup does the trick. If we were not sure, we could always use the Get-Command _user_ cmdlet to see what we have access to. Let us give a few of them a try.
 
 <h3>Identifying Local Users</h3>
 
-PS C:\htb> Get-LocalUser  
-  
-Name               Enabled Description
+PS C:\htb> Get-LocalUser
 
-----               ------- -----------
+Name Enabled Description
 
-Administrator      False   Built-in account for administering the computer/domain
+---
 
-DefaultAccount     False   A user account managed by the system.
+Administrator False Built-in account for administering the computer/domain
 
-DLarusso           True    High kick specialist.
+DefaultAccount False A user account managed by the system.
 
-Guest              False   Built-in account for guest access to the computer/domain
+DLarusso True High kick specialist.
 
-sshd               True
+Guest False Built-in account for guest access to the computer/domain
 
-WDAGUtilityAccount False   A user account managed and used by the system for Windows Defender A...
+sshd True
+
+WDAGUtilityAccount False A user account managed and used by the system for Windows Defender A...
 
 Get-LocalUser will display the users on our host. These users only have access to this particular host. Let us say that we want to create a new local user named JLawrence. We can accomplish the task using New-LocalUser. If we are unsure of the proper syntax, please do not forget about the Get-Help Command. When creating a new local user, the only real requirement from a syntax perspective is to enter a name and specify a password (or -NoPassword). All other settings, such as a description or account expiration, are optional.
 
 <h3>Creating A New User</h3>
 
-PS C:\htb>  New-LocalUser -Name "JLawrence" -NoPassword
+PS C:\htb> New-LocalUser -Name "JLawrence" -NoPassword
 
-Name      Enabled Description
+Name Enabled Description
 
-----      ------- -----------
+---
 
 JLawrence True
 
@@ -118,38 +117,37 @@ If we wish to modify a user, we could use the Set-LocalUser cmdlet. For this exa
 
 PS C:\htb> $Password = Read-Host -AsSecureString
 
-****************
+---
 
 PS C:\htb> Set-LocalUser -Name "JLawrence" -Password $Password -Description "CEO EagleFang"
 
-PS C:\htb> Get-LocalUser  
+PS C:\htb> Get-LocalUser
 
+Name Enabled Description
 
-Name               Enabled Description
+---
 
-----               ------- -----------
+Administrator False Built-in account for administering the computer/domain
 
-Administrator      False   Built-in account for administering the computer/domain
+DefaultAccount False A user account managed by the system.
 
-DefaultAccount     False   A user account managed by the system.
+demo True
 
-demo               True
+Guest False Built-in account for guest access to the computer/domain
 
-Guest              False   Built-in account for guest access to the computer/domain
-
-JLawrence          True    CEO EagleFang
+JLawrence True CEO EagleFang
 
 As for making and modifying users, it is as simple as what we see above. Now, let us move on to checking out groups. If it feels like a bit of an echo...well, it is. The commands are similar in use.
 
 <h3>Get-LocalGroup</h3>
 
-PS C:\htb> Get-LocalGroup  
+PS C:\htb> Get-LocalGroup
 
-Name                                Description
+Name Description
 
-----                                -----------
+---
 
-Access Control Assistance Operators Members of this group can remotely 
+Access Control Assistance Operators Members of this group can remotely
 
 In the output above, we ran the Get-LocalGroup cmdlet to get a printout of each group on the host. In the second command, we decided to inspect the Users group and see who is a member of said group. We did this with the Get-LocalGroupMember command. Now, if we wish to add another group or user to a group, we can use the Add-LocalGroupMember command. We will add JLawrence to the Remote Desktop Users group in the example below.
 
@@ -157,14 +155,13 @@ In the output above, we ran the Get-LocalGroup cmdlet to get a printout of each 
 
 PS C:\htb> Add-LocalGroupMember -Group "Remote Desktop Users" -Member "JLawrence"
 
-PS C:\htb> Get-LocalGroupMember -Name "Remote Desktop Users" 
+PS C:\htb> Get-LocalGroupMember -Name "Remote Desktop Users"
 
+ObjectClass Name PrincipalSource
 
-ObjectClass Name                      PrincipalSource
+---
 
------------ ----                      ---------------
-
-User        DESKTOP-B3MFM77\JLawrence Local
+User DESKTOP-B3MFM77\JLawrence Local
 
 After running the command, we checked the group membership and saw that our user was indeed added to the Remote Desktop Users group. Maintaining local users and groups is simple and does not require external modules. Managing Active Directory Users and Groups requires a bit more work.
 
@@ -173,3 +170,11 @@ After running the command, we checked the group membership and saw that our user
 Before we can access the cmdlets we need and work with Active Directory, we must install the ActiveDirectory PowerShell Module. If you installed the AdminToolbox, the AD module might already be on your host. If not, we can quickly grab the AD modules and get to work. One requirement is to have the optional feature Remote System Administration Tools installed. This feature is the only way to get the official ActiveDirectory PowerShell module. The edition in AdminToolbox and other Modules is repackaged, so use caution.
 
 <h3>Installing RSAT</h3>
+
+PS C:\htb> Get-WindowsCapability -Name RSAT\* -Online | Add-WindowsCapability -Online
+
+Path :
+
+Online : True
+
+RestartNeeded : False
