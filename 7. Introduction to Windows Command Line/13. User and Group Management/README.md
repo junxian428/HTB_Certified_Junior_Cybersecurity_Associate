@@ -178,3 +178,95 @@ Path :
 Online : True
 
 RestartNeeded : False
+
+The above command will install ALL RSAT features in the Microsoft Catalog. If we wish to stay lightweight, we can install the package named Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0. Now we should have the ActiveDirectory module installed. Let us check.
+
+<h3>Locating The AD Module</h3>
+
+PS C:\htb> Get-Module -Name ActiveDirectory -ListAvailable
+
+    Directory: C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+
+ModuleType Version Name ExportedCommands
+
+---
+
+Manifest 1.0.1.0 ActiveDirectory {Add-ADCentralAccessPolicyMember, Add-ADComputerServiceAccount, Add-ADDomainControllerPasswordReplicationPolicy, Add-A...
+
+Nice. Now that we have the module, we can get started with AD User and Group management. The easiest way to locate a specific user is by searching with the Get-ADUser cmdlet.
+
+<h3>Get-ADUser</h3>
+
+PS C:\htb> Get-ADUser -Filter \*
+
+The parameter -Filter \* lets us grab all users within Active Directory. Depending on our organization's size, this could produce a ton of output. We can use the -Identity parameter to perform a more specific search for a user by distinguished name, GUID, the objectSid, or SamAccountName. Do not worry if these options seem like gibberish to you; that is all right. The specifics of these are not important right now; for more reading on the topic, check out this article or the Intro To Active Directory module. We are going to search for the user TSilver now.
+
+<h3>Get a Specific User</h3>
+
+PS C:\htb> Get-ADUser -Identity TSilver
+
+We can see from the output several pieces of information about the user, including:
+
+Object Class: which specifies if the object is a user, computer, or another type of object.
+
+DistinguishedName: Specifies the object's relative path within the AD schema.
+
+Enabled: Tells us if the user is active and can log in.
+
+SamAccountName: The representation of the username used to log into the ActiveDirectory hosts.
+
+ObjectGUID: Is the unique identifier of the user object.
+
+Users have many different attributes ( not all shown here ) and can all be used to identify and group them. We could also use these to filter specific attributes. For example, let us filter the user's Email address.
+
+<h3>Searching On An Attribute</h3>
+
+PS C:\htb> Get-ADUser -Filter {EmailAddress -like '\*greenhorn.corp'}
+
+In our output, we can see that we only had one result for a user with an email address matching our naming context \*greenhorn.corp. This is just one example of attributes we can filter on. For a more detailed list, check out this Technet Article, which covers the default and extended user object properties.
+
+We need to create a new user for an employee named Mori Tanaka who just joined Greenhorn. Let us give the New-ADUser cmdlet a try.
+
+<h3>New ADUser</h3>
+
+PS C:\htb> New-ADUser -Name "MTanaka" -Surname "Tanaka" -GivenName "Mori" -Office "Security" -OtherAttributes @{'title'="Sensei";'mail'="MTanaka@greenhorn.corp"} -Accountpassword (Read-Host -AsSecureString "AccountPassword") -Enabled $true
+
+Ok, a lot is going on here. It may look daunting but let us dissect it. The first portion of the output above is creating our user:
+
+New-ADUser -Name "MTanaka" : We issue the New-ADUser command and set the user's SamAccountName to MTanaka.
+
+-Surname "Tanaka" -GivenName "Mori": This portion sets our user's Lastname and Firstname.
+
+-Office "Security": Sets the extended property of Office to Security.
+
+-OtherAttributes @{'title'="Sensei";'mail'="MTanaka@greenhorn.corp"}: Here we set other extended attributes such as title and Email-Address.
+
+-Accountpassword (Read-Host -AsSecureString "AccountPassword"): With this portion, we set the user's password by having the shell prompt us to enter a new password. (we can see it in the line below with the stars)
+
+-Enabled $true: We are enabling the account for use. The user could not log in if this was set to \$False.
+
+The second is validating that the user we created and the properties we set exist:
+
+Get-ADUser -Identity MTanaka -Properties \*: Here, we are searching for the user's properties MTanaka.
+
+| : This is the Pipe symbol. It will be explored more in another section, but for now, it takes our output from Get-ADUser and sends it into the following command.
+
+Format-Table Name,Enabled,GivenName,Surname,Title,Office,Mail: Here, we tell PowerShell to Format our results as a table including the default and extended properties listed.
+
+Seeing the commands broken down like this helps demystify the strings. Now, what if we need to modify a user? Set-ADUser is our ticket. Many of the filters we looked at earlier apply here as well. We can change or set any of the attributes that were listed. For this example, let us add a Description to Mr. Tanaka.
+
+<h3>Changing a Users Attributes</h3>
+
+PS C:\htb> Set-ADUser -Identity MTanaka -Description " Sensei to Security Analyst's Rocky, Colt, and Tum-Tum"
+
+PS C:\htb> Get-ADUser -Identity MTanaka -Property Description
+
+Querying AD, we can see that the description we set has been added to the attributes of Mr. Tanaka. User and group management is a common task we may find ourselves doing as sysadmins. However, why should we care about it as a pentester?
+
+<h3>Why is Enumerating Users & Groups Important?</h3>
+
+Users and groups provide a wealth of opportunities regarding Pentesting a Windows environment. We will often see users misconfigured. They may be given excessive permissions, added to unnecessary groups, or have weak/no passwords set. Groups can be equally as valuable. Often groups will have nested membership, allowing users to gain privileges they may not need. These misconfigurations can be easily found and visualized with Tools like Bloodhound. For a detailed look at enumerating Users and Groups, check out the Windows Privilege Escalation module.
+
+<h3>Moving On
+</h3>
+Now that we have the User and Group management down let's move on to working with files, folders, and other objects with PowerShell.
