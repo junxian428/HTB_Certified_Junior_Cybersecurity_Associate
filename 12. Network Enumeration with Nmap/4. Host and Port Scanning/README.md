@@ -46,3 +46,58 @@ There are a total of 6 different states for a scanned port we can obtain:
     </tr>
   </tbody>
 </table>
+
+Discovering Open TCP Ports
+
+By default, Nmap scans the top 1000 TCP ports with the SYN scan (-sS). This SYN scan is set only to default when we run it as root because of the socket permissions required to create raw TCP packets. Otherwise, the TCP scan (-sT) is performed by default. This means that if we do not define ports and scanning methods, these parameters are set automatically. We can define the ports one by one (-p 22,25,80,139,445), by range (-p 22-445), by top ports (--top-ports=10) from the Nmap database that have been signed as most frequent, by scanning all ports (-p-) but also by defining a fast port scan, which contains top 100 ports (-F).
+
+Scanning Top 10 TCP Ports
+
+Host and Port Scanning
+
+@htb[/htb]$ sudo nmap 10.129.2.28 --top-ports=10
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+--top-ports=10 Scans the specified top ports that have been defined as most frequent.
+
+We see that we only scanned the top 10 TCP ports of our target, and Nmap displays their state accordingly. If we trace the packets Nmap sends, we will see the RST flag on TCP port 21 that our target sends back to us. To have a clear view of the SYN scan, we disable the ICMP echo requests (-Pn), DNS resolution (-n), and ARP ping scan (--disable-arp-ping).
+
+Nmap - Trace the Packets
+
+Host and Port Scanning
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -p 21 --packet-trace -Pn -n --disable-arp-ping
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Scanning Options</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10.129.2.28</td>
+      <td>Scans the specified target.</td>
+    </tr>
+    <tr>
+      <td>-p 21</td>
+      <td>Scans only the specified port.</td>
+    </tr>
+    <tr>
+      <td>--packet-trace</td>
+      <td>Shows all packets sent and received.</td>
+    </tr>
+    <tr>
+      <td>-n</td>
+      <td>Disables DNS resolution.</td>
+    </tr>
+    <tr>
+      <td>--disable-arp-ping</td>
+      <td>Disables ARP ping.</td>
+    </tr>
+  </tbody>
+</table>
