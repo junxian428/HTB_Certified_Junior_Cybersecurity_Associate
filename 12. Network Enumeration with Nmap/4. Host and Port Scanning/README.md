@@ -259,3 +259,91 @@ PORT STATE SERVICE REASON
 MAC Address: DE:AD:00:00:BE:EF (Intel Corporate)
 
 Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-sU Performs a UDP scan.
+
+-Pn Disables ICMP Echo requests.
+
+-n Disables DNS resolution.
+
+--disable-arp-ping Disables ARP ping.
+
+--packet-trace Shows all packets sent and received.
+
+-p 137 Scans only the specified port.
+
+--reason Displays the reason a port is in a particular state.
+
+If we get an ICMP response with error code 3 (port unreachable), we know that the port is indeed closed.
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -sU -Pn -n --disable-arp-ping --packet-trace -p 100 --reason
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-sU Performs a UDP scan.
+
+-Pn Disables ICMP Echo requests.
+
+-n Disables DNS resolution.
+
+--disable-arp-ping Disables ARP ping.
+
+--packet-trace Shows all packets sent and received.
+
+-p 100 Scans only the specified port.
+
+--reason Displays the reason a port is in a particular state.
+
+For all other ICMP responses, the scanned ports are marked as (open|filtered).
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -sU -Pn -n --disable-arp-ping --packet-trace -p 138 --reason
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-sU Performs a UDP scan.
+
+-Pn Disables ICMP Echo requests.
+
+-n Disables DNS resolution.
+
+--disable-arp-ping Disables ARP ping.
+
+--packet-trace Shows all packets sent and received.
+
+-p 138 Scans only the specified port.
+
+--reason Displays the reason a port is in a particular state.
+
+Another handy method for scanning ports is the -sV option which is used to get additional available information from the open ports. This method can identify versions, service names, and details about our target.
+
+<h3>Version Scan</h3>
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -Pn -n --disable-arp-ping --packet-trace -p 445 --reason -sV
+
+Scanning Options Description
+
+10.129.2.28 Scans the specified target.
+
+-Pn Disables ICMP Echo requests.
+
+-n Disables DNS resolution.
+
+--disable-arp-ping Disables ARP ping.
+
+--packet-trace Shows all packets sent and received.
+
+-p 445 Scans only the specified port.
+
+--reason Displays the reason a port is in a particular state.
+
+-sV Performs a service scan.
+
+More information about port scanning techniques we can find at: https://nmap.org/book/man-port-scanning-techniques.html
