@@ -105,3 +105,49 @@ C:\Users\MTanaka
 PS C:\Users\MTanaka> cd Documents
 
 PS C:\Users\MTanaka\Documents>
+
+Now that we are in the correct directory, it's time to get to work. Next, we need to make the SOPs folder. The New-Item Cmdlet can be used to accomplish this.
+
+New-Item
+
+Working with Files and Directories - PowerShell
+
+PS C:\Users\MTanaka\Documents> new-item -name "SOPs" -type directory
+
+    Directory: C:\Users\MTanaka\Documents
+
+Mode LastWriteTime Length Name
+
+---
+
+d----- 10/5/2022 12:20 PM SOPs
+
+Awesome. Our main directory exists now. Let us create our nested folders Physical Sec, Cyber Sec, and Training. We can utilize the same command from last time or the alias mkdir. First, we need to move into the SOPs Directory.
+
+<h3>Making More Directories</h3>
+
+PS C:\Users\MTanaka\Documents> cd SOPs
+
+PS C:\Users\MTanaka\Documents\SOPs> mkdir "Physical Sec"
+
+Now that we have our directory structure in place. It's time to start populating the files required. Mr. Tanaka asked for a Markdown file in each folder like so:
+
+SOPs > ReadMe.md
+
+Physical Sec > Physical-Sec-draft.md
+
+Cyber Sec > Cyber-Sec-draft.md
+
+Training > Employee-Training-draft.md
+
+In each file, he has requested this header at the top:
+
+Title: Insert Document Title Here
+
+Date: x/x/202x
+
+Author: MTanaka
+
+Version: 0.1 (Draft)
+
+We should be able to quickly knock this out using the New-Item cmdlet and the Add-Content cmdlet.
