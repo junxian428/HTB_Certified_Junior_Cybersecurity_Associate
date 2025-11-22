@@ -5,3 +5,17 @@ Inlanefreight recently had an incident where a disgruntled employee in marketing
 Note: It is important that each step is completed in the order they are presented. Starting with step 1 and working your way through step 8, including all associated specifications with each step. Please know that each step is designed to give you the opportunity to apply the skills & concepts taught throughout this module. Take your time, have fun and feel free to reach out if you get stuck.
 
 In this demonstration, you are:
+
+1. Creating a shared folder called Company Data
+
+2. Creating a subfolder called HR inside of the Company Data folder
+
+3. Creating a user called Jim
+
+   Uncheck: User must change password at logon
+
+4. Creating a security group called HR
+
+5. Adding Jim to the HR security group
+
+6. Adding the HR security group to the shared Company Data folder and NTFS permissions list
