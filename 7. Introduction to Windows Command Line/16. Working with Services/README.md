@@ -101,3 +101,14 @@ Scenario: Earlier in this section, we saw a service (Spooler) that had a Display
 
 Understanding services and managing them on a host is essential from an admin and pentester perspective. We can do a lot with them, including anything from privilege escalation, to persistence and more. Moving on to our next section, we will introduce the Windows Registry and how to interact with it on a Windows host.
 
+ What Cmdlet will show us the current services of a host?
+
+Get-Service
+
++ 0  If we wanted to start the Windows Defender Service, what command would we use?
+
+Start-Service WinDefend
+
++ 0  What Cmdlet will allow us to execute a command on a remote host?
+
+Invoke-Command
