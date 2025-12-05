@@ -108,3 +108,55 @@ Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths
 Now we snipped the output because it is expanding and showing each key and associated values within the HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion key. We can make our output easier to read using the Get-ItemProperty cmdlet. Let's try that same query but with Get-ItemProperty.
 
 <h3>Get-ItemProperty</h3>
+
+PS C:\htb> Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+Now let's break this down. We issued the Get-ItemProperty command, specified out path as looking into the Registry, and specified the key HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run. The output provides us with the name of the services started and the value that was used to run them (the path they were executed from). This Registry key is used to start services/applications when a user logs in to the host. It is a great key to have visibility over and to keep in mind as a penetration tester. There are several versions of this key which we will discuss a little later in this section. Using Get-ItemProperty is much more readable than Get-Item was. When it comes to querying information, we can also use Reg.exe. Let's take a look at the output from that. We are going to look at a more straightforward key for this example.
+
+<h3>Reg.exe</h3>
+
+PS C:\htb> reg query HKEY_LOCAL_MACHINE\SOFTWARE\7-Zip
+
+We queried the HKEY_LOCAL_MACHINE\SOFTWARE\7-Zip key with Reg.exe, which provided us with the associated values. We can see that two values are set, Path and Path64, the ValueType is a Reg_SZ value which specifies that it contains a Unicode or ASCII string, and that value is the path to 7-Zip C:\Program Files\7-Zip\.
+
+<h3>Finding Info In The Registry</h3>
+
+For us as pentesters and administrators, finding data within the Registry is a must-have skill. This is where Reg.exe really shines for us. We can use it to search for keywords and strings like Password and Username through key and value names or the data contained. Before we put it to use, let's break down the use of Reg Query. We will look at the command string REG QUERY HKCU /F "password" /t REG_SZ /S /K.
+
+- Reg query: We are calling on Reg.exe and specifying that we want to query data.
+
+- HKCU: This portion is setting the path to search. In this instance, we are looking in all of HKey_Current_User.
+
+- /f "password": /f sets the pattern we are searching for. In this instance, we are looking for "Password".
+
+- /t REG_SZ: /t is setting the value type to search. If we do not specify, reg query will search through every type.
+
+- /s: /s says to search through all subkeys and values recursively.
+
+- /k: /k narrows it down to only searching through Key names.
+
+<h3>Searching With Reg Query</h3>
+
+PS C:\htb> REG QUERY HKCU /F "Password" /t REG_SZ /S /K
+
+Our results from this query could be more exciting, but it's still worth taking a look and using a similar search for other keywords and phrases like Username, Credentials, and Keys. We could be surprised by what we find. As we can see, querying registry keys and values is relatively easy. What if we want to set a new value or create a new key?
+
+<h3>Creating and Modifying Registry Keys and Values</h3>
+
+When dealing with the modification or creation of new keys and values, we can use standard PowerShell cmdlets like New-Item, Set-Item, New-ItemProperty, and Set-ItemProperty or utilize Reg.exe again to make the changes we need. Let's try and create a new Registry Key below. For our example, we will create a new test key in the RunOnce hive HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce named TestKey. By placing the key and value in RunOnce, after it executes, it will be deleted.
+
+Scenario: We have landed on a host and can add a new registry key for persistence. We need to set a key named TestKey and a value of C:\Users\htb-student\Downloads\payload.exe that tells RunOnce to run our payload we leave on the host the next time the user logs in. This will ensure that if the host restarts or we lose access, the next time the user logs in, we will get a new shell.
+
+<h3>New Registry Key</h3>
+
+PS C:\htb> New-Item -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\ -Name TestKey
+
+We now have a new key within the RunOnce key. By specifying the -Path parameter, we avoid changing our location in the shell to where we want to add a key in the Registry, letting us work from anywhere as long as we specify the absolute path. Let's set a Property and a value now.
+
+<h3>Set New Registry Item Property</h3>
+
+PS C:\htb> New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\TestKey -Name "access" -PropertyType String -Value "C:\Users\htb-student\Downloads\payload.exe"
+
+After using New-ItemProperty to set our value named access and specifying the value as C:\Users\htb-student\Downloads\payload.exe we can see in the results that our value was created successfully, and the corresponding information, such as path location and Key name. Just to show that our key was created, we can see the new key and its values in the image below from the GUI Registry editor.
+
+<h3>TestKey Creation</h3>
