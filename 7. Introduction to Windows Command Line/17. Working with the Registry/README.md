@@ -42,3 +42,55 @@ https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types
 Each Windows host has a set of predefined Registry keys that maintain the host and settings required for use. Below is a breakdown of each hive and what can be found referenced within.
 
 <h3>Hive Breakdown</h3>
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Abbreviation</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HKEY_LOCAL_MACHINE</td>
+      <td>HKLM</td>
+      <td>This subtree contains information about the computer's physical state, such as hardware and operating system data, bus types, memory, device drivers, and more.</td>
+    </tr>
+    <tr>
+      <td>HKEY_CURRENT_CONFIG</td>
+      <td>HKCC</td>
+      <td>This section contains records for the host's current hardware profile (shows the variance between current and default setups). Think of this as a redirection of the HKLM CurrentControlSet profile key.</td>
+    </tr>
+    <tr>
+      <td>HKEY_CLASSES_ROOT</td>
+      <td>HKCR</td>
+      <td>Filetype information, UI extensions, and backward compatibility settings are defined here.</td>
+    </tr>
+    <tr>
+      <td>HKEY_CURRENT_USER</td>
+      <td>HKCU</td>
+      <td>Value entries here define the specific OS and software settings for each specific user. Roaming profile settings, including user preferences, are stored under HKCU.</td>
+    </tr>
+    <tr>
+      <td>HKEY_USERS</td>
+      <td>HKU</td>
+      <td>The default User profile and current user configuration settings for the local computer are defined under HKU.</td>
+    </tr>
+  </tbody>
+</table>
+
+There are other predefined keys for the Registry, but they are specific to certain versions and regional settings in Windows. For more information on those entries and Registry keys in general, check out the documentation provided by Microsoft
+
+<h3>Why Is The Information Stored Within The Registry Important?</h3>
+
+As a pentester, the Registry can be a treasure trove of information that can help us further our engagements. Everything from what software is installed, current OS revision, pertinent security settings, control of Defender, and more can be found in the Registry. Can we find all of this information in other places? Yes. But there is no better single point to find all of it and have the ability to make widespread changes to the host simultaneously. From an offensive perspective, the Registry is hard for Defenders to protect. The hives are enormous and filled with hundreds of entries. Finding a singular change or addition among the hives is like hunting for a needle in a haystack (unless they keep solid backups of their configurations and host states). Having a general understanding of the Registry and where key values are within can help us take action quicker and for defenders spot any issues sooner.
+
+<h3>How Do We Access the Information?</h3>
+
+From the CLI, we have several options to access the Registry and manage our keys. The first is using reg.exe. Reg is a dos executable explicitly made for use in managing Registry settings. The second is using the Get-Item and Get-ItemProperty cmdlets to read keys and values. If we wish to make a change, the use of New-ItemProperty will do the trick.
+
+<h3>Querying Registry Entries</h3>
+
+We will look at using Get-Item and Get-ChildItem first. Below we can see the output from using Get-Item and piping the result to Select-Object.
+
