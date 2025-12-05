@@ -12,3 +12,33 @@ Keys, in essence, are containers that represent a specific component of the PC. 
 
 <h3>Keys (Green)</h3>
 
+<img width="713" height="528" alt="image" src="https://github.com/user-attachments/assets/2607e8e1-bb12-43c8-a72e-d2d29e0caff8" />
+
+Registry Key Files
+
+A host systems Registry root keys are stored in several different files and can be accessed from C:\Windows\System32\Config\. Along with these Key files, registry hives are held throughout the host in various other places.
+
+Root Registry Keys
+
+PS C:\htb> Get-ChildItem C:\Windows\System32\config\
+
+For a detailed list of all Registry Hives and their supporting files within the OS, we can look HERE. Now let's discuss Values within the Registry.
+
+<h3>What Are Values</h3>
+
+Values represent data in the form of objects that pertain to that specific Key. These values consist of a name, a type specification, and the required data to identify what it's for. The image below visually represents Values as the data between the Orange lines. Those values are nested within the Installer key, which is, in turn, inside another key.
+
+<h3>Values</h3>
+
+
+<img width="728" height="424" alt="image" src="https://github.com/user-attachments/assets/5ea7ac30-fdc6-46be-9302-31cc57a2666b" />
+
+We can reference the complete list of Registry Key Values HERE. In all, there are 11 different value types that can be configured.
+
+https://learn.microsoft.com/en-us/windows/win32/sysinfo/registry-value-types
+
+<h3>Registry Hives</h3>
+
+Each Windows host has a set of predefined Registry keys that maintain the host and settings required for use. Below is a breakdown of each hive and what can be found referenced within.
+
+<h3>Hive Breakdown</h3>
