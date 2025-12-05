@@ -165,13 +165,13 @@ After using New-ItemProperty to set our value named access and specifying the va
 
 If we wanted to add the same key/value pair using Reg.exe, we would do so like this:
 
-reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce\TestKey" /v access /t REG_SZ /d "C:\Users\htb-student\Downloads\payload.exe"  
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce\TestKey" /v access /t REG_SZ /d "C:\Users\htb-student\Downloads\payload.exe"
 
 Now in a real pentest, we would have left an executable payload on the host, and in the instance that the host reboots or the user logs in, we would acquire a new shell to our C2. This value doesn't do much for us right now, so let's practice deleting it.
 
 <h3>Delete Reg properties</h3>
 
-PS C:\htb> Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\TestKey -Name  "access"
+PS C:\htb> Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\TestKey -Name "access"
 
 PS C:\htb> Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\TestKey
 
@@ -180,3 +180,15 @@ If no error window popped up, our key/value pair was deleted successfully. Howev
 Onwards
 
 Now that we have Registry management down, it's time to move on to handling Event Logs through PowerShell.
+
+A registry entry is made up of two pieces, a 'Key' and ' ' . What is the second piece?
+
+Values
+
+- 0 What is the abbreviation for " HKey_Current_User".
+
+  HKCU
+
+- 0 Take some time to practice adding and modifying the registry. Use the target host as a testbed and type "COMPLETE" as the answer below when you are done.
+
+  COMPLETE
