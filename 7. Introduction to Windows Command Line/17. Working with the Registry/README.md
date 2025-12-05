@@ -94,3 +94,18 @@ From the CLI, we have several options to access the Registry and manage our keys
 
 We will look at using Get-Item and Get-ChildItem first. Below we can see the output from using Get-Item and piping the result to Select-Object.
 
+<h3>Get-Item</h3>
+
+PS C:\htb> Get-Item -Path Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run | Select-Object -ExpandProperty Property  
+
+It's a simple output and only shows us the name of the services/applications currently running. If we wished to see each key and object within a hive, we could also use Get-ChildItem with the -Recurse parameter like so:
+
+<h3>Recursive Search</h3>
+
+PS C:\htb> Get-ChildItem -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion -Recurse
+
+Hive: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths
+
+Now we snipped the output because it is expanding and showing each key and associated values within the HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion key. We can make our output easier to read using the Get-ItemProperty cmdlet. Let's try that same query but with Get-ItemProperty.
+
+<h3>Get-ItemProperty</h3>
