@@ -160,3 +160,23 @@ PS C:\htb> New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersio
 After using New-ItemProperty to set our value named access and specifying the value as C:\Users\htb-student\Downloads\payload.exe we can see in the results that our value was created successfully, and the corresponding information, such as path location and Key name. Just to show that our key was created, we can see the new key and its values in the image below from the GUI Registry editor.
 
 <h3>TestKey Creation</h3>
+
+<img width="976" height="587" alt="image" src="https://github.com/user-attachments/assets/09dd76c3-b097-4cbe-be4e-4e26f9b10386" />
+
+If we wanted to add the same key/value pair using Reg.exe, we would do so like this:
+
+reg add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce\TestKey" /v access /t REG_SZ /d "C:\Users\htb-student\Downloads\payload.exe"  
+
+Now in a real pentest, we would have left an executable payload on the host, and in the instance that the host reboots or the user logs in, we would acquire a new shell to our C2. This value doesn't do much for us right now, so let's practice deleting it.
+
+<h3>Delete Reg properties</h3>
+
+PS C:\htb> Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\TestKey -Name  "access"
+
+PS C:\htb> Get-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce\TestKey
+
+If no error window popped up, our key/value pair was deleted successfully. However, this is one of those things you should be extremely careful with. Removing entries from the Windows Registry could negatively affect the host and how it functions. Be sure you know what it is you are removing before. In the wise words of Uncle Ben, "With great power comes great responsibility."
+
+Onwards
+
+Now that we have Registry management down, it's time to move on to handling Event Logs through PowerShell.
