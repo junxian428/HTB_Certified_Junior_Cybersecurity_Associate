@@ -1,0 +1,126 @@
+<h3>Domain Name System (DNS)</h3>
+
+The Domain Name System (DNS) is like the phonebook of the internet. It helps us find the right number (an IP address) for a given name (a domain such as www.google.com). Without DNS, we would need to memorize long, often complex IP addresses for every website we visit. DNS makes our lives easier by allowing us to use human-friendly names to access online resources.
+
+<h3>Domain Names vs. IP Addresses</h3>
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr>
+    <th>Address</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Domain Name</td>
+    <td>A readable address like <b>www.example.com</b> that people can easily remember.</td>
+  </tr>
+  <tr>
+    <td>IP Address</td>
+    <td>A numerical label (e.g., <b>93.184.216.34</b>) used to identify devices on a network.</td>
+  </tr>
+</table>
+
+DNS bridges the gap between these two, so we can just type www.google.com without needing to remember the underlying IP address.
+
+<h3>DNS Hierarchy</h3>
+
+DNS is organized like a tree, starting from the root and branching out into different layers.
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr>
+    <th>Layer</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Root Servers</td>
+    <td>The top of the DNS hierarchy.</td>
+  </tr>
+  <tr>
+    <td>Top-Level Domains (TLDs)</td>
+    <td>Such as <b>.com</b>, <b>.org</b>, <b>.net</b>, or country codes like <b>.uk</b>, <b>.de</b>.</td>
+  </tr>
+  <tr>
+    <td>Second-Level Domains</td>
+    <td>For example, <b>example</b> in <b>example.com</b>.</td>
+  </tr>
+  <tr>
+    <td>Subdomains or Hostname</td>
+    <td>For instance, <b>www</b> in <b>www.example.com</b>, or <b>accounts</b> in <b>accounts.google.com</b>.</td>
+  </tr>
+</table>
+
+<img width="938" height="432" alt="image" src="https://github.com/user-attachments/assets/5ed33c12-47a8-4616-8fb1-4e1a3748ee75" />
+
+<h3>DNS Resolution Process (Domain Translation)</h3>
+
+When we enter a domain name in our browser, the computer needs to find the corresponding IP address. This process is known as DNS resolution or domain translation. The steps below show how this process works.
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr>
+    <th>Step</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>Step 1</td>
+    <td>We type <b>www.example.com</b> into our browser.</td>
+  </tr>
+  <tr>
+    <td>Step 2</td>
+    <td>Our computer checks its local DNS cache (a small storage area) to see if it already knows the IP address.</td>
+  </tr>
+  <tr>
+    <td>Step 3</td>
+    <td>If not found locally, it queries a recursive DNS server. This is often provided by our Internet Service Provider or a third-party DNS service like <b>Google DNS</b>.</td>
+  </tr>
+  <tr>
+    <td>Step 4</td>
+    <td>The recursive DNS server contacts a root server, which points it to the appropriate TLD name server (such as the <b>.com</b> domains, for instance).</td>
+  </tr>
+  <tr>
+    <td>Step 5</td>
+    <td>The TLD name server directs the query to the authoritative name server for <b>example.com</b>.</td>
+  </tr>
+  <tr>
+    <td>Step 6</td>
+    <td>The authoritative name server responds with the IP address for <b>www.example.com</b>.</td>
+  </tr>
+  <tr>
+    <td>Step 7</td>
+    <td>The recursive server returns this IP address to your computer, which can then connect to the website’s server directly.</td>
+  </tr>
+</table>
+
+This all happens in just fractions of a second. Below we can see a simple example of the Domain Translation process. Suppose you want to visit the website at www.example.com. Without the Domain Name System (DNS), we would need to know and type the IP address, such as 93.184.216.34, every time you want to access that site. With DNS in place, we can simply type www.example.com into our browser. Behind the scenes, DNS automatically finds and translates this domain name into the correct IP address for us, ensuring a seamless connection to the website. The diagram below illustrates the diagram of the DNS Query Process.
+
+<img width="958" height="315" alt="image" src="https://github.com/user-attachments/assets/685a0879-1afb-439d-b493-7160e155acb5" />
+
+Questions
+
+Answer the question(s) below to complete this Section and earn cubes!
+
+- 0 What type of domain is `.com` considered as? (Format: Three words, example: One-Two Three)
+
+Top-level domain
+
+- 0 In the domain `www.example.com`, what is `example` called?
+
+Second-Level Domain
+
+- 0 What is checked first in the DNS resolution process when you enter a domain name into a browser? (Format: Two words)
+
+DNS cache
+
+- 0 What type of DNS server is typically provided by an Internet Service Provider?
+
+recursive DNS server
+
+- 0 Which server directs the recursive DNS server to the appropriate TLD name server?
+
+Root server
+
+- 0 What numerical label uniquely identifies a device on a network?
+
+IP address
+
+- 0 In the URL "accounts.google.com", what is `accounts` considered as?
+
+subdomain

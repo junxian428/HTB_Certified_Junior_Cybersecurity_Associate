@@ -1,0 +1,73 @@
+name: Build and Release Combined README PDF
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Pandoc and wkhtmltopdf
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc wkhtmltopdf
+
+      - name: Assemble all README.md files into single PDF
+        run: |
+          mkdir -p pdfs
+          combined="pdfs/HTB_Certified_Junior_Cybersecurity_Associate_Handbook.pdf"
+
+          # Create a temporary markdown to merge all README.md files
+          tmpfile=$(mktemp /tmp/combined.XXXXXX.md)
+          echo "# HTB Certified Junior Cybersecurity Associate Handbook" >> "$tmpfile"
+          echo "" >> "$tmpfile"
+
+          # Loop over parent folders sorted alphabetically/numerically
+          for parent in $(find . -maxdepth 1 -mindepth 1 -type d | sort); do
+            pname=$(basename "$parent")
+            # Add parent README
+            if [ -f "$parent/README.md" ]; then
+              echo "## $pname" >> "$tmpfile"
+              cat "$parent/README.md" >> "$tmpfile"
+              echo "" >> "$tmpfile"
+            fi
+            # Loop over subfolders
+            for sub in $(find "$parent" -mindepth 1 -maxdepth 1 -type d | sort); do
+              sname=$(basename "$sub")
+              if [ -f "$sub/README.md" ]; then
+                echo "### $sname" >> "$tmpfile"
+                cat "$sub/README.md" >> "$tmpfile"
+                echo "" >> "$tmpfile"
+              fi
+            done
+          done
+
+          # Debug: show temporary file contents
+          echo "------ TMP FILE CONTENTS ------"
+          cat "$tmpfile"
+          echo "-------------------------------"
+
+          # Convert combined markdown to single PDF
+          pandoc "$tmpfile" -o "$combined" --pdf-engine=wkhtmltopdf
+
+      - name: Create Release if missing
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: HTB_Certified_Junior_Cybersecurity_Associate_Handbook
+          name: HTB Certified Junior Cybersecurity Associate Handbook
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Combined PDF to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: pdfs/*.pdf
+          tag_name: HTB_Certified_Junior_Cybersecurity_Associate_Handbook
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
