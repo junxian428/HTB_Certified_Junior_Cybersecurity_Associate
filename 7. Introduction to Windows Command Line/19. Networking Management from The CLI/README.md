@@ -70,3 +70,108 @@ Local host access is when we are directly at the terminal utilizing its resource
 Querying Networking Settings
 
 Before doing anything else, let's validate the network settings on Mr. Tanaka's host. We will start by running the IPConfig command. This isn't a PowerShell native command, but it is compatible.
+
+<h3>IPConfig</h3>
+
+PS C:\htb> ipconfig
+
+As we can see, ipconfig will show us the basic settings of your network interface. We have as output the IPv4/6 addresses, our gateway, subnet masks, and DNS suffix if one is set. We can output the full network settings by appending the /all modifier to the ipconfig command like so:
+
+PS C:\htb> ipconfig /all
+
+Now we can see much more information than before. We are presented with output containing multiple adapters, Host settings, more details about if our IP addresses were manually set or DHCP leases, how long those leases are, and more. So, it appears Mr. Tanaka's host has a proper IP address configuration. Of note, and particularly interesting to us as pentesters, is that this host is dual-homed. We mean it has multiple network interfaces connected to separate networks. This makes Mr. Tanakas host a great target if we are looking for a foothold in the network and wish to have a way to migrate between networks.
+
+Let's look at Arp settings and see if his host has communicated with others on the network. As a refresher, ARP is a protocol utilized to translate IP addresses to Physical addresses. The physical address is used at lower levels of the OSI/TCP-IP models for communication. To have it display the host's current ARP entries, we will use the -a switch.
+
+<h3>ARP</h3>
+
+PS C:\htb> arp -a
+
+The output from Arp -a is pretty simple. We are provided with entries from our network adapters about the hosts it is aware of or has communicated with recently. Not surprisingly, since this host is fairly new, it has yet to communicate with too many hosts. Just the gateways, our remote host, and the host 172.16.5.155, the Domain Controller for Greenhorn.corp. Nothing crazy to be seen here. Now let's validate our DNS configuration is working properly. We will utilize nslookup, a built-in DNS querying tool, to attempt to resolve the IP address / DNS name of the Greenhorn domain controller.
+
+<h3>Nslookup</h3>
+
+PS C:\htb> nslookup ACADEMY-ICL-DC
+
+Now that we have validated Mr. Tanakas DNS settings, let's check the open ports on the host. We can do so using netstat -an. Netstat will display current network connections to our host. The -an switch will print all connections and listening ports and place them in numerical form.
+
+<h3>Netstat</h3>
+
+PS C:\htb> netstat -an
+
+netstat -an
+
+Now, you may need to gain a background in looking at network traffic or an understanding of standard ports and protocols, or else the above may look like gibberish. That's ok, though. Looking above, we can see what ports are open and if we have any active connections. From the output above, the ports open are all commonly used in Windows environments and would be expected. Most deal with Active Directory services and SSH. When looking at the connections, we see only one currently active session: our own SSH connection over TCP port 22.
+
+Most of these commands we have practiced with up to this point are Windows built-in executables and are helpful for quick insight into a host, but not for much more. Below we will cover several cmdlets that are additions from PowerShell that allow us to manage our network connections granularly.
+
+<h3>PowerShell Net Cmdlets</h3>
+
+PowerShell has several powerful built-in cmdlets made to handle networking services and administration. The NetAdapter, NetConnection, and NetTCPIP modules are just a few that we will practice with today.
+
+<h3>Net Cmdlets</h3>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Cmdlet</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Get-NetIPInterface</td>
+      <td>Retrieves all visible network adapter properties.</td>
+    </tr>
+    <tr>
+      <td>Get-NetIPAddress</td>
+      <td>Retrieves the IP configurations of each adapter. Similar to <code>ipconfig</code>.</td>
+    </tr>
+    <tr>
+      <td>Get-NetNeighbor</td>
+      <td>Retrieves neighbor entries from the cache. Similar to <code>arp -a</code>.</td>
+    </tr>
+    <tr>
+      <td>Get-NetRoute</td>
+      <td>Displays the current route table. Similar to <code>route print</code> or Linux <code>ip route</code>.</td>
+    </tr>
+    <tr>
+      <td>Set-NetAdapter</td>
+      <td>Configures Layer-2 adapter properties such as VLAN ID, description, and MAC address.</td>
+    </tr>
+    <tr>
+      <td>Set-NetIPInterface</td>
+      <td>Modifies interface settings such as DHCP, MTU, and other metrics.</td>
+    </tr>
+    <tr>
+      <td>New-NetIPAddress</td>
+      <td>Creates and configures an IP address for an adapter.</td>
+    </tr>
+    <tr>
+      <td>Set-NetIPAddress</td>
+      <td>Modifies the IP settings of a network adapter.</td>
+    </tr>
+    <tr>
+      <td>Disable-NetAdapter</td>
+      <td>Disables a network adapter interface.</td>
+    </tr>
+    <tr>
+      <td>Enable-NetAdapter</td>
+      <td>Re-enables a network adapter interface.</td>
+    </tr>
+    <tr>
+      <td>Restart-NetAdapter</td>
+      <td>Restarts a network adapter, often needed after making configuration changes.</td>
+    </tr>
+    <tr>
+      <td>Test-NetConnection</td>
+      <td>Runs connectivity diagnostics including ping, TCP tests, and trace route.</td>
+    </tr>
+  </tbody>
+</table>
+
+We aren't going to show each cmdlet in use, but it would be prudent to provide a quick reference for your use. First, we will start with Get-NetIPInterface.
+
+<h3>Get-NetIPInterface</h3>
+
+PS C:\htb> get-netIPInterface
