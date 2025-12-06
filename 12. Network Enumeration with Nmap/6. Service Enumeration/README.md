@@ -81,3 +81,38 @@ SYN Stealth Scan Timing: About 39.57% done; ETC: 19:48 (0:00:15 remaining)
     </tr>
   </tbody>
 </table>
+
+We can also increase the verbosity level (-v / -vv), which will show us the open ports directly when Nmap detects them.
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -p- -sV -v
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Scanning Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10.129.2.28</td>
+      <td>Scans the specified target.</td>
+    </tr>
+    <tr>
+      <td>-p-</td>
+      <td>Scans all ports.</td>
+    </tr>
+    <tr>
+      <td>-sV</td>
+      <td>Performs service version detection on the specified ports.</td>
+    </tr>
+    <tr>
+      <td>-v</td>
+      <td>Increases the verbosity of the scan, displaying more detailed information.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Banner Grabbing</h3>
+
+Once the scan is complete, we will see all TCP ports with the corresponding service and their versions that are active on the system.
