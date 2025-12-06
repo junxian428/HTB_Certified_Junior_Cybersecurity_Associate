@@ -88,3 +88,29 @@ MAC Address: DE:AD:00:00:BE:EF (Intel Corporate)
 # Nmap done at Tue Jun 16 12:15:03 2020 -- 1 IP address (1 host up) scanned in 10.22 seconds
 
 <h3>Grepable Output</h3>
+
+@htb[/htb]$ cat target.gnmap
+
+# Nmap 7.80 scan initiated Tue Jun 16 12:14:53 2020 as: nmap -p- -oA target 10.129.2.28
+
+Host: 10.129.2.28 () Status: Up
+
+Host: 10.129.2.28 () Ports: 22/open/tcp//ssh///, 25/open/tcp//smtp///, 80/open/tcp//http/// Ignored State: closed (4)
+
+# Nmap done at Tue Jun 16 12:14:53 2020 -- 1 IP address (1 host up) scanned in 10.22 seconds
+
+<h3>XML Output</h3>
+
+@htb[/htb]$ cat target.xml
+
+<h3>Style sheets</h3>
+
+With the XML output, we can easily create HTML reports that are easy to read, even for non-technical people. This is later very useful for documentation, as it presents our results in a detailed and clear way. To convert the stored results from XML format to HTML, we can use the tool xsltproc.
+
+@htb[/htb]$ xsltproc target.xml -o target.html
+
+If we now open the HTML file in our browser, we see a clear and structured presentation of our results.
+
+<h3>Nmap Report</h3>
+
+More information about the output formats can be found at: https://nmap.org/book/output.html
