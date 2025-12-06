@@ -175,3 +175,189 @@ We aren't going to show each cmdlet in use, but it would be prudent to provide a
 <h3>Get-NetIPInterface</h3>
 
 PS C:\htb> get-netIPInterface
+
+This listing shows us our available interfaces on the host in a bit of a convoluted manner. We are provided plenty of metrics, but the adapters are broken up by AddressFamily. So we see entries for each adapter twice if IPv4 and IPv6 are enabled on that particular interface. The ifindex and InterfaceAlias properties are particularly useful. These properties make it easy for us to use the other cmdlets provided by the NetTCPIP module. Let's get the Adapter information for our Wi-Fi connection at ifIndex 25 utilizing the Get-NetIPAddress cmdlet.
+
+<h3>Get-NetIPAddress</h3>
+
+PS C:\htb> Get-NetIPAddress -ifIndex 25
+
+This cmdlet has returned quite a bit of information as well. Notice how we used the ifIndex number to request the information? We can do the same with the InterfaceAlias as well. This cmdlet returns quite a bit of information, such as the index, alias, DHCP state, interface type, and other metrics. This mirrors most of what we would see if we issued the IPconfig executable from the command prompt. Now, what if we want to modify a setting on the interface? We can do so with the Set-NetIPInterface and Set-NetIPAddress cmdlets. In this example, let's say we want to change the DHCP status of the interface from enabled, to disabled, and change the IP from one automatically assigned by DHCP to one of our choosing manually set. We would accomplish this like so:
+
+<h3>Set-NetIPInterface</h3>
+
+PS C:\htb> Set-NetIPInterface -InterfaceIndex 25 -Dhcp Disabled
+
+By disabling the DHCP property with the Set-NetIPInterface cmdlet, we can now set our manual IP Address. We do that with the Set-NetIPAddress cmdlet.
+
+<h3>Set-NetIPAddress</h3>
+
+PS C:\htb> Set-NetIPAddress -InterfaceIndex 25 -IPAddress 10.10.100.54 -PrefixLength 24
+
+PS C:\htb> Get-NetIPAddress -ifindex 20 | ft InterfaceIndex,InterfaceAlias,IPAddress,PrefixLength
+
+The above command now sets our IP address to 10.10.100.54 and the PrefixLength ( also known as the subnet mask ) to 24. Looking at our checks, we can see that those settings are in place. To be safe, let's restart our network adapter and test our connection to see if it sticks.
+
+<h3>Restart-NetAdapter</h3>
+
+PS C:\htb> Restart-NetAdapter -Name 'Ethernet 3'
+
+As long as nothing goes wrong, you will not receive output. So when it comes to Restart-NetAdapter, no news is good news. The easiest way to tell the cmdlet which interface to restart is with the Name property, which is the same as the InterfaceAlias from previous commands we ran. Now, to ensure we still have a connection, we can use the Test-NetConnection cmdlet.
+
+<h3>Test-NetConnection</h3>
+
+PS C:\htb> Test-NetConnection
+
+The Test-NetConnection is a powerful cmdlet, capable of testing beyond basic network connectivity to determine whether we can reach another host. It can tell us about our TCP results, detailed metrics, route diagnostics and more. It would be worthwhile to look at this article by Microsoft on Test-NetConnection. Now that we have completed our task and validated Mr. Tanaka's network settings on his host, let's discuss remote access connectivity for a bit.
+
+<h3>Remote Access</h3>
+
+When we cannot access Windows systems or need to manage hosts remotely, we can utilize PowerShell, SSH, and RDP, among other tools, to perform our work. Let's cover the main ways we can enable and use remote access. First, we will discuss SSH.
+
+<h3>How to Enable Remote Access? ( SSH, PSSessions, etc.)</h3>
+
+<h3>Enabling SSH Access</h3>
+
+We can use SSH to access PowerShell on a Windows system over the network. Starting in 2018, SSH via the OpenSSH client and server applications has been accessible and included in all Windows Server and Client versions. It makes for an easy-to-use and extensible communication mechanism for our administrative use. Setting up OpenSSH on our hosts is simple. Let's give it a try. We must install the SSH Server component and the client application to access a host via SSH remotely.
+
+<h3>Setting up SSH on a Windows Target</h3>
+
+We can set up an SSH server on a Windows target using the Add-WindowsCapability cmdlet and confirm that it is successfully installed using the Get-WindowsCapability cmdlet.
+
+PS C:\Users\htb-student> Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH\*'
+
+<h3>Starting the SSH Service & Setting Startup Type</h3>
+
+Once we have confirmed SSH is installed, we can use the Start-Service cmdlet to start the SSH service. We can also use the Set-Service cmdlet to configure the startup settings of the SSH service if we choose.
+
+PS C:\Users\htb-student> Start-Service sshd
+
+PS C:\Users\htb-student> Set-Service -Name sshd -StartupType 'Automatic'
+
+Note: Initial setup of remote access services will not be a requirement in this module to complete challenge questions. With each of the challenges in this module, remote access is already set up & configured. However, understanding how to connect and apply concepts covered throughout the module will be required. The setup & configuration steps are provided to help develop an understanding of common configuration mistakes and, in some cases, best security practices. Feel free to try some setup steps on your own personal VM.
+
+<h3>Accessing PowerShell over SSH</h3>
+
+With SSH installed and running on a Windows target, we can connect over the network with an SSH client.
+
+<h3>Connecting from Windows</h3>
+
+PS C:\Users\administrator> ssh htb-student@10.129.224.248
+
+htb-student@10.129.224.248 password:
+
+By default, this will connect us to a CMD session, but we can type powershell to enter a PowerShell session, as mentioned earlier in this section.
+
+WS01\htb-student@WS01 C:\Users\htb-student> powershell
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\htb-student>
+
+We will notice that the steps to connect to a Windows target over SSH using Linux are identical to those when connecting from Windows.
+
+<h3>Connecting from Linux</h3>
+
+PS C:\Users\administrator> ssh htb-student@10.129.224.248
+
+htb-student@10.129.224.248 password:
+
+WS01\htb-student@WS01 C:\Users\htb-student> powershell
+
+Windows PowerShell
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\htb-student>
+
+Now that we have covered SSH let's spend some time covering enabling and using WinRM for remote access and management.
+
+<h3>Enabling WinRM</h3>
+
+Windows Remote Management (WinRM) can be configured using dedicated PowerShell cmdlets and we can enter into a PowerShell interactive session as well as issue commands on remote Windows target(s). We will notice that WinRM is more commonly enabled on Windows Server operating systems, so IT admins can perform tasks on one or multiple hosts. It's enabled by default in Windows Server.
+
+Because of the increasing demand for the ability to remotely manage and automate tasks on Windows systems, we will likely see WinRM enabled on more & more Windows desktop operating systems (Windows 10 & Windows 11) as well. When WinRM is enabled on a Windows target, it listens on logical ports 5985 & 5986.
+
+<h3>Enabling & Configuring WinRM</h3>
+
+WinRM can be enabled on a Windows target using the following commands:
+
+PS C:\WINDOWS\system32> winrm quickconfig
+
+WinRM service is already running on this machine.
+
+WinRM is not set up to allow remote access to this machine for management.
+
+The following changes must be made:
+
+As can be seen in the above output, running this command will automatically ensure all the necessary configurations are in place to:
+
+Enable the WinRM service
+
+Allow WinRM through the Windows Defender Firewall (Inbound and Outbound)
+
+Grant administrative rights remotely to local users
+
+As long as credentials to access the system are known, anyone who can reach the target over the network can connect after that command is run. IT admins should take further steps to harden these WinRM configurations, especially if the system will be remotely accessible over the Internet. Among some of these hardening options are:
+
+Configure TrustedHosts to include just IP addresses/hostnames that will be used for remote management
+
+Configure HTTPS for transport
+
+Join Windows systems to an Active Directory Domain Environment and Enforce Kerberos Authentication
+
+<h3>Testing PowerShell Remote Access</h3>
+
+Once we have enabled and configured WinRM, we can test remote access using the Test-WSMan PowerShell cmdlet.
+
+<h3>Testing Unauthenticated Access</h3>
+
+PS C:\Users\administrator> Test-WSMan -ComputerName "10.129.224.248"
+
+Running this cmdlet sends a request that checks if the WinRM service is running. Keep in mind that this is unauthenticated, so no credentials are used, which is why no OS version is detected. This shows us that the WinRM service is running on the target.
+
+<h3>Testing Authenticated Access</h3>
+
+PS C:\Users\administrator> Test-WSMan -ComputerName "10.129.224.248" -Authentication Negotiate
+
+We can run the same command with the option -Authentication Negotiate to test if WinRM is authenticated, and we will receive the OS version (10.0.11764).
+
+<h3>PowerShell Remote Sessions</h3>
+
+We also have the option to use the Enter-PSSession cmdlet to establish a PowerShell session with a Windows target.
+
+<h3>Establishing a PowerShell Session</h3>
+
+PS C:\Users\administrator> Enter-PSSession -ComputerName 10.129.224.248 -Credential htb-student -Authentication Negotiate
+
+[10.129.5.129]: PS C:\Users\htb-student\Documents> $PSVersionTable
+
+We can perform this same action from a Linux-based attack host with PowerShell core installed (like in Pwnbox). Remember that PowerShell is not exclusive to Windows and will run on other operating systems now.
+
+<h3>Using Enter-PSSession from Linux</h3>
+
+@htb[/htb]$ [PS]> Enter-PSSession -ComputerName 10.129.224.248 -Credential htb-student -Authentication Negotiate
+
+PowerShell credential request
+
+Enter your credentials.
+
+Password for user htb-student: **\*\***\*\*\***\*\***
+
+[10.129.224.248]: PS C:\Users\htb-student\Documents> $PSVersionTable
+
+Along with being OS agnostic, there are now tons of different tools that we can use to interact remotely with hosts. Picking a means to remotely administer our hosts mostly comes down to what you are comfortable with and what you can use based on the engagement or your environment security settings.
+
+Networking is a pretty straightforward task to manage on Windows hosts. As your environments get more complex with cloud servers, multiple domains, and multiple sites across large geographical distances, network management at the level can get tedious. Luckily, we are only focused on our local host and how to manage a singular host. Moving forward, we will look at how we can interact with the web using PowerShell.
+
+What common protocol is used to resolve names to IP addresses.
+DNS
+
+- 0 What PowerShell cmdlet will show us the IP configurations of the hosts network adapters.
+
+  Get-NetIPAddress
+
+- 0 What command can enable and configure Windows Remote Management on a host?
+
+  winrm quickconfig
