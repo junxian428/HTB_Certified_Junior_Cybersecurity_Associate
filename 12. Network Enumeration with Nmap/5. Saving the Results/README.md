@@ -114,3 +114,7 @@ If we now open the HTML file in our browser, we see a clear and structured prese
 <h3>Nmap Report</h3>
 
 More information about the output formats can be found at: https://nmap.org/book/output.html
+
+Perform a full TCP port scan on your target and create an HTML report. Submit the number of the highest port as the answer.
+
+31337
