@@ -70,4 +70,6 @@ The MSF engagement structure can be divided into five main categories.
 
 It is therefore crucial that we familiarize ourselves with this structure. Therefore, we will look at this framework's components to better understand how they are related.
 
+<img width="483" height="895" alt="image" src="https://github.com/user-attachments/assets/4b646943-6002-471e-8f2a-77c6b614df0a" />
+
 We will go through each of these categories during the module, but we recommend looking at the individual components ourselves and digging deeper. Experimenting with the different functions is an integral part of learning a new tool or skill. Therefore, we should try out everything imaginable here in the following labs and analyze the results independently.
