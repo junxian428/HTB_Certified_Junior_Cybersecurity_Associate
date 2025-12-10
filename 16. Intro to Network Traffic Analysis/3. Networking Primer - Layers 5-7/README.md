@@ -175,3 +175,34 @@ Like any other application that uses TCP as its transport mechanism, it will per
 Looking at the image above, we can see that it performs the TCP handshake each time it establishes a session orange boxes. When looking at the source and destination ports blue box, port 445 is being utilized, signaling SMB traffic over TCP. If we look at the green boxes, the info field tells us a bit about what is happening in the SMB communication. In this example, there are many errors, which is an example of something to dig deeper into. One or two auth failures from a user is relatively common, but a large cluster of them repeating can signal a potential unauthorized individual trying to access a user's account or use their credentials to move. This is a common tactic of attackers, grab an authenticated user, steal their credentials, utilize them to move laterally, or access resources they typically would be denied access to.
 
 This is just one example of SMB use. Another common thing we will see is file-share access between servers and hosts. For the most part, this is regular communication. However, if we see a host access file shares on other hosts, this is not common. Please pay attention to who is requesting connections, where to, and what they are doing.
+
+What is the default operational mode method used by FTP?
+Active
+
+- 0 FTP utilizes what two ports for command and data transfer? (separate the two numbers with a space)
+
+  20 21
+
+- 0 Does SMB utilize TCP or UDP as its transport layer protocol?
+
+  TCP
+
+- 0 SMB has moved to using what TCP port?
+
+  445
+
+- 0 Hypertext Transfer Protocol uses what well known TCP port number?
+
+  80
+
+- 0 What HTTP method is used to request information and content from the webserver?
+
+  GET
+
+- 0 What web based protocol uses TLS as a security measure?
+
+  HTTPS
+
+- 0 True or False: when utilizing HTTPS, all data sent across the session will appear as TLS Application data?
+
+  True
