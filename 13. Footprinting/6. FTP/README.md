@@ -391,3 +391,11 @@ It looks slightly different if the FTP server runs with TLS/SSL encryption. Beca
 @htb[/htb]$ openssl s_client -connect 10.129.14.136:21 -starttls ftp
 
 This is because the SSL certificate allows us to recognize the hostname, for example, and in most cases also an email address for the organization or company. In addition, if the company has several locations worldwide, certificates can also be created for specific locations, which can also be identified using the SSL certificate.
+
+Which version of the FTP server is running on the target system? Submit the entire banner as the answer.
+
+InFreight FTP v1.1
+
+- 0 Enumerate the FTP server and find the flag.txt file. Submit the contents of it as the answer.
+
+  HTB{b7skjr4c76zhsds7fzhd4k3ujg7nhdjre}
