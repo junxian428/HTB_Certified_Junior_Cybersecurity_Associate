@@ -150,3 +150,65 @@ When utilizing the switches, chaining them together as in the example above is b
 When looking at the output from TCPDump, it can be a bit overwhelming. Running through these basic switches has already shown us several different views. We are going to take a minute to dissect that output and explain what we are seeing. The image and table below will define each field. Keep in mind that the more verbose we are with our filters, the more detail from each header is shown.
 
 <h3>Tcpdump Shell Breakdown</h3>
+
+<img width="995" height="498" alt="image" src="https://github.com/user-attachments/assets/3ac656b2-7b10-4a67-b695-7022c253314c" />
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Filter</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Timestamp</td>
+            <td><b style="color:gold;">Yellow</b> — The timestamp field comes first and is configurable to show the time and date in a format we can ingest easily.</td>
+        </tr>
+        <tr>
+            <td>Protocol</td>
+            <td><b style="color:orange;">Orange</b> — This section will tell us what the upper-layer header is. In our example, it shows IP.</td>
+        </tr>
+        <tr>
+            <td>Source &amp; Destination IP.Port</td>
+            <td><b style="color:orange;">Orange</b> — Shows the source and destination of the packet along with the port number. Format: <code>IP.port</code> (e.g., <code>172.16.146.2.21</code>).</td>
+        </tr>
+        <tr>
+            <td>Flags</td>
+            <td><b style="color:green;">Green</b> — This portion shows any flags utilized.</td>
+        </tr>
+        <tr>
+            <td>Sequence and Acknowledgement Numbers</td>
+            <td><b style="color:red;">Red</b> — Shows the sequence and acknowledgment numbers used to track the TCP segment. Low numbers indicate relative sequence/ack numbers are displayed.</td>
+        </tr>
+        <tr>
+            <td>Protocol Options</td>
+            <td><b style="color:blue;">Blue</b> — Displays negotiated TCP values such as window size, selective acknowledgments, window scaling factors, etc.</td>
+        </tr>
+        <tr>
+            <td>Notes / Next Header</td>
+            <td><b style="color:gray;">White</b> — Misc notes from the dissector. Encapsulated traffic may show additional header info. Example: TCPDump detecting FTP inside encapsulation.</td>
+        </tr>
+    </tbody>
+</table>
+
+There are many other options and information that can be shown. This information varies based on the amount of verbosity that is enabled. For a more detailed understanding of IP and other protocol headers, check out the Networking Primer in section two or the Networking Foundations module.
+
+There is a great advantage in knowing how a network functions and how to use the filters that TCPDump provides. With them, we can view the network traffic, parse it for any issues, and identify suspicious network interactions quickly. Theoretically, we can use tcpdump to create an IDS/IPS system by having a Bash script analyze the intercepted packets according to a specific pattern. We can then set conditions to, for example, ban a particular IP address that has sent too many ICMP echo requests for a certain period.
+
+<h3>File Input/Output with Tcpdump</h3>
+
+Using -w will write our capture to a file. Keep in mind that as we capture traffic off the wire, we can quickly use up open disk space and run into storage issues if we are not careful. The larger our network segment, the quicker we will use up storage. Utilizing the switches demonstrated above can help tune the amount of data stored in our PCAPs.
+
+<h3>Save our PCAP Output to a File</h3>
+
+@htb[/htb]$ sudo tcpdump -i eth0 -w ~/output.pcap
+
+This capture above will generate the output to a file called output.pcap. When running tcpdump in this way, the output will not scroll our terminal as usual. All output from tcpdump is being redirected to the file we specified for the capture.
+
+<h3>Reading Output From a File</h3>
+
+@htb[/htb]$ sudo tcpdump -r ~/output.pcap
+
+This will read the capture stored in output.pcap. Notice it is back to a basic view. To get more detailed information out of the capture file, reapply our switches.
+
