@@ -11,3 +11,7 @@ Note: The default number of threads used is 5, however, this value can be change
 7@htb[/htb]$ wpscan --url http://blog.inlanefreight.com --enumerate --api-token Kffr4fdJzy9qVcTk<SNIP>
 
 [+] URL: http://blog.inlanefreight.com/  
+
+Enumerate the provided WordPress instance for all installed plugins. Perform a scan with WPScan against the target and submit the version of the vulnerable plugin named “photo-gallery”.
+
+1.5.34
