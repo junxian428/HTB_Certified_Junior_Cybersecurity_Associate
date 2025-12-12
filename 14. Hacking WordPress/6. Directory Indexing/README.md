@@ -39,3 +39,10 @@ We can also view the directory listing using cURL and convert the HTML output to
 This type of access is called Directory Indexing. It allows us to navigate the folder and access files that may contain sensitive information or vulnerable code. It is best practice to disable directory indexing on web servers so a potential attacker cannot gain direct access to any files or folders other than those necessary for the website to function properly.
 
 Keep in mind the key WordPress directories discussed in the WordPress Structure section. Manually enumerate the target for any directories whose contents can be listed. Browse these directories and locate a flag with the file name flag.txt and submit its contents as the answer.
+
+
+ Keep in mind the key WordPress directories discussed in the WordPress Structure section. Manually enumerate the target for any directories whose contents can be listed. Browse these directories and locate a flag with the file name flag.txt and submit its contents as the answer.
+ 
+HTB{3num3r4t10n_15_k3y}
+
+<img width="1296" height="692" alt="image" src="https://github.com/user-attachments/assets/071ab67f-6c07-4d08-8ad6-706ed4c4eaf6" />
