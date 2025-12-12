@@ -287,3 +287,7 @@ PORT STATE SERVICE VERSION
 </table>
 
 The scripts used for the last scan interact with the webserver and its web application to find out more information about their versions and check various databases to see if there are known vulnerabilities. More information about NSE scripts and the corresponding categories we can find at: https://nmap.org/nsedoc/index.html
+
+Use NSE and its scripts to find the flag that one of the services contain and submit it as the answer.
+
+HTB{873nniuc71bu6usbs1i96as6dsv26}
