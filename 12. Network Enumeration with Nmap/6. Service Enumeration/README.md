@@ -305,6 +305,8 @@ After that, the target SMTP server sends us a TCP packet with the PSH and ACK fl
 
 4. [PSH-ACK] 18:28:07.319306 IP 10.129.2.28.smtp > 10.10.14.2.59618: Flags [P.], <SNIP>
 
-The last TCP packet that we sent confirms the receipt of the data with an ACK.
+5. [ACK] 18:28:07.319426 IP 10.10.14.2.59618 > 10.129.2.28.smtp: Flags [.], <SNIP>
 
-18:28:07.319426 IP 10.10.14.2.59618 > 10.129.2.28.smtp: Flags [.], <SNIP>
+Enumerate all ports and their services. One of the services contains the flag you have to submit as the answer.
+
+HTB{pr0F7pDv3r510nb4nn3r}
