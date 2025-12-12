@@ -185,3 +185,36 @@ Navigate to the bottom of this section and click on Click here to spawn the targ
 Now, RDP to [Target IP] using the provided credentials, open Windows Event Viewer, and answer the questions below.
 
 @htb[/htb]$ xfreerdp /u:Administrator /p:'HTB_@cad3my_lab_W1n10_r00t!@0' /v:[Target IP] /dynamic-resolution
+
+
+Analyze the event with ID 4624, that took place on 8/3/2022 at 10:23:25. Conduct a similar investigation as outlined in this section and provide the name of the executable responsible for the modification of the auditing settings as your answer. Answer format: T_W_____.exe
+
+TiWorker.exe
+ 
+ RDP to  with user " and password 
+
++ 1  Build an XML query to determine if the previously mentioned executable modified the auditing settings of C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF\wpfgfx_v0400.dll. Enter the time of the identified event in the format HH:MM:SS as your answer.
+
+10:23:50
+
+
+<QueryList>
+  
+  <Query Id="0" Path="Security">
+    
+    <Select Path="Security">
+    
+      *[System[(EventID=4907)]]
+      
+      and
+      
+      *[EventData[Data[@Name='ObjectName']=
+      
+      'C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF\wpfgfx_v0400.dll']]
+    </Select>
+    
+  </Query>
+  
+</QueryList>
+
+<img width="1589" height="766" alt="image" src="https://github.com/user-attachments/assets/2931c564-5c66-4430-bc75-fdf3441c8466" />
