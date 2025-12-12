@@ -173,3 +173,117 @@ HOP RTT ADDRESS
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 
 Nmap done: 1 IP address (1 host up) scanned in 11.36 seconds
+
+<table border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Scanning Options</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10.129.2.28</td>
+      <td>Scans the specified target.</td>
+    </tr>
+    <tr>
+      <td>-p 80</td>
+      <td>Scans only the specified port.</td>
+    </tr>
+    <tr>
+      <td>-A</td>
+      <td>Performs service detection, OS detection, traceroute, and uses default scripts to scan the target.</td>
+    </tr>
+  </tbody>
+</table>
+
+With the help of the used scan option (-A), we found out what kind of web server (Apache 2.4.29) is running on the system, which web application (WordPress 5.3.4) is used, and the title (blog.inlanefreight.com) of the web page. Also, Nmap shows that it is likely to be Linux (96%) operating system.
+
+<h3>Vulnerability Assessment</h3>
+
+Now let us move on to HTTP port 80 and see what information and vulnerabilities we can find using the vuln category from NSE.
+
+<h3>Nmap - Vuln Category</h3>
+
+@htb[/htb]$ sudo nmap 10.129.2.28 -p 80 -sV --script vuln
+
+Nmap scan report for 10.129.2.28
+
+Host is up (0.036s latency).
+
+PORT STATE SERVICE VERSION
+
+80/tcp open http Apache httpd 2.4.29 ((Ubuntu))
+
+| http-enum:
+
+| /wp-login.php: Possible admin folder
+
+| /readme.html: Wordpress version: 2
+
+| /: WordPress version: 5.3.4
+
+| /wp-includes/images/rss.png: Wordpress version 2.2 found.
+
+| /wp-includes/js/jquery/suggest.js: Wordpress version 2.5 found.
+
+| /wp-includes/images/blank.gif: Wordpress version 2.6 found.
+
+| /wp-includes/js/comment-reply.js: Wordpress version 2.7 found.
+
+| /wp-login.php: Wordpress login page.
+
+| /wp-admin/upgrade.php: Wordpress login page.
+
+|\_ /readme.html: Interesting, a readme.
+
+|\_http-server-header: Apache/2.4.29 (Ubuntu)
+
+|\_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+
+| http-wordpress-users:
+
+| Username found: admin
+
+|\_Search stopped at ID #25. Increase the upper limit if necessary with 'http-wordpress-users.limit'
+
+| vulners:
+
+| cpe:/a:apache:http_server:2.4.29:
+
+| CVE-2019-0211 7.2 https://vulners.com/cve/CVE-2019-0211
+
+| CVE-2018-1312 6.8 https://vulners.com/cve/CVE-2018-1312
+
+| CVE-2017-15715 6.8 https://vulners.com/cve/CVE-2017-15715
+
+<SNIP>
+
+<table border="1" cellspacing="0" cellpadding="6">
+  <thead>
+    <tr>
+      <th>Scanning Options</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10.129.2.28</td>
+      <td>Scans the specified target.</td>
+    </tr>
+    <tr>
+      <td>-p 80</td>
+      <td>Scans only the specified port.</td>
+    </tr>
+    <tr>
+      <td>-sV</td>
+      <td>Performs service version detection on specified ports.</td>
+    </tr>
+    <tr>
+      <td>--script vuln</td>
+      <td>Uses all related scripts from the specified category.</td>
+    </tr>
+  </tbody>
+</table>
+
+The scripts used for the last scan interact with the webserver and its web application to find out more information about their versions and check various databases to see if there are known vulnerabilities. More information about NSE scripts and the corresponding categories we can find at: https://nmap.org/nsedoc/index.html
