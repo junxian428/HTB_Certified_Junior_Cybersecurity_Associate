@@ -92,13 +92,13 @@ Please also specify a Europe/Copenhagen timezone, through the following link htt
 
 The cybersecurity strategy implemented is predicated on the utilization of the Elastic stack as a SIEM solution. Through the "Discover" functionality we can see logs from multiple sources. These sources include:
 
-- Windows audit logs (categorized under the index pattern windows*)
+- Windows audit logs (categorized under the index pattern windows\*)
 
-- System Monitor (Sysmon) logs (also falling under the index pattern windows*, more about Sysmon here)
+- System Monitor (Sysmon) logs (also falling under the index pattern windows\*, more about Sysmon here)
 
-- PowerShell logs (indexed under windows* as well, more about PowerShell logs here)
+- PowerShell logs (indexed under windows\* as well, more about PowerShell logs here)
 
-- Zeek logs, a network security monitoring tool (classified under the index pattern zeek*)
+- Zeek logs, a network security monitoring tool (classified under the index pattern zeek\*)
 
 Our available threat intelligence stems from March 2023, hence it's imperative that our Kibana setup scans logs dating back at least to this time frame. Our "windows" index contains around 118,975 logs, while the "zeek" index houses approximately 332,261 logs.
 
@@ -120,7 +120,7 @@ Our search query should be the following.
 
 Related fields: winlog.event_id or event.code and file.name
 
-event.code:15 AND file.name:*invoice.one
+event.code:15 AND file.name:\*invoice.one
 
 <img width="981" height="581" alt="image" src="https://github.com/user-attachments/assets/361e78cb-d4e0-4ccd-9df1-83b58f58d484" />
 
@@ -132,7 +132,7 @@ We can corroborate this information by examining Sysmon Event ID 11 (File create
 
 Related fields: winlog.event_id or event.code and file.name
 
-event.code:11 AND file.name:invoice.one*
+event.code:11 AND file.name:invoice.one\*
 
 <img width="980" height="208" alt="image" src="https://github.com/user-attachments/assets/97afc594-9044-40fa-90ec-3c73054e55d6" />
 
@@ -146,7 +146,7 @@ Our Zeek query will search for a source IP matching 192.168.28.130, and since we
 
 Related fields: source.ip and dns.question.name
 
-source.ip:192.168.28.130 AND dns.question.name:*
+source.ip:192.168.28.130 AND dns.question.name:\*
 
 <img width="980" height="134" alt="image" src="https://github.com/user-attachments/assets/8e677599-5fbd-49cf-92b8-1f69fdf70d81" />
 
@@ -182,7 +182,7 @@ Hypothetically, if "invoice.one" was accessed, it would be opened with the OneNo
 
 Related fields: winlog.event_id or event.code and process.command_line
 
-event.code:1 AND process.command_line:*invoice.one*
+event.code:1 AND process.command*line:\_invoice.one*
 
 <img width="995" height="561" alt="image" src="https://github.com/user-attachments/assets/daba0426-487a-4654-9f21-73949e394763" />
 
@@ -198,7 +198,7 @@ Now we can establish a connection between "OneNote.exe", the suspicious "invoice
 
 Related fields: winlog.event_id or event.code and process.parent.command_line
 
-event.code:1 AND process.parent.command_line:*invoice.bat*
+event.code:1 AND process.parent.command*line:\_invoice.bat*
 
 <img width="1000" height="293" alt="image" src="https://github.com/user-attachments/assets/5396afe0-1886-4046-ab8c-70c61b7af2d2" />
 
@@ -285,3 +285,15 @@ Related fields: winlog.event_id or event.code, winlog.event_data.LogonType, and 
 The results are quite intriguing – two failed attempts for the administrator account, roughly around the time when the initial suspicious activity was detected. Subsequently, there were numerous successful logon attempts for "svc-sql1". It appears they attempted to crack the administrator's password but failed. However, two days later on the 28th, we observe successful attempts with svc-sql1.
 
 At this stage, we have amassed a significant amount of information to present and initiate a comprehensive incident response, in accordance with company policies.
+
+Navigate to http://[Target IP]:5601 and follow along as we hunt for Stuxbot. In the part where default.exe is under investigation, a VBS file is mentioned. Enter its full name as your answer, including the extension.
+
+XceGuhkzaTrOy.vbs
+
+- 1 Stuxbot uploaded and executed mimikatz. Provide the process arguments (what is after .\mimikatz.exe, ...) as your answer.
+
+lsadump::dcsync /domain:eagle.local /all /csv, exit
+
+- 1 Some PowerShell code has been loaded into memory that scans/tsargets network shares. Leverage the available PowerShell logs to identify from which popular hacking tool this code derives. Answer format (one word): P\_**_V_**
+
+PowerView
