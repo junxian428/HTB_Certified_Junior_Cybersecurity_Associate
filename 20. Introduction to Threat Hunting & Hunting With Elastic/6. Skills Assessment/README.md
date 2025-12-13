@@ -80,3 +80,23 @@ Query:
 event.code: 13 AND message: "_\Software\Microsoft\Windows\CurrentVersion\Run_"
 
 LgvHsviAUVTsIN
+
+Enter your answer for Hunt 3.
+
+Hunt 3: Create a KQL query to hunt for “PowerShell Remoting for Lateral Movement”. Enter the content of the winlog.user.name field in the document that is related to PowerShell remoting-based lateral movement towards DC1.
+
+As usual 😀, we need an event ID that matches this case. When discussing Windows Remote Management (WinRM), we are referring to a tool that administrators use to execute PowerShell commands or scripts on remote systems. In this scenario, event ID 4104 (Microsoft-Windows-PowerShell And Execute a Remote Command) is the most relevant to our investigation.
+
+Using this event ID to filter the logs, we found 600 hits.
+
+Press enter or click to view image in full size
+
+To refine our query, we need to focus on WinRM for lateral movement. We know that establishing a PowerShell Remoting (PSRemoting) session from a compromised system to a target system requires the following command: New-PSSession -ComputerName TargetHost -Credential (Get-Credential)
+
+Since a session cannot be initiated without PSSession, we can use it as a keyword to filter the results further.
+
+Thus, our final query will be:
+
+event.code: 4104 AND powershell.file.script*block_text: \_PSSession*
+
+svc-sql1
