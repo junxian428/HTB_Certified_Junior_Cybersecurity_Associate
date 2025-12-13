@@ -60,3 +60,23 @@ Press enter or click to view image in full size
 event.code: 11 AND message:"C:\Users\Public\*"
 
 svc-sql1
+
+- 3 Enter your answer for Hunt 2.
+
+After understanding this technique from MITRE, we found some valuable insights, such as the registry paths commonly used by adversaries to achieve persistence via registry keys, particularly the Run keys, as shown below.
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+Following the same approach as the previous hunt, if an attacker attempts to modify anything in the registry, this will generate an event. To detect this, we need the relevant event ID. I found that Sysmon Event ID 13 is useful, as it specifically identifies registry value modifications. This event logs the values written for registry entries of type DWORD and QWORD.
+
+Query:
+
+event.code: 13 AND message: "_\Software\Microsoft\Windows\CurrentVersion\Run_"
+
+LgvHsviAUVTsIN
