@@ -13,3 +13,238 @@ An SMB server can provide arbitrary parts of its local file system as shares. Th
 As mentioned earlier, there is an alternative implementation of the SMB server called Samba, which is developed for Unix-based operating systems. Samba implements the Common Internet File System (CIFS) network protocol. CIFS is a dialect of SMB, meaning it is a specific implementation of the SMB protocol originally created by Microsoft. This allows Samba to communicate effectively with newer Windows systems. Therefore, it is often referred to as SMB/CIFS.
 
 However, CIFS is considered a specific version of the SMB protocol, primarily aligning with SMB version 1. When SMB commands are transmitted over Samba to an older NetBIOS service, connections typically occur over TCP ports 137, 138, and 139. In contrast, CIFS operates over TCP port 445 exclusively. There are several versions of SMB, including newer versions like SMB 2 and SMB 3, which offer improvements and are preferred in modern infrastructures, while older versions like SMB 1 (CIFS) are considered outdated but may still be used in specific environments.
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>SMB Version</th>
+      <th>Supported</th>
+      <th>Features</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CIFS</td>
+      <td>Windows NT 4.0</td>
+      <td>Communication via NetBIOS interface</td>
+    </tr>
+    <tr>
+      <td>SMB 1.0</td>
+      <td>Windows 2000</td>
+      <td>Direct connection via TCP</td>
+    </tr>
+    <tr>
+      <td>SMB 2.0</td>
+      <td>Windows Vista, Windows Server 2008</td>
+      <td>Performance upgrades, improved message signing, caching feature</td>
+    </tr>
+    <tr>
+      <td>SMB 2.1</td>
+      <td>Windows 7, Windows Server 2008 R2</td>
+      <td>Locking mechanisms</td>
+    </tr>
+    <tr>
+      <td>SMB 3.0</td>
+      <td>Windows 8, Windows Server 2012</td>
+      <td>Multichannel connections, end-to-end encryption, remote storage access</td>
+    </tr>
+    <tr>
+      <td>SMB 3.0.2</td>
+      <td>Windows 8.1, Windows Server 2012 R2</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>SMB 3.1.1</td>
+      <td>Windows 10, Windows Server 2016</td>
+      <td>Integrity checking, AES-128 encryption</td>
+    </tr>
+  </tbody>
+</table>
+
+With version 3, the Samba server gained the ability to be a full member of an Active Directory domain. With version 4, Samba even provides an Active Directory domain controller. It contains several so-called daemons for this purpose - which are Unix background programs. The SMB server daemon (smbd) belonging to Samba provides the first two functionalities, while the NetBIOS message block daemon (nmbd) implements the last two functionalities. The SMB service controls these two background programs.
+
+We know that Samba is suitable for both Linux and Windows systems. In a network, each host participates in the same workgroup. A workgroup is a group name that identifies an arbitrary collection of computers and their resources on an SMB network. There can be multiple workgroups on the network at any given time. IBM developed an application programming interface (API) for networking computers called the Network Basic Input/Output System (NetBIOS). The NetBIOS API provided a blueprint for an application to connect and share data with other computers. In a NetBIOS environment, when a machine goes online, it needs a name, which is done through the so-called name registration procedure. Either each host reserves its hostname on the network, or the NetBIOS Name Server (NBNS) is used for this purpose. It also has been enhanced to Windows Internet Name Service (WINS).
+
+<h3>Default Configuration</h3>
+
+As we can imagine, Samba offers a wide range of settings that we can configure. Again, we define the settings via a text file where we can get an overview of some of the settings. These settings look like the following when filtered out:
+
+<h3>Default Configuration</h3>
+
+@htb[/htb]$ cat /etc/samba/smb.conf | grep -v "#\|\;"
+
+We see global settings and two shares that are intended for printers. The global settings are the configuration of the available SMB server that is used for all shares. In the individual shares, however, the global settings can be overwritten, which can be configured with high probability even incorrectly. Let us look at some of the settings to understand how the shares are configured in Samba.
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[sharename]</td>
+      <td>The name of the network share.</td>
+    </tr>
+    <tr>
+      <td>workgroup = WORKGROUP/DOMAIN</td>
+      <td>Workgroup that will appear when clients query.</td>
+    </tr>
+    <tr>
+      <td>path = /path/here/</td>
+      <td>The directory to which user is to be given access.</td>
+    </tr>
+    <tr>
+      <td>server string = STRING</td>
+      <td>The string that will show up when a connection is initiated.</td>
+    </tr>
+    <tr>
+      <td>unix password sync = yes</td>
+      <td>Synchronize the UNIX password with the SMB password?</td>
+    </tr>
+    <tr>
+      <td>usershare allow guests = yes</td>
+      <td>Allow non-authenticated users to access defined share?</td>
+    </tr>
+    <tr>
+      <td>map to guest = bad user</td>
+      <td>Action taken when a user login request does not match a valid UNIX user.</td>
+    </tr>
+    <tr>
+      <td>browseable = yes</td>
+      <td>Should this share be shown in the list of available shares?</td>
+    </tr>
+    <tr>
+      <td>guest ok = yes</td>
+      <td>Allow connecting to the service without using a password?</td>
+    </tr>
+    <tr>
+      <td>read only = yes</td>
+      <td>Allow users to read files only?</td>
+    </tr>
+    <tr>
+      <td>create mask = 0700</td>
+      <td>Permissions set for newly created files.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Dangerous Settings</h3>
+
+Some of the above settings already bring some sensitive options. However, suppose we question the settings listed below and ask ourselves what the employees could gain from them, as well as attackers. In that case, we will see what advantages and disadvantages the settings bring with them. Let us take the setting browseable = yes as an example. If we as administrators adopt this setting, the company's employees will have the comfort of being able to look at the individual folders with the contents. Many folders are eventually used for better organization and structure. If the employee can browse through the shares, the attacker will also be able to do so after successful access.
+
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>browseable = yes</td>
+      <td>Allow listing available shares in the current share?</td>
+    </tr>
+    <tr>
+      <td>read only = no</td>
+      <td>Forbid the creation and modification of files?</td>
+    </tr>
+    <tr>
+      <td>writable = yes</td>
+      <td>Allow users to create and modify files?</td>
+    </tr>
+    <tr>
+      <td>guest ok = yes</td>
+      <td>Allow connecting to the service without using a password?</td>
+    </tr>
+    <tr>
+      <td>enable privileges = yes</td>
+      <td>Honor privileges assigned to specific SID?</td>
+    </tr>
+    <tr>
+      <td>create mask = 0777</td>
+      <td>Permissions assigned to newly created files.</td>
+    </tr>
+    <tr>
+      <td>directory mask = 0777</td>
+      <td>Permissions assigned to newly created directories.</td>
+    </tr>
+    <tr>
+      <td>logon script = script.sh</td>
+      <td>Script executed on the user's login.</td>
+    </tr>
+    <tr>
+      <td>magic script = script.sh</td>
+      <td>Script executed when the script file is closed.</td>
+    </tr>
+    <tr>
+      <td>magic output = script.out</td>
+      <td>Location where the output of the magic script is stored.</td>
+    </tr>
+  </tbody>
+</table>
+
+Let us create a share called [notes] and a few others and see how the settings affect our enumeration process. We will use all of the above settings and apply them to this share. For example, this setting is often applied, if only for testing purposes. If it is then an internal subnet of a small team in a large department, this setting is often retained or forgotten to be reset. This leads to the fact that we can browse through all the shares and, with high probability, even download and inspect them.
+
+<h3>Example Share</h3>
+
+...SNIP...
+
+[notes]
+
+comment = CheckIT
+
+path = /mnt/notes/
+
+    browseable = yes
+
+    read only = no
+
+    writable = yes
+
+    guest ok = yes
+
+    enable privileges = yes
+
+    create mask = 0777
+
+    directory mask = 0777
+
+It is highly recommended to look at the man pages for Samba and configure it ourselves and experiment with the settings. We will then discover potential aspects that will be interesting for us as a penetration tester. In addition, the more familiar we become with the Samba server and SMB, the easier it will be to find our way around the environment and use it for our purposes. Once we have adjusted /etc/samba/smb.conf to our needs, we have to restart the service on the server.
+
+<h3>Restart Samba</h3>
+
+root@samba:~# sudo systemctl restart smbd
+
+Now we can display a list (-L) of the server's shares with the smbclient command from our host. We use the so-called null session (-N), which is anonymous access without the input of existing users or valid passwords.
+
+<h3>SMBclient - Connecting to the Share</h3>
+
+@htb[/htb]$ smbclient -N -L //10.129.14.128
+
+        Sharename       Type      Comment
+
+        ---------       ----      -------
+
+        print$          Disk      Printer Drivers
+
+        home            Disk      INFREIGHT Samba
+
+        dev             Disk      DEVenv
+
+        notes           Disk      CheckIT
+
+        IPC$            IPC       IPC Service (DEVSM)
+
+SMB1 disabled -- no workgroup available
+
+We can see that we now have five different shares on the Samba server from the result. Thereby print$ and an IPC$ are already included by default in the basic setting, as we have already seen. Since we deal with the [notes] share, let us log in and inspect it using the same client program. If we are not familiar with the client program, we can use the help command on successful login, listing all the possible commands we can execute.
+
+@htb[/htb]$ smbclient //10.129.14.128/notes
+
+Enter WORKGROUP\<username>'s password:
+
+Anonymous login successful
+
+Try "help" to get a list of possible commands.
