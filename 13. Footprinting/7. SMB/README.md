@@ -248,3 +248,5 @@ Enter WORKGROUP\<username>'s password:
 Anonymous login successful
 
 Try "help" to get a list of possible commands.
+
+Once we have discovered interesting files or folders, we can download them using the get command. Smbclient also allows us to execute local system commands using an exclamation mark at the beginning (!<cmd>) without interrupting the connection.
