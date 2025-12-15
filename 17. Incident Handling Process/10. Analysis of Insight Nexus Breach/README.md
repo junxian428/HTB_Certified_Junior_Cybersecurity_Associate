@@ -226,7 +226,19 @@ Questions
 
 Answer the question(s) below to complete this Section and earn cubes!
 
-- 0 Download the Wazuh exported logs file (i.e., wazuh_export.zip), and identify all events that indicate potential credential compromise. Check the event ID 4688 and verify the full path of the parent process name that executed a credential dumping tool. Answer format is C:\\Pr........
+- Download the Wazuh exported logs file (i.e., wazuh_export.zip), and identify all events that indicate potential credential compromise. Check the event ID 4688 and verify the full path of the parent process name that executed a credential dumping tool. Answer format is C:\\Pr........
+
+C:\\Program Files\\Mozilla Firefox\\firefox.exe
+
+- 0 Identify events that show persistence mechanisms. Type the value of imagePath for a persistence mechanism that took place on the host DB01.
+  C:\\Windows\\PSEXESVC.exe
+
+- 1 Identify exfiltration activity — file(s) uploaded or outbound traffic. What is the external IP address to which the file diagnostics_data.zip was uploaded?
+  93.184.216.34
+
+- 0 Which user tried to connect to the file share \\fs01\projects?
+
+svc_admin
 
 Reference:
 
