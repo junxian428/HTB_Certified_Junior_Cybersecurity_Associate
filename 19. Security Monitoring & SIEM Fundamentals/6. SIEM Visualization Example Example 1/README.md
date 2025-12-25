@@ -166,3 +166,7 @@ Finally, let's give our visualization a title by clicking on "No Title".
 Don't forget to click on the "Save" button (the one on the upper-right hand side of the window).
 
 Please allow 3-5 minutes for Kibana to become available after spawning the target of the questions below.
+
+ Navigate to http://[Target IP]:5601, click on the side navigation toggle, and click on "Dashboard". Browse the refined visualization we created or the "Failed logon attempts [All users]" visualization, if it is available, and enter the number of logins for the sql-svc1 account as your answer.
+ 
+2
