@@ -80,3 +80,83 @@ By following the required steps, which involve renaming reflective_dll.x64.dll t
 Next, we analyze the impact of the hijack. First, we filter the event logs to focus on Event ID 7, which represents module load events, by clicking "Filter Current Log...".
 
 <img width="670" height="714" alt="image" src="https://github.com/user-attachments/assets/f203d11a-5fdd-4ef9-97b6-e9e76a3bcfce" />
+
+Subsequently, we search for instances of "calc.exe", by clicking "Find...", to identify the DLL load associated with our hijack.
+
+<img width="706" height="280" alt="image" src="https://github.com/user-attachments/assets/88286e46-ac83-428f-8ce4-782762353946" />
+
+The output from Sysmon provides valuable insights. Now, we can observe several indicators of compromise (IOCs) to create effective detection rules. Before moving forward though, let's compare this to an authenticate load of "wininet.dll" by "calc.exe".
+
+<img width="707" height="331" alt="image" src="https://github.com/user-attachments/assets/735ad88e-bf85-4c64-b6a0-9f1d2e2fac5f" />
+
+Let's explore these IOCs:
+
+1. "calc.exe", originally located in System32, should not be found in a writable directory. Therefore, a copy of "calc.exe" in a writable directory serves as an IOC, as it should always reside in System32 or potentially Syswow64.
+
+2. "WININET.dll", originally located in System32, should not be loaded outside of System32 by calc.exe. If instances of "WININET.dll" loading occur outside of System32 with "calc.exe" as the parent process, it indicates a DLL hijack within calc.exe. While caution is necessary when alerting on all instances of "WININET.dll" loading outside of System32 (as some applications may package specific DLL versions for stability), in the case of "calc.exe", we can confidently assert a hijack due to the DLL's unchanging name, which attackers cannot modify to evade detection.
+
+3. The original "WININET.dll" is Microsoft-signed, while our injected DLL remains unsigned.
+
+These three powerful IOCs provide an effective means of detecting a DLL hijack involving calc.exe. It's important to note that while Sysmon and event logs offer valuable telemetry for hunting and creating alert rules, they are not the sole sources of information.
+
+<h3>Detection Example 2: Detecting Unmanaged PowerShell/C-Sharp Injection</h3>
+
+Before delving into detection techniques, let's gain a brief understanding of C# and its runtime environment. C# is considered a "managed" language, meaning it requires a backend runtime to execute its code. The Common Language Runtime (CLR) serves as this runtime environment. Managed code does not directly run as assembly; instead, it is compiled into a bytecode format that the runtime processes and executes. Consequently, a managed process relies on the CLR to execute C# code.
+
+As defenders, we can leverage this knowledge to detect unusual C# injections or executions within our environment. To accomplish this, we can utilize a useful utility called Process Hacker.
+
+<img width="711" height="650" alt="image" src="https://github.com/user-attachments/assets/be6eee6d-9b1a-4afa-ab9d-bc8ba05272aa" />
+
+By using Process Hacker, we can observe a range of processes within our environment. Sorting the processes by name, we can identify interesting color-coded distinctions. Notably, "powershell.exe", a managed process, is highlighted in green compared to other processes. Hovering over powershell.exe reveals the label "Process is managed (.NET)," confirming its managed status.
+
+<img width="721" height="274" alt="image" src="https://github.com/user-attachments/assets/e71ec749-c65e-41e7-b82e-2ae7e1904c2e" />
+
+Examining the module loads for powershell.exe, by right-clicking on powershell.exe, clicking "Properties", and navigating to "Modules", we can find relevant information.
+
+<img width="721" height="50" alt="image" src="https://github.com/user-attachments/assets/1a778956-5b8a-4067-a4e2-7616a693f884" />
+
+The presence of "Microsoft .NET Runtime...", clr.dll, and clrjit.dll should attract our attention. These 2 DLLs are used when C# code is ran as part of the runtime to execute the bytecode. If we observe these DLLs loaded in processes that typically do not require them, it suggests a potential execute-assembly or unmanaged PowerShell injection attack.
+
+To showcase unmanaged PowerShell injection, we can inject an unmanaged PowerShell-like DLL into a random process, such as spoolsv.exe. We can do that by utilizing the PSInject project in the following manner.
+
+ powershell -ep bypass
+ Import-Module .\Invoke-PSInject.ps1
+ Invoke-PSInject -ProcId [Process ID of spoolsv.exe] -PoshCode "V3JpdGUtSG9zdCAiSGVsbG8sIEd1cnU5OSEi"
+
+ <img width="725" height="313" alt="image" src="https://github.com/user-attachments/assets/c737f175-5fbf-4ffa-8df0-020514f36333" />
+
+After the injection, we observe that "spoolsv.exe" transitions from an unmanaged to a managed state.
+
+<img width="718" height="396" alt="image" src="https://github.com/user-attachments/assets/3f7438aa-a644-4869-9967-6c108ffb37a4" />
+
+Additionally, by referring to both the related "Modules" tab of Process Hacker and Sysmon Event ID 7, we can examine the DLL load information to validate the presence of the aforementioned DLLs.
+
+<img width="729" height="452" alt="image" src="https://github.com/user-attachments/assets/e461588b-c9e0-4be7-b01b-ab095aa5760a" />
+
+<img width="724" height="348" alt="image" src="https://github.com/user-attachments/assets/ae268050-a518-480f-ae75-0bd1ef46889d" />
+
+<h3>Detection Example 3: Detecting Credential Dumping</h3>
+
+Another critical aspect of cybersecurity is detecting credential dumping activities. One widely used tool for credential dumping is Mimikatz, offering various methods for extracting Windows credentials. One specific command, "sekurlsa::logonpasswords", enables the dumping of password hashes or plaintext passwords by accessing the Local Security Authority Subsystem Service (LSASS). LSASS is responsible for managing user credentials and is a primary target for credential-dumping tools like Mimikatz.
+
+The attack can be executed as follows.
+
+<img width="667" height="706" alt="image" src="https://github.com/user-attachments/assets/2241159c-e4f1-4ef6-88e9-a71bd0962314" />
+
+As we can see, the output of the "sekurlsa::logonpasswords" command provides powerful insights into compromised credentials.
+
+To detect this activity, we can rely on a different Sysmon event. Instead of focusing on DLL loads, we shift our attention to process access events. By checking Sysmon event ID 10, which represents "ProcessAccess" events, we can identify any suspicious attempts to access LSASS.
+
+<img width="730" height="484" alt="image" src="https://github.com/user-attachments/assets/1f7305eb-2f2f-4fef-9677-98b6061bbb6e" />
+
+For instance, if we observe a random file ("AgentEXE" in this case) from a random folder ("Downloads" in this case) attempting to access LSASS, it indicates unusual behavior. Additionally, the SourceUser being different from the TargetUser (e.g., "waldo" as the SourceUser and "SYSTEM" as the TargetUser) further emphasizes the abnormality. It's also worth noting that as part of the mimikatz-based credential dumping process, the user must request SeDebugPrivileges. As the name suggests, it's primarily used for debugging. This can be another Indicator of Compromise (IOC).
+
+Please note that some legitimate processes may access LSASS, such as authentication-related processes or security tools like AV or EDR.
+
+<h3>Practical Exercises</h3>
+
+Navigate to the bottom of this section and click on Click here to spawn the target system!
+
+Then, RDP to [Target IP] using the provided credentials and answer the questions below. Do not forget to configure Sysmon accordingly, before you replicate the attacks.
+
+@htb[/htb]$ xfreerdp /u:Administrator /p:'HTB_@cad3my_lab_W1n10_r00t!@0' /v:[Target IP] /dynamic-resolution
