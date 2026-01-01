@@ -376,3 +376,27 @@ Applying a display filter is even easier than a capture filter. From the main Wi
 When using capture and display filters, keep in mind that what we specify is taken in a literal sense. For example, filtering for port 80 traffic is not the same as filtering for HTTP. Think of ports and protocols more like guidelines instead of rigid rules. Ports can be bound and used for different purposes other than what they were originally intended. For example, filtering for HTTP will look for key markers that the protocol uses, such as GET/POST requests, and show results from them. Filtering for port 80 will show anything sent or received over that port regardless of the transport protocol.
 
 In the next section, we will work with some of the more advanced features of Wireshark.
+
+True or False: Wireshark can run on both Windows and Linux.
+
+True
+
++ 0  Which Pane allows a user to see a summary of each packet grabbed during the capture?
+
+Packet List
+
++ 0  Which pane provides you insight into the traffic you captured and displays it in both ASCII and Hex?
+
+Packet Bytes
+
++ 0  What switch is used with TShark to list possible interfaces to capture on?
+
+-d
+
++ 0  What switch allows us to apply filters in TShark?
+
+-f
+
++ 0  Is a capture filter applied before the capture starts or after? (answer before or after)
+
+before
