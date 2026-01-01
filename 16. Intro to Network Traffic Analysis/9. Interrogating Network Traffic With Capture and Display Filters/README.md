@@ -153,3 +153,17 @@ Who are the servers in the PCAP? (answering on well-known ports, 53, 80, etc.)
 What records were requested or methods used? (GET, POST, DNS A records, etc.)
 
 
+ What are the client and server port numbers used in first full TCP three-way handshake? (low number first then high number)
+
+80 43806
+
+
++ 1  Based on the traffic seen in the pcap file, who is the DNS server in this network segment? (ip address)
+
+172.16.146.1
+
+<img width="758" height="597" alt="image" src="https://github.com/user-attachments/assets/301c6e12-4d5f-4829-9929-dd5edfa7585e" />
+
+<img width="896" height="407" alt="image" src="https://github.com/user-attachments/assets/4290d804-491b-4a59-a385-70814c28ed27" />
+
+
