@@ -163,3 +163,6 @@ nt authority\system
 
 This has been a quick and dirty example of how msfconsole can help out quickly but serves as an excellent example of how the framework works. Only one module was needed without any payload selection, encoding or pivoting between sessions or jobs.
 
+ Use the Metasploit-Framework to exploit the target with EternalRomance. Find the flag.txt file on Administrator's desktop and submit the contents as the answer.
+ 
+HTB{MSF-W1nD0w5-3xPL01t4t10n}
