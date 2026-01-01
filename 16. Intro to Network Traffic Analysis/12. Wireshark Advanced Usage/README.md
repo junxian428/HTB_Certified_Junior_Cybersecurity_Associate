@@ -74,3 +74,23 @@ Since FTP utilizes TCP as its transport mechanism, we can utilize the follow tcp
 
 5. Validate the extraction by checking the file type.
 
+ Which plugin tab can provide us with a way to view conversation metadata and even protocol breakdowns for the entire PCAP file?
+ 
+Statistics
+
++ 0  What plugin tab will allow me to accomplish tasks such as applying filters, following streams, and viewing expert info?
+  
+Analyze
+
++ 0  What stream oriented Transport protocol enables us to follow and rebuild conversations and the included data?
+
+  
+TCP
+
++ 0  True or False: Wireshark can extract files from HTTP traffic.
+  
+True
+
++ 0  True or False: The ftp-data filter will show us any data sent over TCP port 21.
+  
+False
