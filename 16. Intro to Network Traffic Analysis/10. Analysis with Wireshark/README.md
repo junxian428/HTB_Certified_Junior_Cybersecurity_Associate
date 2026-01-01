@@ -227,3 +227,152 @@ When looking at the Wireshark interface, we will notice a few different option a
 
 Starting a capture with Wireshark is a simple endeavor. The gif below will show the steps.
 
+<img width="991" height="797" alt="image" src="https://github.com/user-attachments/assets/d91d4ce0-b35e-42f5-a873-2d6dbdd52af0" />
+
+<img width="978" height="794" alt="image" src="https://github.com/user-attachments/assets/44a79732-b9f9-4552-8d06-fd493077d8f2" />
+
+Keep in mind, any time we change the capture options, Wireshark will restart the trace. Much like TCPDump, Wireshark has capture and display filter options that can be used.
+
+<h3>The Basics</h3>
+
+The Toolbar
+
+<img width="1009" height="644" alt="image" src="https://github.com/user-attachments/assets/561d21e9-3e20-42d6-a05c-9f04496ee82c" />
+
+<h3>Pre-capture and Post-capture Processing and Filtering</h3>
+
+While capturing traffic with Wireshark, we have several options regarding how and when we filter out traffic. This is accomplished utilizing Capture and Display filters. The Former initiated before the capture starts and the latter during or after capture is complete. While Wireshark has a bunch of useful baked-in functionality, it is worth mentioning that it has a bit of trouble handling large captures. The more packets captured, the longer it will take Wireshark to run the display or analysis filter against it. It can take from just a couple of seconds to a few minutes if it completes at all. If we are working with a large pcap file, it may be best to break it up into smaller chunks first.
+
+<h3>Capture Filters</h3>
+
+Capture Filters- are entered before the capture is started. These use BPF syntax like host 214.15.2.30 much in the same fashion as TCPDump. We have fewer filter options this way, and a capture filter will drop all other traffic not explicitly meeting the criteria set. This is a great way to trim down the data you write to disk when troubleshooting a connection, such as capturing the conversations between two hosts.
+
+Here is a table of common and helpful capture filters with a description of each:
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Capture Filters</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>host x.x.x.x</code></td>
+      <td>Capture only traffic pertaining to a certain host</td>
+    </tr>
+    <tr>
+      <td><code>net x.x.x.x/24</code></td>
+      <td>Capture traffic to or from a specific network (using slash notation to specify the mask)</td>
+    </tr>
+    <tr>
+      <td><code>src net x.x.x.x/24</code><br><code>dst net x.x.x.x/24</code></td>
+      <td>Capture traffic sourcing from or destined to the specified network</td>
+    </tr>
+    <tr>
+      <td><code>port #</code></td>
+      <td>Capture traffic only on the specified port</td>
+    </tr>
+    <tr>
+      <td><code>not port #</code></td>
+      <td>Capture all traffic except the specified port</td>
+    </tr>
+    <tr>
+      <td><code>port # and #</code></td>
+      <td>Capture traffic on both specified ports</td>
+    </tr>
+    <tr>
+      <td><code>portrange x-x</code></td>
+      <td>Capture traffic from all ports within the specified range</td>
+    </tr>
+    <tr>
+      <td><code>ip</code> / <code>ether</code> / <code>tcp</code></td>
+      <td>Capture traffic from the specified protocol headers only</td>
+    </tr>
+    <tr>
+      <td><code>broadcast</code> / <code>multicast</code> / <code>unicast</code></td>
+      <td>Capture specific traffic types: one-to-all, one-to-many, or one-to-one</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Applying a Capture Filter</h3>
+
+Before we apply a capture filter, let us take a look at the built-in filters. To do so: Click on the capture radial at the top of the Wireshark window → then select capture filters from the drop-down.
+
+<h3>Filter List</h3>
+
+<img width="991" height="593" alt="image" src="https://github.com/user-attachments/assets/3d3c3600-c4db-41ca-bd4c-f2962f7636c7" />
+
+
+From here, we can modify the existing filters or add our own.
+
+To apply the filter to a capture, we will: Click on the capture radial at the top of the Wireshark window → then select Options from the drop-down → in the new window select the drop-down for Capture filter for selected interfaces or type in the filter we wish to use. below the red arrow in the picture below
+
+<h3>Applying A Capture Filter</h3>
+
+<img width="994" height="510" alt="image" src="https://github.com/user-attachments/assets/5e427538-0aac-44f1-82fa-c9fd0c1bfb46" />
+
+<h3>Display Filters</h3>
+
+Display Filters- are used while the capture is running and after the capture has stopped. Display filters are proprietary to Wireshark, which offers many different options for almost any protocol.
+
+Here is a table of common and helpful display filters with a description of each:
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Display Filters</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>ip.addr == x.x.x.x</code></td>
+      <td>Display only traffic pertaining to a certain host (logical OR match)</td>
+    </tr>
+    <tr>
+      <td><code>ip.addr == x.x.x.x/24</code></td>
+      <td>Display traffic pertaining to a specific network (logical OR match)</td>
+    </tr>
+    <tr>
+      <td><code>ip.src == x.x.x.x</code><br><code>ip.dst == x.x.x.x</code></td>
+      <td>Display traffic sourced from or destined to a specific host</td>
+    </tr>
+    <tr>
+      <td><code>dns</code> / <code>tcp</code> / <code>ftp</code> / <code>arp</code> / <code>ip</code></td>
+      <td>Filter traffic by a specific protocol (many more protocols supported)</td>
+    </tr>
+    <tr>
+      <td><code>tcp.port == x</code></td>
+      <td>Filter traffic by a specific TCP port</td>
+    </tr>
+    <tr>
+      <td><code>tcp.port != x</code><br><code>udp.port != x</code></td>
+      <td>Display all traffic except the specified port</td>
+    </tr>
+    <tr>
+      <td><code>and</code> / <code>or</code> / <code>not</code></td>
+      <td>
+        Logical operators:<br>
+        <strong>AND</strong> combines conditions,<br>
+        <strong>OR</strong> matches either condition,<br>
+        <strong>NOT</strong> excludes a condition
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+ Keep in mind, while utilizing Display filters traffic is processed to show only what is requested but the rest of the capture file will not be overwritten. Applying Display filters and analysis options will cause Wireshark to reprocess the pcap data in order to apply.
+
+<h3>Applying a Display Filter</h3>
+
+Applying a display filter is even easier than a capture filter. From the main Wireshark capture window, all we need to do is: select the bookmark in the Toolbar → , then select an option from the drop-down. Alternatively, place the cursor in the text radial → and type in the filter we wish to use. If the field turns green, the filter is correct. Just like in the image below.
+
+<h3>Applying Display Filters</h3>
+
+<img width="1001" height="356" alt="image" src="https://github.com/user-attachments/assets/873950f2-5abc-4938-a928-0dad34418e9d" />
+
+When using capture and display filters, keep in mind that what we specify is taken in a literal sense. For example, filtering for port 80 traffic is not the same as filtering for HTTP. Think of ports and protocols more like guidelines instead of rigid rules. Ports can be bound and used for different purposes other than what they were originally intended. For example, filtering for HTTP will look for key markers that the protocol uses, such as GET/POST requests, and show results from them. Filtering for port 80 will show anything sent or received over that port regardless of the transport protocol.
+
+In the next section, we will work with some of the more advanced features of Wireshark.
