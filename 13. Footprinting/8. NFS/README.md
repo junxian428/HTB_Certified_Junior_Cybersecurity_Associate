@@ -62,3 +62,66 @@ We have shared the folder /mnt/nfs to the subnet 10.129.14.0/24 with the setting
 
 However, even with NFS, some settings can be dangerous for the company and its infrastructure. Here are some of them listed:
 
+Option	Description
+
+rw	Read and write permissions.
+
+insecure	Ports above 1024 will be used.
+
+nohide	If another file system was mounted below an exported directory, this directory is exported by its own exports entry.
+
+no_root_squash	All files created by root are kept with the UID/GID 0.
+
+It is highly recommended to create a local VM and experiment with the settings. We will discover methods that will show us how the NFS server is configured. For this, we can create several folders and assign different options to each one. Then we can inspect them and see what settings can have what effect on the NFS share and its permissions and the enumeration process.
+
+We can take a look at the insecure option. This is dangerous because users can use ports above 1024. The first 1024 ports can only be used by root. This prevents the fact that no users can use sockets above port 1024 for the NFS service and interact with it.
+
+<h3>Footprinting the Service</h3>
+
+When footprinting NFS, the TCP ports 111 and 2049 are essential. We can also get information about the NFS service and the host via RPC, as shown below in the example.
+
+<h3>Nmap</h3>
+
+@htb[/htb]$ sudo nmap 10.129.14.128 -p111,2049 -sV -sC
+
+The rpcinfo NSE script retrieves a list of all currently running RPC services, their names and descriptions, and the ports they use. This lets us check whether the target share is connected to the network on all required ports. Also, for NFS, Nmap has some NSE scripts that can be used for the scans. These can then show us, for example, the contents of the share and its stats.
+
+@htb[/htb]$ sudo nmap --script nfs* 10.129.14.128 -sV -p111,2049
+
+Once we have discovered such an NFS service, we can mount it on our local machine. For this, we can create a new empty folder to which the NFS share will be mounted. Once mounted, we can navigate it and view the contents just like our local system.
+
+<h3>Show Available NFS Shares</h3>
+
+@htb[/htb]$ showmount -e 10.129.14.128
+
+<h3>Mounting NFS Share</h3>
+
+[/htb]$ mkdir target-NFS
+
+[/htb]$ sudo mount -t nfs 10.129.14.128:/ ./target-NFS/ -o nolock
+
+[/htb]$ cd target-NFS
+
+[/htb]$ tree .
+
+There we will have the opportunity to access the rights and the usernames and groups to whom the shown and viewable files belong. Because once we have the usernames, group names, UIDs, and GUIDs, we can create them on our system and adapt them to the NFS share to view and modify the files.
+
+<h3>List Contents with Usernames & Group Names</h3>
+
+@htb[/htb]$ ls -l mnt/nfs/
+
+<h3>List Contents with UIDs & GUIDs</h3>
+
+@htb[/htb]$ ls -n mnt/nfs/
+
+It is important to note that if the root_squash option is set, we cannot edit the backup.sh file even as root.
+
+We can also use NFS for further escalation. For example, if we have access to the system via SSH and want to read files from another folder that a specific user can read, we would need to upload a shell to the NFS share that has the SUID of that user and then run the shell via the SSH user.
+
+After we have done all the necessary steps and obtained the information we need, we can unmount the NFS share.
+
+<h3>Unmounting</h3>
+
+@htb[/htb]$ cd ..
+
+@htb[/htb]$ sudo umount ./target-NFS
