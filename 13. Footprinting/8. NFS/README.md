@@ -125,3 +125,12 @@ After we have done all the necessary steps and obtained the information we need,
 @htb[/htb]$ cd ..
 
 @htb[/htb]$ sudo umount ./target-NFS
+
+ Enumerate the NFS service and submit the contents of the flag.txt in the "nfs" share as the answer.
+ 
+HTB{hjglmvtkjhlkfuhgi734zthrie7rjmdze}
+
++ 0  Enumerate the NFS service and submit the contents of the flag.txt in the "nfsshare" share as the answer.
+  
+HTB{8o7435zhtuih7fztdrzuhdhkfjcn7ghi4357ndcthzuc7rtfghu34}
+
