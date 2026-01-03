@@ -374,3 +374,26 @@ ENUM4LINUX - next generation
 
 We need to use more than two tools for enumeration. Because it can happen that due to the programming of the tools, we get different information that we have to check manually. Therefore, we should never rely only on automated tools where we do not know precisely how they were written.
 
+ What version of the SMB server is running on the target system? Submit the entire banner as the answer.
+ 
+Samba smbd 4.6.2
+
++ 0  What is the name of the accessible share on the target?
+  
+sambashare
+
++ 0  Connect to the discovered share and find the flag.txt file. Submit the contents as the answer
+  
+HTB{o873nz4xdo873n4zo873zn4fksuhldsf}
+
++ 0  Find out which domain the server belongs to.
+  
+DEVOPS
+
++ 0  Find additional information about the specific share we found previously and submit the customized version of that specific share as the answer.
+  
+InFreight SMB v3.1
+
++ 0  What is the full system path of that specific share? (format: "/directory/names")
+  
+/home/sambauser
