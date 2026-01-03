@@ -250,3 +250,127 @@ Anonymous login successful
 Try "help" to get a list of possible commands.
 
 Once we have discovered interesting files or folders, we can download them using the get command. Smbclient also allows us to execute local system commands using an exclamation mark at the beginning (!<cmd>) without interrupting the connection.
+
+
+<h3>Download Files from SMB</h3>
+
+smb: \> get prep-prod.txt 
+
+smb: \> !ls
+
+From the administrative point of view, we can check these connections using smbstatus. Apart from the Samba version, we can also see who, from which host, and which share the client is connected. This is especially important once we have entered a subnet (perhaps even an isolated one) that the others can still access.
+
+For example, with domain-level security, the samba server acts as a member of a Windows domain. Each domain has at least one domain controller, usually a Windows NT server providing password authentication. This domain controller provides the workgroup with a definitive password server. The domain controllers keep track of users and passwords in their own NTDS.dit and Security Authentication Module (SAM) and authenticate each user when they log in for the first time and wish to access another machine's share.
+
+<h3>Samba Status</h3>
+
+root@samba:~# smbstatus
+
+<h3>Footprinting the Service</h3>
+
+Let us go back to one of our enumeration tools. Nmap also has many options and NSE scripts that can help us examine the target's SMB service more closely and get more information. The downside, however, is that these scans can take a long time. Therefore, it is also recommended to look at the service manually, mainly because we can find much more details than Nmap could show us. First, however, let us see what Nmap can find on our target Samba server, where we created the [notes] share for testing purposes.
+
+<h3>Nmap</h3>
+
+@htb[/htb]$ sudo nmap 10.129.14.128 -sV -sC -p139,445
+
+We can see from the results that it is not very much that Nmap provided us with here. Therefore, we should resort to other tools that allow us to interact manually with the SMB and send specific requests for the information. One of the handy tools for this is rpcclient. This is a tool to perform MS-RPC functions.
+
+The Remote Procedure Call (RPC) is a concept and, therefore, also a central tool to realize operational and work-sharing structures in networks and client-server architectures. The communication process via RPC includes passing parameters and the return of a function value.
+
+@htb[/htb]$ rpcclient -U "" 10.129.14.128
+
+Enter WORKGROUP\'s password:
+
+rpcclient $> 
+
+The rpcclient offers us many different requests with which we can execute specific functions on the SMB server to get information. A complete list of all these functions can be found on the man page of the rpcclient.
+
+Query	Description
+
+srvinfo	Server information.
+
+enumdomains	Enumerate all domains that are deployed in the network.
+
+querydominfo	Provides domain, server, and user information of deployed domains.
+
+netshareenumall	Enumerates all available shares.
+
+netsharegetinfo <share>	Provides information about a specific share.
+
+enumdomusers	Enumerates all domain users.
+
+queryuser <RID>	Provides information about a specific user.
+
+<h3>RPCclient - Enumeration</h3>
+
+rpcclient $> srvinfo
+
+rpcclient $> enumdomains
+
+rpcclient $> querydominfo
+
+rpcclient $> netshareenumall
+
+rpcclient $> netsharegetinfo notes
+
+These examples show us what information can be leaked to anonymous users. Once an anonymous user has access to a network service, it only takes one mistake to give them too many permissions or too much visibility to put the entire network at significant risk.
+
+Most importantly, anonymous access to such services can also lead to the discovery of other users, who can be attacked with brute-forcing in the most aggressive case. Humans are more error-prone than properly configured computer processes, and the lack of security awareness and laziness often leads to weak passwords that can be easily cracked. Let us see how we can enumerate users using the rpcclient.
+
+<h3>Rpcclient - User Enumeration</h3>
+
+rpcclient $> enumdomusers
+
+rpcclient $> queryuser 0x3e9
+
+rpcclient $> queryuser 0x3e8
+
+
+We can then use the results to identify the group's RID, which we can then use to retrieve information from the entire group.
+
+<h3>Rpcclient - Group Information</h3>
+
+rpcclient $> querygroup 0x201
+
+
+However, it can also happen that not all commands are available to us, and we have certain restrictions based on the user. However, the query queryuser <RID> is mostly allowed based on the RID. So we can use the rpcclient to brute force the RIDs to get information. Because we may not know who has been assigned which RID, we know that we will get information about it as soon as we query an assigned RID. There are several ways and tools we can use for this. To stay with the tool, we can create a For-loop using Bash where we send a command to the service using rpcclient and filter out the results.
+
+<h3>Brute Forcing User RIDs</h3>
+
+@htb[/htb]$ for i in $(seq 500 1100);do rpcclient -N -U "" 10.129.14.128 -c "queryuser 0x$(printf '%x\n' $i)" | grep "User Name\|user_rid\|group_rid" && echo "";done
+
+An alternative to this would be a Python script from Impacket called samrdump.py.
+
+<h3>Impacket - Samrdump.py</h3>
+
+@htb[/htb]$ samrdump.py 10.129.14.128
+
+The information we have already obtained with rpcclient can also be obtained using other tools. For example, the SMBMap and CrackMapExec tools are also widely used and helpful for the enumeration of SMB services.
+
+<h3>SMBmap</h3>
+
+@htb[/htb]$ smbmap -H 10.129.14.128
+
+<h3>CrackMapExec</h3>
+
+@htb[/htb]$ crackmapexec smb 10.129.14.128 --shares -u '' -p ''
+
+Another tool worth mentioning is the so-called enum4linux-ng, which is based on an older tool, enum4linux. This tool automates many of the queries, but not all, and can return a large amount of information.
+
+<h3>Enum4Linux-ng - Installation</h3>
+
+@htb[/htb]$ git clone https://github.com/cddmp/enum4linux-ng.git
+
+@htb[/htb]$ cd enum4linux-ng
+
+@htb[/htb]$ pip3 install -r requirements.txt
+
+<h3>Enum4Linux-ng - Enumeration</h3>
+
+@htb[/htb]$ ./enum4linux-ng.py 10.129.14.128 -A
+
+ENUM4LINUX - next generation
+
+We need to use more than two tools for enumeration. Because it can happen that due to the programming of the tools, we get different information that we have to check manually. Therefore, we should never rely only on automated tools where we do not know precisely how they were written.
+
