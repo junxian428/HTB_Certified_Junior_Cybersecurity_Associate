@@ -147,3 +147,15 @@ Check your understanding:
 • How can utilizing these features be beneficial to you and your mission?
 
 • What filter would you use if you wanted to only see TCP traffic from the client?
+
+
+ What was the filename of the image that contained a certain Transformer Leader? (name.filetype)
+ 
+Rise-Up.jpg
+
++ 0  Which employee is suspected of performing potentially malicious actions in the live environment?
+  
+bob
+
+
+
