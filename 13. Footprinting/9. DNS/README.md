@@ -133,3 +133,37 @@ Different DNS records are used for the DNS queries, which all have various tasks
 The SOA record is located in a domain's zone file and specifies who is responsible for the operation of the domain and how DNS information for the domain is managed.
 
 @htb[/htb]$ dig soa www.inlanefreight.com
+
+The dot (.) is replaced by an at sign (@) in the email address. In this example, the email address of the administrator is awsdns-hostmaster@amazon.com.
+
+<h3>Default Configuration</h3>
+
+There are many different configuration types for DNS. Therefore, we will only discuss the most important ones to illustrate better the functional principle from an administrative point of view. All DNS servers work with three different types of configuration files:
+
+1. local DNS configuration files
+
+2. zone files
+
+3. reverse name resolution files
+
+The DNS server Bind9 is very often used on Linux-based distributions. Its local configuration file (named.conf) is roughly divided into two sections, firstly the options section for general settings and secondly the zone entries for the individual domains. The local configuration files are usually:
+
+- named.conf.local
+
+- named.conf.options
+
+- named.conf.log
+
+It contains the associated RFC where we can customize the server to our needs and our domain structure with the individual zones for different domains. The configuration file named.conf is divided into several options that control the behavior of the name server. A distinction is made between global options and zone options.
+
+Global options are general and affect all zones. A zone option only affects the zone to which it is assigned. Options not listed in named.conf have default values. If an option is both global and zone-specific, then the zone option takes precedence.
+
+<h3>Local DNS Configuration</h3>
+
+@bind9:~# cat /etc/bind/named.conf.local
+
+In this file, we can define the different zones. These zones are divided into individual files, which in most cases are mainly intended for one domain only. Exceptions are ISP and public DNS servers. In addition, many different options extend or reduce the functionality. We can look these up on the documentation of Bind9.
+
+A zone file is a text file that describes a DNS zone with the BIND file format. In other words it is a point of delegation in the DNS tree. The BIND file format is the industry-preferred zone file format and is now well established in DNS server software. A zone file describes a zone completely. There must be precisely one SOA record and at least one NS record. The SOA resource record is usually located at the beginning of a zone file. The main goal of these global rules is to improve the readability of zone files. A syntax error usually results in the entire zone file being considered unusable. The name server behaves similarly as if this zone did not exist. It responds to DNS queries with a SERVFAIL error message.
+
+In short, here, all forward records are entered according to the BIND format. This allows the DNS server to identify which domain, hostname, and role the IP addresses belong to. In simple terms, this is the phone book where the DNS server looks up the addresses for the domains it is searching for.
