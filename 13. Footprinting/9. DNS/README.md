@@ -167,3 +167,96 @@ In this file, we can define the different zones. These zones are divided into in
 A zone file is a text file that describes a DNS zone with the BIND file format. In other words it is a point of delegation in the DNS tree. The BIND file format is the industry-preferred zone file format and is now well established in DNS server software. A zone file describes a zone completely. There must be precisely one SOA record and at least one NS record. The SOA resource record is usually located at the beginning of a zone file. The main goal of these global rules is to improve the readability of zone files. A syntax error usually results in the entire zone file being considered unusable. The name server behaves similarly as if this zone did not exist. It responds to DNS queries with a SERVFAIL error message.
 
 In short, here, all forward records are entered according to the BIND format. This allows the DNS server to identify which domain, hostname, and role the IP addresses belong to. In simple terms, this is the phone book where the DNS server looks up the addresses for the domains it is searching for.
+
+<h3>Zone Files</h3>
+
+root@bind9:~# cat /etc/bind/db.domain.com
+
+For the Fully Qualified Domain Name (FQDN) to be resolved from the IP address, the DNS server must have a reverse lookup file. In this file, the computer name (FQDN) is assigned to the last octet of an IP address, which corresponds to the respective host, using a PTR record. The PTR records are responsible for the reverse translation of IP addresses into names, as we have already seen in the above table.
+
+<h3>Reverse Name Resolution Zone Files</h3>
+
+root@bind9:~# cat /etc/bind/db.10.129.14
+
+<h3>Dangerous Settings</h3>
+
+There are many ways in which a DNS server can be attacked. For example, a list of vulnerabilities targeting the BIND9 server can be found at CVEdetails. In addition, SecurityTrails provides a short list of the most popular attacks on DNS servers.
+
+Some of the settings we can see below lead to these vulnerabilities, among others. Because DNS can get very complicated and it is very easy for errors to creep into this service, forcing an administrator to work around the problem until they find an exact solution. This often leads to elements being released so that parts of the infrastructure function as planned and desired. In such cases, functionality has a higher priority than security, which leads to misconfigurations and vulnerabilities.
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>allow-query</td>
+      <td>Defines which hosts are allowed to send requests to the DNS server.</td>
+    </tr>
+    <tr>
+      <td>allow-recursion</td>
+      <td>Defines which hosts are allowed to send recursive requests to the DNS server.</td>
+    </tr>
+    <tr>
+      <td>allow-transfer</td>
+      <td>Defines which hosts are allowed to receive zone transfers from the DNS server.</td>
+    </tr>
+    <tr>
+      <td>zone-statistics</td>
+      <td>Collects statistical data of zones.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Footprinting the Service</h3>
+
+The footprinting at DNS servers is done as a result of the requests we send. So, first of all, the DNS server can be queried as to which other name servers are known. We do this using the NS record and the specification of the DNS server we want to query using the @ character. This is because if there are other DNS servers, we can also use them and query the records. However, other DNS servers may be configured differently and, in addition, may be permanent for other zones.
+
+<h3>DIG - NS Query</h3>
+
+@htb[/htb]$ dig ns inlanefreight.htb @10.129.14.128
+
+Sometimes it is also possible to query a DNS server's version using a class CHAOS query and type TXT. However, this entry must exist on the DNS server. For this, we could use the following command:
+
+<h3>DIG - Version Query</h3>
+
+@htb[/htb]$ dig CH TXT version.bind 10.129.120.85
+
+We can use the option ANY to view all available records. This will cause the server to show us all available entries that it is willing to disclose. It is important to note that not all entries from the zones will be shown.
+
+<h3>DIG - ANY Query</h3>
+
+@htb[/htb]$ dig any inlanefreight.htb @10.129.14.128
+
+Zone transfer refers to the transfer of zones to another server in DNS, which generally happens over TCP port 53. This procedure is abbreviated Asynchronous Full Transfer Zone (AXFR). Since a DNS failure usually has severe consequences for a company, the zone file is almost invariably kept identical on several name servers. When changes are made, it must be ensured that all servers have the same data. Synchronization between the servers involved is realized by zone transfer. Using a secret key rndc-key, which we have seen initially in the default configuration, the servers make sure that they communicate with their own master or slave. Zone transfer involves the mere transfer of files or records and the detection of discrepancies in the data sets of the servers involved.
+
+The original data of a zone is located on a DNS server, which is called the primary name server for this zone. However, to increase the reliability, realize a simple load distribution, or protect the primary from attacks, one or more additional servers are installed in practice in almost all cases, which are called secondary name servers for this zone. For some Top-Level Domains (TLDs), making zone files for the Second Level Domains accessible on at least two servers is mandatory.
+
+DNS entries are generally only created, modified, or deleted on the primary. This can be done by manually editing the relevant zone file or automatically by a dynamic update from a database. A DNS server that serves as a direct source for synchronizing a zone file is called a master. A DNS server that obtains zone data from a master is called a slave. A primary is always a master, while a secondary can be both a slave and a master.
+
+The slave fetches the SOA record of the relevant zone from the master at certain intervals, the so-called refresh time, usually one hour, and compares the serial numbers. If the serial number of the SOA record of the master is greater than that of the slave, the data sets no longer match.
+
+<h3>DIG - AXFR Zone Transfer</h3>
+
+@htb[/htb]$ dig axfr inlanefreight.htb @10.129.14.128
+
+If the administrator used a subnet for the allow-transfer option for testing purposes or as a workaround solution or set it to any, everyone would query the entire zone file at the DNS server. In addition, other zones can be queried, which may even show internal IP addresses and hostnames.
+
+<h3>DIG - AXFR Zone Transfer - Internal</h3>
+
+@htb[/htb]$ dig axfr internal.inlanefreight.htb @10.129.14.128
+
+The individual A records with the hostnames can also be found out with the help of a brute-force attack. To do this, we need a list of possible hostnames, which we use to send the requests in order. Such lists are provided, for example, by SecLists.
+
+An option would be to execute a for-loop in Bash that lists these entries and sends the corresponding query to the desired DNS server.
+
+<h3>Subdomain Brute Forcing</h3>
+
+@htb[/htb]$ for sub in $(cat /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt);do dig $sub.inlanefreight.htb @10.129.14.128 | grep -v ';\|SOA' | sed -r '/^\s*$/d' | grep $sub | tee -a subdomains.txt;done
+
+Many different tools can be used for this, and most of them work in the same way. One of these tools is, for example DNSenum.
+
+@htb[/htb]$ dnsenum --dnsserver 10.129.14.128 --enum -p 0 -s 0 -o subdomains.txt -f /opt/useful/seclists/Discovery/DNS/subdomains-top1million-110000.txt inlanefreight.htb
