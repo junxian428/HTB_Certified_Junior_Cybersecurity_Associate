@@ -160,3 +160,17 @@ Navigate to the bottom of this section and click on Click here to spawn the targ
 Then, RDP to [Target IP] using the provided credentials and answer the questions below. Do not forget to configure Sysmon accordingly, before you replicate the attacks.
 
 @htb[/htb]$ xfreerdp /u:Administrator /p:'HTB_@cad3my_lab_W1n10_r00t!@0' /v:[Target IP] /dynamic-resolution
+
+
+Replicate the DLL hijacking attack described in this section and provide the SHA256 hash of the malicious WININET.dll as your answer. "C:\Tools\Sysmon" and "C:\Tools\Reflective DLLInjection" on the spawned target contain everything you need.
+
+51f2305dcf385056c68f7ccf5b1b3b9304865cef1257947d4ad6ef5fad2e3b13
+
+
++ 1  Replicate the Unmanaged PowerShell attack described in this section and provide the SHA256 hash of clrjit.dll that spoolsv.exe will load as your answer. "C:\Tools\Sysmon" and "C:\Tools\PSInject" on the spawned target contain everything you need.
+  
+8A3CD3CF2249E9971806B15C75A892E6A44CCA5FF5EA5CA89FDA951CD2C09AA9
+
++ 1  Replicate the Credential Dumping attack described in this section and provide the NTLM hash of the Administrator user as your answer. "C:\Tools\Sysmon" and "C:\Tools\Mimikatz" on the spawned target contain everything you need.
+  
+5e4ffd54b3849aa720ed39f50185e533
