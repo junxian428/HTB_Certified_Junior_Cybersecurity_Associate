@@ -135,3 +135,10 @@ However, we can also use the smtp-open-relay NSE script to identify the target S
 
 @htb[/htb]$ sudo nmap 10.129.14.128 -p25 --script smtp-open-relay -v
 
+Enumerate the SMTP service and submit the banner, including its version as the answer.
+
+InFreight ESMTP v2.11
+
++ 1  Enumerate the SMTP service even further and find the username that exists on the system. Submit it as the answer.
+  
+robin
