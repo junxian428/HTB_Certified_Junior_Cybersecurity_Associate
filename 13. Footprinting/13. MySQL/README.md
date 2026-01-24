@@ -132,3 +132,10 @@ Some of the commands we should remember and write down for working with MySQL da
 We must know how to interact with different databases. Therefore, we recommend installing and configuring a MySQL server on one of our VMs for experimentation. There is also a widely covered security issues section in the reference manual that covers best practices for securing MySQL servers. We should use this when setting up our MySQL server to understand better why something might not work.
 
 
+Enumerate the MySQL server and determine the version in use. (Format: MySQL X.X.XX)
+
+MySQL 8.0.27
+
++ 1  During our penetration test, we found weak credentials "robin:robin". We should try these against the MySQL server. What is the email address of the customer "Otto Lang"?
+  
+ultrices@google.htb
