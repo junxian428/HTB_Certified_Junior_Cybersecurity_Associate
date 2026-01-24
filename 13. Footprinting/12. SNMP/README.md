@@ -97,3 +97,4 @@ InFreight SNMP v0.91
   
 HTB{5nMp_fl4g_uidhfljnsldiuhbfsdij44738b2u763g}
 
+<img width="1254" height="709" alt="image" src="https://github.com/user-attachments/assets/5b3319e2-d7d5-4255-9d6f-483b0e8c427b" />
