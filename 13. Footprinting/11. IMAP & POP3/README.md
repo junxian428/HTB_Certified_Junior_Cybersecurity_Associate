@@ -202,3 +202,28 @@ To interact with the IMAP or POP3 server over SSL, we can use openssl, as well a
 Once we have successfully initiated a connection and logged in to the target mail server, we can use the above commands to work with and navigate the server. We want to point out that the configuration of our own mail server, the research for it, and the experiments we can do together with other community members will give us the know-how to understand the communication taking place and what configuration options are responsible for this.
 
 In the SMTP section, we have found the user robin. Another member of our team was able to find out that the user also uses his username as a password (robin:robin). We can use these credentials and try them to interact with the IMAP/POP3 services.
+
+Figure out the exact organization name from the IMAP/POP3 service and submit it as the answer.
+
+InlaneFreight Ltd
+
++ 1  What is the FQDN that the IMAP and POP3 servers are assigned to?
+  
+dev.inlanefreight.htb
+
++ 1  Enumerate the IMAP service and submit the flag as the answer. (Format: HTB{...})
+  
+HTB{roncfbw7iszerd7shni7jr2343zhrj}
+
++ 1  What is the customized version of the POP3 server?
+  
+InFreight POP3 v9.188
+
++ 1  What is the admin email address?
+  
+devadmin@inlanefreight.htb
+
++ 1  Try to access the emails on the IMAP server and submit the flag as the answer. (Format: HTB{...})
+  
+HTB{983uzn8jmfgpd8jmof8c34n7zio}
+
