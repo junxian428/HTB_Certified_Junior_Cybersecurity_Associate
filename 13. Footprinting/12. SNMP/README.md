@@ -85,3 +85,15 @@ Once we know a community string, we can use it with braa to brute-force the indi
 
 Once again, we would like to point out that the independent configuration of the SNMP service will bring us a great variety of different experiences that no tutorial can replace. Therefore, we highly recommend setting up a VM with SNMP, experimenting with it, and trying different configurations. SNMP can be a boon for an I.T. systems administrator as well as a curse for Security analysts and managers alike.
 
+Enumerate the SNMP service and obtain the email address of the admin. Submit it as the answer.
+
+devadmin@inlanefreight.htb
+
++ 1  What is the customized version of the SNMP server?
+  
+InFreight SNMP v0.91
+
++ 1  Enumerate the custom script that is running on the system and submit its output as the answer.
+  
+HTB{5nMp_fl4g_uidhfljnsldiuhbfsdij44738b2u763g}
+
