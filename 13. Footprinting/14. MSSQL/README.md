@@ -112,3 +112,10 @@ If we can guess or gain access to credentials, this allows us to remotely connec
 
 Impacket v0.9.22 - Copyright 2020 SecureAuth Corporation
 
+ Enumerate the target using the concepts taught in this section. List the hostname of MSSQL server.
+ 
+ILF-SQL-01
+
++ 0  Connect to the MSSQL instance running on the target using the account (backdoor:Password1), then list the non-default database present on the server.
+  
+Employees
