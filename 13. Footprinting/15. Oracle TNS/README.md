@@ -338,3 +338,7 @@ Finally, we can test if the file upload approach worked with curl. Therefore, we
 @htb[/htb]$ curl -X GET http://10.129.204.235/testing.txt
 
 Oracle File Upload Test
+
+ Enumerate the target Oracle database and submit the password hash of the user DBSNMP as the answer.
+ 
+E066D214D5421CCC
