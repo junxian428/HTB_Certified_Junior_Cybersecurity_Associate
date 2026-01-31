@@ -88,3 +88,12 @@ Experimenting with different word lists is crucial for obtaining the password fr
 
 Here we can see that we have successfully obtained the password hash for the user ADMIN, and the tool was able to quickly crack it to reveal what appears to be a default password ADMIN. From here, we could attempt to log in to the BMC, or, if the password were something more unique, check for password re-use on other systems. IPMI is very common in network environments since sysadmins need to be able to access servers remotely in the event of an outage or perform certain maintenance tasks that they would traditionally have had to be physically in front of the server to complete. This ease of administration comes with the risk of exposing password hashes to anyone on the network and can lead to unauthorized access, system disruption, and even remote code execution. Checking for IPMI should be part of our internal penetration test playbook for any environment we find ourselves assessing.
 
+What username is configured for accessing the host via IPMI?
+
+admin
+
++ 0  What is the account's cleartext password?
+
+  ──╼ [★]$ hashcat -m 7300 value.txt rockyou.txt
+
+trinity
