@@ -154,6 +154,35 @@ We see that there are different sections dedicated to the info page of the modul
 
 <h3>Proof-of-Concept - Module Information</h3>
 
+<img width="1013" height="776" alt="image" src="https://github.com/user-attachments/assets/10a837bf-7294-4895-879d-e6ce23ef5f43" />
+
+
 After the general identification information is filled in, we can move over to the options menu variables:
 
+<h3>Proof-of-Concept - Functions</h3>
+
+ register_options(
+ 
+      [
+      
+        OptString.new('TARGETURI', [true, 'The base path for Bludit', '/']),
+        
+        OptString.new('BLUDITUSER', [true, 'The username for Bludit']),
+        
+        OptString.new('BLUDITPASS', [true, 'The password for Bludit'])
+        
+      ])
+      
+  end
+
+Looking back at our exploit, we see that a wordlist will be required instead of the BLUDITPASS variable for the module to brute-force the passwords for the same username. It would look something like the following snippet:
+
+OptPath.new('PASSWORDS', [ true, 'The list of passwords',
+          File.join(Msf::Config.data_directory, "wordlists", "passwords.txt") ])
+
+The rest of the exploit code needs to be adjusted according to the classes, methods, and variables used in the porting to the Metasploit Framework for the module to work in the end. The final version of the module would look like this:
+
+<h3>Proof-of-Concept</h3>
+
+If you would like to learn more about porting scripts into the Metasploit Framework, check out the Metasploit: A Penetration Tester's Guide book from No Starch Press. Rapid7 has also created blog posts on this topic, which can be found here.
 
