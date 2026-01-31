@@ -186,3 +186,12 @@ meterpreter > lsa_dump_secrets
 
 From this point, if the machine was connected to a more extensive network, we could use this loot to pivot through the system, gain access to internal resources and impersonate users with a higher level of access if the overall security posture of the network is weak.
 
+ Find the existing exploit in MSF and use it to get a shell on the target. What is the username of the user you obtained a shell with?
+
+NT AUTHORITY\SYSTEM
+
++ 1  Retrieve the NTLM password hash for the "htb-student" user. Submit the hash as the answer.
+
+cf3a5525ee9414229e66279623ed5c58
+
+<img width="1240" height="702" alt="image" src="https://github.com/user-attachments/assets/f1f678da-460b-4faa-9077-a8b37ac95c18" />
